@@ -7,6 +7,7 @@ public class ObjectPlacement : MonoBehaviour
 {
 #pragma warning disable 0649
     [SerializeField] private GameObject     prefab;
+    [SerializeField] private float          rotationAngleMagnitude;
 #pragma warning restore 0649
     /**************/ private bool           isPlacing;
     /**************/ private bool           prefabFirstHit;
@@ -50,7 +51,11 @@ public class ObjectPlacement : MonoBehaviour
 
     public void OnObjectRotation(InputAction.CallbackContext context)
     {
-
+        if (context.performed && isPlacing)
+            if (context.ReadValue<float>() > 0)
+                prefabInstance.transform.Rotate(Vector3.up, -rotationAngleMagnitude);
+            else
+                prefabInstance.transform.Rotate(Vector3.up, rotationAngleMagnitude);
     }
 
     public void OnPlacement(InputAction.CallbackContext context)
