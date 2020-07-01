@@ -8,7 +8,7 @@ public class ObjectPlacement : MonoBehaviour
 {
 #pragma warning disable 0649
     [SerializeField] private GodGameCamera              gameCam;
-    [SerializeField] private GameObject                 prefab;
+    [SerializeField] private GameObject[]               prefabs;
     [SerializeField] private int                        prefabUndoMaxCount;
     [SerializeField] private float                      rotationAngleMagnitude;
 #pragma warning restore 0649
@@ -44,7 +44,7 @@ public class ObjectPlacement : MonoBehaviour
             isPlacing = !isPlacing;
             if (isPlacing)
             {
-                prefabInstance = Instantiate(prefab).GetComponent<ProtoObject>();
+                prefabInstance = Instantiate(prefabs[Random.Range(0, prefabs.Length)]).GetComponent<ProtoObject>();
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
             }

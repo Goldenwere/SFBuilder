@@ -619,7 +619,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCam: {fileID: 999186421}
-  prefab: {fileID: 4453867815803708484, guid: 1765fc10678d09a449c91c4a3376d973, type: 3}
+  prefabs:
+  - {fileID: 4453867815803708484, guid: 1765fc10678d09a449c91c4a3376d973, type: 3}
+  - {fileID: 4453867815803708484, guid: d39f78a2240d0b44093bd386d1ab772f, type: 3}
+  - {fileID: 4453867815803708484, guid: 3fde320bdd7a19647b46dc022107f58c, type: 3}
   prefabUndoMaxCount: 16
   rotationAngleMagnitude: 15
 --- !u!114 &999186424

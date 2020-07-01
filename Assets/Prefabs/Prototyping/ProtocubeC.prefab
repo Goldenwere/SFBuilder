@@ -282,7 +282,7 @@ MonoBehaviour:
   materialPlacing: {fileID: 2100000, guid: a76fd0442b4277c4eb2f28200e341336, type: 2}
   objectBody: {fileID: 8455704406589913162}
   ranger: {fileID: 5412991578516581834}
-  type: 0
+  type: 2
 --- !u!1 &8455704406589913164
 GameObject:
   m_ObjectHideFlags: 0
