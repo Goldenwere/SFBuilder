@@ -21,7 +21,8 @@ public class ObjectPlacement : MonoBehaviour
     void Update()
     {
         if (isPlacing && Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
-            prefabInstance.transform.position = hit.point;
+            if (hit.normal == Vector3.up)
+                prefabInstance.transform.position = hit.point;
 
         if (Mouse.current.leftButton.ReadValue() > 0 && isPlacing && !prefabInstance.IsCollided)
         {
