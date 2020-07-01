@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 999186421}
   - component: {fileID: 999186423}
   - component: {fileID: 999186420}
+  - component: {fileID: 999186424}
   m_Layer: 0
   m_Name: Camera Controller
   m_TagString: Untagged
@@ -621,6 +622,18 @@ MonoBehaviour:
   prefab: {fileID: 4453867815803708484, guid: 1765fc10678d09a449c91c4a3376d973, type: 3}
   prefabUndoMaxCount: 16
   rotationAngleMagnitude: 15
+--- !u!114 &999186424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999186419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5fb01347f296845937d9ee2410f041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1147850068
 Mesh:
   m_ObjectHideFlags: 0
