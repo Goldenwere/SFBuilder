@@ -34,6 +34,17 @@ public class ProtoObject : MonoBehaviour
         collidedObjects = new List<GameObject>(16);
     }
 
+    private void Update()
+    {
+        if (!IsPlaced)
+        {
+            if (IsValid)
+                objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
+            else
+                objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         IsCollided = true;
