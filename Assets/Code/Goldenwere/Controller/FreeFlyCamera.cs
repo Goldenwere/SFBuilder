@@ -14,11 +14,15 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] private PlayerInput    attachedControls;
         [SerializeField] private GameObject     pointCamera;
         [SerializeField] private GameObject     pointPivot;
-        [SerializeField] private float          settingMoveSpeed = 2f;
+        [SerializeField] private float          settingMoveSpeed = 10f;
         [SerializeField] private float          settingZoomSpeed = 10f;
+        [SerializeField] private float          settingRotationSpeed = 10f;
         /**************/ private Vector3        workingDesiredPosition;
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
+        /**************/ private bool           workingInputMovement;
+        /**************/ private bool           workingInputRotation;
+        /**************/ private bool           workingInputVertical;
         /**************/ private bool           workingModifierMouseMovement;
         /**************/ private bool           workingModifierMouseRotation;
         /**************/ private bool           workingModifierMouseZoom;
@@ -28,8 +32,8 @@ namespace Goldenwere.Unity.Controller
         private void Start()
         {
             workingDesiredPosition = transform.position;
-            workingDesiredRotationHorizontal = pointPivot.transform.rotation;
-            workingDesiredRotationVertical = pointCamera.transform.rotation;
+            workingDesiredRotationHorizontal = pointPivot.transform.localRotation;
+            workingDesiredRotationVertical = pointCamera.transform.localRotation;
         }
 
         /// <summary>
@@ -64,6 +68,8 @@ namespace Goldenwere.Unity.Controller
             */
 
             transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingZoomSpeed);
+            pointPivot.transform.localRotation = Quaternion.Slerp(pointPivot.transform.localRotation, workingDesiredRotationHorizontal, Time.deltaTime * settingRotationSpeed);
+            pointCamera.transform.localRotation = Quaternion.Slerp(pointCamera.transform.localRotation, workingDesiredRotationVertical, Time.deltaTime * settingRotationSpeed);
         }
 
         public void OnMovement(InputAction.CallbackContext context)
@@ -101,7 +107,11 @@ namespace Goldenwere.Unity.Controller
 
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
-
+            if (workingModifierMouseRotation)
+            {
+                workingDesiredRotationHorizontal *= Quaternion.Euler(0, context.ReadValue<Vector2>().x * settingRotationSensitivity / Screen.width, 0);
+                workingDesiredRotationVertical *= Quaternion.Euler(-context.ReadValue<Vector2>().y * settingRotationSensitivity / Screen.height, 0, 0);
+            }
         }
 
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
