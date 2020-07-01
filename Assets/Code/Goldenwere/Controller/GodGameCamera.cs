@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Goldenwere.Unity.Controller
 {
-    public class FreeFlyCamera : MonoBehaviour
+    public class GodGameCamera : MonoBehaviour
     {
         #region Fields
         /**************/ public  float          settingMovementSensitivity = 100f;
@@ -97,16 +97,6 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseMovement = context.performed;
         }
 
-        public void OnObjectRotation(InputAction.CallbackContext context)
-        {
-
-        }
-
-        public void OnPlacement(InputAction.CallbackContext context)
-        {
-
-        }
-
         public void OnRotation(InputAction.CallbackContext context)
         {
 
@@ -127,11 +117,6 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseRotation = !workingModifierMouseRotation;
             else
                 workingModifierMouseRotation = context.performed;
-        }
-
-        public void OnUndo(InputAction.CallbackContext context)
-        {
-
         }
 
         public void OnZoom(InputAction.CallbackContext context)

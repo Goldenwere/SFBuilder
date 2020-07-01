@@ -55,4 +55,19 @@ public class ObjectPlacement : MonoBehaviour
                 Destroy(prefabInstance);
         }
     }
+
+    public void OnObjectRotation(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnPlacement(InputAction.CallbackContext context)
+    {
+
+    }
+    public void OnUndo(InputAction.CallbackContext context)
+    {
+
+    }
+
 }
