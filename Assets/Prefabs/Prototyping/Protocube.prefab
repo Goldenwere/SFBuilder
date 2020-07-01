@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3254083838416775839}
   - component: {fileID: 3254083838416775838}
   - component: {fileID: 3254083838416775833}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Protocube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
