@@ -7,8 +7,8 @@ public class ProtoObjectGrounder : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField] private BoxCollider    protoCollider;
 #pragma warning restore 0649
-    /**************/
-    private List<Collider> collidedObjects;
+    /**************/ private List<Collider> collidedObjects;
+
     public bool IsGrounded { get; private set; }
 
     private void Start()
