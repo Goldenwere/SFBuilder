@@ -1,0 +1,1 @@
+License for resource folder unknown, assuming <https://docs.unity3d.com/Packages/com.unity.textmeshpro@2.0/license/LICENSE.html>
