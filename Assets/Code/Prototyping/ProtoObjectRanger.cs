@@ -4,21 +4,23 @@ using UnityEngine;
 public class ProtoObjectRanger : MonoBehaviour
 {
 #pragma warning disable 0649
-    [SerializeField] private MeshRenderer   rangerMeshRenderer;
-    [SerializeField] private SphereCollider rangerSphereCollider;
+    [SerializeField] private MeshRenderer       rangerMeshRenderer;
+    [SerializeField] private SphereCollider     rangerSphereCollider;
 #pragma warning restore 0649
     /**************/ private int                objectWorth;
     /**************/ private List<ProtoObject>  othersCollided;
+    /**************/ private ProtoObject        parent;
 
     private void Start()
     {
         othersCollided = new List<ProtoObject>();
+        parent = transform.parent.GetComponent<ProtoObject>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         ProtoObject otherProto = other.GetComponent<ProtoObject>();
-        if (otherProto != null)
+        if (otherProto != null && otherProto != parent)
         {
             othersCollided.Add(otherProto);
             Calculate();
@@ -28,7 +30,7 @@ public class ProtoObjectRanger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         ProtoObject otherProto = other.GetComponent<ProtoObject>();
-        if (otherProto != null)
+        if (otherProto != null && otherProto != parent)
         {
             othersCollided.Remove(otherProto);
             Calculate();
@@ -42,6 +44,7 @@ public class ProtoObjectRanger : MonoBehaviour
             rangerMeshRenderer.enabled = false;
             rangerSphereCollider.enabled = false;
             GameScoring.Instance.Score += objectWorth;
+            GameScoring.Instance.Potential = 0;
         }
 
         else

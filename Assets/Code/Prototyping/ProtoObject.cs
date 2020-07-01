@@ -10,12 +10,17 @@ public class ProtoObject : MonoBehaviour
     [SerializeField] private Material               materialPlacing;
     [SerializeField] private MeshRenderer           objectBody;
     [SerializeField] private ProtoObjectRanger      ranger;
+    [SerializeField] private ObjectType             type;
 #pragma warning restore 0649
     /**************/ private List<GameObject>       collidedObjects;
     /**************/ private bool                   isPlaced;
 
-    public bool IsCollided  { get; private set; }
-    public bool IsGrounded  { get { return grounder.IsGrounded; } }
+    public int  BaseScoreNone       { get { return 00; } }
+    public int  BaseScoreBasic      { get { return 10; } }
+    public int  BaseScoreAdvanced   { get { return 20; } }
+
+    public bool IsCollided          { get; private set; }
+    public bool IsGrounded          { get { return grounder.IsGrounded; } }
     public bool IsPlaced
     {
         get { return isPlaced; }
@@ -74,4 +79,20 @@ public class ProtoObject : MonoBehaviour
                 IsCollided = false;
         }
     }
+}
+
+public enum ObjectType
+{
+    /// <summary>
+    /// Gives 10 score if in range of other ptA's
+    /// </summary>
+    PrototypeA,
+    /// <summary>
+    /// Gives 20 score, takes 10 away for all ptA's nearby
+    /// </summary>
+    PrototypeB,
+    /// <summary>
+    /// Gives 0 score, takes 10 away for any ptB's and gives 20 for any ptA's in range
+    /// </summary>
+    PrototypeC
 }
