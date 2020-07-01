@@ -6,17 +6,19 @@ using UnityEngine.InputSystem;
 public class ObjectPlacement : MonoBehaviour
 {
 #pragma warning disable 0649
-    [SerializeField] private GameObject     prefab;
-    [SerializeField] private float          rotationAngleMagnitude;
+    [SerializeField] private GameObject                 prefab;
+    [SerializeField] private int                        prefabUndoMaxCount;
+    [SerializeField] private float                      rotationAngleMagnitude;
 #pragma warning restore 0649
-    /**************/ private bool           isPlacing;
-    /**************/ private bool           prefabFirstHit;
-    /**************/ private ProtoObject    prefabInstance;
+    /**************/ private bool                       isPlacing;
+    /**************/ private bool                       prefabFirstHit;
+    /**************/ private ProtoObject                prefabInstance;
+    /**************/ private LinkedList<ProtoObject>    prefabsPlaced;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        prefabsPlaced = new LinkedList<ProtoObject>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class ObjectPlacement : MonoBehaviour
             }
 
             else
-                Destroy(prefabInstance);
+                Destroy(prefabInstance.gameObject);
         }
     }
 
@@ -63,6 +65,9 @@ public class ObjectPlacement : MonoBehaviour
         if (context.performed && isPlacing && prefabInstance.IsValid)
         {
             prefabInstance.IsPlaced = true;
+            prefabsPlaced.AddFirst(prefabInstance);
+            if (prefabsPlaced.Count > prefabUndoMaxCount)
+                prefabsPlaced.RemoveLast();
             prefabInstance = null;
             isPlacing = false;
             prefabFirstHit = false;
@@ -71,6 +76,15 @@ public class ObjectPlacement : MonoBehaviour
 
     public void OnUndo(InputAction.CallbackContext context)
     {
-
+        if (context.performed && prefabsPlaced.Count > 0)
+        {
+            if (isPlacing)
+                Destroy(prefabInstance.gameObject);
+            isPlacing = true;
+            prefabFirstHit = true;
+            prefabInstance = prefabsPlaced.First.Value;
+            prefabsPlaced.RemoveFirst();
+            prefabInstance.IsPlaced = false;
+        }
     }
 }

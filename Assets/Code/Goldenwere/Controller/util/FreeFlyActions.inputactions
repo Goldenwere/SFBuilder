@@ -348,7 +348,7 @@
                 {
                     "name": "modifier",
                     "id": "ae810d16-5cdd-47f8-9c77-b8abcca67553",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

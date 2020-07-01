@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4453867815803708484, guid: 1765fc10678d09a449c91c4a3376d973, type: 3}
+  prefabUndoMaxCount: 16
   rotationAngleMagnitude: 15
 --- !u!43 &1147850068
 Mesh:
