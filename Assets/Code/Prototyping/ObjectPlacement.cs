@@ -7,7 +7,7 @@ public class ObjectPlacement : MonoBehaviour
 {
 #pragma warning disable 0649
     [SerializeField] private GameObject     prefab;
-#pragma warning restore
+#pragma warning restore 0649
     /**************/ private ProtoObject    prefabInstance;
     /**************/ private bool           isPlacing;
 
@@ -24,7 +24,7 @@ public class ObjectPlacement : MonoBehaviour
             if (hit.normal == Vector3.up)
                 prefabInstance.transform.position = hit.point;
 
-        if (Mouse.current.leftButton.ReadValue() > 0 && isPlacing && !prefabInstance.IsCollided)
+        if (Mouse.current.leftButton.ReadValue() > 0 && isPlacing && !prefabInstance.IsCollided && prefabInstance.IsGrounded)
         {
             prefabInstance = null;
             isPlacing = false;

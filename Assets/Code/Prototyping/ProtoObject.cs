@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ProtoObject : MonoBehaviour
 {
-    public  bool                IsCollided { get; private set; }
-    private List<GameObject>    collidedObjects;
+#pragma warning disable 0649
+    [SerializeField] private ProtoObjectGrounder grounder;
+#pragma warning restore 0649
+    /**************/ private List<GameObject> collidedObjects;
+
+    public bool IsGrounded { get { return grounder.IsGrounded; } }
+    public bool IsCollided { get; private set; }
 
     private void Start()
     {
