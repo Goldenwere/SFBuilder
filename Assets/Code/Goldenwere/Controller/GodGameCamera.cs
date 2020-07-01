@@ -15,6 +15,7 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] private PlayerInput    attachedControls;
         [SerializeField] private GameObject     pointCamera;
         [SerializeField] private GameObject     pointPivot;
+        [SerializeField] private float          settingCollisionPadding = 3f;
         [SerializeField] private float          settingMoveSpeed = 10f;
         [SerializeField] private float          settingZoomSpeed = 10f;
         [SerializeField] private float          settingRotationSpeed = 10f;
@@ -85,7 +86,8 @@ namespace Goldenwere.Unity.Controller
                 Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivity;
                 val.x /= Screen.width;
                 val.y /= Screen.height;
-                workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
+                if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
+                    workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
             }
         }
 
@@ -127,7 +129,11 @@ namespace Goldenwere.Unity.Controller
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseZoom)
-                workingDesiredPosition += pointCamera.transform.forward * context.ReadValue<float>() * settingZoomSensitivity;
+            {
+                float val = context.ReadValue<float>();
+                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val * settingZoomSensitivity))
+                    workingDesiredPosition += pointCamera.transform.forward * val * settingZoomSensitivity;
+            }
         }
 
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
@@ -136,6 +142,11 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;
+        }
+
+        private bool WillCollideWithPosition(Vector3 pos)
+        {
+            return Physics.OverlapSphere(pos, settingCollisionPadding).Length > 0;
         }
         #endregion
     }
