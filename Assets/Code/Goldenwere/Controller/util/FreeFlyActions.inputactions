@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MovementMouseToggle",
+                    "name": "MovementMouseModifier",
                     "type": "Button",
                     "id": "2a31685b-579b-4555-a5ab-86ccf7ab1e18",
                     "expectedControlType": "Button",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ZoomMouseToggle",
+                    "name": "ZoomMouseModifier",
                     "type": "Button",
                     "id": "e358a046-6b93-436a-ba19-963ba4cb201e",
                     "expectedControlType": "Button",
@@ -70,7 +70,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RotationMouseToggle",
+                    "name": "RotationMouseModifier",
                     "type": "Button",
                     "id": "5de08afc-e878-4ded-a254-0433781cbdfb",
                     "expectedControlType": "Button",
@@ -209,7 +209,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovementMouseToggle",
+                    "action": "MovementMouseModifier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -286,7 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotationMouseToggle",
+                    "action": "RotationMouseModifier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -330,7 +330,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ZoomMouseToggle",
+                    "action": "ZoomMouseModifier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

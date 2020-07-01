@@ -8,11 +8,18 @@ namespace Goldenwere.Unity.Controller
     public class FreeFlyCamera : MonoBehaviour
     {
         #region Fields
-        [SerializeField]    private PlayerInput attachedControls;
-        [SerializeField]    private GameObject  pointCamera;
-        [SerializeField]    private GameObject  pointPivot;
-        [SerializeField]    private float       settingMoveSpeed = 2f;
-        /**************/    public  float       settingRotationSensitivity = 3f;
+        /**************/ public  float          settingRotationSensitivity = 3f;
+        /**************/ public  bool           settingModifiersAreToggled;
+        [SerializeField] private PlayerInput    attachedControls;
+        [SerializeField] private GameObject     pointCamera;
+        [SerializeField] private GameObject     pointPivot;
+        [SerializeField] private float          settingMoveSpeed = 2f;
+        /**************/ private Vector3        workingDesiredPosition;
+        /**************/ private Quaternion     workingDesiredRotationHorizontal;
+        /**************/ private Quaternion     workingDesiredRotationVertical;
+        /**************/ private bool           workingModifierMouseMovement;
+        /**************/ private bool           workingModifierMouseRotation;
+        /**************/ private bool           workingModifierMouseZoom;
         #endregion
 
         #region Methods
@@ -58,9 +65,12 @@ namespace Goldenwere.Unity.Controller
 
         }
 
-        public void OnMovementMouseToggle(InputAction.CallbackContext context)
+        public void OnMovementMouseModifier(InputAction.CallbackContext context)
         {
-
+            if (settingModifiersAreToggled)
+                workingModifierMouseMovement = !workingModifierMouseMovement;
+            else
+                workingModifierMouseMovement = context.performed;
         }
 
         public void OnObjectRotation(InputAction.CallbackContext context)
@@ -83,9 +93,12 @@ namespace Goldenwere.Unity.Controller
 
         }
 
-        public void OnRotationMouseToggle(InputAction.CallbackContext context)
+        public void OnRotationMouseModifier(InputAction.CallbackContext context)
         {
-
+            if (settingModifiersAreToggled)
+                workingModifierMouseRotation = !workingModifierMouseRotation;
+            else
+                workingModifierMouseRotation = context.performed;
         }
 
         public void OnUndo(InputAction.CallbackContext context)
@@ -103,9 +116,12 @@ namespace Goldenwere.Unity.Controller
 
         }
 
-        public void OnZoomMouseToggle(InputAction.CallbackContext context)
+        public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
-
+            if (settingModifiersAreToggled)
+                workingModifierMouseZoom = !workingModifierMouseZoom;
+            else
+                workingModifierMouseZoom = context.performed;
         }
         #endregion
     }
