@@ -8,21 +8,37 @@ namespace Goldenwere.Unity.Controller
     public class GodGameCamera : MonoBehaviour
     {
         #region Fields
+        #region Player/UX settings              (these ideally should be exposed to a settings/controls menu, with sensitivity representing a percentage (1=100%))
         /**************/ public  float          settingMovementSensitivity = 1f;
-        /**************/ public  float          settingMovementSensitivityMouse = 10f;
-        /**************/ public  float          settingRotationSensitivity = 5f;
-        /**************/ public  float          settingRotationSensitivityMouse = 100f;
+        /**************/ public  float          settingRotationSensitivity = 1f;
         /**************/ public  float          settingZoomSensitivity = 1f;
-        /**************/ public  float          settingZoomSensitivityMouse = 3f;
         /**************/ public  bool           settingModifiersAreToggled;
+        #endregion
+        #region Inspector-set variables         (all of these are required, and speed/padding should be greater than 0)
 #pragma warning disable 0649
+        [Tooltip                                ("Input values are read from here")]
         [SerializeField] private PlayerInput    attachedControls;
+        [Tooltip                                ("This pivot is used for tilting up and down")]
         [SerializeField] private GameObject     pointCamera;
+        [Tooltip                                ("This pivot is used for rotating along the y axis (horizontal rotation)")]
         [SerializeField] private GameObject     pointPivot;
+        [Tooltip                                ("The minimum distance the camera must be from objects in the scene")]
         [SerializeField] private float          settingCollisionPadding = 3f;
+        [Tooltip                                ("How fast the smooth motion takes place")]
         [SerializeField] private float          settingMotionSpeed = 10f;
+        [Tooltip                                ("How fast the smooth rotation takes place")]
         [SerializeField] private float          settingRotationSpeed = 10f;
 #pragma warning restore 0649
+        #endregion
+        #region Game-style speed-scale settings (these can be tweaked depending on the style of game you are creating)
+        /**************/ private const float    sensitivityScaleMovement = 0.35f;
+        /**************/ private const float    sensitivityScaleMovementMouse = 0.005f;
+        /**************/ private const float    sensitivityScaleRotation = 0.15f;
+        /**************/ private const float    sensitivityScaleRotationMouse = 0.01f;
+        /**************/ private const float    sensitivityScaleZoom = 1f;
+        /**************/ private const float    sensitivityScaleZoomMouse = 3f;
+        #endregion
+        #region Internal working variables      (these shouldn't need changed unless modifying how the camera works)
         /**************/ private Vector3        workingDesiredPosition;
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
@@ -32,6 +48,7 @@ namespace Goldenwere.Unity.Controller
         /**************/ private bool           workingModifierMouseMovement;
         /**************/ private bool           workingModifierMouseRotation;
         /**************/ private bool           workingModifierMouseZoom;
+        #endregion
         #endregion
 
         #region Methods
@@ -49,7 +66,7 @@ namespace Goldenwere.Unity.Controller
         {
             if (workingInputMovement)
             {
-                Vector2 val = attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * settingMovementSensitivity;
+                Vector2 val = attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * settingMovementSensitivity * sensitivityScaleMovement;
                 if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
                     workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
             }
@@ -57,13 +74,13 @@ namespace Goldenwere.Unity.Controller
             if (workingInputRotation)
             {
                 Vector2 val = attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * settingRotationSpeed;
-                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity / Screen.width, 0);
-                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity / Screen.height, 0, 0);
+                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity * sensitivityScaleRotation, 0);
+                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity * sensitivityScaleRotation, 0, 0);
             }
 
             if (workingInputZoom)
             {
-                float val = attachedControls.actions["Zoom"].ReadValue<float>() * settingZoomSensitivity;
+                float val = attachedControls.actions["Zoom"].ReadValue<float>() * settingZoomSensitivity * sensitivityScaleZoom;
                 if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
                     workingDesiredPosition += pointCamera.transform.forward * val;
             }
@@ -82,9 +99,7 @@ namespace Goldenwere.Unity.Controller
         {
             if (workingModifierMouseMovement)
             {
-                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivityMouse;
-                val.x /= Screen.width;
-                val.y /= Screen.height;
+                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivity * sensitivityScaleMovementMouse;
                 if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
                     workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
             }
@@ -108,8 +123,8 @@ namespace Goldenwere.Unity.Controller
             if (workingModifierMouseRotation)
             {
                 Vector2 val = context.ReadValue<Vector2>();
-                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivityMouse / Screen.width, 0);
-                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivityMouse / Screen.height, 0, 0);
+                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity * sensitivityScaleRotationMouse, 0);
+                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity * sensitivityScaleRotationMouse, 0, 0);
             }
         }
 
@@ -130,7 +145,7 @@ namespace Goldenwere.Unity.Controller
         {
             if (workingModifierMouseZoom)
             {
-                float val = context.ReadValue<float>() * settingZoomSensitivityMouse;
+                float val = context.ReadValue<float>() * settingZoomSensitivity * sensitivityScaleZoomMouse;
                 if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
                     workingDesiredPosition += pointCamera.transform.forward * val;
             }

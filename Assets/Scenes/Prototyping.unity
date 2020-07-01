@@ -569,12 +569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92989b865686a634ab7cc25205e28325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingMovementSensitivity: 0.15
-  settingMovementSensitivityMouse: 10
-  settingRotationSensitivity: 25
-  settingRotationSensitivityMouse: 90
+  settingMovementSensitivity: 1
+  settingRotationSensitivity: 1
   settingZoomSensitivity: 0.5
-  settingZoomSensitivityMouse: 3
   settingModifiersAreToggled: 0
   attachedControls: {fileID: 999186420}
   pointCamera: {fileID: 963194225}
