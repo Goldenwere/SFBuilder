@@ -31,14 +31,6 @@ public class ObjectPlacement : MonoBehaviour
                 prefabInstance.transform.position = hit.point;
                 prefabFirstHit = true;
             }
-
-            if (Mouse.current.leftButton.ReadValue() > 0 && prefabInstance.IsValid && hit.normal == Vector3.up)
-            {
-                prefabInstance.IsPlaced = true;
-                prefabInstance = null;
-                isPlacing = false;
-                prefabFirstHit = false;
-            }
         }
 
         if (Mouse.current.rightButton.ReadValue() > 0 && !isPlacing)
@@ -63,11 +55,17 @@ public class ObjectPlacement : MonoBehaviour
 
     public void OnPlacement(InputAction.CallbackContext context)
     {
-
+        if (context.performed && isPlacing && prefabInstance.IsValid)
+        {
+            prefabInstance.IsPlaced = true;
+            prefabInstance = null;
+            isPlacing = false;
+            prefabFirstHit = false;
+        }
     }
+
     public void OnUndo(InputAction.CallbackContext context)
     {
 
     }
-
 }
