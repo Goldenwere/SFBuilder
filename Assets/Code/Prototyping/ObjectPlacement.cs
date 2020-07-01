@@ -34,6 +34,7 @@ public class ObjectPlacement : MonoBehaviour
 
             if (Mouse.current.leftButton.ReadValue() > 0 && prefabInstance.IsValid && hit.normal == Vector3.up)
             {
+                prefabInstance.IsPlaced = true;
                 prefabInstance = null;
                 isPlacing = false;
                 prefabFirstHit = false;
@@ -47,6 +48,7 @@ public class ObjectPlacement : MonoBehaviour
             {
                 prefabInstance = Instantiate(prefab).GetComponent<ProtoObject>();
                 prefabFirstHit = false;
+                prefabInstance.IsPlaced = false;
             }
 
             else

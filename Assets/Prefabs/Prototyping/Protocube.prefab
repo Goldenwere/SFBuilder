@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounder: {fileID: 5271421294115970688}
+  materialNormal: {fileID: 2100000, guid: 83776992a4939c345b38d7106175bf50, type: 2}
+  materialPlacing: {fileID: 2100000, guid: 75fb3817daa10b942bfc273a05b53d87, type: 2}
+  objectBody: {fileID: 8455704406589913162}
 --- !u!1 &8455704406589913164
 GameObject:
   m_ObjectHideFlags: 0
