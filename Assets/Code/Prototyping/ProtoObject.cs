@@ -9,8 +9,9 @@ public class ProtoObject : MonoBehaviour
 #pragma warning restore 0649
     /**************/ private List<GameObject> collidedObjects;
 
-    public bool IsGrounded { get { return grounder.IsGrounded; } }
-    public bool IsCollided { get; private set; }
+    public bool IsCollided  { get; private set; }
+    public bool IsGrounded  { get { return grounder.IsGrounded; } }
+    public bool IsValid     { get { return IsGrounded && !IsCollided; } }
 
     private void Start()
     {
