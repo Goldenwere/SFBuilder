@@ -10,8 +10,8 @@ public class ProtoObject : MonoBehaviour
     [SerializeField] private Material               materialPlacing;
     [SerializeField] private MeshRenderer           objectBody;
 #pragma warning restore 0649
-    /**************/ private List<GameObject>   collidedObjects;
-    /**************/ private bool               isPlaced;
+    /**************/ private List<GameObject>       collidedObjects;
+    /**************/ private bool                   isPlaced;
 
     public bool IsCollided  { get; private set; }
     public bool IsGrounded  { get { return grounder.IsGrounded; } }
@@ -22,9 +22,15 @@ public class ProtoObject : MonoBehaviour
         {
             isPlaced = value;
             if (isPlaced)
+            {
                 objectBody.material = materialNormal;
+                grounder.enabled = false;
+            }
             else
+            {
                 objectBody.material = materialPlacing;
+                grounder.enabled = true;
+            }
         }
     }
     public bool IsValid     { get { return IsGrounded && !IsCollided; } }
