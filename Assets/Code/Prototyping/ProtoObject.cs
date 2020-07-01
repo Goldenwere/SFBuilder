@@ -15,13 +15,13 @@ public class ProtoObject : MonoBehaviour
     /**************/ private List<GameObject>       collidedObjects;
     /**************/ private bool                   isPlaced;
 
-    public int  BaseScoreNone       { get { return 00; } }
-    public int  BaseScoreBasic      { get { return 10; } }
-    public int  BaseScoreAdvanced   { get { return 20; } }
+    public static int   BaseScoreNone       { get { return 00; } }
+    public static int   BaseScoreBasic      { get { return 10; } }
+    public static int   BaseScoreAdvanced   { get { return 20; } }
 
-    public bool IsCollided          { get; private set; }
-    public bool IsGrounded          { get { return grounder.IsGrounded; } }
-    public bool IsPlaced
+    public bool         IsCollided          { get; private set; }
+    public bool         IsGrounded          { get { return grounder.IsGrounded; } }
+    public bool         IsPlaced
     {
         get { return isPlaced; }
         set
@@ -43,7 +43,8 @@ public class ProtoObject : MonoBehaviour
             }
         }
     }
-    public bool IsValid     { get { return IsGrounded && !IsCollided; } }
+    public bool         IsValid             { get { return IsGrounded && !IsCollided; } }
+    public ObjectType   Type                { get { return type; } }
 
     private void Start()
     {
@@ -79,12 +80,53 @@ public class ProtoObject : MonoBehaviour
                 IsCollided = false;
         }
     }
+
+    public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing)
+    {
+        switch (toBePlaced)
+        {
+            case ObjectType.PrototypeA:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        return BaseScoreNone + BaseScoreBasic;
+                    case ObjectType.PrototypeB:
+                        return BaseScoreNone + BaseScoreNone;
+                    case ObjectType.PrototypeC:
+                        return BaseScoreNone + BaseScoreNone;
+                }
+                break;
+            case ObjectType.PrototypeB:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        return BaseScoreAdvanced - BaseScoreBasic;
+                    case ObjectType.PrototypeB:
+                        return BaseScoreAdvanced + BaseScoreNone;
+                    case ObjectType.PrototypeC:
+                        return BaseScoreAdvanced + BaseScoreNone;
+                }
+                break;
+            case ObjectType.PrototypeC:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        return BaseScoreNone + BaseScoreAdvanced;
+                    case ObjectType.PrototypeB:
+                        return BaseScoreNone - BaseScoreBasic;
+                    case ObjectType.PrototypeC:
+                        return BaseScoreNone + BaseScoreNone;
+                }
+                break;
+        }
+        return 0;
+    }
 }
 
 public enum ObjectType
 {
     /// <summary>
-    /// Gives 10 score if in range of other ptA's
+    /// Gives 0 score, gives 10 score if in range of other ptA's
     /// </summary>
     PrototypeA,
     /// <summary>

@@ -59,7 +59,7 @@ public class ProtoObjectRanger : MonoBehaviour
     {
         int val = 0;
         foreach (ProtoObject po in othersCollided)
-            val += 10;
+            val += ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type);
         objectWorth = val;
         GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
     }
