@@ -19,17 +19,13 @@ public class ProtoObjectGrounder : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.name != "Ranger")
-        {
             collidedObjects.Add(other);
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.name != "Ranger")
-        {
             collidedObjects.Remove(other);
-        }
     }
 
     private void Update()

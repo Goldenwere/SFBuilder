@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameScoring : MonoBehaviour
 {
-    public GameScoring Instance { get; private set; }
+    public static GameScoring Instance { get; private set; }
     public int Score { get; set; }
+    public int Potential { get; set; }
 
     private void Awake()
     {
@@ -17,6 +16,6 @@ public class GameScoring : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), string.Format("Score: {0}", Score), new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
+        GUI.Label(new Rect(10, 10, 100, 20), string.Format("Score: {0} | Potential: {1}", Score, Potential), new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ProtoObjectRanger : MonoBehaviour
 {
@@ -6,6 +7,33 @@ public class ProtoObjectRanger : MonoBehaviour
     [SerializeField] private MeshRenderer   rangerMeshRenderer;
     [SerializeField] private SphereCollider rangerSphereCollider;
 #pragma warning restore 0649
+    /**************/ private int                objectWorth;
+    /**************/ private List<ProtoObject>  othersCollided;
+
+    private void Start()
+    {
+        othersCollided = new List<ProtoObject>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ProtoObject otherProto = other.GetComponent<ProtoObject>();
+        if (otherProto != null)
+        {
+            othersCollided.Add(otherProto);
+            Calculate();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ProtoObject otherProto = other.GetComponent<ProtoObject>();
+        if (otherProto != null)
+        {
+            othersCollided.Remove(otherProto);
+            Calculate();
+        }
+    }
 
     public void SetPlaced(bool placed)
     {
@@ -13,13 +41,23 @@ public class ProtoObjectRanger : MonoBehaviour
         {
             rangerMeshRenderer.enabled = false;
             rangerSphereCollider.enabled = false;
-            
+            GameScoring.Instance.Score += objectWorth;
         }
 
         else
         {
             rangerMeshRenderer.enabled = true;
             rangerSphereCollider.enabled = true;
+            GameScoring.Instance.Score -= objectWorth;
         }
+    }
+
+    private void Calculate()
+    {
+        int val = 0;
+        foreach (ProtoObject po in othersCollided)
+            val += 10;
+        objectWorth = val;
+        GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
     }
 }
