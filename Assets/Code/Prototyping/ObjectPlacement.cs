@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Goldenwere.Unity.Controller;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using UnityEngine.InputSystem;
 public class ObjectPlacement : MonoBehaviour
 {
 #pragma warning disable 0649
+    [SerializeField] private GodGameCamera              gameCam;
     [SerializeField] private GameObject                 prefab;
     [SerializeField] private int                        prefabUndoMaxCount;
     [SerializeField] private float                      rotationAngleMagnitude;
@@ -14,6 +16,7 @@ public class ObjectPlacement : MonoBehaviour
     /**************/ private bool                       prefabHadFirstHit;
     /**************/ private ProtoObject                prefabInstance;
     /**************/ private LinkedList<ProtoObject>    prefabsPlaced;
+    /**************/ private bool                       workingModifierMouseZoom;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,7 @@ public class ObjectPlacement : MonoBehaviour
 
     public void OnObjectRotation(InputAction.CallbackContext context)
     {
-        if (context.performed && isPlacing)
+        if (!workingModifierMouseZoom && context.performed && isPlacing)
             if (context.ReadValue<float>() > 0)
                 prefabInstance.transform.Rotate(Vector3.up, -rotationAngleMagnitude);
             else
@@ -86,5 +89,13 @@ public class ObjectPlacement : MonoBehaviour
             prefabsPlaced.RemoveFirst();
             prefabInstance.IsPlaced = false;
         }
+    }
+
+    public void OnZoomMouseModifier(InputAction.CallbackContext context)
+    {
+        if (gameCam.settingModifiersAreToggled)
+            workingModifierMouseZoom = !workingModifierMouseZoom;
+        else
+            workingModifierMouseZoom = context.performed;
     }
 }

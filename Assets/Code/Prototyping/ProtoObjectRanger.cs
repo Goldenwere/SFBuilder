@@ -2,8 +2,10 @@
 
 public class ProtoObjectRanger : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField] private MeshRenderer   rangerMeshRenderer;
     [SerializeField] private SphereCollider rangerSphereCollider;
+#pragma warning restore 0649
 
     public void SetPlaced(bool placed)
     {
