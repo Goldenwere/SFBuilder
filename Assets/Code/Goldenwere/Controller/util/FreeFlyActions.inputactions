@@ -30,10 +30,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Vertical",
+                    "name": "Zoom",
                     "type": "Value",
                     "id": "9f482f87-fc30-4f8a-90f3-843629d3011c",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ZoomMouse",
+                    "type": "Value",
+                    "id": "6af1fb2a-c432-44e2-8639-9da3805b51f1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ZoomMouseToggle",
+                    "type": "Button",
+                    "id": "e358a046-6b93-436a-ba19-963ba4cb201e",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -57,6 +73,30 @@
                     "name": "RotationMouseToggle",
                     "type": "Button",
                     "id": "5de08afc-e878-4ded-a254-0433781cbdfb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Placement",
+                    "type": "Button",
+                    "id": "f7690a70-7c70-4bdc-9b63-61073f4cd936",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ObjectRotation",
+                    "type": "Value",
+                    "id": "23dea0f0-5c01-45a3-92c6-dfe17b90375e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "dc5cd6d5-f16b-4cd7-aac0-026302b70013",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -125,7 +165,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical",
+                    "action": "Zoom",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -136,7 +176,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -147,20 +187,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "8b8aa47e-7b16-4062-9677-d2ca22509332",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Vertical",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -260,6 +289,83 @@
                     "action": "RotationMouseToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0530f1be-aaa0-4ef7-93c5-74919cfd21c0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Placement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c21656e0-7524-486a-960d-e695152747ed",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ObjectRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "151ebd15-843c-4de0-a86b-fa8c084359a4",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49810455-b35e-4f34-838c-ca1a2a421463",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomMouseToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "CTRL+Z",
+                    "id": "88801c2f-363d-45c8-b6cd-e15b2a52eb11",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ae810d16-5cdd-47f8-9c77-b8abcca67553",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "button",
+                    "id": "e76451b1-2f49-4eaf-84e7-6ba448b92ba7",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

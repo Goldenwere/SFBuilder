@@ -13,10 +13,6 @@ namespace Goldenwere.Unity.Controller
         [SerializeField]    private GameObject  pointPivot;
         [SerializeField]    private float       settingMoveSpeed = 2f;
         /**************/    public  float       settingRotationSensitivity = 3f;
-        /**************/    private bool        workingDoHorizontal;
-        /**************/    private bool        workingDoRotation;
-        /**************/    private bool        workingDoVertical;
-        /**************/    private bool        workingIsLocked;
         #endregion
 
         #region Methods
@@ -25,6 +21,7 @@ namespace Goldenwere.Unity.Controller
         /// </summary>
         private void Update()
         {
+            /*
             if (!workingIsLocked)
             {
                 if (workingDoHorizontal)
@@ -48,43 +45,67 @@ namespace Goldenwere.Unity.Controller
                     transform.Translate(dir * Time.deltaTime * settingMoveSpeed);
                 }
             }
+            */
         }
 
-        /// <summary>
-        /// Handler for the Horizontal input event (defined in FreeFlyActions)
-        /// </summary>
-        /// <param name="context">The context associated with the input</param>
-        public void OnHorizontal(InputAction.CallbackContext context)
+        public void OnMovement(InputAction.CallbackContext context)
         {
-            workingDoHorizontal = context.performed;
+
         }
 
-        /// <summary>
-        /// Handler for the Lock input event (defined in FreeFlyActions)
-        /// </summary>
-        /// <param name="context">The context associated with the input</param>
-        public void OnLock(InputAction.CallbackContext context)
+        public void OnMovementMouse(InputAction.CallbackContext context)
         {
-            if (context.performed)
-                workingIsLocked = !workingIsLocked;
+
         }
 
-        /// <summary>
-        /// Handler for the Rotation input event (defined in FreeFlyActions)
-        /// </summary>
-        /// <param name="context">The context associated with the input</param>
+        public void OnMovementMouseToggle(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnObjectRotation(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnPlacement(InputAction.CallbackContext context)
+        {
+
+        }
+
         public void OnRotation(InputAction.CallbackContext context)
         {
-            workingDoRotation = context.performed;
+
         }
 
-        /// <summary>
-        /// Handler for the Vertical input event (defined in FreeFlyActions)
-        /// </summary>
-        /// <param name="context">The context associated with the input</param>
-        public void OnVertical(InputAction.CallbackContext context)
+        public void OnRotationMouse(InputAction.CallbackContext context)
         {
-            workingDoVertical = context.performed;
+
+        }
+
+        public void OnRotationMouseToggle(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnUndo(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnZoom(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnZoomMouse(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnZoomMouseToggle(InputAction.CallbackContext context)
+        {
+
         }
         #endregion
     }

@@ -388,7 +388,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999186421}
-        m_MethodName: OnHorizontal
+        m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -398,12 +398,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9a11f9dd-7177-4fcd-b4bb-d8e1e7ad2e3a
-    m_ActionName: FreeFlyCam/Horizontal[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
+    m_ActionId: 3544db64-6e7a-4c2e-88e8-086c42109e0c
+    m_ActionName: FreeFlyCam/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999186421}
-        m_MethodName: OnLock
+        m_MethodName: OnMovementMouse
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -413,8 +413,68 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e2947a79-3063-4d1c-9ede-7c751542ede5
-    m_ActionName: FreeFlyCam/Lock[/Keyboard/tab,/Keyboard/numpad5,/XInputControllerWindows/buttonNorth,/Mouse/middleButton]
+    m_ActionId: 1f4e1781-cce9-4005-9ac5-5a0ed4fe6f73
+    m_ActionName: FreeFlyCam/MovementMouse[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnMovementMouseToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2a31685b-579b-4555-a5ab-86ccf7ab1e18
+    m_ActionName: FreeFlyCam/MovementMouseToggle[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9f482f87-fc30-4f8a-90f3-843629d3011c
+    m_ActionName: FreeFlyCam/Zoom[/Keyboard/t,/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnZoomMouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6af1fb2a-c432-44e2-8639-9da3805b51f1
+    m_ActionName: FreeFlyCam/ZoomMouse[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnZoomMouseToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e358a046-6b93-436a-ba19-963ba4cb201e
+    m_ActionName: FreeFlyCam/ZoomMouseToggle[/Mouse/middleButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999186421}
@@ -428,12 +488,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 7ded03fb-f068-4793-a869-1880a8b64a3a
-    m_ActionName: FreeFlyCam/Rotation[/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l,/Keyboard/numpad8,/Keyboard/numpad2,/Keyboard/numpad4,/Keyboard/numpad6,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right,/Mouse/delta]
+    m_ActionId: 1e569b7a-e359-4dc5-af71-422255c43c1d
+    m_ActionName: FreeFlyCam/Rotation[/Keyboard/r,/Keyboard/f,/Keyboard/q,/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999186421}
-        m_MethodName: OnVertical
+        m_MethodName: OnRotationMouse
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -443,8 +503,68 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 45153964-2814-4903-ae18-78a72a9fa32d
-    m_ActionName: FreeFlyCam/Vertical[/Keyboard/f,/Keyboard/r,/Keyboard/numpad3,/Keyboard/numpad9,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder,/Mouse/leftButton,/Mouse/rightButton]
+    m_ActionId: 1fd86bf5-1a88-4eca-b0d8-adf420fb017f
+    m_ActionName: FreeFlyCam/RotationMouse[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnRotationMouseToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5de08afc-e878-4ded-a254-0433781cbdfb
+    m_ActionName: FreeFlyCam/RotationMouseToggle[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnPlacement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f7690a70-7c70-4bdc-9b63-61073f4cd936
+    m_ActionName: FreeFlyCam/Placement[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnObjectRotation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 23dea0f0-5c01-45a3-92c6-dfe17b90375e
+    m_ActionName: FreeFlyCam/ObjectRotation[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999186421}
+        m_MethodName: OnUndo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dc5cd6d5-f16b-4cd7-aac0-026302b70013
+    m_ActionName: FreeFlyCam/Undo[/Keyboard/ctrl,/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: FreeFlyCam
@@ -488,7 +608,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14580
+  m_Name: pb_Mesh13864
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
