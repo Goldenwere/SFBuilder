@@ -8,23 +8,27 @@ namespace Goldenwere.Unity.Controller
     public class GodGameCamera : MonoBehaviour
     {
         #region Fields
-        /**************/ public  float          settingMovementSensitivity = 100f;
-        /**************/ public  float          settingRotationSensitivity = 100f;
-        /**************/ public  float          settingZoomSensitivity = 3f;
+        /**************/ public  float          settingMovementSensitivity = 1f;
+        /**************/ public  float          settingMovementSensitivityMouse = 10f;
+        /**************/ public  float          settingRotationSensitivity = 5f;
+        /**************/ public  float          settingRotationSensitivityMouse = 100f;
+        /**************/ public  float          settingZoomSensitivity = 1f;
+        /**************/ public  float          settingZoomSensitivityMouse = 3f;
         /**************/ public  bool           settingModifiersAreToggled;
+#pragma warning disable 0649
         [SerializeField] private PlayerInput    attachedControls;
         [SerializeField] private GameObject     pointCamera;
         [SerializeField] private GameObject     pointPivot;
         [SerializeField] private float          settingCollisionPadding = 3f;
-        [SerializeField] private float          settingMoveSpeed = 10f;
-        [SerializeField] private float          settingZoomSpeed = 10f;
+        [SerializeField] private float          settingMotionSpeed = 10f;
         [SerializeField] private float          settingRotationSpeed = 10f;
+#pragma warning restore 0649
         /**************/ private Vector3        workingDesiredPosition;
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
         /**************/ private bool           workingInputMovement;
         /**************/ private bool           workingInputRotation;
-        /**************/ private bool           workingInputVertical;
+        /**************/ private bool           workingInputZoom;
         /**************/ private bool           workingModifierMouseMovement;
         /**************/ private bool           workingModifierMouseRotation;
         /**************/ private bool           workingModifierMouseZoom;
@@ -39,51 +43,46 @@ namespace Goldenwere.Unity.Controller
         }
 
         /// <summary>
-        /// Manipulate camera on MonoBehaviour.Update() as long as the camera is not locked
+        /// Manipulate camera on MonoBehaviour.Update()
         /// </summary>
         private void Update()
         {
-            /*
-            if (!workingIsLocked)
+            if (workingInputMovement)
             {
-                if (workingDoHorizontal)
-                {
-                    Vector2 value = attachedControls.actions["Horizontal"].ReadValue<Vector2>().normalized;
-                    Vector3 dir = pointCamera.transform.forward * value.y + pointCamera.transform.right * value.x;
-                    transform.Translate(dir * Time.deltaTime * settingMoveSpeed);
-                }
-
-                if (workingDoRotation)
-                {
-                    Vector2 value = attachedControls.actions["Rotation"].ReadValue<Vector2>();
-                    pointCamera.transform.localRotation *= Quaternion.Euler(-value.y * Time.deltaTime * settingRotationSensitivity, 0, 0);
-                    pointPivot.transform.localRotation *= Quaternion.Euler(0, value.x * Time.deltaTime * settingRotationSensitivity, 0);
-                }
-
-                if (workingDoVertical)
-                {
-                    float value = attachedControls.actions["Vertical"].ReadValue<float>();
-                    Vector3 dir = pointCamera.transform.up * value;
-                    transform.Translate(dir * Time.deltaTime * settingMoveSpeed);
-                }
+                Vector2 val = attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * settingMovementSensitivity;
+                if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
+                    workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
             }
-            */
 
-            transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingZoomSpeed);
+            if (workingInputRotation)
+            {
+                Vector2 val = attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * settingRotationSpeed;
+                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity / Screen.width, 0);
+                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity / Screen.height, 0, 0);
+            }
+
+            if (workingInputZoom)
+            {
+                float val = attachedControls.actions["Zoom"].ReadValue<float>() * settingZoomSensitivity;
+                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
+                    workingDesiredPosition += pointCamera.transform.forward * val;
+            }
+
+            transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingMotionSpeed);
             pointPivot.transform.localRotation = Quaternion.Slerp(pointPivot.transform.localRotation, workingDesiredRotationHorizontal, Time.deltaTime * settingRotationSpeed);
             pointCamera.transform.localRotation = Quaternion.Slerp(pointCamera.transform.localRotation, workingDesiredRotationVertical, Time.deltaTime * settingRotationSpeed);
         }
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-
+            workingInputMovement = context.performed;
         }
 
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseMovement)
             {
-                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivity;
+                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivityMouse;
                 val.x /= Screen.width;
                 val.y /= Screen.height;
                 if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
@@ -101,15 +100,16 @@ namespace Goldenwere.Unity.Controller
 
         public void OnRotation(InputAction.CallbackContext context)
         {
-
+            workingInputRotation = context.performed;
         }
 
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseRotation)
             {
-                workingDesiredRotationHorizontal *= Quaternion.Euler(0, context.ReadValue<Vector2>().x * settingRotationSensitivity / Screen.width, 0);
-                workingDesiredRotationVertical *= Quaternion.Euler(-context.ReadValue<Vector2>().y * settingRotationSensitivity / Screen.height, 0, 0);
+                Vector2 val = context.ReadValue<Vector2>();
+                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivityMouse / Screen.width, 0);
+                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivityMouse / Screen.height, 0, 0);
             }
         }
 
@@ -123,16 +123,16 @@ namespace Goldenwere.Unity.Controller
 
         public void OnZoom(InputAction.CallbackContext context)
         {
-
+            workingInputZoom = context.performed;
         }
 
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseZoom)
             {
-                float val = context.ReadValue<float>();
-                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val * settingZoomSensitivity))
-                    workingDesiredPosition += pointCamera.transform.forward * val * settingZoomSensitivity;
+                float val = context.ReadValue<float>() * settingZoomSensitivityMouse;
+                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
+                    workingDesiredPosition += pointCamera.transform.forward * val;
             }
         }
 
