@@ -582,12 +582,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92989b865686a634ab7cc25205e28325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingRotationSensitivity: 3
+  settingZoomSensitivity: 3
+  settingModifiersAreToggled: 0
   attachedControls: {fileID: 999186420}
   pointCamera: {fileID: 963194225}
   pointPivot: {fileID: 644794235}
   settingMoveSpeed: 2
-  settingRotationSensitivity: 3
-  settingModifiersAreToggled: 0
+  settingZoomSpeed: 10
 --- !u!4 &999186422
 Transform:
   m_ObjectHideFlags: 0

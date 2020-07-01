@@ -9,11 +9,13 @@ namespace Goldenwere.Unity.Controller
     {
         #region Fields
         /**************/ public  float          settingRotationSensitivity = 3f;
+        /**************/ public  float          settingZoomSensitivity = 3f;
         /**************/ public  bool           settingModifiersAreToggled;
         [SerializeField] private PlayerInput    attachedControls;
         [SerializeField] private GameObject     pointCamera;
         [SerializeField] private GameObject     pointPivot;
         [SerializeField] private float          settingMoveSpeed = 2f;
+        [SerializeField] private float          settingZoomSpeed = 10f;
         /**************/ private Vector3        workingDesiredPosition;
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
@@ -23,6 +25,13 @@ namespace Goldenwere.Unity.Controller
         #endregion
 
         #region Methods
+        private void Start()
+        {
+            workingDesiredPosition = transform.position;
+            workingDesiredRotationHorizontal = pointPivot.transform.rotation;
+            workingDesiredRotationVertical = pointCamera.transform.rotation;
+        }
+
         /// <summary>
         /// Manipulate camera on MonoBehaviour.Update() as long as the camera is not locked
         /// </summary>
@@ -53,6 +62,8 @@ namespace Goldenwere.Unity.Controller
                 }
             }
             */
+
+            transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingZoomSpeed);
         }
 
         public void OnMovement(InputAction.CallbackContext context)
@@ -113,7 +124,8 @@ namespace Goldenwere.Unity.Controller
 
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
-
+            if (workingModifierMouseZoom)
+                workingDesiredPosition += pointCamera.transform.forward * context.ReadValue<float>() * settingZoomSensitivity;
         }
 
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
