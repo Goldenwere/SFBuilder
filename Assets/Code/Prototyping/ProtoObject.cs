@@ -9,6 +9,7 @@ public class ProtoObject : MonoBehaviour
     [SerializeField] private Material               materialNormal;
     [SerializeField] private Material               materialPlacing;
     [SerializeField] private MeshRenderer           objectBody;
+    [SerializeField] private ProtoObjectRanger      ranger;
 #pragma warning restore 0649
     /**************/ private List<GameObject>       collidedObjects;
     /**************/ private bool                   isPlaced;
@@ -25,11 +26,15 @@ public class ProtoObject : MonoBehaviour
             {
                 objectBody.material = materialNormal;
                 grounder.enabled = false;
+                ranger.SetPlaced(true);
+                ranger.enabled = false;
             }
             else
             {
                 objectBody.material = materialPlacing;
                 grounder.enabled = true;
+                ranger.SetPlaced(false);
+                ranger.enabled = true;
             }
         }
     }
@@ -53,14 +58,20 @@ public class ProtoObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IsCollided = true;
-        collidedObjects.Add(other.gameObject);
+        if (other.name != "Ranger")
+        {
+            IsCollided = true;
+            collidedObjects.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collidedObjects.Remove(other.gameObject);
-        if (collidedObjects.Count == 0)
-            IsCollided = false;
+        if (other.name != "Ranger")
+        {
+            collidedObjects.Remove(other.gameObject);
+            if (collidedObjects.Count == 0)
+                IsCollided = false;
+        }
     }
 }

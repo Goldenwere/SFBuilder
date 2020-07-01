@@ -11,7 +11,7 @@ public class ObjectPlacement : MonoBehaviour
     [SerializeField] private float                      rotationAngleMagnitude;
 #pragma warning restore 0649
     /**************/ private bool                       isPlacing;
-    /**************/ private bool                       prefabFirstHit;
+    /**************/ private bool                       prefabHadFirstHit;
     /**************/ private ProtoObject                prefabInstance;
     /**************/ private LinkedList<ProtoObject>    prefabsPlaced;
 
@@ -26,13 +26,13 @@ public class ObjectPlacement : MonoBehaviour
     {
         if (isPlacing && Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
         {
-            if (prefabFirstHit)
+            if (prefabHadFirstHit)
                 prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point, Time.deltaTime * 25);
 
             else
             {
                 prefabInstance.transform.position = hit.point;
-                prefabFirstHit = true;
+                prefabHadFirstHit = true;
             }
         }
 
@@ -42,7 +42,7 @@ public class ObjectPlacement : MonoBehaviour
             if (isPlacing)
             {
                 prefabInstance = Instantiate(prefab).GetComponent<ProtoObject>();
-                prefabFirstHit = false;
+                prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
             }
 
@@ -70,7 +70,7 @@ public class ObjectPlacement : MonoBehaviour
                 prefabsPlaced.RemoveLast();
             prefabInstance = null;
             isPlacing = false;
-            prefabFirstHit = false;
+            prefabHadFirstHit = false;
         }
     }
 
@@ -81,7 +81,7 @@ public class ObjectPlacement : MonoBehaviour
             if (isPlacing)
                 Destroy(prefabInstance.gameObject);
             isPlacing = true;
-            prefabFirstHit = true;
+            prefabHadFirstHit = true;
             prefabInstance = prefabsPlaced.First.Value;
             prefabsPlaced.RemoveFirst();
             prefabInstance.IsPlaced = false;
