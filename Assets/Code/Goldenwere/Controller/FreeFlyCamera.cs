@@ -8,7 +8,8 @@ namespace Goldenwere.Unity.Controller
     public class FreeFlyCamera : MonoBehaviour
     {
         #region Fields
-        /**************/ public  float          settingRotationSensitivity = 3f;
+        /**************/ public  float          settingMovementSensitivity = 100f;
+        /**************/ public  float          settingRotationSensitivity = 100f;
         /**************/ public  float          settingZoomSensitivity = 3f;
         /**************/ public  bool           settingModifiersAreToggled;
         [SerializeField] private PlayerInput    attachedControls;
@@ -79,7 +80,13 @@ namespace Goldenwere.Unity.Controller
 
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
-
+            if (workingModifierMouseMovement)
+            {
+                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivity;
+                val.x /= Screen.width;
+                val.y /= Screen.height;
+                workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
+            }
         }
 
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
