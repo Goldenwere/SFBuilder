@@ -121,10 +121,21 @@ namespace Goldenwere.Unity.Controller
             else
                 workingModifierMouseRotation = context.performed;
 
-            if (!workingInputMousePositionSet)
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
-                    workingInputMousePositionOnRotate = hit.point;
-            workingInputMousePositionSet = workingModifierMouseRotation;
+            if (settingRotationMode == RotationMode.CursorRaycast)
+            {
+                if (!workingInputMousePositionSet)
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+                        workingInputMousePositionOnRotate = hit.point;
+                workingInputMousePositionSet = workingModifierMouseRotation;
+            }
+
+            else if (settingRotationMode == RotationMode.Raycast)
+            {
+                if (!workingInputMousePositionSet)
+                    if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
+                        workingInputMousePositionOnRotate = hit.point;
+                workingInputMousePositionSet = workingModifierMouseRotation;
+            }
         }
 
         public void OnZoom(InputAction.CallbackContext context)
@@ -166,8 +177,8 @@ namespace Goldenwere.Unity.Controller
                     point = anchorRotationPivot.position;
                 else if (settingRotationMode == RotationMode.Raycast)
                 {
-                    if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
-                        point = hit.point;
+                    if (workingInputMousePositionSet)
+                        point = workingInputMousePositionOnRotate;
                     else
                         point = pointCamera.transform.position + (pointCamera.transform.forward * pointCamera.transform.position.y);
                 }
@@ -179,7 +190,7 @@ namespace Goldenwere.Unity.Controller
                         point = pointCamera.transform.position + (pointCamera.transform.forward * pointCamera.transform.position.y);
                 }
 
-                workingDesiredPosition = workingDesiredPosition.RotateSelfAroundPoint(point, new Vector3(0, input.x, 0));
+                workingDesiredPosition = workingDesiredPosition.RotateSelfAroundPoint(point, new Vector3(-input.y, input.x, 0));
             }
         }
 
