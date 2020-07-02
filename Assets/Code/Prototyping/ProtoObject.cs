@@ -139,16 +139,18 @@ public class ProtoObject : MonoBehaviour
 
 public enum ObjectType
 {
+    // Ranges defined/reserved:
+    // 0-31: prototyping
     /// <summary>
     /// Gives 0 score, gives 10 score if in range of other ptA's
     /// </summary>
-    PrototypeA,
+    PrototypeA = 0,
     /// <summary>
     /// Gives 20 score, takes 10 away for all ptA's nearby
     /// </summary>
-    PrototypeB,
+    PrototypeB = 1,
     /// <summary>
     /// Gives 0 score, takes 10 away for any ptB's and gives 20 for any ptA's in range
     /// </summary>
-    PrototypeC
+    PrototypeC = 2
 }

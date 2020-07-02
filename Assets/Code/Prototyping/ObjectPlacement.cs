@@ -10,6 +10,7 @@ public class ObjectPlacement : MonoBehaviour
     [SerializeField] private GodGameCamera              gameCam;
     [SerializeField] private GameObject[]               prefabs;
     [SerializeField] private int                        prefabUndoMaxCount;
+    [SerializeField] private GameObject                 prototypeCanvas;
     [SerializeField] private float                      rotationAngleMagnitude;
 #pragma warning restore 0649
     /**************/ private bool                       isPlacing;
@@ -38,19 +39,17 @@ public class ObjectPlacement : MonoBehaviour
                 prefabHadFirstHit = true;
             }
         }
+    }
 
-        if (Mouse.current.rightButton.ReadValue() > 0 && !isPlacing)
+    public void OnObjectSelected(int id)
+    {
+        if (!isPlacing)
         {
-            isPlacing = !isPlacing;
-            if (isPlacing)
-            {
-                prefabInstance = Instantiate(prefabs[Random.Range(0, prefabs.Length)]).GetComponent<ProtoObject>();
-                prefabHadFirstHit = false;
-                prefabInstance.IsPlaced = false;
-            }
-
-            else
-                Destroy(prefabInstance.gameObject);
+            prefabInstance = Instantiate(prefabs[id]).GetComponent<ProtoObject>();
+            prefabHadFirstHit = false;
+            prefabInstance.IsPlaced = false;
+            isPlacing = true;
+            prototypeCanvas.SetActive(false);
         }
     }
 
@@ -74,6 +73,7 @@ public class ObjectPlacement : MonoBehaviour
             prefabInstance = null;
             isPlacing = false;
             prefabHadFirstHit = false;
+            prototypeCanvas.SetActive(true);
         }
     }
 
@@ -88,6 +88,7 @@ public class ObjectPlacement : MonoBehaviour
             prefabInstance = prefabsPlaced.First.Value;
             prefabsPlaced.RemoveFirst();
             prefabInstance.IsPlaced = false;
+            prototypeCanvas.SetActive(false);
         }
     }
 
