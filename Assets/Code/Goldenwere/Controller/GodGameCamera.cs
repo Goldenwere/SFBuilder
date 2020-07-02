@@ -160,7 +160,7 @@ namespace Goldenwere.Unity.Controller
         private void PerformMovement(Vector2 input)
         {
             Vector3 add = (pointPivot.transform.forward * input.y * settingMovementSensitivity) + (pointPivot.transform.right * input.x * settingMovementSensitivity);
-            if (!WillCollideWithPosition(workingDesiredPosition + add))
+            if (!WillCollideWithPosition(workingDesiredPosition + add, add))
                 workingDesiredPosition += add;
         }
 
@@ -197,13 +197,28 @@ namespace Goldenwere.Unity.Controller
         private void PerformZoom(float input)
         {
             Vector3 add = pointCamera.transform.forward * input * settingZoomSensitivity;
-            if (!WillCollideWithPosition(workingDesiredPosition + add))
+            if (!WillCollideWithPosition(workingDesiredPosition + add, add))
                 workingDesiredPosition += add;
         }
 
-        private bool WillCollideWithPosition(Vector3 pos)
+        private bool WillCollideWithPosition(Vector3 pos, Vector3 dir)
         {
-            return Physics.OverlapSphere(pos, settingCollisionPadding).Length > 0;
+            Collider[] cols = Physics.OverlapSphere(pos, settingCollisionPadding);
+
+            bool willCollide = false;
+            foreach (Collider c in cols)
+            {
+                if (!willCollide)
+                {
+                    Vector3 headingCurr = c.transform.position - pos - dir;
+                    float dotCurr = Vector3.Dot(headingCurr, pos - dir);
+                    Vector3 headingNew = c.transform.position - pos;
+                    float dotNew = Vector3.Dot(headingNew, pos);
+                    willCollide = dotNew - dotCurr > 0;
+                }
+            }
+
+            return willCollide;
         }
         #endregion
     }
