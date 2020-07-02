@@ -190,7 +190,7 @@ namespace Goldenwere.Unity.Controller
                         point = pointCamera.transform.position + (pointCamera.transform.forward * pointCamera.transform.position.y);
                 }
 
-                workingDesiredPosition = workingDesiredPosition.RotateSelfAroundPoint(point, new Vector3(-input.y, input.x, 0));
+                workingDesiredPosition = workingDesiredPosition.RotateSelfAroundPoint(point, new Vector3(0, input.x, 0));
             }
         }
 
