@@ -7,6 +7,7 @@ public class ProtoObjectRanger : MonoBehaviour
     [SerializeField] private MeshRenderer       rangerMeshRenderer;
     [SerializeField] private SphereCollider     rangerSphereCollider;
 #pragma warning restore 0649
+    /**************/ private int                objectBaseWorth;
     /**************/ private int                objectWorth;
     /**************/ private List<ProtoObject>  othersCollided;
     /**************/ private ProtoObject        parent;
@@ -15,6 +16,9 @@ public class ProtoObjectRanger : MonoBehaviour
     {
         othersCollided = new List<ProtoObject>();
         parent = transform.parent.GetComponent<ProtoObject>();
+        objectBaseWorth = ProtoObject.ScoreOfSingleType(parent.Type);
+        objectWorth = objectBaseWorth;
+        GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,7 +48,7 @@ public class ProtoObjectRanger : MonoBehaviour
             rangerMeshRenderer.enabled = false;
             rangerSphereCollider.enabled = false;
             GameScoring.Instance.Score += objectWorth;
-            GameScoring.Instance.Potential = 0;
+            GameScoring.Instance.Potential = GameScoring.Instance.Score;
         }
 
         else
@@ -57,7 +61,7 @@ public class ProtoObjectRanger : MonoBehaviour
 
     private void Calculate()
     {
-        int val = 0;
+        int val = objectBaseWorth;
         foreach (ProtoObject po in othersCollided)
             val += ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type);
         objectWorth = val;

@@ -81,6 +81,20 @@ public class ProtoObject : MonoBehaviour
         }
     }
 
+    public static int ScoreOfSingleType(ObjectType type)
+    {
+        switch(type)
+        {
+            case ObjectType.PrototypeA:
+                return BaseScoreNone;
+            case ObjectType.PrototypeB:
+                return BaseScoreAdvanced;
+            case ObjectType.PrototypeC:
+                return BaseScoreNone;
+        }
+        return 0;
+    }
+
     public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing)
     {
         switch (toBePlaced)
@@ -89,33 +103,33 @@ public class ProtoObject : MonoBehaviour
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
-                        return BaseScoreNone + BaseScoreBasic;
+                        return BaseScoreBasic;
                     case ObjectType.PrototypeB:
-                        return BaseScoreNone + BaseScoreNone;
+                        return BaseScoreNone;
                     case ObjectType.PrototypeC:
-                        return BaseScoreNone + BaseScoreNone;
+                        return BaseScoreNone;
                 }
                 break;
             case ObjectType.PrototypeB:
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
-                        return BaseScoreAdvanced - BaseScoreBasic;
+                        return -BaseScoreBasic;
                     case ObjectType.PrototypeB:
-                        return BaseScoreAdvanced + BaseScoreNone;
+                        return BaseScoreNone;
                     case ObjectType.PrototypeC:
-                        return BaseScoreAdvanced + BaseScoreNone;
+                        return BaseScoreNone;
                 }
                 break;
             case ObjectType.PrototypeC:
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
-                        return BaseScoreNone + BaseScoreAdvanced;
+                        return BaseScoreAdvanced;
                     case ObjectType.PrototypeB:
-                        return BaseScoreNone - BaseScoreBasic;
+                        return -BaseScoreBasic;
                     case ObjectType.PrototypeC:
-                        return BaseScoreNone + BaseScoreNone;
+                        return BaseScoreNone;
                 }
                 break;
         }
