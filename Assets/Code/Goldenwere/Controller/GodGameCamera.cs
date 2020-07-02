@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Goldenwere.Unity.Controller
@@ -32,6 +30,8 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] private bool           settingRotateAroundAnchor;
         [Tooltip                                ("How fast the smooth rotation takes place")]
         [SerializeField] private float          settingRotationSpeed = 10f;
+        [Tooltip                                ("Min and max angles for camera's vertical rotation")]
+        [SerializeField] private Vector2        settingRotationVerticalClamp = new Vector2(-50f, 50f);
 #pragma warning restore 0649
         #endregion
         #region Game-style speed-scale settings (these can be tweaked depending on the style of game you are creating)
@@ -150,6 +150,7 @@ namespace Goldenwere.Unity.Controller
         {
             workingDesiredRotationHorizontal *= Quaternion.Euler(0, input.x * settingRotationSensitivity, 0);
             workingDesiredRotationVertical *= Quaternion.Euler(-input.y * settingRotationSensitivity, 0, 0);
+            workingDesiredRotationVertical = workingDesiredRotationVertical.VerticalClampEuler(settingRotationVerticalClamp.x, settingRotationVerticalClamp.y);
         }
 
         private void PerformZoom(float input)
