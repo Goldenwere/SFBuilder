@@ -99,5 +99,17 @@ namespace Goldenwere.Unity
 
             return parent;
         }
+
+        /// <summary>
+        /// Rotates a point around another point
+        /// </summary>
+        /// <param name="self">The original point to rotate</param>
+        /// <param name="pivot">The point to rotate around</param>
+        /// <param name="eulerAngles">The angle at which the point is being rotated</param>
+        /// <returns>The original point after rotation</returns>
+        public static Vector3 RotateSelfAroundPoint(this Vector3 self, Vector3 pivot, Vector3 eulerAngles)
+		{
+            return Quaternion.Euler(eulerAngles) * (self - pivot) + pivot;
+		}
     }
 }

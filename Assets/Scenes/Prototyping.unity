@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &461550417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461550418}
+  m_Layer: 0
+  m_Name: WorldCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461550418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461550417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: 0, z: -25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644794235
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,13 +615,13 @@ MonoBehaviour:
   settingRotationSensitivity: 1
   settingZoomSensitivity: 0.5
   settingModifiersAreToggled: 0
-  anchorRotationPivot: {fileID: 0}
+  anchorRotationPivot: {fileID: 461550418}
   attachedControls: {fileID: 999186420}
   pointCamera: {fileID: 963194225}
   pointPivot: {fileID: 644794235}
   settingCollisionPadding: 3
   settingMotionSpeed: 10
-  settingRotateAroundAnchor: 0
+  settingRotateAroundAnchor: 1
   settingRotationSpeed: 10
   settingRotationVerticalClamp: {x: -10, y: 50}
 --- !u!4 &999186422

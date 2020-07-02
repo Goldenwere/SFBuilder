@@ -26,8 +26,8 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] private float          settingCollisionPadding = 3f;
         [Tooltip                                ("How fast the smooth motion takes place")]
         [SerializeField] private float          settingMotionSpeed = 10f;
-        [Tooltip                                ("Whether to rotate around an anchor point rotate around self")]
-        [SerializeField] private bool           settingRotateAroundAnchor;
+        [Tooltip                                ("The rotation mode: free-look style, around an anchor (can be moved/updated programatically if needed), or around the point the camera is looking at")]
+        [SerializeField] private RotationMode   settingRotationMode;
         [Tooltip                                ("How fast the smooth rotation takes place")]
         [SerializeField] private float          settingRotationSpeed = 10f;
         [Tooltip                                ("Min and max angles for camera's vertical rotation")]
@@ -47,6 +47,8 @@ namespace Goldenwere.Unity.Controller
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
         /**************/ private bool           workingInputMovement;
+        /**************/ private Vector3        workingInputMousePositionOnRotate;
+        /**************/ private bool           workingInputMousePositionSet;
         /**************/ private bool           workingInputRotation;
         /**************/ private bool           workingInputZoom;
         /**************/ private bool           workingModifierMouseMovement;
@@ -118,6 +120,11 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseRotation = !workingModifierMouseRotation;
             else
                 workingModifierMouseRotation = context.performed;
+
+            if (!workingInputMousePositionSet)
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+                    workingInputMousePositionOnRotate = hit.point;
+            workingInputMousePositionSet = workingModifierMouseRotation;
         }
 
         public void OnZoom(InputAction.CallbackContext context)
@@ -151,6 +158,29 @@ namespace Goldenwere.Unity.Controller
             workingDesiredRotationHorizontal *= Quaternion.Euler(0, input.x * settingRotationSensitivity, 0);
             workingDesiredRotationVertical *= Quaternion.Euler(-input.y * settingRotationSensitivity, 0, 0);
             workingDesiredRotationVertical = workingDesiredRotationVertical.VerticalClampEuler(settingRotationVerticalClamp.x, settingRotationVerticalClamp.y);
+
+            if (settingRotationMode != RotationMode.Freeform)
+            {
+                Vector3 point;
+                if (settingRotationMode == RotationMode.Anchor)
+                    point = anchorRotationPivot.position;
+                else if (settingRotationMode == RotationMode.Raycast)
+                {
+                    if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
+                        point = hit.point;
+                    else
+                        point = pointCamera.transform.position + (pointCamera.transform.forward * pointCamera.transform.position.y);
+                }
+                else
+                {
+                    if (workingInputMousePositionSet)
+                        point = workingInputMousePositionOnRotate;
+                    else
+                        point = pointCamera.transform.position + (pointCamera.transform.forward * pointCamera.transform.position.y);
+                }
+
+                workingDesiredPosition = workingDesiredPosition.RotateSelfAroundPoint(point, new Vector3(0, input.x, 0));
+            }
         }
 
         private void PerformZoom(float input)
@@ -165,5 +195,25 @@ namespace Goldenwere.Unity.Controller
             return Physics.OverlapSphere(pos, settingCollisionPadding).Length > 0;
         }
         #endregion
+    }
+
+    public enum RotationMode
+    {
+        /// <summary>
+        /// Rotate around self in a freelook-style manner
+        /// </summary>
+        Freeform,
+        /// <summary>
+        /// Rotate around a defined anchor point (can be handled/moved by some other class)
+        /// </summary>
+        Anchor,
+        /// <summary>
+        /// Rotate around the point at which the camera is looking at
+        /// </summary>
+        Raycast,
+        /// <summary>
+        /// rotate around the point at which the mouse is raycasted to
+        /// </summary>
+        CursorRaycast
     }
 }
