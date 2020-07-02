@@ -16,6 +16,8 @@ namespace Goldenwere.Unity.Controller
         #endregion
         #region Inspector-set variables         (all of these are required, and speed/padding should be greater than 0)
 #pragma warning disable 0649
+        [Tooltip                                ("Anchor used for rotating around when settingRotateAroundAnchor is enabled")]   
+        [SerializeField] private Transform      anchorRotationPivot;
         [Tooltip                                ("Input values are read from here")]
         [SerializeField] private PlayerInput    attachedControls;
         [Tooltip                                ("This pivot is used for tilting up and down")]
@@ -26,6 +28,8 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] private float          settingCollisionPadding = 3f;
         [Tooltip                                ("How fast the smooth motion takes place")]
         [SerializeField] private float          settingMotionSpeed = 10f;
+        [Tooltip                                ("Whether to rotate around an anchor point rotate around self")]
+        [SerializeField] private bool           settingRotateAroundAnchor;
         [Tooltip                                ("How fast the smooth rotation takes place")]
         [SerializeField] private float          settingRotationSpeed = 10f;
 #pragma warning restore 0649
@@ -33,7 +37,7 @@ namespace Goldenwere.Unity.Controller
         #region Game-style speed-scale settings (these can be tweaked depending on the style of game you are creating)
         /**************/ private const float    sensitivityScaleMovement = 0.35f;
         /**************/ private const float    sensitivityScaleMovementMouse = 0.005f;
-        /**************/ private const float    sensitivityScaleRotation = 0.15f;
+        /**************/ private const float    sensitivityScaleRotation = 1f;
         /**************/ private const float    sensitivityScaleRotationMouse = 0.01f;
         /**************/ private const float    sensitivityScaleZoom = 1f;
         /**************/ private const float    sensitivityScaleZoomMouse = 3f;
@@ -65,25 +69,13 @@ namespace Goldenwere.Unity.Controller
         private void Update()
         {
             if (workingInputMovement)
-            {
-                Vector2 val = attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * settingMovementSensitivity * sensitivityScaleMovement;
-                if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
-                    workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
-            }
+                PerformMovement(attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
 
             if (workingInputRotation)
-            {
-                Vector2 val = attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * settingRotationSpeed;
-                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity * sensitivityScaleRotation, 0);
-                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity * sensitivityScaleRotation, 0, 0);
-            }
+                PerformRotation(attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation);
 
             if (workingInputZoom)
-            {
-                float val = attachedControls.actions["Zoom"].ReadValue<float>() * settingZoomSensitivity * sensitivityScaleZoom;
-                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
-                    workingDesiredPosition += pointCamera.transform.forward * val;
-            }
+                PerformZoom(attachedControls.actions["Zoom"].ReadValue<float>() * sensitivityScaleZoom);
 
             transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingMotionSpeed);
             pointPivot.transform.localRotation = Quaternion.Slerp(pointPivot.transform.localRotation, workingDesiredRotationHorizontal, Time.deltaTime * settingRotationSpeed);
@@ -98,11 +90,7 @@ namespace Goldenwere.Unity.Controller
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseMovement)
-            {
-                Vector2 val = context.ReadValue<Vector2>() * settingMovementSensitivity * sensitivityScaleMovementMouse;
-                if (!WillCollideWithPosition(workingDesiredPosition + pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x))
-                    workingDesiredPosition += pointPivot.transform.forward * val.y + pointPivot.transform.right * val.x;
-            }
+                PerformMovement(context.ReadValue<Vector2>() * sensitivityScaleMovementMouse);
         }
 
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
@@ -121,11 +109,7 @@ namespace Goldenwere.Unity.Controller
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseRotation)
-            {
-                Vector2 val = context.ReadValue<Vector2>();
-                workingDesiredRotationHorizontal *= Quaternion.Euler(0, val.x * settingRotationSensitivity * sensitivityScaleRotationMouse, 0);
-                workingDesiredRotationVertical *= Quaternion.Euler(-val.y * settingRotationSensitivity * sensitivityScaleRotationMouse, 0, 0);
-            }
+                PerformRotation(context.ReadValue<Vector2>() * sensitivityScaleRotationMouse);
         }
 
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
@@ -144,11 +128,7 @@ namespace Goldenwere.Unity.Controller
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
             if (workingModifierMouseZoom)
-            {
-                float val = context.ReadValue<float>() * settingZoomSensitivity * sensitivityScaleZoomMouse;
-                if (!WillCollideWithPosition(workingDesiredPosition + pointCamera.transform.forward * val))
-                    workingDesiredPosition += pointCamera.transform.forward * val;
-            }
+                PerformZoom(context.ReadValue<float>() * sensitivityScaleZoomMouse);
         }
 
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
@@ -157,6 +137,26 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;
+        }
+
+        private void PerformMovement(Vector2 input)
+        {
+            Vector3 add = (pointPivot.transform.forward * input.y * settingMovementSensitivity) + (pointPivot.transform.right * input.x * settingMovementSensitivity);
+            if (!WillCollideWithPosition(workingDesiredPosition + add))
+                workingDesiredPosition += add;
+        }
+
+        private void PerformRotation(Vector2 input)
+        {
+            workingDesiredRotationHorizontal *= Quaternion.Euler(0, input.x * settingRotationSensitivity, 0);
+            workingDesiredRotationVertical *= Quaternion.Euler(-input.y * settingRotationSensitivity, 0, 0);
+        }
+
+        private void PerformZoom(float input)
+        {
+            Vector3 add = pointCamera.transform.forward * input * settingZoomSensitivity;
+            if (!WillCollideWithPosition(workingDesiredPosition + add))
+                workingDesiredPosition += add;
         }
 
         private bool WillCollideWithPosition(Vector3 pos)
