@@ -7,18 +7,31 @@ public class ProtoObjectRanger : MonoBehaviour
     [SerializeField] private MeshRenderer       rangerMeshRenderer;
     [SerializeField] private SphereCollider     rangerSphereCollider;
 #pragma warning restore 0649
-    /**************/ private int                objectBaseWorth;
-    /**************/ private int                objectWorth;
     /**************/ private List<ProtoObject>  othersCollided;
     /**************/ private ProtoObject        parent;
+    /**************/ private int                objectHappiness;
+    /**************/ private int                objectPower;
+    /**************/ private int                objectSustenance;
+    /**************/ private int                placedHappiness;
+    /**************/ private int                placedPower;
+    /**************/ private int                placedSustenance;
 
     private void Start()
     {
         othersCollided = new List<ProtoObject>();
         parent = transform.parent.GetComponent<ProtoObject>();
+        /*
         objectBaseWorth = ProtoObject.ScoreOfSingleType(parent.Type);
         objectWorth = objectBaseWorth;
         GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
+        */
+        ProtoObject.ScoreOfSingleType(parent.Type, out int pp, out int sp, out int hp);
+        objectHappiness = hp;
+        objectPower = pp;
+        objectSustenance = sp;
+        GameScoring.Instance.PowerPotential = pp;
+        GameScoring.Instance.SustenancePotential = sp;
+        GameScoring.Instance.HappinessPotential = hp;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,24 +60,33 @@ public class ProtoObjectRanger : MonoBehaviour
         {
             rangerMeshRenderer.enabled = false;
             rangerSphereCollider.enabled = false;
-            GameScoring.Instance.Score += objectWorth;
-            GameScoring.Instance.Potential = GameScoring.Instance.Score;
+            GameScoring.Instance.ApplyScore();
         }
 
         else
         {
             rangerMeshRenderer.enabled = true;
             rangerSphereCollider.enabled = true;
-            GameScoring.Instance.Score -= objectWorth;
+            GameScoring.Instance.RevokeScore(placedPower, placedSustenance, placedHappiness);
         }
     }
 
     private void Calculate()
     {
-        int val = objectBaseWorth;
+        placedHappiness = objectHappiness;
+        placedPower = objectPower;
+        placedSustenance = objectSustenance;
+
         foreach (ProtoObject po in othersCollided)
-            val += ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type);
-        objectWorth = val;
-        GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
+        {
+            ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type, out int workingPower, out int workingSustenance, out int workingHappiness);
+            placedHappiness += workingHappiness;
+            placedPower += workingPower;
+            placedSustenance += workingSustenance;
+        }
+
+        GameScoring.Instance.HappinessPotential = placedHappiness;
+        GameScoring.Instance.PowerPotential = placedPower;
+        GameScoring.Instance.SustenancePotential = placedSustenance;
     }
 }

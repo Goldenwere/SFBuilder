@@ -50,6 +50,7 @@ public class ObjectPlacement : MonoBehaviour
             prefabInstance.IsPlaced = false;
             isPlacing = true;
             prototypeCanvas.SetActive(false);
+            GameScoring.Instance.IsPlacing = true;
         }
     }
 
@@ -74,6 +75,7 @@ public class ObjectPlacement : MonoBehaviour
             isPlacing = false;
             prefabHadFirstHit = false;
             prototypeCanvas.SetActive(true);
+            GameScoring.Instance.IsPlacing = false;
         }
     }
 

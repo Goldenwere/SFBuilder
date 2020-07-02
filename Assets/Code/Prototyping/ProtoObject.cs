@@ -95,7 +95,7 @@ public class ProtoObject : MonoBehaviour
         return 0;
     }
 
-    public static int ScoreOfSingleType(ObjectType type, out int power, out int sustenance, out int happiness)
+    public static void ScoreOfSingleType(ObjectType type, out int power, out int sustenance, out int happiness)
     {
         power = 0;
         sustenance = 0;
@@ -119,8 +119,6 @@ public class ProtoObject : MonoBehaviour
                 happiness = 0;
                 break;
         }
-
-        return power + sustenance + happiness;
     }
 
     public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing)
@@ -164,7 +162,7 @@ public class ProtoObject : MonoBehaviour
         return 0;
     }
 
-    public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing, out int power, out int sustenance, out int happiness)
+    public static void ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing, out int power, out int sustenance, out int happiness)
     {
         power = 0;
         sustenance = 0;
@@ -233,7 +231,6 @@ public class ProtoObject : MonoBehaviour
                 }
                 break;
         }
-        return power + sustenance + happiness;
     }
 }
 
