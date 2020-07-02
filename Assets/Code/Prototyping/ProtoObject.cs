@@ -95,6 +95,34 @@ public class ProtoObject : MonoBehaviour
         return 0;
     }
 
+    public static int ScoreOfSingleType(ObjectType type, out int power, out int sustenance, out int happiness)
+    {
+        power = 0;
+        sustenance = 0;
+        happiness = 0;
+
+        switch (type)
+        {
+            case ObjectType.PrototypeA:
+                power = 3;
+                sustenance = 0;
+                happiness = 0;
+                break;
+            case ObjectType.PrototypeB:
+                power = 0;
+                sustenance = -5;
+                happiness = -5;
+                break;
+            case ObjectType.PrototypeC:
+                power = 0;
+                sustenance = 5;
+                happiness = 0;
+                break;
+        }
+
+        return power + sustenance + happiness;
+    }
+
     public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing)
     {
         switch (toBePlaced)
@@ -135,6 +163,78 @@ public class ProtoObject : MonoBehaviour
         }
         return 0;
     }
+
+    public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing, out int power, out int sustenance, out int happiness)
+    {
+        power = 0;
+        sustenance = 0;
+        happiness = 0;
+
+        switch (toBePlaced)
+        {
+            case ObjectType.PrototypeA:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        power = 3;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                    case ObjectType.PrototypeB:
+                        power = 0;
+                        sustenance = -5;
+                        happiness = 0;
+                        break;
+                    case ObjectType.PrototypeC:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                }
+                break;
+            case ObjectType.PrototypeB:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                    case ObjectType.PrototypeB:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                    case ObjectType.PrototypeC:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                }
+                break;
+            case ObjectType.PrototypeC:
+                switch (existing)
+                {
+                    case ObjectType.PrototypeA:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                    case ObjectType.PrototypeB:
+                        power = 0;
+                        sustenance = 3;
+                        happiness = 3;
+                        break;
+                    case ObjectType.PrototypeC:
+                        power = 0;
+                        sustenance = 0;
+                        happiness = 0;
+                        break;
+                }
+                break;
+        }
+        return power + sustenance + happiness;
+    }
 }
 
 public enum ObjectType
@@ -142,15 +242,15 @@ public enum ObjectType
     // Ranges defined/reserved:
     // 0-31: prototyping
     /// <summary>
-    /// Gives 0 score, gives 10 score if in range of other ptA's
+    /// pA is a power source, giving 3 power; -5 happiness for each pB in range, +3 power for each pA in range
     /// </summary>
     PrototypeA = 0,
     /// <summary>
-    /// Gives 20 score, takes 10 away for all ptA's nearby
+    /// pB is a residence, taking -5 sustenance and -5 power; no change for buildings in range
     /// </summary>
     PrototypeB = 1,
     /// <summary>
-    /// Gives 0 score, takes 10 away for any ptB's and gives 20 for any ptA's in range
+    /// pC is a community garden, giving 5 base sustenance; gives 3 sustenance and 3 happiness for each pB in range
     /// </summary>
     PrototypeC = 2
 }
