@@ -214,7 +214,7 @@ namespace Goldenwere.Unity.Controller
                     float dotCurr = Vector3.Dot(headingCurr, pos - dir);
                     Vector3 headingNew = c.transform.position - pos;
                     float dotNew = Vector3.Dot(headingNew, pos);
-                    willCollide = dotNew - dotCurr > 0;
+                    willCollide = Mathf.Abs(dotNew) - Mathf.Abs(dotCurr) > 0;
                 }
             }
 
