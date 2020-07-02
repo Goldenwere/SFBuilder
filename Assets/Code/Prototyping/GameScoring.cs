@@ -3,18 +3,16 @@
 public class GameScoring : MonoBehaviour
 {
     public static GameScoring Instance { get; private set; }
-    public int Score { get; set; }
-    public int Potential { get; set; }
 
-    public int Viability { get { return Power + Sustenance + Happiness; } }
-    public int Power { get; set; }
-    public int Sustenance { get; set; }
-    public int Happiness { get; set; }
+    public int ScoreHappiness { get; set; }
+    public int ScorePower { get; set; }
+    public int ScoreSustenance { get; set; }
+    public int ScoreViability { get { return ScorePower + ScoreSustenance + ScoreHappiness; } }
 
-    public int ViabilityPotential { get { return PowerPotential + SustenancePotential + HappinessPotential; } }
-    public int PowerPotential { get; set; }
-    public int SustenancePotential { get; set; }
-    public int HappinessPotential { get; set; }
+    public int PotentialHappiness { get; set; }
+    public int PotentialPower { get; set; }
+    public int PotentialSustenance { get; set; }
+    public int PotentialViability { get { return PotentialPower + PotentialSustenance + PotentialHappiness; } }
 
     public bool IsPlacing { get; set; }
 
@@ -35,45 +33,45 @@ public class GameScoring : MonoBehaviour
             char signSustenance = '+';
             char signHappiness = '+';
 
-            if (ViabilityPotential < 0)
+            if (PotentialViability < 0)
                 signViability = '\0';
-            if (PowerPotential < 0)
+            if (PotentialPower < 0)
                 signPower = '\0';
-            if (SustenancePotential < 0)
+            if (PotentialSustenance < 0)
                 signSustenance = '\0';
-            if (HappinessPotential < 0)
+            if (PotentialHappiness < 0)
                 signHappiness = '\0';
 
             GUI.Label(
                 new Rect(10, 10, 100, 20),
                 string.Format("Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})", 
-                    Viability, Power, Sustenance, Happiness,
+                    ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness,
                     signViability, signPower, signSustenance, signHappiness,
-                    ViabilityPotential, PowerPotential, SustenancePotential, HappinessPotential),
+                    PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness),
                 new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
         }
 
         else
             GUI.Label(
                 new Rect(10, 10, 100, 20),
-                string.Format("Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}", Viability, Power, Sustenance, Happiness),
+                string.Format("Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}", ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness),
                 new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
     }
 
     public void ApplyScore()
     {
-        Power += PowerPotential;
-        Sustenance += SustenancePotential;
-        Happiness += HappinessPotential;
-        PowerPotential = 0;
-        SustenancePotential = 0;
-        HappinessPotential = 0;
+        ScorePower += PotentialPower;
+        ScoreSustenance += PotentialSustenance;
+        ScoreHappiness += PotentialHappiness;
+        PotentialPower = 0;
+        PotentialSustenance = 0;
+        PotentialHappiness = 0;
     }
 
-    public void RevokeScore(int power, int sustenance, int happiness)
+    public void RevokeScore(int happiness, int power, int sustenance)
     {
-        Happiness -= happiness;
-        Power -= power;
-        Sustenance -= sustenance;
+        ScoreHappiness -= happiness;
+        ScorePower -= power;
+        ScoreSustenance -= sustenance;
     }
 }

@@ -15,10 +15,6 @@ public class ProtoObject : MonoBehaviour
     /**************/ private List<GameObject>       collidedObjects;
     /**************/ private bool                   isPlaced;
 
-    public static int   BaseScoreNone       { get { return 00; } }
-    public static int   BaseScoreBasic      { get { return 10; } }
-    public static int   BaseScoreAdvanced   { get { return 20; } }
-
     public bool         IsCollided          { get; private set; }
     public bool         IsGrounded          { get { return grounder.IsGrounded; } }
     public bool         IsPlaced
@@ -81,92 +77,37 @@ public class ProtoObject : MonoBehaviour
         }
     }
 
-    public static int ScoreOfSingleType(ObjectType type)
+    public static void ScoreOfSingleType(ObjectType type, out int happiness, out int power, out int sustenance)
     {
-        switch(type)
-        {
-            case ObjectType.PrototypeA:
-                return BaseScoreNone;
-            case ObjectType.PrototypeB:
-                return BaseScoreAdvanced;
-            case ObjectType.PrototypeC:
-                return BaseScoreNone;
-        }
-        return 0;
-    }
-
-    public static void ScoreOfSingleType(ObjectType type, out int power, out int sustenance, out int happiness)
-    {
+        happiness = 0;
         power = 0;
         sustenance = 0;
-        happiness = 0;
 
         switch (type)
         {
             case ObjectType.PrototypeA:
+                happiness = 0;
                 power = 3;
                 sustenance = 0;
-                happiness = 0;
                 break;
             case ObjectType.PrototypeB:
+                happiness = -5;
                 power = 0;
                 sustenance = -5;
-                happiness = -5;
                 break;
             case ObjectType.PrototypeC:
+                happiness = 0;
                 power = 0;
                 sustenance = 5;
-                happiness = 0;
                 break;
         }
     }
 
-    public static int ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing)
+    public static void ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing, out int happiness, out int power, out int sustenance)
     {
-        switch (toBePlaced)
-        {
-            case ObjectType.PrototypeA:
-                switch (existing)
-                {
-                    case ObjectType.PrototypeA:
-                        return BaseScoreBasic;
-                    case ObjectType.PrototypeB:
-                        return BaseScoreNone;
-                    case ObjectType.PrototypeC:
-                        return BaseScoreNone;
-                }
-                break;
-            case ObjectType.PrototypeB:
-                switch (existing)
-                {
-                    case ObjectType.PrototypeA:
-                        return -BaseScoreBasic;
-                    case ObjectType.PrototypeB:
-                        return BaseScoreNone;
-                    case ObjectType.PrototypeC:
-                        return BaseScoreNone;
-                }
-                break;
-            case ObjectType.PrototypeC:
-                switch (existing)
-                {
-                    case ObjectType.PrototypeA:
-                        return BaseScoreAdvanced;
-                    case ObjectType.PrototypeB:
-                        return -BaseScoreBasic;
-                    case ObjectType.PrototypeC:
-                        return BaseScoreNone;
-                }
-                break;
-        }
-        return 0;
-    }
-
-    public static void ScoreOfTwoTypes(ObjectType toBePlaced, ObjectType existing, out int power, out int sustenance, out int happiness)
-    {
+        happiness = 0;
         power = 0;
         sustenance = 0;
-        happiness = 0;
 
         switch (toBePlaced)
         {
@@ -174,19 +115,19 @@ public class ProtoObject : MonoBehaviour
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
+                        happiness = 0;
                         power = 3;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                     case ObjectType.PrototypeB:
+                        happiness = 0;
                         power = 0;
                         sustenance = -5;
-                        happiness = 0;
                         break;
                     case ObjectType.PrototypeC:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                 }
                 break;
@@ -194,19 +135,19 @@ public class ProtoObject : MonoBehaviour
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                     case ObjectType.PrototypeB:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                     case ObjectType.PrototypeC:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                 }
                 break;
@@ -214,19 +155,19 @@ public class ProtoObject : MonoBehaviour
                 switch (existing)
                 {
                     case ObjectType.PrototypeA:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                     case ObjectType.PrototypeB:
+                        happiness = 3;
                         power = 0;
                         sustenance = 3;
-                        happiness = 3;
                         break;
                     case ObjectType.PrototypeC:
+                        happiness = 0;
                         power = 0;
                         sustenance = 0;
-                        happiness = 0;
                         break;
                 }
                 break;

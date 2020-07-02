@@ -20,18 +20,13 @@ public class ProtoObjectRanger : MonoBehaviour
     {
         othersCollided = new List<ProtoObject>();
         parent = transform.parent.GetComponent<ProtoObject>();
-        /*
-        objectBaseWorth = ProtoObject.ScoreOfSingleType(parent.Type);
-        objectWorth = objectBaseWorth;
-        GameScoring.Instance.Potential = GameScoring.Instance.Score + objectWorth;
-        */
-        ProtoObject.ScoreOfSingleType(parent.Type, out int pp, out int sp, out int hp);
+        ProtoObject.ScoreOfSingleType(parent.Type, out int hp, out int pp, out int sp);
         objectHappiness = hp;
         objectPower = pp;
         objectSustenance = sp;
-        GameScoring.Instance.PowerPotential = pp;
-        GameScoring.Instance.SustenancePotential = sp;
-        GameScoring.Instance.HappinessPotential = hp;
+        GameScoring.Instance.PotentialPower = pp;
+        GameScoring.Instance.PotentialSustenance = sp;
+        GameScoring.Instance.PotentialHappiness = hp;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,7 +62,7 @@ public class ProtoObjectRanger : MonoBehaviour
         {
             rangerMeshRenderer.enabled = true;
             rangerSphereCollider.enabled = true;
-            GameScoring.Instance.RevokeScore(placedPower, placedSustenance, placedHappiness);
+            GameScoring.Instance.RevokeScore(placedHappiness, placedPower, placedSustenance);
         }
     }
 
@@ -79,14 +74,14 @@ public class ProtoObjectRanger : MonoBehaviour
 
         foreach (ProtoObject po in othersCollided)
         {
-            ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type, out int workingPower, out int workingSustenance, out int workingHappiness);
+            ProtoObject.ScoreOfTwoTypes(parent.Type, po.Type, out int workingHappiness, out int workingPower, out int workingSustenance);
             placedHappiness += workingHappiness;
             placedPower += workingPower;
             placedSustenance += workingSustenance;
         }
 
-        GameScoring.Instance.HappinessPotential = placedHappiness;
-        GameScoring.Instance.PowerPotential = placedPower;
-        GameScoring.Instance.SustenancePotential = placedSustenance;
+        GameScoring.Instance.PotentialHappiness = placedHappiness;
+        GameScoring.Instance.PotentialPower = placedPower;
+        GameScoring.Instance.PotentialSustenance = placedSustenance;
     }
 }
