@@ -91,8 +91,8 @@ public class ProtoObject : MonoBehaviour
                 sustenance = 0;
                 break;
             case ObjectType.PrototypeB:
-                happiness = -5;
-                power = 0;
+                happiness = 0;
+                power = -5;
                 sustenance = -5;
                 break;
             case ObjectType.PrototypeC:
@@ -120,9 +120,9 @@ public class ProtoObject : MonoBehaviour
                         sustenance = 0;
                         break;
                     case ObjectType.PrototypeB:
-                        happiness = 0;
+                        happiness = -5;
                         power = 0;
-                        sustenance = -5;
+                        sustenance = 0;
                         break;
                     case ObjectType.PrototypeC:
                         happiness = 0;
