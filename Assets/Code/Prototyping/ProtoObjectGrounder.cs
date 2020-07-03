@@ -16,18 +16,6 @@ public class ProtoObjectGrounder : MonoBehaviour
         collidedObjects = new List<Collider>(16);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name != "Ranger")
-            collidedObjects.Add(other);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name != "Ranger")
-            collidedObjects.Remove(other);
-    }
-
     private void Update()
     {
         bool foundGround = false;
@@ -39,5 +27,17 @@ public class ProtoObjectGrounder : MonoBehaviour
                 foundGround = true;
         }
         IsGrounded = foundGround;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name != "Ranger")
+            collidedObjects.Add(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name != "Ranger")
+            collidedObjects.Remove(other);
     }
 }

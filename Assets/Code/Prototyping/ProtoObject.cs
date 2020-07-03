@@ -58,16 +58,20 @@ public class ProtoObject : MonoBehaviour
     {
         if (!IsPlaced)
         {
-            for (int i = collidedObjects.Count - 1; i >= 0; i--)
-                if (collidedObjects[i] == null)
-                    collidedObjects.RemoveAt(i);
-            if (collidedObjects.Count < 1)
-                IsCollided = false;
-
             if (IsValid)
                 objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
             else
                 objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach(GameObject g in collidedObjects)
+        {
+            ProtoObject other = g.GetComponent<ProtoObject>();
+            if (other != null)
+                other.OtherObjectWasDestroyed(gameObject);
         }
     }
 
@@ -88,6 +92,13 @@ public class ProtoObject : MonoBehaviour
             if (collidedObjects.Count == 0)
                 IsCollided = false;
         }
+    }
+
+    private void OtherObjectWasDestroyed(GameObject g)
+    {
+        collidedObjects.Remove(g);
+        if (collidedObjects.Count == 0)
+            IsCollided = false;
     }
 
     public static void ScoreOfSingleType(ObjectType type, out int happiness, out int power, out int sustenance)
