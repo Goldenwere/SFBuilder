@@ -9,6 +9,8 @@ public class ProtoGoalSystem : MonoBehaviour
     [SerializeField] private GoalContainer[]    goals;
     [SerializeField] private GameObject         templateExtraButton;
     [SerializeField] private GameObject         templateRequirementButton;
+    [SerializeField] private int                uiButtonPadding;
+    [SerializeField] private GameObject         uiButtonPanel;
 #pragma warning restore 0649
 
     public int              CurrentGoal { get; private set; }
@@ -27,6 +29,7 @@ public class ProtoGoalSystem : MonoBehaviour
     private void Start()
     {
         CurrentGoalWorkingSet = goals[CurrentGoal];
+        SetupUI();
     }
 
     public void VerifyForNextGoal()
@@ -40,6 +43,34 @@ public class ProtoGoalSystem : MonoBehaviour
             CurrentGoal++;
             if (CurrentGoal < goals.Length)
                 CurrentGoalWorkingSet = goals[CurrentGoal];
+            SetupUI();
+        }
+    }
+
+    private void SetupUI()
+    {
+        int buttonCount = 0;
+        for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
+            Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
+
+        foreach(Goal g in CurrentGoalWorkingSet.goalRequirements)
+        {
+            RectTransform rt = Instantiate(templateRequirementButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
+            Vector3 pos = rt.anchoredPosition;
+            pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
+            rt.anchoredPosition = pos;
+            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount);
+            buttonCount++;
+        }
+
+        foreach (Goal g in CurrentGoalWorkingSet.goalExtras)
+        {
+            RectTransform rt = Instantiate(templateExtraButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
+            Vector3 pos = rt.anchoredPosition;
+            pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
+            rt.anchoredPosition = pos;
+            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount);
+            buttonCount++;
         }
     }
 }
