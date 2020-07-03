@@ -52,8 +52,9 @@ public class ProtoGoalSystem : MonoBehaviour
         foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
             if (g.goalStructureCount > 0)
                 test = false;
-        canMoveOn = test;
-        uiButtonNextGoal.interactable = test;
+        canMoveOn = test && GameScoring.Instance.ScoreViability > CurrentGoalWorkingSet.goalViability &&
+            GameScoring.Instance.ScoreHappiness > 0 && GameScoring.Instance.ScorePower > 0 && GameScoring.Instance.ScoreSustenance > 0;
+        uiButtonNextGoal.interactable = canMoveOn;
     }
 
     private void SetupUI()
@@ -90,6 +91,7 @@ public struct GoalContainer
 {
     public Goal[]   goalExtras;
     public Goal[]   goalRequirements;
+    public int      goalViability;
 }
 
 [Serializable]
