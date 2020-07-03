@@ -31,10 +31,13 @@ public class ProtoObjectGrounder : MonoBehaviour
     private void Update()
     {
         bool foundGround = false;
-        if (collidedObjects.Count > 0)
-            foreach (Collider obj in collidedObjects)
-                if (obj.bounds.Contains(protoCollider.bounds.max) && obj.bounds.Contains(protoCollider.bounds.min))
-                    foundGround = true;
+        for (int i = collidedObjects.Count - 1; i >= 0; i--)
+        {
+            if (collidedObjects[i] == null)
+                collidedObjects.RemoveAt(i);
+            else if (collidedObjects[i].bounds.Contains(protoCollider.bounds.max) && collidedObjects[i].bounds.Contains(protoCollider.bounds.min))
+                foundGround = true;
+        }
         IsGrounded = foundGround;
     }
 }
