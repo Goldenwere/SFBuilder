@@ -23,6 +23,7 @@ public class ObjectPlacement : MonoBehaviour
     void Start()
     {
         prefabsPlaced = new LinkedList<ProtoObject>();
+        ProtoGoalSystem.newGoal += OnNewGoal;
     }
 
     // Update is called once per frame
@@ -105,5 +106,10 @@ public class ObjectPlacement : MonoBehaviour
             workingModifierMouseZoom = !workingModifierMouseZoom;
         else
             workingModifierMouseZoom = context.performed;
+    }
+
+    private void OnNewGoal(int newGoal)
+    {
+        prefabsPlaced.Clear();
     }
 }

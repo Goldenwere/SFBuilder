@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate void GoalDelegate(int newGoal);
+
 public class ProtoGoalSystem : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -20,6 +22,8 @@ public class ProtoGoalSystem : MonoBehaviour
     public GoalContainer            CurrentGoalWorkingSet { get; private set; }
     public GoalContainer[]          Goals { get { return goals; } }
     public static ProtoGoalSystem   Instance { get; private set; }
+
+    public static GoalDelegate newGoal;
 
     private void Awake()
     {
@@ -41,7 +45,10 @@ public class ProtoGoalSystem : MonoBehaviour
         {
             CurrentGoal++;
             if (CurrentGoal < goals.Length)
+            {
                 CurrentGoalWorkingSet = goals[CurrentGoal];
+                newGoal?.Invoke(CurrentGoal);
+            }
             SetupUI();
         }
     }
@@ -52,7 +59,7 @@ public class ProtoGoalSystem : MonoBehaviour
         foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
             if (g.goalStructureCount > 0)
                 test = false;
-        canMoveOn = test && GameScoring.Instance.ScoreViability > CurrentGoalWorkingSet.goalViability &&
+        canMoveOn = test && GameScoring.Instance.ScoreViability >= CurrentGoalWorkingSet.goalViability &&
             GameScoring.Instance.ScoreHappiness > 0 && GameScoring.Instance.ScorePower > 0 && GameScoring.Instance.ScoreSustenance > 0;
         uiButtonNextGoal.interactable = canMoveOn;
     }
