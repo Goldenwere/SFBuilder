@@ -44,17 +44,20 @@ public class GameScoring : MonoBehaviour
 
             GUI.Label(
                 new Rect(10, 10, 100, 20),
-                string.Format("Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})", 
+                string.Format("Level: {12}, Goal: {13} ::: Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})", 
                     ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness,
                     signViability, signPower, signSustenance, signHappiness,
-                    PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness),
+                    PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness,
+                    ProtoLevelSystem.Instance.CurrentLevel, ProtoGoalSystem.Instance.CurrentGoal + 1),
                 new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
         }
 
         else
             GUI.Label(
                 new Rect(10, 10, 100, 20),
-                string.Format("Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}", ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness),
+                string.Format("Level: {4}, Goal: {5} ::: Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}", 
+                ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness,
+                ProtoLevelSystem.Instance.CurrentLevel, ProtoGoalSystem.Instance.CurrentGoal + 1),
                 new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
     }
 

@@ -49,6 +49,12 @@ public class ProtoGoalSystem : MonoBehaviour
                 CurrentGoalWorkingSet = goals[CurrentGoal];
                 newGoal?.Invoke(CurrentGoal);
             }
+            else
+            {
+                ProtoLevelSystem.Instance.CurrentLevel++;
+                // will be made redundant as there will be a scene change 
+                CurrentGoal = 0;
+            }
             SetupUI();
         }
     }

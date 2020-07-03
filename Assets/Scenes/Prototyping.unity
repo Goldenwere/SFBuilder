@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 999186420}
   - component: {fileID: 999186424}
   - component: {fileID: 999186425}
+  - component: {fileID: 999186426}
   m_Layer: 0
   m_Name: Camera Controller
   m_TagString: Untagged
@@ -1189,6 +1190,18 @@ MonoBehaviour:
   uiButtonNextGoal: {fileID: 396218643}
   uiButtonPadding: 3
   uiButtonPanel: {fileID: 1767669029}
+--- !u!114 &999186426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999186419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2225c889efc49642852396f5d0ce574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368297206
 GameObject:
   m_ObjectHideFlags: 0
