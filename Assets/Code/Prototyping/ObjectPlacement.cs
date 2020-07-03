@@ -79,6 +79,7 @@ public class ObjectPlacement : MonoBehaviour
             prefabHadFirstHit = false;
             prototypeCanvas.SetActive(true);
             GameScoring.Instance.IsPlacing = false;
+            ProtoGoalSystem.Instance.VerifyForNextGoal();
         }
     }
 

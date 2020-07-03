@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProtoGoalSystem : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class ProtoGoalSystem : MonoBehaviour
     [SerializeField] private GoalContainer[]    goals;
     [SerializeField] private GameObject         templateExtraButton;
     [SerializeField] private GameObject         templateRequirementButton;
+    [SerializeField] private Button             uiButtonNextGoal;
     [SerializeField] private int                uiButtonPadding;
     [SerializeField] private GameObject         uiButtonPanel;
 #pragma warning restore 0649
+    /**************/ private bool               canMoveOn;
 
-    public int              CurrentGoal { get; private set; }
-    public GoalContainer    CurrentGoalWorkingSet { get; private set; }
-    public GoalContainer[]  Goals { get { return goals; } }
-    public ProtoGoalSystem  Instance { get; private set; }
+    public int                      CurrentGoal { get; private set; }
+    public GoalContainer            CurrentGoalWorkingSet { get; private set; }
+    public GoalContainer[]          Goals { get { return goals; } }
+    public static ProtoGoalSystem   Instance { get; private set; }
 
     private void Awake()
     {
@@ -32,12 +35,8 @@ public class ProtoGoalSystem : MonoBehaviour
         SetupUI();
     }
 
-    public void VerifyForNextGoal()
+    public void OnNextGoalButtonPressed()
     {
-        bool canMoveOn = true;
-        foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
-            if (g.goalStructureCount > 0)
-                canMoveOn = false;
         if (canMoveOn)
         {
             CurrentGoal++;
@@ -47,8 +46,19 @@ public class ProtoGoalSystem : MonoBehaviour
         }
     }
 
+    public void VerifyForNextGoal()
+    {
+        bool test = true;
+        foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
+            if (g.goalStructureCount > 0)
+                test = false;
+        canMoveOn = test;
+        uiButtonNextGoal.interactable = test;
+    }
+
     private void SetupUI()
     {
+        uiButtonNextGoal.interactable = false;
         int buttonCount = 0;
         for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
             Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
@@ -59,7 +69,7 @@ public class ProtoGoalSystem : MonoBehaviour
             Vector3 pos = rt.anchoredPosition;
             pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
             rt.anchoredPosition = pos;
-            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount);
+            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount, true);
             buttonCount++;
         }
 
@@ -69,7 +79,7 @@ public class ProtoGoalSystem : MonoBehaviour
             Vector3 pos = rt.anchoredPosition;
             pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
             rt.anchoredPosition = pos;
-            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount);
+            rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount, false);
             buttonCount++;
         }
     }
