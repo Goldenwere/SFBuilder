@@ -58,6 +58,12 @@ public class ProtoObject : MonoBehaviour
     {
         if (!IsPlaced)
         {
+            for (int i = collidedObjects.Count - 1; i >= 0; i--)
+                if (collidedObjects[i] == null)
+                    collidedObjects.RemoveAt(i);
+            if (collidedObjects.Count < 1)
+                IsCollided = false;
+
             if (IsValid)
                 objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
             else
