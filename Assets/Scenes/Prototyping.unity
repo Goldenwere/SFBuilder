@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 999186423}
   - component: {fileID: 999186420}
   - component: {fileID: 999186424}
+  - component: {fileID: 999186425}
   m_Layer: 0
   m_Name: Camera Controller
   m_TagString: Untagged
@@ -1591,6 +1592,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5fb01347f296845937d9ee2410f041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &999186425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999186419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5965526a8b76b43b30b66d3da173d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goals:
+  - goalExtras:
+    - goalStructureCount: 5
+      goalStructureID: 0
+    - goalStructureCount: 3
+      goalStructureID: 2
+    goalRequirements:
+    - goalStructureCount: 5
+      goalStructureID: 1
+  - goalExtras:
+    - goalStructureCount: 5
+      goalStructureID: 2
+    - goalStructureCount: 5
+      goalStructureID: 0
+    goalRequirements:
+    - goalStructureCount: 10
+      goalStructureID: 1
+  templateExtraButton: {fileID: 0}
+  templateRequirementButton: {fileID: 0}
 --- !u!1 &1336910977
 GameObject:
   m_ObjectHideFlags: 0
