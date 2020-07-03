@@ -94,6 +94,7 @@ public class ObjectPlacement : MonoBehaviour
             prefabInstance = prefabsPlaced.First.Value;
             prefabsPlaced.RemoveFirst();
             prefabInstance.IsPlaced = false;
+            GameScoring.Instance.IsPlacing = true;
             prototypeCanvas.SetActive(false);
         }
     }

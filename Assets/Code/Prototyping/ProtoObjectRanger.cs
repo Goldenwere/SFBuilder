@@ -56,6 +56,7 @@ public class ProtoObjectRanger : MonoBehaviour
             rangerMeshRenderer.enabled = false;
             rangerSphereCollider.enabled = false;
             GameScoring.Instance.ApplyScore();
+            othersCollided.Clear();
         }
 
         else
