@@ -531,5 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c864c8503908c9748850fcab6827eb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 7909465070161235292}
   indicatorCount: {fileID: 2186942571668327061}
   indicatorID: {fileID: 6055474476162717027}

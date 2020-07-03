@@ -41,7 +41,7 @@ public class ObjectPlacement : MonoBehaviour
         }
     }
 
-    public void OnObjectSelected(int id)
+    public ProtoObject OnObjectSelected(int id)
     {
         if (!isPlacing)
         {
@@ -51,7 +51,10 @@ public class ObjectPlacement : MonoBehaviour
             isPlacing = true;
             prototypeCanvas.SetActive(false);
             GameScoring.Instance.IsPlacing = true;
+            return prefabInstance;
         }
+
+        return null;
     }
 
     public void OnObjectRotation(InputAction.CallbackContext context)

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ProtoButton : MonoBehaviour
 {
 #pragma warning disable 0649
+    [SerializeField] private Button             button;
     [SerializeField] private TMPro.TMP_Text     indicatorCount;
     [SerializeField] private TMPro.TMP_Text     indicatorID;
 #pragma warning restore 0649
@@ -27,6 +29,29 @@ public class ProtoButton : MonoBehaviour
     public void OnButtonPress()
     {
         if (associatedCount > 0)
-            objPlacer.OnObjectSelected(associatedID);
+        {
+            ProtoObject spawned = objPlacer.OnObjectSelected(associatedID);
+            if (spawned != null)
+            {
+                spawned.objectPlaced += OnObjectPlaced;
+                spawned.objectRecalled += OnObjectRevoked;
+            }
+        }
+    }
+
+    private void OnObjectPlaced(ProtoObject obj)
+    {
+        associatedCount--;
+        indicatorCount.text = associatedCount.ToString();
+        if (associatedCount <= 0)
+            button.interactable = false;
+    }
+
+    private void OnObjectRevoked(ProtoObject obj)
+    {
+        associatedCount++;
+        indicatorCount.text = associatedCount.ToString();
+        if (associatedCount > 0 && !button.interactable)
+            button.interactable = true;
     }
 }

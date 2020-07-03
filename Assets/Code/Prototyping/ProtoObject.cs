@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ProtoObjectDelegate(ProtoObject obj);
+
 public class ProtoObject : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -29,6 +31,7 @@ public class ProtoObject : MonoBehaviour
                 grounder.enabled = false;
                 ranger.SetPlaced(true);
                 ranger.enabled = false;
+                objectPlaced?.Invoke(this);
             }
             else
             {
@@ -36,11 +39,15 @@ public class ProtoObject : MonoBehaviour
                 grounder.enabled = true;
                 ranger.SetPlaced(false);
                 ranger.enabled = true;
+                objectRecalled?.Invoke(this);
             }
         }
     }
     public bool         IsValid             { get { return IsGrounded && !IsCollided; } }
     public ObjectType   Type                { get { return type; } }
+
+    public ProtoObjectDelegate objectPlaced;
+    public ProtoObjectDelegate objectRecalled;
 
     private void Start()
     {
