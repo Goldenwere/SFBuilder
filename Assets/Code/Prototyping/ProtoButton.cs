@@ -23,7 +23,7 @@ public class ProtoButton : MonoBehaviour
             associatedCount = count;
             associatedID = id;
             isRequired = required;
-            indicatorID.text = ((ObjectType)id).ToString();
+            indicatorID.text = ProtoObject.NameOfType((ObjectType)id);
             indicatorCount.text = count.ToString();
             objPlacer = FindObjectOfType<ObjectPlacement>();
             initialized = true;

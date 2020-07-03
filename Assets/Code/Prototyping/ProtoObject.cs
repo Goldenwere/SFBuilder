@@ -101,6 +101,20 @@ public class ProtoObject : MonoBehaviour
             IsCollided = false;
     }
 
+    public static string NameOfType(ObjectType type)
+    {
+        switch (type)
+        {
+            case ObjectType.PrototypeA:
+                return "Power Source";
+            case ObjectType.PrototypeB:
+                return "Residence";
+            case ObjectType.PrototypeC:
+                return "Community Garden";
+        }
+        return "Unknown";
+    }
+
     public static void ScoreOfSingleType(ObjectType type, out int happiness, out int power, out int sustenance)
     {
         happiness = 0;
