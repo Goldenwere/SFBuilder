@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 
-public class ProtoLevelSystem : MonoBehaviour
+namespace SFBuilder.Prototyping
 {
-    private int currentLevel;   // directly equivalent to unity scenes, with scene 0 being the base scene
-    public int CurrentLevel 
-    { 
-        get { return currentLevel; }
-        set 
-        { 
-            currentLevel = value;
-            // TO-DO: transitions
-        }
-    }
-    public static ProtoLevelSystem Instance { get; private set; }
-
-    private void Awake()
+    public class ProtoLevelSystem : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
-            Destroy(gameObject);
-        else
-            Instance = this;
+        private int currentLevel;   // directly equivalent to unity scenes, with scene 0 being the base scene
+        public int CurrentLevel
+        {
+            get { return currentLevel; }
+            set
+            {
+                currentLevel = value;
+                // TO-DO: transitions
+            }
+        }
+        public static ProtoLevelSystem Instance { get; private set; }
 
-        currentLevel = 1;
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+                Destroy(gameObject);
+            else
+                Instance = this;
+
+            currentLevel = 1;
+        }
     }
 }
