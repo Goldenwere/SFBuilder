@@ -111,5 +111,19 @@ namespace Goldenwere.Unity
 		{
             return Quaternion.Euler(eulerAngles) * (self - pivot) + pivot;
 		}
+
+        /// <summary>
+        /// Rounds a Vector3's values to the nearest precision
+        /// </summary>
+        /// <param name="self">The Vector3 being rounded</param>
+        /// <param name="precision">The precision</param>
+        /// <returns></returns>
+        public static Vector3 ToPrecision(this Vector3 self, float precision)
+        {
+            return new Vector3(
+                Mathf.Round(self.x / precision) * precision,
+                Mathf.Round(self.y / precision) * precision,
+                Mathf.Round(self.z / precision) * precision);
+        }
     }
 }

@@ -1997,6 +1997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCam: {fileID: 1412278136}
+  positionPrecision: 0.1
   prefabs:
   - {fileID: 296870517179958410, guid: fa06b44959940fc4e8722c4398dd5615, type: 3}
   - {fileID: 7584512831872834971, guid: 66a6cb9dbb8a0f149a6ffde2b00f3202, type: 3}

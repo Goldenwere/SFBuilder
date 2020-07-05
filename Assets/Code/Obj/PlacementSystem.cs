@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using Goldenwere.Unity.Controller;
 using SFBuilder.Gameplay;
+using Goldenwere.Unity;
 
 namespace SFBuilder.Obj
 {
@@ -14,6 +15,7 @@ namespace SFBuilder.Obj
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private GodGameCamera              gameCam;
+        [SerializeField] private float                      positionPrecision;
         [SerializeField] private GameObject[]               prefabs;
         [SerializeField] private int                        prefabUndoMaxCount;
         [SerializeField] private GameObject                 prototypeCanvas;
@@ -58,11 +60,11 @@ namespace SFBuilder.Obj
             if (isPlacing && Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
             {
                 if (prefabHadFirstHit)
-                    prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point, Time.deltaTime * 25);
+                    prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point.ToPrecision(positionPrecision), Time.deltaTime * 25);
 
                 else
                 {
-                    prefabInstance.transform.position = hit.point;
+                    prefabInstance.transform.position = hit.point.ToPrecision(positionPrecision);
                     prefabHadFirstHit = true;
                 }
             }
