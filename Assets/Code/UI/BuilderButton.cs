@@ -28,15 +28,15 @@ namespace SFBuilder.UI
         /// <param name="id">The numerical id of the BuilderObject (casted to ObjectType)</param>
         /// <param name="count">The number of the specified BuilderObject the button can create</param>
         /// <param name="required">Whether or not the BuilderObject is required (determines which working set to edit)</param>
-        public void Initialize(int id, int count, bool required)
+        public void Initialize(ButtonInfo info)
         {
             if (!initialized)
             {
-                associatedCount = count;
-                associatedID = id;
-                isRequired = required;
-                indicatorID.text = BuilderObject.NameOfType((ObjectType)id);
-                indicatorCount.text = count.ToString();
+                associatedCount = info.count;
+                associatedID = info.id;
+                isRequired = info.req;
+                indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
+                indicatorCount.text = info.count.ToString();
                 objPlacer = FindObjectOfType<PlacementSystem>();
                 initialized = true;
             }
@@ -68,22 +68,7 @@ namespace SFBuilder.UI
             indicatorCount.text = associatedCount.ToString();
             if (associatedCount <= 0)
                 button.interactable = false;
-            /*
-            if (isRequired)
-            {
-                int i = Array.IndexOf(
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements,
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements.First(g => g.goalStructureID == associatedID));
-                ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount--;
-            }
-            else
-            {
-                int i = Array.IndexOf(
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras,
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras.First(g => g.goalStructureID == associatedID));
-                ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras[i].goalStructureCount--;
-            }
-            */
+            GameEventSystem.Instance.UpdateGoalAmount(false, associatedID, isRequired);
         }
 
         /// <summary>
@@ -96,22 +81,7 @@ namespace SFBuilder.UI
             indicatorCount.text = associatedCount.ToString();
             if (associatedCount > 0 && !button.interactable)
                 button.interactable = true;
-            /*
-            if (isRequired)
-            {
-                int i = Array.IndexOf(
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements,
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements.First(g => g.goalStructureID == associatedID));
-                ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount++;
-            }
-            else
-            {
-                int i = Array.IndexOf(
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras,
-                    ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras.First(g => g.goalStructureID == associatedID));
-                ProtoGoalSystem.Instance.CurrentGoalWorkingSet.goalExtras[i].goalStructureCount++;
-            }
-            */
+            GameEventSystem.Instance.UpdateGoalAmount(true, associatedID, isRequired);
         }
         #endregion
     }

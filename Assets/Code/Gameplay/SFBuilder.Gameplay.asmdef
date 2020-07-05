@@ -1,6 +1,8 @@
 {
     "name": "SFBuilder.Gameplay",
-    "references": [],
+    "references": [
+        "GUID:e68df28b9a1e0d34997e171099f95658"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

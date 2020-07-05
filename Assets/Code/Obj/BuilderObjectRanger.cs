@@ -34,9 +34,9 @@ namespace SFBuilder.Obj
             objectHappiness = hp;
             objectPower = pp;
             objectSustenance = sp;
-            //GameScoring.Instance.PotentialPower = pp;
-            //GameScoring.Instance.PotentialSustenance = sp;
-            //GameScoring.Instance.PotentialHappiness = hp;
+            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, objectHappiness);
+            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, objectPower);
+            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, objectSustenance);
         }
 
         /// <summary>
@@ -77,7 +77,12 @@ namespace SFBuilder.Obj
             {
                 rangerMeshRenderer.enabled = false;
                 rangerSphereCollider.enabled = false;
-                //GameScoring.Instance.ApplyScore();
+                if (placedHappiness != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalHappiness, placedHappiness);
+                if (placedPower != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalPower, placedPower);
+                if (placedSustenance != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalSustenance, placedSustenance);
                 othersCollided.Clear();
             }
 
@@ -85,7 +90,12 @@ namespace SFBuilder.Obj
             {
                 rangerMeshRenderer.enabled = true;
                 rangerSphereCollider.enabled = true;
-                //GameScoring.Instance.RevokeScore(placedHappiness, placedPower, placedSustenance);
+                if (placedHappiness != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalHappiness, -placedHappiness);
+                if (placedPower != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalPower, -placedPower);
+                if (placedSustenance != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalSustenance, -placedSustenance);
             }
         }
 
@@ -94,6 +104,10 @@ namespace SFBuilder.Obj
         /// </summary>
         private void Calculate()
         {
+            int prevHappiness = placedHappiness;
+            int prevPower = placedPower;
+            int prevSustenance = placedSustenance;
+
             placedHappiness = objectHappiness;
             placedPower = objectPower;
             placedSustenance = objectSustenance;
@@ -106,9 +120,16 @@ namespace SFBuilder.Obj
                 placedSustenance += workingSustenance;
             }
 
-            //GameScoring.Instance.PotentialHappiness = placedHappiness;
-            //GameScoring.Instance.PotentialPower = placedPower;
-            //GameScoring.Instance.PotentialSustenance = placedSustenance;
+            int deltaHappiness = placedHappiness - prevHappiness;
+            int deltaPower = placedPower - prevPower;
+            int deltaSustenance = placedSustenance - prevSustenance;
+
+            if (deltaHappiness != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, deltaHappiness);
+            if (deltaPower != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, deltaPower);
+            if (deltaSustenance != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, deltaSustenance);
         }
         #endregion
     }

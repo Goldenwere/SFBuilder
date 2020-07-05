@@ -37,22 +37,22 @@ namespace SFBuilder.Gameplay
         /// <summary>
         /// Current happiness score
         /// </summary>
-        public int ScoreHappiness           { get; set; }
+        public int TotalHappiness           { get; set; }
 
         /// <summary>
         /// Current power score
         /// </summary>
-        public int ScorePower               { get; set; }
+        public int TotalPower               { get; set; }
 
         /// <summary>
         /// Current sustenance score
         /// </summary>
-        public int ScoreSustenance          { get; set; }
+        public int TotalSustenance          { get; set; }
 
         /// <summary>
         /// Current viability score
         /// </summary>
-        public int ScoreViability           { get { return ScorePower + ScoreSustenance + ScoreHappiness; } }
+        public int TotalViability           { get { return TotalPower + TotalSustenance + TotalHappiness; } }
 
         /// <summary>
         /// Temporary property used for GUI; will eventually be removed
@@ -95,7 +95,7 @@ namespace SFBuilder.Gameplay
                 GUI.Label(
                     new Rect(10, 10, 100, 20),
                     string.Format("Level: {12}, Goal: {13} ::: Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})",
-                        ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness,
+                        TotalViability, TotalPower, TotalSustenance, TotalHappiness,
                         signViability, signPower, signSustenance, signHappiness,
                         PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness,
                         LevelingSystem.Instance.CurrentLevel, GoalSystem.Instance.CurrentGoal + 1),
@@ -106,7 +106,7 @@ namespace SFBuilder.Gameplay
                 GUI.Label(
                     new Rect(10, 10, 100, 20),
                     string.Format("Level: {4}, Goal: {5} ::: Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}",
-                    ScoreViability, ScorePower, ScoreSustenance, ScoreHappiness,
+                    TotalViability, TotalPower, TotalSustenance, TotalHappiness,
                     LevelingSystem.Instance.CurrentLevel, GoalSystem.Instance.CurrentGoal + 1),
                     new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
         }
@@ -116,9 +116,9 @@ namespace SFBuilder.Gameplay
         /// </summary>
         public void ApplyScore()
         {
-            ScorePower += PotentialPower;
-            ScoreSustenance += PotentialSustenance;
-            ScoreHappiness += PotentialHappiness;
+            TotalPower += PotentialPower;
+            TotalSustenance += PotentialSustenance;
+            TotalHappiness += PotentialHappiness;
             PotentialPower = 0;
             PotentialSustenance = 0;
             PotentialHappiness = 0;
@@ -132,9 +132,39 @@ namespace SFBuilder.Gameplay
         /// <param name="sustenance">BuilderObject's placed sustenace value</param>
         public void RevokeScore(int happiness, int power, int sustenance)
         {
-            ScoreHappiness -= happiness;
-            ScorePower -= power;
-            ScoreSustenance -= sustenance;
+            TotalHappiness -= happiness;
+            TotalPower -= power;
+            TotalSustenance -= sustenance;
+        }
+
+        /// <summary>
+        /// Update the score system with a delta amount
+        /// </summary>
+        /// <param name="type">The score being updated</param>
+        /// <param name="scoreDelta">The delta value</param>
+        private void OnScoreWasChanged(ScoreType type, int scoreDelta)
+        {
+            switch(type)
+            {
+                case ScoreType.PotentialHappiness:
+                    PotentialHappiness += scoreDelta;
+                    break;
+                case ScoreType.PotentialPower:
+                    PotentialPower += scoreDelta;
+                    break;
+                case ScoreType.PotentialSustenance:
+                    PotentialSustenance += scoreDelta;
+                    break;
+                case ScoreType.TotalHappiness:
+                    TotalHappiness += scoreDelta;
+                    break;
+                case ScoreType.TotalPower:
+                    TotalPower += scoreDelta;
+                    break;
+                case ScoreType.TotalSustenance:
+                    TotalSustenance += scoreDelta;
+                    break;
+            }
         }
         #endregion
     }

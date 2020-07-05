@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SFBuilder.Gameplay
@@ -65,6 +66,7 @@ namespace SFBuilder.Gameplay
         {
             CurrentGoalWorkingSet = goals[CurrentGoal];
             SetupUI();
+            GameEventSystem.GoalChanged += OnGoalChanged;
         }
 
         /// <summary>
@@ -96,12 +98,42 @@ namespace SFBuilder.Gameplay
         public void VerifyForNextGoal()
         {
             bool test = true;
-            foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
+            foreach (GoalItem g in CurrentGoalWorkingSet.goalRequirements)
                 if (g.goalStructureCount > 0)
                     test = false;
-            canMoveOn = test && GameScoring.Instance.ScoreViability >= CurrentGoalWorkingSet.goalViability &&
-                GameScoring.Instance.ScoreHappiness > 0 && GameScoring.Instance.ScorePower > 0 && GameScoring.Instance.ScoreSustenance > 0;
+            canMoveOn = test && GameScoring.Instance.TotalViability >= CurrentGoalWorkingSet.goalViability &&
+                GameScoring.Instance.TotalHappiness > 0 && GameScoring.Instance.TotalPower > 0 && GameScoring.Instance.TotalSustenance > 0;
             uiButtonNextGoal.interactable = canMoveOn;
+        }
+
+        /// <summary>
+        /// On the GoalChanged event, update the current working set
+        /// </summary>
+        /// <param name="isUndo">Whether to increase or decrease a goal value (undo increases, normal decreases)</param>
+        /// <param name="id">The id of the BuilderObject associated with the goal</param>
+        /// <param name="isRequired">Whether the BuilderObject was a requirement</param>
+        private void OnGoalChanged(bool isUndo, int id, bool isRequired)
+        {
+            if (isRequired)
+            {
+                int i = System.Array.IndexOf(
+                    CurrentGoalWorkingSet.goalRequirements,
+                    CurrentGoalWorkingSet.goalRequirements.First(g => g.goalStructureID == id));
+                if (isUndo)
+                    CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount++;
+                else
+                    CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount--;
+            }
+            else
+            {
+                int i = System.Array.IndexOf(
+                    CurrentGoalWorkingSet.goalExtras,
+                    CurrentGoalWorkingSet.goalExtras.First(g => g.goalStructureID == id));
+                if (isUndo)
+                    CurrentGoalWorkingSet.goalExtras[i].goalStructureCount++;
+                else
+                    CurrentGoalWorkingSet.goalExtras[i].goalStructureCount--;
+            }
         }
 
         /// <summary>
@@ -114,23 +146,23 @@ namespace SFBuilder.Gameplay
             for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
                 Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
 
-            foreach (Goal g in CurrentGoalWorkingSet.goalRequirements)
+            foreach (GoalItem g in CurrentGoalWorkingSet.goalRequirements)
             {
                 RectTransform rt = Instantiate(templateRequirementButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                //rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount, true);
+                rt.SendMessage("Initialize", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = true });
                 buttonCount++;
             }
 
-            foreach (Goal g in CurrentGoalWorkingSet.goalExtras)
+            foreach (GoalItem g in CurrentGoalWorkingSet.goalExtras)
             {
                 RectTransform rt = Instantiate(templateExtraButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                //rt.GetComponent<ProtoButton>().Initialize(g.goalStructureID, g.goalStructureCount, false);
+                rt.SendMessage("Initialize", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = false });
                 buttonCount++;
             }
         }
