@@ -34,9 +34,20 @@ namespace SFBuilder.Obj
             objectHappiness = hp;
             objectPower = pp;
             objectSustenance = sp;
-            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, objectHappiness);
-            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, objectPower);
-            GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, objectSustenance);
+            Calculate();
+        }
+
+        /// <summary>
+        /// When the ranger is being destroyed, ensure the score system gets updated
+        /// </summary>
+        private void OnDestroy()
+        {
+            if (placedHappiness != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, -placedHappiness);
+            if (placedPower != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, -placedPower);
+            if (placedSustenance != 0)
+                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, -placedSustenance);
         }
 
         /// <summary>
@@ -78,11 +89,20 @@ namespace SFBuilder.Obj
                 rangerMeshRenderer.enabled = false;
                 rangerSphereCollider.enabled = false;
                 if (placedHappiness != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalHappiness, placedHappiness);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, -placedHappiness);
+                }
                 if (placedPower != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalPower, placedPower);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, -placedPower);
+                }
                 if (placedSustenance != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalSustenance, placedSustenance);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, -placedSustenance);
+                }
                 othersCollided.Clear();
             }
 
@@ -91,11 +111,20 @@ namespace SFBuilder.Obj
                 rangerMeshRenderer.enabled = true;
                 rangerSphereCollider.enabled = true;
                 if (placedHappiness != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalHappiness, -placedHappiness);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, placedHappiness);
+                }
                 if (placedPower != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalPower, -placedPower);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, placedPower);
+                }
                 if (placedSustenance != 0)
+                {
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalSustenance, -placedSustenance);
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, placedSustenance);
+                }
             }
         }
 

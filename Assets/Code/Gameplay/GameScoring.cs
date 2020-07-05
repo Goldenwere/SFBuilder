@@ -53,11 +53,6 @@ namespace SFBuilder.Gameplay
         /// Current viability score
         /// </summary>
         public int TotalViability           { get { return TotalPower + TotalSustenance + TotalHappiness; } }
-
-        /// <summary>
-        /// Temporary property used for GUI; will eventually be removed
-        /// </summary>
-        public bool IsPlacing               { get; set; }
         #endregion
         #region Methods
         /// <summary>
@@ -69,6 +64,8 @@ namespace SFBuilder.Gameplay
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
         }
 
         /// <summary>
@@ -76,39 +73,28 @@ namespace SFBuilder.Gameplay
         /// </summary>
         private void OnGUI()
         {
-            if (IsPlacing)
-            {
-                char signViability = '+';
-                char signPower = '+';
-                char signSustenance = '+';
-                char signHappiness = '+';
+            char signViability = '+';
+            char signPower = '+';
+            char signSustenance = '+';
+            char signHappiness = '+';
 
-                if (PotentialViability < 0)
-                    signViability = '\0';
-                if (PotentialPower < 0)
-                    signPower = '\0';
-                if (PotentialSustenance < 0)
-                    signSustenance = '\0';
-                if (PotentialHappiness < 0)
-                    signHappiness = '\0';
+            if (PotentialViability < 0)
+                signViability = '\0';
+            if (PotentialPower < 0)
+                signPower = '\0';
+            if (PotentialSustenance < 0)
+                signSustenance = '\0';
+            if (PotentialHappiness < 0)
+                signHappiness = '\0';
 
-                GUI.Label(
-                    new Rect(10, 10, 100, 20),
-                    string.Format("Level: {12}, Goal: {13} ::: Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})",
-                        TotalViability, TotalPower, TotalSustenance, TotalHappiness,
-                        signViability, signPower, signSustenance, signHappiness,
-                        PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness,
-                        LevelingSystem.Instance.CurrentLevel, GoalSystem.Instance.CurrentGoal + 1),
-                    new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
-            }
-
-            else
-                GUI.Label(
-                    new Rect(10, 10, 100, 20),
-                    string.Format("Level: {4}, Goal: {5} ::: Viability: {0} ::: Power: {1} / Sustenance: {2} / Happiness: {3}",
+            GUI.Label(
+                new Rect(10, 10, 100, 20),
+                string.Format("Level: {12}, Goal: {13} ::: Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})",
                     TotalViability, TotalPower, TotalSustenance, TotalHappiness,
+                    signViability, signPower, signSustenance, signHappiness,
+                    PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness,
                     LevelingSystem.Instance.CurrentLevel, GoalSystem.Instance.CurrentGoal + 1),
-                    new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
+                new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using Goldenwere.Unity.Controller;
+using SFBuilder.Gameplay;
 
 namespace SFBuilder.Obj
 {
@@ -45,7 +46,7 @@ namespace SFBuilder.Obj
         private void Start()
         {
             prefabsPlaced = new LinkedList<BuilderObject>();
-            //ProtoGoalSystem.newGoal += OnNewGoal;
+            GoalSystem.newGoal += OnNewGoal;
         }
 
         /// <summary>
@@ -81,7 +82,6 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;
                 prototypeCanvas.SetActive(false);
-                //GameScoring.Instance.IsPlacing = true;
                 return prefabInstance;
             }
 
@@ -117,8 +117,7 @@ namespace SFBuilder.Obj
                 isPlacing = false;
                 prefabHadFirstHit = false;
                 prototypeCanvas.SetActive(true);
-                //GameScoring.Instance.IsPlacing = false;
-                //ProtoGoalSystem.Instance.VerifyForNextGoal();
+                GoalSystem.Instance.VerifyForNextGoal();
             }
         }
 
@@ -137,7 +136,6 @@ namespace SFBuilder.Obj
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();
                 prefabInstance.IsPlaced = false;
-                //GameScoring.Instance.IsPlacing = true;
                 prototypeCanvas.SetActive(false);
             }
         }
