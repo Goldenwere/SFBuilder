@@ -24,7 +24,21 @@ namespace SFBuilder.Obj
         /**************/ private LinkedList<BuilderObject>  prefabsPlaced;
         /**************/ private bool                       workingModifierMouseZoom;
         #endregion
+        #region Properties
+        public static PlacementSystem   Instance    { get; private set; }
+        #endregion
         #region Methods
+        /// <summary>
+        /// Set singleton on Awake
+        /// </summary>
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+                Destroy(gameObject);
+            else
+                Instance = this;
+        }
+
         /// <summary>
         /// Instantiate list on Start and subscribe to the newGoal event
         /// </summary>

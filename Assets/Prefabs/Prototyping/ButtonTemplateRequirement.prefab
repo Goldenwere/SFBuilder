@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 5816813921996990907}
   - component: {fileID: 5816813921996990904}
   - component: {fileID: 5816813921996990905}
-  - component: {fileID: 5816813921996990906}
+  - component: {fileID: 4376682450455383318}
   m_Layer: 5
   m_Name: ButtonTemplateRequirement
   m_TagString: Untagged
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5816813921996990906}
+      - m_Target: {fileID: 4376682450455383318}
         m_MethodName: OnButtonPress
         m_Mode: 1
         m_Arguments:
@@ -519,7 +519,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5816813921996990906
+--- !u!114 &4376682450455383318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5816813921996990911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c864c8503908c9748850fcab6827eb1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 59885d5fd7ffeb74aa3ce0b43d32afd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 5816813921996990905}

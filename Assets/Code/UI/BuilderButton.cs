@@ -19,7 +19,6 @@ namespace SFBuilder.UI
         /**************/ private int                associatedID;
         /**************/ private bool               initialized;
         /**************/ private bool               isRequired;
-        /**************/ private PlacementSystem    objPlacer;
         #endregion
         #region Methods
         /// <summary>
@@ -37,7 +36,6 @@ namespace SFBuilder.UI
                 isRequired = info.req;
                 indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
                 indicatorCount.text = info.count.ToString();
-                objPlacer = FindObjectOfType<PlacementSystem>();
                 initialized = true;
             }
         }
@@ -49,7 +47,7 @@ namespace SFBuilder.UI
         {
             if (associatedCount > 0)
             {
-                BuilderObject spawned = objPlacer.OnObjectSelected(associatedID);
+                BuilderObject spawned = PlacementSystem.Instance.OnObjectSelected(associatedID);
                 if (spawned != null)
                 {
                     spawned.objectPlaced += OnObjectPlaced;
