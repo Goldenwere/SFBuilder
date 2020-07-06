@@ -61,7 +61,7 @@ namespace SFBuilder.Gameplay
 
             load.allowSceneActivation = true;
 
-            if (oldSceneIndex > 0 || oldSceneIndex == newSceneIndex)
+            if (oldSceneIndex > 0 && oldSceneIndex != newSceneIndex)
             {
                 AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneIndex);
                 while (!unload.isDone)
