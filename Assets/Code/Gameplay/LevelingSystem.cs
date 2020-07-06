@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SFBuilder.Gameplay
 {
@@ -20,8 +22,8 @@ namespace SFBuilder.Gameplay
             get { return currentLevel; }
             set
             {
+                StartCoroutine(LoadNewScene(currentLevel, value));
                 currentLevel = value;
-                // TO-DO: transitions
             }
         }
 
@@ -41,7 +43,29 @@ namespace SFBuilder.Gameplay
             else
                 Instance = this;
 
-            currentLevel = 1;
+            currentLevel = 0;
+        }
+
+        /// <summary>
+        /// Used for loading a new scene
+        /// </summary>
+        /// <param name="oldSceneIndex">The old scene to unload</param>
+        /// <param name="newSceneIndex">The new scene to load</param>
+        private IEnumerator LoadNewScene(int oldSceneIndex, int newSceneIndex)
+        {
+            AsyncOperation load = SceneManager.LoadSceneAsync(newSceneIndex, LoadSceneMode.Additive);
+            while (!load.isDone)
+                yield return null;
+
+            load.allowSceneActivation = true;
+
+            if (oldSceneIndex > 0)
+            {
+                AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneIndex);
+                while (!unload.isDone)
+                    yield return null;
+                Resources.UnloadUnusedAssets();
+            }
         }
         #endregion
     }
