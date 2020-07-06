@@ -55,19 +55,21 @@ namespace SFBuilder.Gameplay
         /// <param name="newSceneIndex">The new scene to load</param>
         private IEnumerator LoadNewScene(int oldSceneIndex, int newSceneIndex)
         {
-            AsyncOperation load = SceneManager.LoadSceneAsync(newSceneIndex, LoadSceneMode.Additive);
-            while (!load.isDone)
-                yield return null;
-
-            load.allowSceneActivation = true;
-
             if (oldSceneIndex > 0 && oldSceneIndex != newSceneIndex)
             {
                 AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneIndex);
                 while (!unload.isDone)
                     yield return null;
-                Resources.UnloadUnusedAssets();
             }
+
+            AsyncOperation load = SceneManager.LoadSceneAsync(newSceneIndex, LoadSceneMode.Additive);
+            while (!load.isDone)
+                yield return null;
+
+            load.allowSceneActivation = true;
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(newSceneIndex));
+
+            Resources.UnloadUnusedAssets();
         }
         #endregion
     }
