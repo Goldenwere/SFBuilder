@@ -13,6 +13,7 @@ namespace SFBuilder.Obj
         [SerializeField] private BoxCollider    attachedCollider;
 #pragma warning restore 0649
         /**************/ private List<Collider> collidedObjects;
+        /**************/ private const float    rayLength = 0.25f;
         #endregion
         #region Methods
         /// <summary>
@@ -33,15 +34,8 @@ namespace SFBuilder.Obj
         /// </summary>
         private void Update()
         {
-            bool foundGround = false;
-            for (int i = collidedObjects.Count - 1; i >= 0; i--)
-            {
-                if (collidedObjects[i] == null)
-                    collidedObjects.RemoveAt(i);
-                else if (collidedObjects[i].bounds.Contains(attachedCollider.bounds.max) && collidedObjects[i].bounds.Contains(attachedCollider.bounds.min))
-                    foundGround = true;
-            }
-            IsGrounded = foundGround;
+            IsGrounded = Physics.Raycast(new Ray(attachedCollider.bounds.min, Vector3.down), rayLength) &&
+                Physics.Raycast(new Ray(new Vector3(attachedCollider.bounds.max.x, attachedCollider.bounds.max.y - attachedCollider.size.y, attachedCollider.bounds.max.z), Vector3.down), rayLength);
         }
 
         /// <summary>
