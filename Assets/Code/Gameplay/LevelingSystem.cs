@@ -43,7 +43,9 @@ namespace SFBuilder.Gameplay
             else
                 Instance = this;
 
-            currentLevel = 0;
+            // First set the private member to 0 (replaced with save data) so that it will be the same when setting CurrentLevel
+            currentLevel = 1;
+            CurrentLevel = 1;
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace SFBuilder.Gameplay
 
             load.allowSceneActivation = true;
 
-            if (oldSceneIndex > 0)
+            if (oldSceneIndex > 0 || oldSceneIndex == newSceneIndex)
             {
                 AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneIndex);
                 while (!unload.isDone)
