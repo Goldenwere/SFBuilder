@@ -22,6 +22,7 @@ namespace SFBuilder.Gameplay
         [SerializeField] private GameObject         uiButtonPanel;
 #pragma warning restore 0649
         /**************/ private bool               canMoveOn;
+        /**************/ private bool               uiWasSetUp;
         #endregion
         #region Properties
         /// <summary>
@@ -65,8 +66,9 @@ namespace SFBuilder.Gameplay
         private void Start()
         {
             CurrentGoalWorkingSet = goals[CurrentGoal];
-            SetupUI();
+            uiWasSetUp = false;
             GameEventSystem.GoalChanged += OnGoalChanged;
+            GameEventSystem.GameStateChanged += OnGameStateChanged;
         }
 
         /// <summary>
@@ -104,6 +106,17 @@ namespace SFBuilder.Gameplay
             canMoveOn = test && GameScoring.Instance.TotalViability >= CurrentGoalWorkingSet.goalViability &&
                 GameScoring.Instance.TotalHappiness > 0 && GameScoring.Instance.TotalPower > 0 && GameScoring.Instance.TotalSustenance > 0;
             uiButtonNextGoal.interactable = canMoveOn;
+        }
+
+        /// <summary>
+        /// Handler for the GameStateChanged event
+        /// </summary>
+        /// <param name="prevState">The previous GameState</param>
+        /// <param name="newState">The new GameState</param>
+        private void OnGameStateChanged(GameState prevState, GameState newState)
+        {
+            if (newState == GameState.Gameplay && !uiWasSetUp)
+                SetupUI();
         }
 
         /// <summary>
