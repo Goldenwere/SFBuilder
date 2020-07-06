@@ -14,6 +14,7 @@ namespace SFBuilder.UI
         public void OnPlayPressed()
         {
             canvas.SetActive(false);
+            GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
         }
     }
 }

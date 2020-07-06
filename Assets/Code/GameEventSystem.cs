@@ -2,12 +2,30 @@
 
 namespace SFBuilder
 {
+    public delegate void GameStateChange(GameState prevState, GameState newState);
     public delegate void GoalChange(bool isUndo, int id, bool isRequired);
     public delegate void ScoreChange(ScoreType scoreChanged, int number);
 
+    /// <summary>
+    /// The GameEventSystem is used for passing data and updates to subscribed classes
+    /// </summary>
+    /// <remarks>This is a singleton that can be referenced through LevelingSystem.Instance; present in the base level</remarks>
     public class GameEventSystem : MonoBehaviour
     {
+        /// <summary>
+        /// The current state of the game
+        /// </summary>
+        public GameState CurrentGameState { get; private set; }
+
+        /// <summary>
+        /// Singleton instance of GameScoring in the game level scene
+        /// </summary>
         public static GameEventSystem Instance { get; private set; }
+
+        /// <summary>
+        /// Used for handling gamestate changes
+        /// </summary>
+        public static event GameStateChange GameStateChanged;
 
         /// <summary>
         /// Used for updating goals
@@ -33,6 +51,18 @@ namespace SFBuilder
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            CurrentGameState = GameState.MainMenus;
+        }
+
+        /// <summary>
+        /// Updates the current game state
+        /// </summary>
+        /// <param name="newState">The new GameState to be in</param>
+        public void UpdateGameState(GameState newState)
+        {
+            GameStateChanged?.Invoke(CurrentGameState, newState);
+            CurrentGameState = newState;
         }
 
         /// <summary>
@@ -75,6 +105,15 @@ namespace SFBuilder
         public int  count;
         public int  id;
         public bool req;
+    }
+
+    /// <summary>
+    /// Defines what the current state of the game is
+    /// </summary>
+    public enum GameState
+    {
+        MainMenus,
+        Gameplay
     }
 
     /// <summary>
