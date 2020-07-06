@@ -6,6 +6,7 @@ namespace Goldenwere.Unity.Controller
     public class GodGameCamera : MonoBehaviour
     {
         #region Fields
+        /**************/ public  bool           cameraMotionIsFrozen;
         #region Player/UX settings              (these ideally should be exposed to a settings/controls menu, with sensitivity representing a percentage (1=100%))
         /**************/ public  float          settingMovementSensitivity = 1f;
         /**************/ public  float          settingRotationSensitivity = 1f;
@@ -70,91 +71,102 @@ namespace Goldenwere.Unity.Controller
         /// </summary>
         private void Update()
         {
-            if (workingInputMovement)
-                PerformMovement(attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
+            if (!cameraMotionIsFrozen)
+            {
+                if (workingInputMovement)
+                    PerformMovement(attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
 
-            if (workingInputRotation)
-                PerformRotation(attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation);
+                if (workingInputRotation)
+                    PerformRotation(attachedControls.actions["Rotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation);
 
-            if (workingInputZoom)
-                PerformZoom(attachedControls.actions["Zoom"].ReadValue<float>() * sensitivityScaleZoom);
+                if (workingInputZoom)
+                    PerformZoom(attachedControls.actions["Zoom"].ReadValue<float>() * sensitivityScaleZoom);
 
-            transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingMotionSpeed);
-            pointPivot.transform.localRotation = Quaternion.Slerp(pointPivot.transform.localRotation, workingDesiredRotationHorizontal, Time.deltaTime * settingRotationSpeed);
-            pointCamera.transform.localRotation = Quaternion.Slerp(pointCamera.transform.localRotation, workingDesiredRotationVertical, Time.deltaTime * settingRotationSpeed);
+                transform.position = Vector3.Lerp(transform.position, workingDesiredPosition, Time.deltaTime * settingMotionSpeed);
+                pointPivot.transform.localRotation = Quaternion.Slerp(pointPivot.transform.localRotation, workingDesiredRotationHorizontal, Time.deltaTime * settingRotationSpeed);
+                pointCamera.transform.localRotation = Quaternion.Slerp(pointCamera.transform.localRotation, workingDesiredRotationVertical, Time.deltaTime * settingRotationSpeed);
+            }
         }
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            workingInputMovement = context.performed;
+            if (!cameraMotionIsFrozen)
+                workingInputMovement = context.performed;
         }
 
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
-            if (workingModifierMouseMovement)
+            if (!cameraMotionIsFrozen && workingModifierMouseMovement)
                 PerformMovement(context.ReadValue<Vector2>() * sensitivityScaleMovementMouse);
         }
 
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
         {
-            if (settingModifiersAreToggled)
-                workingModifierMouseMovement = !workingModifierMouseMovement;
-            else
-                workingModifierMouseMovement = context.performed;
+            if (!cameraMotionIsFrozen)
+                if (settingModifiersAreToggled)
+                    workingModifierMouseMovement = !workingModifierMouseMovement;
+                else
+                    workingModifierMouseMovement = context.performed;
         }
 
         public void OnRotation(InputAction.CallbackContext context)
         {
-            workingInputRotation = context.performed;
+            if (!cameraMotionIsFrozen)
+                workingInputRotation = context.performed;
         }
 
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
-            if (workingModifierMouseRotation)
+            if (!cameraMotionIsFrozen && workingModifierMouseRotation)
                 PerformRotation(context.ReadValue<Vector2>() * sensitivityScaleRotationMouse);
         }
 
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
         {
-            if (settingModifiersAreToggled)
-                workingModifierMouseRotation = !workingModifierMouseRotation;
-            else
-                workingModifierMouseRotation = context.performed;
-
-            if (settingRotationMode == RotationMode.CursorRaycast)
+            if (!cameraMotionIsFrozen)
             {
-                if (!workingInputMousePositionSet)
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
-                        workingInputMousePositionOnRotate = hit.point;
-                workingInputMousePositionSet = workingModifierMouseRotation;
-            }
+                if (settingModifiersAreToggled)
+                    workingModifierMouseRotation = !workingModifierMouseRotation;
+                else
+                    workingModifierMouseRotation = context.performed;
 
-            else if (settingRotationMode == RotationMode.Raycast)
-            {
-                if (!workingInputMousePositionSet)
-                    if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
-                        workingInputMousePositionOnRotate = hit.point;
-                workingInputMousePositionSet = workingModifierMouseRotation;
+                if (settingRotationMode == RotationMode.CursorRaycast)
+                {
+                    if (!workingInputMousePositionSet)
+                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+                            workingInputMousePositionOnRotate = hit.point;
+                    workingInputMousePositionSet = workingModifierMouseRotation;
+                }
+
+                else if (settingRotationMode == RotationMode.Raycast)
+                {
+                    if (!workingInputMousePositionSet)
+                        if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
+                            workingInputMousePositionOnRotate = hit.point;
+                    workingInputMousePositionSet = workingModifierMouseRotation;
+                }
             }
         }
 
         public void OnZoom(InputAction.CallbackContext context)
         {
-            workingInputZoom = context.performed;
+            if (!cameraMotionIsFrozen)
+                workingInputZoom = context.performed;
         }
 
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
-            if (workingModifierMouseZoom)
+            if (!cameraMotionIsFrozen && workingModifierMouseZoom)
                 PerformZoom(context.ReadValue<float>() * sensitivityScaleZoomMouse);
         }
 
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
-            if (settingModifiersAreToggled)
+            if (!cameraMotionIsFrozen)
+                if (settingModifiersAreToggled)
                 workingModifierMouseZoom = !workingModifierMouseZoom;
-            else
-                workingModifierMouseZoom = context.performed;
+                else
+                    workingModifierMouseZoom = context.performed;
         }
 
         private void PerformMovement(Vector2 input)

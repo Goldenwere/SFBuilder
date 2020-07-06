@@ -49,6 +49,12 @@ namespace SFBuilder.Obj
         {
             prefabsPlaced = new LinkedList<BuilderObject>();
             GoalSystem.newGoal += OnNewGoal;
+            GameEventSystem.GameStateChanged += OnGameStateChanged;
+
+            if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
+                gameCam.cameraMotionIsFrozen = true;
+            else
+                gameCam.cameraMotionIsFrozen = false;
         }
 
         /// <summary>
@@ -152,6 +158,19 @@ namespace SFBuilder.Obj
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;
+        }
+
+        /// <summary>
+        /// Handler for the GameStateChanged event
+        /// </summary>
+        /// <param name="prevState">The previous GameState</param>
+        /// <param name="newState">The new GameState</param>
+        private void OnGameStateChanged(GameState prevState, GameState newState)
+        {
+            if (newState != GameState.Gameplay)
+                gameCam.cameraMotionIsFrozen = true;
+            else
+                gameCam.cameraMotionIsFrozen = false;
         }
 
         /// <summary>
