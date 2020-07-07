@@ -64,7 +64,21 @@ namespace SFBuilder.Gameplay
                 Destroy(gameObject);
             else
                 Instance = this;
+        }
 
+        /// <summary>
+        /// On Enable, subscribe to events
+        /// </summary>
+        private void OnEnable()
+        {
+            GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
+        }
+
+        /// <summary>
+        /// On Disable, unsubscribe from events
+        /// </summary>
+        private void OnDisable()
+        {
             GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
         }
 

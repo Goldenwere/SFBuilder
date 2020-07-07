@@ -12,6 +12,7 @@ namespace SFBuilder.Gameplay
     {
         #region Fields
         private int currentLevel;   // directly equivalent to unity scenes, with scene 0 being the base scene
+        private const int maxLevels = 2;
         #endregion
         #region Properties
         /// <summary>
@@ -22,8 +23,15 @@ namespace SFBuilder.Gameplay
             get { return currentLevel; }
             set
             {
-                StartCoroutine(LoadNewScene(currentLevel, value));
-                currentLevel = value;
+                if (value <= maxLevels)
+                {
+                    StartCoroutine(LoadNewScene(currentLevel, value));
+                    currentLevel = value;
+                }
+                else
+                {
+                    GameEventSystem.Instance.UpdateGameState(GameState.MainMenus);
+                }
             }
         }
 

@@ -18,8 +18,22 @@ namespace SFBuilder.UI
                 mainCanvas.SetActive(false);
             else
                 mainCanvas.SetActive(true);
+        }
 
+        /// <summary>
+        /// On Enable, subscribe to events
+        /// </summary>
+        private void OnEnable()
+        {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
+        }
+
+        /// <summary>
+        /// On Disable, unsubscribe from events
+        /// </summary>
+        private void OnDisable()
+        {
+            GameEventSystem.GameStateChanged -= OnGameStateChanged;
         }
 
         /// <summary>

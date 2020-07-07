@@ -67,10 +67,26 @@ namespace SFBuilder.Gameplay
         {
             CurrentGoalWorkingSet = goals[CurrentGoal];
             uiWasSetUp = false;
-            GameEventSystem.GoalChanged += OnGoalChanged;
-            GameEventSystem.GameStateChanged += OnGameStateChanged;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 SetupUI();
+        }
+
+        /// <summary>
+        /// On Enable, subscribe to events
+        /// </summary>
+        private void OnEnable()
+        {
+            GameEventSystem.GameStateChanged += OnGameStateChanged;
+            GameEventSystem.GoalChanged += OnGoalChanged;
+        }
+
+        /// <summary>
+        /// On Disable, unsubscribe from events
+        /// </summary>
+        private void OnDisable()
+        {
+            GameEventSystem.GameStateChanged -= OnGameStateChanged;
+            GameEventSystem.GoalChanged -= OnGoalChanged;
         }
 
         /// <summary>
@@ -156,7 +172,7 @@ namespace SFBuilder.Gameplay
         /// </summary>
         private void SetupUI()
         {
-            uiButtonNextGoal.interactable = false;
+            VerifyForNextGoal();
             int buttonCount = 0;
             for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
                 Destroy(uiButtonPanel.transform.GetChild(i).gameObject);

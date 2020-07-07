@@ -43,18 +43,34 @@ namespace SFBuilder.Obj
         }
 
         /// <summary>
-        /// Instantiate list on Start and subscribe to the newGoal event
+        /// Instantiate list on Start
         /// </summary>
         private void Start()
         {
             prefabsPlaced = new LinkedList<BuilderObject>();
-            GoalSystem.newGoal += OnNewGoal;
-            GameEventSystem.GameStateChanged += OnGameStateChanged;
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
                 gameCam.cameraMotionIsFrozen = true;
             else
                 gameCam.cameraMotionIsFrozen = false;
+        }
+
+        /// <summary>
+        /// On Enable, subscribe to events
+        /// </summary>
+        private void OnEnable()
+        {
+            GameEventSystem.GameStateChanged += OnGameStateChanged;
+            GoalSystem.newGoal += OnNewGoal;
+        }
+
+        /// <summary>
+        /// On Disable, unsubscribe from events
+        /// </summary>
+        private void OnDisable()
+        {
+            GameEventSystem.GameStateChanged -= OnGameStateChanged;
+            GoalSystem.newGoal -= OnNewGoal;
         }
 
         /// <summary>
@@ -74,6 +90,16 @@ namespace SFBuilder.Obj
                     prefabHadFirstHit = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// On the Menu input event, load the menu
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnMenu(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                GameEventSystem.Instance.UpdateGameState(GameState.MainMenus);
         }
 
         /// <summary>
@@ -99,7 +125,7 @@ namespace SFBuilder.Obj
         /// <summary>
         /// On the ObjectRotation input event, rotate a BuilderObject as long as the zoom modifier isn't toggled
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">The related context to the input event</param>
         public void OnObjectRotation(InputAction.CallbackContext context)
         {
             if (!workingModifierMouseZoom && context.performed && isPlacing)
