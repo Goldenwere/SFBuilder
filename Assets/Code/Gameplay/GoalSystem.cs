@@ -69,6 +69,8 @@ namespace SFBuilder.Gameplay
             uiWasSetUp = false;
             GameEventSystem.GoalChanged += OnGoalChanged;
             GameEventSystem.GameStateChanged += OnGameStateChanged;
+            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
+                SetupUI();
         }
 
         /// <summary>
