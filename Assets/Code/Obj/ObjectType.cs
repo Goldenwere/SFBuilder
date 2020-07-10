@@ -31,7 +31,7 @@
         Pow_C = 34, // solar farm                   | +00 H +10 P +00 S | -3 H @ Res, +1 P @ s panel/s tower
         Pow_D = 35, // small turbine                | +00 H +06 P +00 S | -3 H @ Res
         Pow_E = 36, // large turbine                | +00 H +12 P +00 S | -5 H @ Res
-        Pow_F = 37, // lectrinium mine              | +00 H +00 P +00 S | -8 H @ Res, +3 P @ l vein, +10 P @ l deposit
+        Pow_F = 37, // lectrinium mine              | +00 H -02 P +00 S | -8 H @ Res, +4 P @ l vein, +12 P @ l deposit
         
         // -S, -P, -H when crowding
         Res_A = 48, // small cabin                  | +00 H -05 P -06 S | +1 P +1S @ cabins

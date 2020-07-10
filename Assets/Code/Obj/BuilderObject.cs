@@ -192,21 +192,23 @@ namespace SFBuilder.Obj
 
             switch (type)
             {
-                case ObjectType.Pro_A:
-                    happiness = 0;
-                    power = 3;
-                    sustenance = 0;
-                    break;
-                case ObjectType.Pro_B:
-                    happiness = 0;
-                    power = -5;
-                    sustenance = -5;
-                    break;
-                case ObjectType.Pro_C:
-                    happiness = 0;
-                    power = 0;
-                    sustenance = 5;
-                    break;
+                case ObjectType.Pro_A: happiness =  00; power =  03; sustenance =  00; break;
+                case ObjectType.Pro_B: happiness =  00; power = -05; sustenance = -05; break;
+                case ObjectType.Pro_C: happiness =  00; power =  00; sustenance =  05; break;
+                case ObjectType.Env_A: happiness =  00; power =  00; sustenance =  05; break;
+                case ObjectType.Env_B: happiness =  00; power =  00; sustenance =  08; break;
+                case ObjectType.Env_C: happiness =  00; power =  00; sustenance =  10; break;
+                case ObjectType.Env_D: happiness =  00; power = -03; sustenance =  20; break;
+                case ObjectType.Res_A: happiness =  00; power = -06; sustenance = -05; break;
+                case ObjectType.Res_B: happiness =  00; power = -06; sustenance = -08; break;
+                case ObjectType.Res_C: happiness =  00; power = -10; sustenance = -10; break;
+                case ObjectType.Res_D: happiness =  00; power = -15; sustenance = -15; break;
+                case ObjectType.Pow_A: happiness =  00; power =  03; sustenance =  00; break;
+                case ObjectType.Pow_B: happiness =  00; power =  05; sustenance =  00; break;
+                case ObjectType.Pow_C: happiness =  00; power =  10; sustenance =  00; break;
+                case ObjectType.Pow_D: happiness =  00; power =  06; sustenance =  00; break;
+                case ObjectType.Pow_E: happiness =  00; power =  12; sustenance =  00; break;
+                case ObjectType.Pow_F: happiness =  00; power = -02; sustenance =  00; break;
             }
         }
 
