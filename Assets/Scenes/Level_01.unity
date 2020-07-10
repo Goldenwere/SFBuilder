@@ -1121,12 +1121,12 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalViability
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalViability
-      value: 2
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -1151,7 +1151,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalExtras.Array.data[1].goalStructureCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -1221,7 +1221,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalViability
-      value: 3
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
