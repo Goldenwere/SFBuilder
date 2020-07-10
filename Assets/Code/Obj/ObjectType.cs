@@ -11,7 +11,7 @@
         // 032-047: power
         // 048-063: residential
         // 064-095: environment
-        // 096-127: commercial
+        // 096-127: commercial/municipal
 
         Pro_A = 00, // power source                 | +00 H +03 P +00 S | -5 H @ residence, +3 P @ power source
         Pro_B = 01, // residence                    | +00 H -05 P -05 S | x
@@ -34,8 +34,8 @@
         Pow_F = 37, // lectrinium mine              | +00 H -02 P +00 S | -8 H @ Res, +4 P @ l vein, +12 P @ l deposit
         
         // -S, -P, -H when crowding
-        Res_A = 48, // small cabin                  | +00 H -05 P -06 S | +1 P +1S @ cabins
-        Res_B = 49, // large cabin                  | +00 H -06 P -08 S | +1 P +1S @ cabins
+        Res_A = 48, // small cabin                  | +00 H -05 P -06 S | +1 P +1 S @ cabins
+        Res_B = 49, // large cabin                  | +00 H -06 P -08 S | +1 P +1 S @ cabins
         Res_C = 50, // small apartment              | +00 H -10 P -10 S | -5 H @ apartments
         Res_D = 51, // apartment tower              | +00 H -15 P -15 S | -8 H @ apartments
         
