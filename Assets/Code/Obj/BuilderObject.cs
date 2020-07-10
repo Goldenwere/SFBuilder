@@ -231,61 +231,21 @@ namespace SFBuilder.Obj
                 case ObjectType.Pro_A:
                     switch (existing)
                     {
-                        case ObjectType.Pro_A:
-                            happiness = 0;
-                            power = 3;
-                            sustenance = 0;
-                            break;
-                        case ObjectType.Pro_B:
-                            happiness = -5;
-                            power = 0;
-                            sustenance = 0;
-                            break;
-                        case ObjectType.Pro_C:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
+                        case ObjectType.Pro_A: happiness =  00; power =  03; sustenance =  00; break;
+                        case ObjectType.Pro_B: happiness = -05; power =  00; sustenance =  00; break;
                     }
                     break;
                 case ObjectType.Pro_B:
                     switch (existing)
                     {
-                        case ObjectType.Pro_A:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
-                        case ObjectType.Pro_B:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
-                        case ObjectType.Pro_C:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
+                        case ObjectType.Pro_A: happiness = -05; power =  00; sustenance =  00; break;
+                        case ObjectType.Pro_C: happiness =  03; power =  00; sustenance =  03; break;
                     }
                     break;
                 case ObjectType.Pro_C:
                     switch (existing)
                     {
-                        case ObjectType.Pro_A:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
-                        case ObjectType.Pro_B:
-                            happiness = 3;
-                            power = 0;
-                            sustenance = 3;
-                            break;
-                        case ObjectType.Pro_C:
-                            happiness = 0;
-                            power = 0;
-                            sustenance = 0;
-                            break;
+                        case ObjectType.Pro_B: happiness =  03; power =  00; sustenance =  03; break;
                     }
                     break;
             }
