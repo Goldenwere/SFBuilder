@@ -220,7 +220,7 @@ namespace Goldenwere.Unity.Controller
             bool willCollide = false;
             foreach (Collider c in cols)
             {
-                if (!willCollide)
+                if (!willCollide && c.gameObject.layer != 2)
                 {
                     Vector3 headingCurr = c.transform.position - pos - dir;
                     float dotCurr = Vector3.Dot(headingCurr, pos - dir);
