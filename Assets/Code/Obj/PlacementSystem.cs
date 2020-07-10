@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+using System.Linq;
 using System.Collections.Generic;
+using Goldenwere.Unity;
 using Goldenwere.Unity.Controller;
 using SFBuilder.Gameplay;
-using Goldenwere.Unity;
 
 namespace SFBuilder.Obj
 {
@@ -14,18 +16,18 @@ namespace SFBuilder.Obj
     {
         #region Fields
 #pragma warning disable 0649
-        [SerializeField] private GodGameCamera              gameCam;
-        [SerializeField] private float                      positionPrecision;
-        [SerializeField] private GameObject[]               prefabs;
-        [SerializeField] private int                        prefabUndoMaxCount;
-        [SerializeField] private GameObject                 prototypeCanvas;
-        [SerializeField] private float                      rotationAngleMagnitude;
+        [SerializeField] private GodGameCamera                  gameCam;
+        [SerializeField] private float                          positionPrecision;
+        [SerializeField] private BuilderObjectTypeToPrefab[]    prefabs;
+        [SerializeField] private int                            prefabUndoMaxCount;
+        [SerializeField] private GameObject                     prototypeCanvas;
+        [SerializeField] private float                          rotationAngleMagnitude;
 #pragma warning restore 0649
-        /**************/ private bool                       isPlacing;
-        /**************/ private bool                       prefabHadFirstHit;
-        /**************/ private BuilderObject              prefabInstance;
-        /**************/ private LinkedList<BuilderObject>  prefabsPlaced;
-        /**************/ private bool                       workingModifierMouseZoom;
+        /**************/ private bool                           isPlacing;
+        /**************/ private bool                           prefabHadFirstHit;
+        /**************/ private BuilderObject                  prefabInstance;
+        /**************/ private LinkedList<BuilderObject>      prefabsPlaced;
+        /**************/ private bool                           workingModifierMouseZoom;
         #endregion
         #region Properties
         public static PlacementSystem   Instance    { get; private set; }
@@ -111,7 +113,7 @@ namespace SFBuilder.Obj
         {
             if (!isPlacing)
             {
-                prefabInstance = Instantiate(prefabs[id]).GetComponent<BuilderObject>();
+                prefabInstance = Instantiate(prefabs.First(p => p.type == (ObjectType)id).prefab).GetComponent<BuilderObject>();
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;

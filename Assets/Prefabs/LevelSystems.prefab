@@ -1004,9 +1004,21 @@ MonoBehaviour:
   gameCam: {fileID: 5264296987418984769}
   positionPrecision: 0.1
   prefabs:
-  - {fileID: 296870517179958410, guid: fa06b44959940fc4e8722c4398dd5615, type: 3}
-  - {fileID: 7584512831872834971, guid: 66a6cb9dbb8a0f149a6ffde2b00f3202, type: 3}
-  - {fileID: 7867688131757687320, guid: d3c387a49c893e34eb1998e5fa7511dd, type: 3}
+  - type: 64
+    prefab: {fileID: 7815806931368075209, guid: 652aaa1df9a9b164393687d13deb0121,
+      type: 3}
+  - type: 32
+    prefab: {fileID: 6793497533596457633, guid: 273014e28ba99ef47a35ec977dcce08d,
+      type: 3}
+  - type: 33
+    prefab: {fileID: 6112506658917758652, guid: 0979109d73c22764283121b903e59ff4,
+      type: 3}
+  - type: 48
+    prefab: {fileID: 7321400171403098830, guid: feb55811c33e2334ca9cb9ae3d573184,
+      type: 3}
+  - type: 49
+    prefab: {fileID: 1929210737111410703, guid: 071adcea67502aa448f74fa0b03efaa9,
+      type: 3}
   prefabUndoMaxCount: 16
   prototypeCanvas: {fileID: 5264296985718816288}
   rotationAngleMagnitude: 15
