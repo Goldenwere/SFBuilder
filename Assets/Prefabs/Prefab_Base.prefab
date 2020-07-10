@@ -79,7 +79,8 @@ MonoBehaviour:
   grounder: {fileID: 1638472646207829805}
   materialNormal: {fileID: 2100000, guid: f354478e8ed01994c9c1bc0f9749a020, type: 2}
   materialPlacing: {fileID: 2100000, guid: 6f6d510812d0be7419f5ca5c028723d6, type: 2}
-  objectBody: {fileID: 8086340835132861076}
+  objectBody:
+  - {fileID: 0}
   ranger: {fileID: 7726075060556647232}
   type: 0
 --- !u!1 &1638472646207829806
@@ -250,7 +251,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7726075060556647246
 Rigidbody:
