@@ -15,7 +15,7 @@ namespace SFBuilder.Obj
         [SerializeField] private BuilderObjectGrounder  grounder;
         [SerializeField] private Material               materialNormal;
         [SerializeField] private Material               materialPlacing;
-        [SerializeField] private MeshRenderer           objectBody;
+        [SerializeField] private MeshRenderer[]         objectBody;
         [SerializeField] private BuilderObjectRanger    ranger;
         [SerializeField] private ObjectType             type;
 #pragma warning restore 0649
@@ -44,7 +44,8 @@ namespace SFBuilder.Obj
                 isPlaced = value;
                 if (isPlaced)
                 {
-                    objectBody.material = materialNormal;
+                    foreach (MeshRenderer child in objectBody)
+                        child.material = materialNormal;
                     grounder.enabled = false;
                     ranger.SetPlaced(true);
                     ranger.enabled = false;
@@ -52,7 +53,8 @@ namespace SFBuilder.Obj
                 }
                 else
                 {
-                    objectBody.material = materialPlacing;
+                    foreach (MeshRenderer child in objectBody)
+                        child.material = materialPlacing;
                     grounder.enabled = true;
                     ranger.SetPlaced(false);
                     ranger.enabled = true;
@@ -99,9 +101,11 @@ namespace SFBuilder.Obj
             if (!IsPlaced)
             {
                 if (IsValid)
-                    objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
+                    foreach (MeshRenderer child in objectBody)
+                        child.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
                 else
-                    objectBody.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
+                    foreach (MeshRenderer child in objectBody)
+                        child.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
             }
         }
 

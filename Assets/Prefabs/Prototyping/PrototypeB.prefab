@@ -360,7 +360,8 @@ MonoBehaviour:
   grounder: {fileID: 3797504935639660382}
   materialNormal: {fileID: 2100000, guid: 9126acb328c670449956f0a221ccacc6, type: 2}
   materialPlacing: {fileID: 2100000, guid: 3e6ed5e4474296f49be45f183b536146, type: 2}
-  objectBody: {fileID: 5258339961260970507}
+  objectBody:
+  - {fileID: 5258339961260970507}
   ranger: {fileID: 2206868411602045902}
   type: 1
 --- !u!1001 &6841381693778221414

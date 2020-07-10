@@ -81,7 +81,8 @@ MonoBehaviour:
   grounder: {fileID: 4499235019406033907}
   materialNormal: {fileID: 2100000, guid: 807ee6d9500206e43898e9e38c888701, type: 2}
   materialPlacing: {fileID: 2100000, guid: 705d4686182fb8d4fbd523c4218befc9, type: 2}
-  objectBody: {fileID: 5739847240563825014}
+  objectBody:
+  - {fileID: 5739847240563825014}
   ranger: {fileID: 8751570635215915069}
   type: 0
 --- !u!1 &2331036576099200250
