@@ -166,9 +166,9 @@ namespace SFBuilder.Obj
         {
             switch (type)
             {
-                case ObjectType.PrototypeA: return "Power Source";
-                case ObjectType.PrototypeB: return "Residence";
-                case ObjectType.PrototypeC: return "Community Garden";
+                case ObjectType.Pro_A: return "Power Source";
+                case ObjectType.Pro_B: return "Residence";
+                case ObjectType.Pro_C: return "Community Garden";
                 default: return "Unknown";
             }
         }
@@ -188,17 +188,17 @@ namespace SFBuilder.Obj
 
             switch (type)
             {
-                case ObjectType.PrototypeA:
+                case ObjectType.Pro_A:
                     happiness = 0;
                     power = 3;
                     sustenance = 0;
                     break;
-                case ObjectType.PrototypeB:
+                case ObjectType.Pro_B:
                     happiness = 0;
                     power = -5;
                     sustenance = -5;
                     break;
-                case ObjectType.PrototypeC:
+                case ObjectType.Pro_C:
                     happiness = 0;
                     power = 0;
                     sustenance = 5;
@@ -222,60 +222,60 @@ namespace SFBuilder.Obj
 
             switch (toBePlaced)
             {
-                case ObjectType.PrototypeA:
+                case ObjectType.Pro_A:
                     switch (existing)
                     {
-                        case ObjectType.PrototypeA:
+                        case ObjectType.Pro_A:
                             happiness = 0;
                             power = 3;
                             sustenance = 0;
                             break;
-                        case ObjectType.PrototypeB:
+                        case ObjectType.Pro_B:
                             happiness = -5;
                             power = 0;
                             sustenance = 0;
                             break;
-                        case ObjectType.PrototypeC:
+                        case ObjectType.Pro_C:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
                             break;
                     }
                     break;
-                case ObjectType.PrototypeB:
+                case ObjectType.Pro_B:
                     switch (existing)
                     {
-                        case ObjectType.PrototypeA:
+                        case ObjectType.Pro_A:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
                             break;
-                        case ObjectType.PrototypeB:
+                        case ObjectType.Pro_B:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
                             break;
-                        case ObjectType.PrototypeC:
+                        case ObjectType.Pro_C:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
                             break;
                     }
                     break;
-                case ObjectType.PrototypeC:
+                case ObjectType.Pro_C:
                     switch (existing)
                     {
-                        case ObjectType.PrototypeA:
+                        case ObjectType.Pro_A:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
                             break;
-                        case ObjectType.PrototypeB:
+                        case ObjectType.Pro_B:
                             happiness = 3;
                             power = 0;
                             sustenance = 3;
                             break;
-                        case ObjectType.PrototypeC:
+                        case ObjectType.Pro_C:
                             happiness = 0;
                             power = 0;
                             sustenance = 0;
