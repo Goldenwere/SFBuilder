@@ -196,7 +196,16 @@ namespace SFBuilder.Obj
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState != GameState.Gameplay)
+            {
                 gameCam.cameraMotionIsFrozen = true;
+                if (isPlacing)
+                {
+                    Destroy(prefabInstance.gameObject);
+                    isPlacing = false;
+                    prefabHadFirstHit = false;
+                    prefabInstance = null;
+                }
+            }
             else
                 gameCam.cameraMotionIsFrozen = false;
         }
