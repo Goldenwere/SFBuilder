@@ -173,6 +173,26 @@ namespace SFBuilder.Obj
                 case ObjectType.Pro_A: return "Power Source";
                 case ObjectType.Pro_B: return "Residence";
                 case ObjectType.Pro_C: return "Community Garden";
+                case ObjectType.Nat_A: return "Alien Wildlife";
+                case ObjectType.Nat_B: return "Small Rocks";
+                case ObjectType.Nat_C: return "Large Rocks";
+                case ObjectType.Nat_D: return "Lectrinium Vein";
+                case ObjectType.Nat_E: return "Lectrinium Deposit";
+                case ObjectType.Nat_F: return "Metals Deposit";
+                case ObjectType.Pow_A: return "Solar Panel";
+                case ObjectType.Pow_B: return "Solar Tower";
+                case ObjectType.Pow_C: return "Solar Farm";
+                case ObjectType.Pow_D: return "Small Turbine";
+                case ObjectType.Pow_E: return "Large Turbine";
+                case ObjectType.Pow_F: return "Lectrinium Mine";
+                case ObjectType.Res_A: return "Small Cabin";
+                case ObjectType.Res_B: return "Large Cabin";
+                case ObjectType.Res_C: return "Small Apartment";
+                case ObjectType.Res_D: return "Apartment Tower";
+                case ObjectType.Env_A: return "Community Garden";
+                case ObjectType.Env_B: return "Small Farm";
+                case ObjectType.Env_C: return "Large Farm";
+                case ObjectType.Env_D: return "Vertical Farm";
                 default: return "Unknown";
             }
         }
