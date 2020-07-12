@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09532911, g: 0.098414816, b: 0.11365523, a: 1}
+  m_IndirectSpecularColor: {r: 0.009313174, g: 0.009778582, b: 0.012274216, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1116,7 +1116,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -1226,22 +1226,22 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureID
-      value: 48
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureID
-      value: 49
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -1266,12 +1266,32 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.data[2].goalStructureCount
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.data[2].goalStructureID
-      value: 64
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalExtras.Array.data[3].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalExtras.Array.data[3].goalStructureID
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalExtras.Array.data[4].goalStructureCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalExtras.Array.data[4].goalStructureID
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185327, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -1328,6 +1348,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[5].type
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 3752607397668691040, guid: d9b82a7f1e3680543937ad79d3dd2db1,
+        type: 3}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[6].type
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 6356869309455585978, guid: 5f3a24f35661135458bc61bb85588f2d,
+        type: 3}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[7].type
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[7].prefab
+      value: 
+      objectReference: {fileID: 2225282479968401124, guid: 9a117b136f3048f429f26c5ee4a3c37b,
+        type: 3}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[8].type
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[8].prefab
+      value: 
+      objectReference: {fileID: 2730579549542326551, guid: ef01a5a7517273045a5cf22f69062dae,
+        type: 3}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[9].type
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296987418984768, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: prefabs.Array.data[9].prefab
+      value: 
+      objectReference: {fileID: 7527221505445724345, guid: ba278d8ed095e594a8e36f9a258983bd,
+        type: 3}
     - target: {fileID: 5264296987418984783, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: m_LocalPosition.y
