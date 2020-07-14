@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7958982078176096558}
   - component: {fileID: 5449717468434527442}
   - component: {fileID: 7708913386609400287}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103138205169690243}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4200675109623039917}
   m_Father: {fileID: 8931256018990739749}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5449717468434527442
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 4282590492270746591}
   - component: {fileID: 6682550241362583607}
   - component: {fileID: 325584909697938832}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NurbsCurve.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 2324489562480004351}
   - component: {fileID: 3891363968874458763}
   - component: {fileID: 2272928855480066065}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,13 +350,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674993904541587662}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8931256018990739749}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3891363968874458763
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 4200675109623039917}
   - component: {fileID: 2634958170739293735}
   - component: {fileID: 482769304858244681}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NurbsCurve.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 2355684689577911902}
   - component: {fileID: 4191016486641306440}
   - component: {fileID: 13977725197632092}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NurbsCurve.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,8 +696,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8931256018990739749}
-  m_Layer: 0
-  m_Name: Power_E
+  m_Layer: 2
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 5729586520864467520}
   - component: {fileID: 3926792551195172062}
   - component: {fileID: 4861856725696708609}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,13 +745,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8643789732137690282}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8931256018990739749}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3926792551195172062
 MeshFilter:
   m_ObjectHideFlags: 0

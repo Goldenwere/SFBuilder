@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6681509397420493029}
   - component: {fileID: 7279271158040413485}
   - component: {fileID: 7658008305392198016}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2056802730972122957}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4516043543997704458}
   - component: {fileID: 6334477243783367372}
   - component: {fileID: 6130327482667672535}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrame.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 2308389750308647315}
   - component: {fileID: 4803632993807508899}
   - component: {fileID: 6320436210162491278}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 5540949635490018635}
   - component: {fileID: 6328528332267721998}
   - component: {fileID: 6961513105246594470}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 5132757604612698775}
   - component: {fileID: 5870987204182053091}
   - component: {fileID: 8715056714551484025}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,13 +502,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3006339443634464422}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2056802730972122957}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5870987204182053091
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 8418276886826803979}
   - component: {fileID: 1814654988934294657}
   - component: {fileID: 7276573719370019388}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrame.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 8622475538301410294}
   - component: {fileID: 7210298037785278951}
   - component: {fileID: 6728283237850325007}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCap.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 3193199157302119921}
   - component: {fileID: 834371037066418260}
   - component: {fileID: 8843452732715061687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 2306262602525161936}
   - component: {fileID: 6971987747129850613}
   - component: {fileID: 4354137605716616042}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 7124249124886048987}
   - component: {fileID: 1430572022505063262}
   - component: {fileID: 2578880423441645907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4784449243660337754}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -910,7 +910,7 @@ Transform:
   - {fileID: 6681509397420493029}
   m_Father: {fileID: 2056802730972122957}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1430572022505063262
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 397386710601529542}
   - component: {fileID: 4215620095938327169}
   - component: {fileID: 5065206531825014081}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blade.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 1445086394605739445}
   - component: {fileID: 6576953613280338198}
   - component: {fileID: 494188263201826576}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 8553550614376959367}
   - component: {fileID: 6126079015899492823}
   - component: {fileID: 5497571303455245215}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrame.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 1009450732251953246}
   - component: {fileID: 8031853195141387905}
   - component: {fileID: 2909904257053226372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCapExtrusion.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 1128755121244955202}
   - component: {fileID: 5644050657765134316}
   - component: {fileID: 3313692819355258076}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BladeFrameCap.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 4320158349119657352}
   - component: {fileID: 3787886699989245996}
   - component: {fileID: 5461813756764989271}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blade.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 6431503505402777967}
   - component: {fileID: 3305544829651985822}
   - component: {fileID: 3365305700486811763}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blade.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
