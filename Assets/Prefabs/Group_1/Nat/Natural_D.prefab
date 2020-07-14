@@ -82,6 +82,7 @@ MonoBehaviour:
   materialPlacing: {fileID: 2100000, guid: 6f6d510812d0be7419f5ca5c028723d6, type: 2}
   objectBody:
   - {fileID: 8831425938876688695}
+  isPlacedAtStart: 1
   ranger: {fileID: 6793763478316909123}
   type: 19
 --- !u!1 &2579935344795893293

@@ -196,6 +196,7 @@ MonoBehaviour:
   - {fileID: 2457152974271559848}
   - {fileID: 8548301383274548342}
   - {fileID: 7749823414482995626}
+  isPlacedAtStart: 1
   ranger: {fileID: 6168504043454712048}
   type: 18
 --- !u!1 &2891139279231087774

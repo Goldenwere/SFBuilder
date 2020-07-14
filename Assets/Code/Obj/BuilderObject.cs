@@ -16,6 +16,7 @@ namespace SFBuilder.Obj
         [SerializeField] private Material               materialNormal;
         [SerializeField] private Material               materialPlacing;
         [SerializeField] private MeshRenderer[]         objectBody;
+        [SerializeField] private bool                   isPlacedAtStart;
         [SerializeField] private BuilderObjectRanger    ranger;
         [SerializeField] private ObjectType             type;
 #pragma warning restore 0649
@@ -91,6 +92,8 @@ namespace SFBuilder.Obj
         private void Start()
         {
             collidedObjects = new List<GameObject>(16);
+            if (isPlacedAtStart)
+                IsPlaced = true;
         }
 
         /// <summary>
