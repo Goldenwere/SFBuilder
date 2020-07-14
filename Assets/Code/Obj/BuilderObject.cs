@@ -296,6 +296,35 @@ namespace SFBuilder.Obj
                         case ObjectType.Pow_B: happiness = +00; power = +01; sustenance = +00; break;
                     }
                     break;
+                case ObjectType.Pow_D:
+                    switch (existing)
+                    {
+                        case ObjectType.Res_A:
+                        case ObjectType.Res_B:
+                        case ObjectType.Res_C:
+                        case ObjectType.Res_D: happiness = -03; power = +00; sustenance = +00; break;
+                    }
+                    break;
+                case ObjectType.Pow_E:
+                    switch (existing)
+                    {
+                        case ObjectType.Res_A:
+                        case ObjectType.Res_B:
+                        case ObjectType.Res_C:
+                        case ObjectType.Res_D: happiness = -05; power = +00; sustenance = +00; break;
+                    }
+                    break;
+                case ObjectType.Pow_F:
+                    switch (existing)
+                    {
+                        case ObjectType.Nat_D: happiness = +00; power = +03; sustenance = +00; break;
+                        case ObjectType.Nat_E: happiness = +00; power = +10; sustenance = +00; break;
+                        case ObjectType.Res_A:
+                        case ObjectType.Res_B:
+                        case ObjectType.Res_C:
+                        case ObjectType.Res_D: happiness = -05; power = +00; sustenance = +00; break;
+                    }
+                    break;
                 #endregion
                 #region Residential
                 case ObjectType.Res_A:
@@ -349,6 +378,28 @@ namespace SFBuilder.Obj
                         case ObjectType.Res_B: happiness = +03; power = +00; sustenance = +00; break;
                         case ObjectType.Res_C:
                         case ObjectType.Res_D: happiness = +05; power = +00; sustenance = +00; break;
+                    }
+                    break;
+                case ObjectType.Env_B:
+                case ObjectType.Env_C:
+                    switch (existing)
+                    {
+                        case ObjectType.Env_A: happiness = +00; power = +00; sustenance = +01; break;
+                        case ObjectType.Env_B:
+                        case ObjectType.Env_C: happiness = +00; power = +00; sustenance = +02; break;
+                        case ObjectType.Res_A:
+                        case ObjectType.Res_B: happiness = +01; power = +00; sustenance = +00; break;
+                        case ObjectType.Res_C:
+                        case ObjectType.Res_D: happiness = +03; power = +00; sustenance = +00; break;
+                    }
+                    break;
+                case ObjectType.Env_D:
+                    switch(existing)
+                    {
+                        case ObjectType.Res_A:
+                        case ObjectType.Res_B:
+                        case ObjectType.Res_C:
+                        case ObjectType.Res_D: happiness = -01; power = +00; sustenance = +00; break;
                     }
                     break;
                 #endregion
