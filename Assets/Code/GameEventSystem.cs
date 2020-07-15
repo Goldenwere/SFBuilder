@@ -128,6 +128,7 @@ namespace SFBuilder
         TotalHappiness,
         TotalPower,
         TotalSustenance,
-        TotalViability
+        TotalViability,
+        CurrentGoal
     }
 }
