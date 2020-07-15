@@ -173,6 +173,7 @@ namespace SFBuilder.Obj
                 prefabsPlaced.RemoveFirst();
                 prefabInstance.IsPlaced = false;
                 placementUI.SetActive(false);
+                GoalSystem.Instance.VerifyForNextGoal();
             }
         }
 
