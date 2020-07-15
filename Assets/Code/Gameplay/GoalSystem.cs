@@ -97,6 +97,7 @@ namespace SFBuilder.Gameplay
             if (canMoveOn)
             {
                 CurrentGoal++;
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
                 if (CurrentGoal < goals.Length)
                 {
                     CurrentGoalWorkingSet = goals[CurrentGoal];

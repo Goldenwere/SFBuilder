@@ -17,7 +17,10 @@ namespace SFBuilder.UI
         private void Start()
         {
             workingString = new string[2] { "", "" };
-            OnScoreWasChanged(associatedType, 0);
+            if (associatedType == ScoreType.CurrentGoal)
+                OnScoreWasChanged(associatedType, 1);
+            else
+                OnScoreWasChanged(associatedType, 0);
         }
 
         /// <summary>
