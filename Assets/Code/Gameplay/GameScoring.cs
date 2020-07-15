@@ -83,39 +83,28 @@ namespace SFBuilder.Gameplay
         }
 
         /// <summary>
-        /// Temporary GUI drawing to show current values of variables
-        /// </summary>
-        private void OnGUI()
-        {
-            char signViability = '+';
-            char signPower = '+';
-            char signSustenance = '+';
-            char signHappiness = '+';
-
-            if (PotentialViability < 0)
-                signViability = '\0';
-            if (PotentialPower < 0)
-                signPower = '\0';
-            if (PotentialSustenance < 0)
-                signSustenance = '\0';
-            if (PotentialHappiness < 0)
-                signHappiness = '\0';
-
-            GUI.Label(
-                new Rect(10, 10, 100, 20),
-                string.Format("Level: {12}, Goal: {13} ::: Viability: {0} ({4}{8}) ::: Power: {1} ({5}{9}) / Sustenance: {2} ({6}{10}) / Happiness: {3} ({7}{11})",
-                    TotalViability, TotalPower, TotalSustenance, TotalHappiness,
-                    signViability, signPower, signSustenance, signHappiness,
-                    PotentialViability, PotentialPower, PotentialSustenance, PotentialHappiness,
-                    LevelingSystem.Instance.CurrentLevel, GoalSystem.Instance.CurrentGoal + 1),
-                new GUIStyle { normal = new GUIStyleState { textColor = Color.magenta }, fontSize = 32 });
-        }
-
-        /// <summary>
         /// Applies potential to current scores once a BuilderObject is placed
         /// </summary>
         public void ApplyScore()
         {
+            if (PotentialHappiness != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            }
+            if (PotentialPower != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
+            }
+            if (PotentialSustenance != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+            }
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+
             TotalPower += PotentialPower;
             TotalSustenance += PotentialSustenance;
             TotalHappiness += PotentialHappiness;
@@ -132,9 +121,22 @@ namespace SFBuilder.Gameplay
         /// <param name="sustenance">BuilderObject's placed sustenace value</param>
         public void RevokeScore(int happiness, int power, int sustenance)
         {
-            TotalHappiness -= happiness;
-            TotalPower -= power;
-            TotalSustenance -= sustenance;
+            if (happiness != 0)
+            {
+                TotalHappiness -= happiness;
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            }
+            if (power != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+                TotalPower -= power;
+            }
+            if (sustenance != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+                TotalSustenance -= sustenance;
+            }
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
         }
 
         /// <summary>
@@ -148,21 +150,33 @@ namespace SFBuilder.Gameplay
             {
                 case ScoreType.PotentialHappiness:
                     PotentialHappiness += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
                     break;
                 case ScoreType.PotentialPower:
                     PotentialPower += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
                     break;
                 case ScoreType.PotentialSustenance:
                     PotentialSustenance += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
                     break;
                 case ScoreType.TotalHappiness:
                     TotalHappiness += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
                     break;
                 case ScoreType.TotalPower:
                     TotalPower += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
                     break;
                 case ScoreType.TotalSustenance:
                     TotalSustenance += scoreDelta;
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
                     break;
             }
         }
