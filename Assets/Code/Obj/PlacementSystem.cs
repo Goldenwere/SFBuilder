@@ -20,7 +20,7 @@ namespace SFBuilder.Obj
         [SerializeField] private float                          positionPrecision;
         [SerializeField] private BuilderObjectTypeToPrefab[]    prefabs;
         [SerializeField] private int                            prefabUndoMaxCount;
-        [SerializeField] private GameObject                     prototypeCanvas;
+        [SerializeField] private GameObject                     placementUI;
         [SerializeField] private float                          rotationAngleMagnitude;
 #pragma warning restore 0649
         /**************/ private bool                           isPlacing;
@@ -117,7 +117,7 @@ namespace SFBuilder.Obj
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;
-                prototypeCanvas.SetActive(false);
+                placementUI.SetActive(false);
                 return prefabInstance;
             }
 
@@ -152,7 +152,7 @@ namespace SFBuilder.Obj
                 prefabInstance = null;
                 isPlacing = false;
                 prefabHadFirstHit = false;
-                prototypeCanvas.SetActive(true);
+                placementUI.SetActive(true);
                 GoalSystem.Instance.VerifyForNextGoal();
             }
         }
@@ -172,7 +172,7 @@ namespace SFBuilder.Obj
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();
                 prefabInstance.IsPlaced = false;
-                prototypeCanvas.SetActive(false);
+                placementUI.SetActive(false);
             }
         }
 

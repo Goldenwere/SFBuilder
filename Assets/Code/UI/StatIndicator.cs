@@ -74,7 +74,7 @@ namespace SFBuilder.UI
                     else
                     {
                         associatedTextElement.color = Color.red;
-                        workingString[1] = "(-";
+                        workingString[1] = "(";
                     }
 
                     workingString[1] += val.ToString() + ")";
