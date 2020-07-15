@@ -129,6 +129,7 @@ namespace SFBuilder
         TotalPower,
         TotalSustenance,
         TotalViability,
-        CurrentGoal
+        CurrentGoal,
+        CurrentGoalMinimumViability
     }
 }

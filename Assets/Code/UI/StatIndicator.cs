@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using SFBuilder.Gameplay;
 
 namespace SFBuilder.UI
 {
@@ -19,6 +20,8 @@ namespace SFBuilder.UI
             workingString = new string[2] { "", "" };
             if (associatedType == ScoreType.CurrentGoal)
                 OnScoreWasChanged(associatedType, 1);
+            else if (associatedType == ScoreType.CurrentGoalMinimumViability)
+                OnScoreWasChanged(associatedType, GoalSystem.Instance.CurrentGoalWorkingSet.goalViability);
             else
                 OnScoreWasChanged(associatedType, 0);
         }

@@ -101,6 +101,7 @@ namespace SFBuilder.Gameplay
                 if (CurrentGoal < goals.Length)
                 {
                     CurrentGoalWorkingSet = goals[CurrentGoal];
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
                 }
                 else
