@@ -124,8 +124,10 @@ namespace SFBuilder
         PotentialHappiness,
         PotentialPower,
         PotentialSustenance,
+        PotentialViability,
         TotalHappiness,
         TotalPower,
-        TotalSustenance
+        TotalSustenance,
+        TotalViability
     }
 }
