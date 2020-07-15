@@ -27,6 +27,7 @@ namespace SFBuilder.Obj
         /**************/ private bool                           prefabHadFirstHit;
         /**************/ private BuilderObject                  prefabInstance;
         /**************/ private LinkedList<BuilderObject>      prefabsPlaced;
+        /**************/ private float                          workingLastRotation;
         /**************/ private bool                           workingModifierMouseZoom;
         #endregion
         #region Properties
@@ -114,6 +115,7 @@ namespace SFBuilder.Obj
             if (!isPlacing)
             {
                 prefabInstance = Instantiate(prefabs.First(p => p.type == (ObjectType)id).prefab).GetComponent<BuilderObject>();
+                prefabInstance.transform.Rotate(Vector3.up, workingLastRotation);
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;
@@ -131,10 +133,22 @@ namespace SFBuilder.Obj
         public void OnObjectRotation(InputAction.CallbackContext context)
         {
             if (!workingModifierMouseZoom && context.performed && isPlacing)
+            {
                 if (context.ReadValue<float>() > 0)
+                {
                     prefabInstance.transform.Rotate(Vector3.up, -rotationAngleMagnitude);
+                    workingLastRotation -= rotationAngleMagnitude;
+                    if (workingLastRotation < -360)
+                        workingLastRotation += 360;
+                }
                 else
+                {
                     prefabInstance.transform.Rotate(Vector3.up, rotationAngleMagnitude);
+                    workingLastRotation += rotationAngleMagnitude;
+                    if (workingLastRotation > 360)
+                        workingLastRotation += 360;
+                }
+            }
         }
 
         /// <summary>
