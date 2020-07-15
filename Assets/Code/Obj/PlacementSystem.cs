@@ -102,7 +102,19 @@ namespace SFBuilder.Obj
         public void OnMenu(InputAction.CallbackContext context)
         {
             if (context.performed)
-                GameEventSystem.Instance.UpdateGameState(GameState.MainMenus);
+            {
+                if (isPlacing)
+                {
+                    Destroy(prefabInstance.gameObject);
+                    isPlacing = false;
+                    prefabHadFirstHit = false;
+                    prefabInstance = null;
+                    placementUI.SetActive(true);
+                }
+
+                else
+                    GameEventSystem.Instance.UpdateGameState(GameState.MainMenus);
+            }
         }
 
         /// <summary>
@@ -211,16 +223,7 @@ namespace SFBuilder.Obj
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState != GameState.Gameplay)
-            {
                 gameCam.cameraMotionIsFrozen = true;
-                if (isPlacing)
-                {
-                    Destroy(prefabInstance.gameObject);
-                    isPlacing = false;
-                    prefabHadFirstHit = false;
-                    prefabInstance = null;
-                }
-            }
             else
                 gameCam.cameraMotionIsFrozen = false;
         }
