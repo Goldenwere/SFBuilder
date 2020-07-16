@@ -98,6 +98,7 @@ namespace SFBuilder.Gameplay
             {
                 CurrentGoal++;
                 GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 if (CurrentGoal < goals.Length)
                 {
                     CurrentGoalWorkingSet = goals[CurrentGoal];
@@ -125,6 +126,8 @@ namespace SFBuilder.Gameplay
                     test = false;
             canMoveOn = test && GameScoring.Instance.TotalViability >= CurrentGoalWorkingSet.goalViability &&
                 GameScoring.Instance.TotalHappiness > 0 && GameScoring.Instance.TotalPower > 0 && GameScoring.Instance.TotalSustenance > 0;
+            if (!uiButtonNextGoal.interactable && canMoveOn)
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal, false, 0.5f);
             uiButtonNextGoal.interactable = canMoveOn;
         }
 

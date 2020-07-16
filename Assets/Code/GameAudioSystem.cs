@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace SFBuilder
 {
+    /// <summary>
+    /// Used for playing music and sound effects without having to manage multiple references in UI
+    /// </summary>
     public class GameAudioSystem : MonoBehaviour
     {
         #region Fields
@@ -34,11 +37,21 @@ namespace SFBuilder
         /// Use to play an audio clip
         /// </summary>
         /// <param name="clipToPlay">The clip to play in the audio system</param>
-        public void PlaySound(AudioClipDefinition clipToPlay)
+        public void PlaySound(AudioClipDefinition clipToPlay, bool playInReverse = false, float delay = 0)
         {
             audioSources[audioSourceIterator].Stop();
+            if (playInReverse)
+            {
+                audioSources[audioSourceIterator].pitch = -1;
+                audioSources[audioSourceIterator].timeSamples = -1;
+            }
+            else
+            {
+                audioSources[audioSourceIterator].timeSamples = 0;
+                audioSources[audioSourceIterator].pitch = 1;
+            }
             audioSources[audioSourceIterator].clip = audioClips.First(assoc => assoc.sound == clipToPlay).clip;
-            audioSources[audioSourceIterator].Play();
+            audioSources[audioSourceIterator].PlayScheduled(AudioSettings.dspTime + delay);
 
             audioSourceIterator++;
             if (audioSourceIterator >= audioSources.Length)

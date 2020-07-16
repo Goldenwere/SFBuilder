@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using Goldenwere.Unity;
@@ -132,6 +131,7 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;
                 placementUI.SetActive(false);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 return prefabInstance;
             }
 
@@ -180,6 +180,7 @@ namespace SFBuilder.Obj
                 prefabHadFirstHit = false;
                 placementUI.SetActive(true);
                 GoalSystem.Instance.VerifyForNextGoal();
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement);
             }
         }
 
@@ -200,6 +201,7 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 placementUI.SetActive(false);
                 GoalSystem.Instance.VerifyForNextGoal();
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement, true);
             }
         }
 
