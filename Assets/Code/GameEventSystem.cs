@@ -12,16 +12,18 @@ namespace SFBuilder
     /// <remarks>This is a singleton that can be referenced through LevelingSystem.Instance; present in the base level</remarks>
     public class GameEventSystem : MonoBehaviour
     {
+        #region Properties
         /// <summary>
         /// The current state of the game
         /// </summary>
-        public GameState CurrentGameState { get; private set; }
+        public GameState                CurrentGameState { get; private set; }
 
         /// <summary>
-        /// Singleton instance of GameScoring in the game level scene
+        /// Singleton instance of GameEventSystem in the base scene
         /// </summary>
-        public static GameEventSystem Instance { get; private set; }
-
+        public static GameEventSystem   Instance { get; private set; }
+        #endregion
+        #region Events
         /// <summary>
         /// Used for handling gamestate changes
         /// </summary>
@@ -30,18 +32,19 @@ namespace SFBuilder
         /// <summary>
         /// Used for updating goals
         /// </summary>
-        public static event GoalChange GoalChanged;
+        public static event GoalChange      GoalChanged;
 
         /// <summary>
         /// Used for updating UI
         /// </summary>
-        public static event ScoreChange ScoreWasChanged;
+        public static event ScoreChange     ScoreWasChanged;
 
         /// <summary>
         /// Used for updating score system
         /// </summary>
-        public static event ScoreChange ScoreUpdateDesired;
-
+        public static event ScoreChange     ScoreUpdateDesired;
+        #endregion
+        #region Methods
         /// <summary>
         /// Set singleton instance on Awake
         /// </summary>
@@ -95,6 +98,7 @@ namespace SFBuilder
         {
             ScoreWasChanged?.Invoke(type, score);
         }
+        #endregion
     }
 
     /// <summary>
