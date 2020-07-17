@@ -18,6 +18,13 @@ namespace SFBuilder.UI
         private void OnEnable()
         {
             IsComplete = false;
+            switch (partToAnimate)
+            {
+                case PartToAnimate.Scale:
+                default:
+                    GetComponent<RectTransform>().localScale = valueStart;
+                    break;
+            }
             StartCoroutine(TransitionElement(UITransitionSystem.Instance.AddElement(this)));
         }
 
@@ -35,7 +42,7 @@ namespace SFBuilder.UI
                 {
                     case PartToAnimate.Scale:
                     default:
-                        GetComponent<RectTransform>().localScale = Vector3.Lerp(valueStart, valueStop, UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
+                        GetComponent<RectTransform>().localScale = Vector3.LerpUnclamped(valueStart, valueStop, UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
                         break;
                 }
                 t += Time.deltaTime;

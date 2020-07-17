@@ -28,11 +28,11 @@
         /// <summary>
         /// How long UI button transitions last
         /// </summary>
-        public const float UITransitionDuration = 1f;
+        public const float UITransitionDuration = 0.66f;
 
         /// <summary>
         /// The delay factor to apply to elements (multiplied by how many are in the UITransitionSystem's current list)
         /// </summary>
-        public const float UITransitionDelay = 0.05f;
+        public const float UITransitionDelay = 0.25f;
     }
 }
