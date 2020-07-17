@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &2160716310690867532
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &3537723848366620236
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,8 +629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &3762693284440449700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,8 +1443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &5264296986584691659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,9 +1532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  partToAnimate: 1
+  valueStart: {x: 90, y: 0, z: -90, w: -90}
+  valueStop: {x: 10, y: 0, z: -10, w: -90}
 --- !u!1 &5264296986759185324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,8 +2514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &7337015577952580552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,8 +2620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &8063758506404628178
 GameObject:
   m_ObjectHideFlags: 0

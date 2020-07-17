@@ -7,8 +7,8 @@ namespace SFBuilder.UI
     {
 #pragma warning disable 0649
         [SerializeField] private PartToAnimate  partToAnimate;
-        [SerializeField] private Vector3        valueStart;
-        [SerializeField] private Vector3        valueStop;
+        [SerializeField] private Vector4        valueStart;
+        [SerializeField] private Vector4        valueStop;
 #pragma warning restore 0649
         public bool IsComplete { get; private set; }
 
@@ -20,6 +20,10 @@ namespace SFBuilder.UI
             IsComplete = false;
             switch (partToAnimate)
             {
+                case PartToAnimate.HorizontalStretch:
+                    GetComponent<RectTransform>().offsetMin = new Vector2(valueStart.x, valueStart.y);
+                    GetComponent<RectTransform>().offsetMax = new Vector2(valueStart.z, valueStart.w);
+                    break;
                 case PartToAnimate.Scale:
                 default:
                     GetComponent<RectTransform>().localScale = valueStart;
@@ -40,6 +44,16 @@ namespace SFBuilder.UI
             {
                 switch (partToAnimate)
                 {
+                    case PartToAnimate.HorizontalStretch:
+                        GetComponent<RectTransform>().offsetMin = Vector2.LerpUnclamped(
+                            new Vector2(valueStart.x, valueStart.y),
+                            new Vector2(valueStop.x, valueStop.y),
+                            UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
+                        GetComponent<RectTransform>().offsetMax = Vector2.LerpUnclamped(
+                            new Vector2(valueStart.z, valueStart.w),
+                            new Vector2(valueStop.z, valueStop.w),
+                            UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
+                        break;
                     case PartToAnimate.Scale:
                     default:
                         GetComponent<RectTransform>().localScale = Vector3.LerpUnclamped(valueStart, valueStop, UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
@@ -50,6 +64,10 @@ namespace SFBuilder.UI
             }
             switch (partToAnimate)
             {
+                case PartToAnimate.HorizontalStretch:
+                    GetComponent<RectTransform>().offsetMin = new Vector2(valueStop.x, valueStop.y);
+                    GetComponent<RectTransform>().offsetMax = new Vector2(valueStop.z, valueStop.w);
+                    break;
                 case PartToAnimate.Scale:
                 default:
                     GetComponent<RectTransform>().localScale = valueStop;
@@ -64,6 +82,7 @@ namespace SFBuilder.UI
     /// </summary>
     public enum PartToAnimate
     {
-        Scale
+        Scale,
+        HorizontalStretch
     }
 }
