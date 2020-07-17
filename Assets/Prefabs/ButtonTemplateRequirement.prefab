@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 5816813921996990904}
   - component: {fileID: 5816813921996990905}
   - component: {fileID: 4376682450455383318}
+  - component: {fileID: 2248796139360105128}
   m_Layer: 5
   m_Name: ButtonTemplateRequirement
   m_TagString: Untagged
@@ -535,3 +536,18 @@ MonoBehaviour:
   button: {fileID: 5816813921996990905}
   indicatorCount: {fileID: 5816813920465180397}
   indicatorID: {fileID: 5816813921870458067}
+--- !u!114 &2248796139360105128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816813921996990911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partToAnimate: 0
+  valueStart: {x: 0, y: 0, z: 1}
+  valueStop: {x: 1, y: 1, z: 1}

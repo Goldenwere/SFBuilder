@@ -48,6 +48,13 @@ namespace SFBuilder.UI
                 t += Time.deltaTime;
                 yield return null;
             }
+            switch (partToAnimate)
+            {
+                case PartToAnimate.Scale:
+                default:
+                    GetComponent<RectTransform>().localScale = valueStop;
+                    break;
+            }
             IsComplete = true;
         }
     }
