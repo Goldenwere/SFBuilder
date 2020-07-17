@@ -201,7 +201,7 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 placementUI.SetActive(false);
                 GoalSystem.Instance.VerifyForNextGoal();
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement, true);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Undo);
             }
         }
 

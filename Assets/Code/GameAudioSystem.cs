@@ -37,21 +37,12 @@ namespace SFBuilder
         /// Use to play an audio clip
         /// </summary>
         /// <param name="clipToPlay">The clip to play in the audio system</param>
-        public void PlaySound(AudioClipDefinition clipToPlay, bool playInReverse = false, float delay = 0)
+        /// <param name="delay">Optional delay before playing the sound</param>
+        public void PlaySound(AudioClipDefinition clipToPlay, float delay = 0)
         {
             audioSources[audioSourceIterator].Stop();
-            if (playInReverse)
-            {
-                audioSources[audioSourceIterator].pitch = -1;
-                audioSources[audioSourceIterator].timeSamples = -1;
-            }
-            else
-            {
-                audioSources[audioSourceIterator].timeSamples = 0;
-                audioSources[audioSourceIterator].pitch = 1;
-            }
             audioSources[audioSourceIterator].clip = audioClips.First(assoc => assoc.sound == clipToPlay).clip;
-            audioSources[audioSourceIterator].PlayScheduled(AudioSettings.dspTime + delay);
+            audioSources[audioSourceIterator].PlayDelayed(delay);
 
             audioSourceIterator++;
             if (audioSourceIterator >= audioSources.Length)
@@ -78,6 +69,7 @@ namespace SFBuilder
         Button,
         Goal,
         Placement,
-        Transition
+        Transition,
+        Undo
     }
 }

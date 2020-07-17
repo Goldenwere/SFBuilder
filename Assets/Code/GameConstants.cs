@@ -1,5 +1,8 @@
 ﻿namespace SFBuilder
 {
+    /// <summary>
+    /// Keep all hardcoded values here that are settings or related to files outside of code
+    /// </summary>
     public struct GameConstants
     {
         /// <summary>
