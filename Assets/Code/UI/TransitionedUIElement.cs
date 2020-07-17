@@ -6,8 +6,6 @@ namespace SFBuilder.UI
     public class TransitionedUIElement : MonoBehaviour
     {
 #pragma warning disable 0649
-        [SerializeField] private AnimationCurve animCurve;
-        [SerializeField] private GameObject     objectToAnimate;
         [SerializeField] private PartToAnimate  partToAnimate;
         [SerializeField] private Vector3        valueStart;
         [SerializeField] private Vector3        valueStop;
@@ -37,7 +35,7 @@ namespace SFBuilder.UI
                 {
                     case PartToAnimate.Scale:
                     default:
-                        objectToAnimate.GetComponent<RectTransform>().localScale = Vector3.Lerp(valueStart, valueStop, animCurve.Evaluate(t / GameConstants.UITransitionDuration));
+                        GetComponent<RectTransform>().localScale = Vector3.Lerp(valueStart, valueStop, UITransitionSystem.Instance.AnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
                         break;
                 }
                 t += Time.deltaTime;

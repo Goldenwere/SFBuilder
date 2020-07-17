@@ -8,7 +8,13 @@ namespace SFBuilder.UI
     /// </summary>
     public class UITransitionSystem : MonoBehaviour
     {
-        private List<TransitionedUIElement> currentElements;
+        [SerializeField] private AnimationCurve                 animCurve;
+        /**************/ private List<TransitionedUIElement>    currentElements;
+
+        /// <summary>
+        /// The animation curve the UI system uses for transitions
+        /// </summary>
+        public AnimationCurve AnimCurve { get { return animCurve; } }
 
         /// <summary>
         /// Singleton instance of UITransitionSystem in the base level scene
