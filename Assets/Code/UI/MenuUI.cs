@@ -37,7 +37,7 @@ namespace SFBuilder.UI
         {
             canvas.SetActive(false);
             GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
         }
 
         /// <summary>
