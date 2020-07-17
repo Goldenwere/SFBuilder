@@ -3,15 +3,20 @@ using System.Collections;
 
 namespace SFBuilder.UI
 {
+    /// <summary>
+    /// Represents an element that has some sort of transition whenever it is enabled
+    /// </summary>
     public class TransitionedUIElement : MonoBehaviour
     {
+        #region Fields
 #pragma warning disable 0649
         [SerializeField] private PartToAnimate  partToAnimate;
         [SerializeField] private Vector4        valueStart;
         [SerializeField] private Vector4        valueStop;
 #pragma warning restore 0649
         public bool IsComplete { get; private set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// On Enable, animate the element
         /// </summary>
@@ -75,6 +80,7 @@ namespace SFBuilder.UI
             }
             IsComplete = true;
         }
+        #endregion
     }
 
     /// <summary>

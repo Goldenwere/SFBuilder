@@ -8,9 +8,13 @@ namespace SFBuilder.UI
     /// </summary>
     public class UITransitionSystem : MonoBehaviour
     {
+        #region Fields
+#pragma warning disable 0649
         [SerializeField] private AnimationCurve                 animCurve;
+#pragma warning restore 0649
         /**************/ private List<TransitionedUIElement>    currentElements;
-
+        #endregion
+        #region Properties
         /// <summary>
         /// The animation curve the UI system uses for transitions
         /// </summary>
@@ -20,7 +24,8 @@ namespace SFBuilder.UI
         /// Singleton instance of UITransitionSystem in the base level scene
         /// </summary>
         public static UITransitionSystem Instance { get; private set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Set singleton instance on Awake
         /// </summary>
@@ -55,5 +60,6 @@ namespace SFBuilder.UI
                 currentElements.Add(elem);
             return currentElements.Count - 1;
         }
+        #endregion
     }
 }
