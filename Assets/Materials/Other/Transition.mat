@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test
+  m_Name: Transition
   m_Shader: {fileID: 4800000, guid: 2f30869ecb94b9d4cb70db3169376e69, type: 3}
   m_ShaderKeywords: _ENABLENOISE_ON _INVERTMAINTEXTURE_ON
   m_LightmapFlags: 4
@@ -93,7 +93,7 @@ Material:
     - _OcclusionStrength: 1
     - _Outerfresnelintensity: 1
     - _Parallax: 0.02
-    - _Power: 5
+    - _Power: 3.9570794
     - _Pulseamplitude: 0
     - _Pulsefrequency: 0
     - _Pulseoffset: 0

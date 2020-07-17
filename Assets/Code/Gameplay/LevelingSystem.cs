@@ -63,6 +63,12 @@ namespace SFBuilder.Gameplay
         /// <param name="newSceneIndex">The new scene to load</param>
         private IEnumerator LoadNewScene(int oldSceneIndex, int newSceneIndex)
         {
+            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
+            {
+                GameEventSystem.Instance.TransitionLevelRequest(true);
+                yield return new WaitForSecondsRealtime(GameConstants.LevelTransitionStartTime);
+            }
+
             if (oldSceneIndex > 0 && oldSceneIndex != newSceneIndex)
             {
                 AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneIndex);
@@ -78,6 +84,9 @@ namespace SFBuilder.Gameplay
             SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(newSceneIndex));
 
             Resources.UnloadUnusedAssets();
+
+            yield return new WaitForFixedUpdate();
+            GameEventSystem.Instance.TransitionLevelRequest(false);
         }
         #endregion
     }

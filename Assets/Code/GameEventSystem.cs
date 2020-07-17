@@ -4,6 +4,7 @@ namespace SFBuilder
 {
     public delegate void GameStateChange(GameState prevState, GameState newState);
     public delegate void GoalChange(bool isUndo, int id, bool isRequired);
+    public delegate void LevelTransition(bool isStart);
     public delegate void ScoreChange(ScoreType scoreChanged, int number);
 
     /// <summary>
@@ -33,6 +34,8 @@ namespace SFBuilder
         /// Used for updating goals
         /// </summary>
         public static event GoalChange      GoalChanged;
+
+        public static event LevelTransition LevelTransitioned;
 
         /// <summary>
         /// Used for updating UI
@@ -97,6 +100,15 @@ namespace SFBuilder
         public void UpdateScoreUI(ScoreType type, int score)
         {
             ScoreWasChanged?.Invoke(type, score);
+        }
+
+        /// <summary>
+        /// Engage in transitioning for level loading
+        /// </summary>
+        /// <param name="isStart">Whether to start transition (before load) or end transition (after load)</param>
+        public void TransitionLevelRequest(bool isStart)
+        {
+            LevelTransitioned?.Invoke(isStart);
         }
         #endregion
     }
