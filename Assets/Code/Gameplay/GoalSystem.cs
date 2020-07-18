@@ -68,7 +68,7 @@ namespace SFBuilder.Gameplay
             CurrentGoalWorkingSet = goals[CurrentGoal];
             uiWasSetUp = false;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
-                SetupUI();
+                SetupPlacementPanel();
         }
 
         /// <summary>
@@ -97,6 +97,7 @@ namespace SFBuilder.Gameplay
             if (canMoveOn)
             {
                 CurrentGoal++;
+                ClearPlacementPanel();
                 GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 if (CurrentGoal < goals.Length)
@@ -104,6 +105,7 @@ namespace SFBuilder.Gameplay
                     CurrentGoalWorkingSet = goals[CurrentGoal];
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
+                    SetupPlacementPanel();
                 }
                 else
                 {
@@ -111,7 +113,6 @@ namespace SFBuilder.Gameplay
                     // will be made redundant as there will be a scene change 
                     CurrentGoal = 0;
                 }
-                SetupUI();
             }
         }
 
@@ -132,6 +133,15 @@ namespace SFBuilder.Gameplay
         }
 
         /// <summary>
+        /// Used for clearing out the placement panel
+        /// </summary>
+        private void ClearPlacementPanel()
+        {
+            for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
+                Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
+        }
+
+        /// <summary>
         /// Handler for the GameStateChanged event
         /// </summary>
         /// <param name="prevState">The previous GameState</param>
@@ -139,7 +149,7 @@ namespace SFBuilder.Gameplay
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState == GameState.Gameplay && !uiWasSetUp)
-                SetupUI();
+                SetupPlacementPanel();
         }
 
         /// <summary>
@@ -173,14 +183,12 @@ namespace SFBuilder.Gameplay
         }
 
         /// <summary>
-        /// Sets up the UI each goal
+        /// Sets up the placement panel UI each goal
         /// </summary>
-        private void SetupUI()
+        private void SetupPlacementPanel()
         {
             VerifyForNextGoal();
             int buttonCount = 0;
-            for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
-                Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
 
             foreach (GoalItem g in CurrentGoalWorkingSet.goalRequirements)
             {
