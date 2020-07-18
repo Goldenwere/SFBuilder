@@ -266,8 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  playSoundOnCompletion: 0
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &121014435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,8 +1571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  playSoundOnCompletion: 0
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1438150786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,9 +1658,11 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 69b68fab5254f9f498af1656d44b6505, type: 3}
     sound: 2
   - clip: {fileID: 8300000, guid: d97c6b305c58c0f47baa31ea0645ad42, type: 3}
-    sound: 3
-  - clip: {fileID: 8300000, guid: b533a71c3a498184f85abb2b08f185cb, type: 3}
     sound: 4
+  - clip: {fileID: 8300000, guid: b533a71c3a498184f85abb2b08f185cb, type: 3}
+    sound: 5
+  - clip: {fileID: 8300000, guid: b731256e7abfc0748a0d8217e6e56980, type: 3}
+    sound: 3
 --- !u!114 &1438150791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1874,8 +1878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  playSoundOnCompletion: 0
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1633322699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,8 +2089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  valueStart: {x: 0, y: 0, z: 1}
-  valueStop: {x: 1, y: 1, z: 1}
+  playSoundOnCompletion: 0
+  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &2071274156
 GameObject:
   m_ObjectHideFlags: 0

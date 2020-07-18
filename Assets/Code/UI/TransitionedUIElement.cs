@@ -11,6 +11,7 @@ namespace SFBuilder.UI
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private PartToAnimate  partToAnimate;
+        [SerializeField] private bool           playSoundDuringAnimation;
         [SerializeField] private Vector4        valueStart;
         [SerializeField] private Vector4        valueStop;
 #pragma warning restore 0649
@@ -44,6 +45,7 @@ namespace SFBuilder.UI
         private IEnumerator TransitionElement(int delayMultiplier)
         {
             yield return new WaitForSeconds(delayMultiplier * GameConstants.UITransitionDelay);
+            bool soundPlayed = false;
             float t = 0;
             while (t <= GameConstants.UITransitionDuration)
             {
@@ -65,6 +67,12 @@ namespace SFBuilder.UI
                         break;
                 }
                 t += Time.deltaTime;
+
+                if (playSoundDuringAnimation && !soundPlayed && t >= GameConstants.UITransitionDuration / 2)
+                {
+                    GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Pop);
+                    soundPlayed = true;
+                }
                 yield return null;
             }
             switch (partToAnimate)

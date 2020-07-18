@@ -69,6 +69,7 @@ namespace SFBuilder
         Button,
         Goal,
         Placement,
+        Pop,
         Transition,
         Undo
     }
