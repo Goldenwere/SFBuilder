@@ -87,6 +87,17 @@ namespace Goldenwere.Unity.UI
                             // Do nothing in this case - newPos should already be centered if the notes for tooltipPrefab are followed
                             break;
                     }
+
+                    Rect canvasRect = (canvasToBeAttachedTo.transform as RectTransform).rect;
+
+                    if (newPos.x < canvasRect.xMin + tooltipSpawnedTransform.sizeDelta.x / 2)
+                        newPos.x = canvasRect.xMin + tooltipSpawnedTransform.sizeDelta.x / 2;
+                    if (newPos.x + tooltipSpawnedTransform.sizeDelta.x / 2 > canvasRect.xMax)
+                        newPos.x = canvasRect.xMax - tooltipSpawnedTransform.sizeDelta.x / 2;
+                    if (newPos.y < canvasRect.yMin + tooltipSpawnedTransform.sizeDelta.y / 2)
+                        newPos.y = canvasRect.yMin + tooltipSpawnedTransform.sizeDelta.y / 2;
+                    if (newPos.y + tooltipSpawnedTransform.sizeDelta.y / 2 > canvasRect.yMax)
+                        newPos.y = canvasRect.yMax - tooltipSpawnedTransform.sizeDelta.y / 2;
                     tooltipSpawnedTransform.anchoredPosition = newPos;
                 }
             }
