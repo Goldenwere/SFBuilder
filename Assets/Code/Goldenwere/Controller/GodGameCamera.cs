@@ -7,6 +7,7 @@ namespace Goldenwere.Unity.Controller
     {
         #region Fields
         /**************/ public  bool           cameraMotionIsFrozen;
+        /**************/ public  CursorLockMode cursorNormalLockModeState;
         #region Player/UX settings              (these ideally should be exposed to a settings/controls menu, with sensitivity representing a percentage (1=100%))
         /**************/ public  float          settingMovementSensitivity = 1f;
         /**************/ public  float          settingRotationSensitivity = 1f;
@@ -97,7 +98,14 @@ namespace Goldenwere.Unity.Controller
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseMovement)
+            {
                 PerformMovement(context.ReadValue<Vector2>() * sensitivityScaleMovementMouse);
+                if (workingModifierMouseMovement)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
         }
 
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
@@ -107,6 +115,12 @@ namespace Goldenwere.Unity.Controller
                     workingModifierMouseMovement = !workingModifierMouseMovement;
                 else
                     workingModifierMouseMovement = context.performed;
+
+            if (!workingModifierMouseMovement)
+            {
+                Cursor.lockState = cursorNormalLockModeState;
+                Cursor.visible = true;
+            }
         }
 
         public void OnRotation(InputAction.CallbackContext context)
@@ -118,7 +132,14 @@ namespace Goldenwere.Unity.Controller
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseRotation)
+            {
                 PerformRotation(context.ReadValue<Vector2>() * sensitivityScaleRotationMouse);
+                if (Cursor.lockState != CursorLockMode.Locked)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
         }
 
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
@@ -146,6 +167,12 @@ namespace Goldenwere.Unity.Controller
                     workingInputMousePositionSet = workingModifierMouseRotation;
                 }
             }
+
+            if (!workingModifierMouseRotation)
+            {
+                Cursor.lockState = cursorNormalLockModeState;
+                Cursor.visible = true;
+            }
         }
 
         public void OnZoom(InputAction.CallbackContext context)
@@ -157,7 +184,14 @@ namespace Goldenwere.Unity.Controller
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseZoom)
+            {
                 PerformZoom(context.ReadValue<float>() * sensitivityScaleZoomMouse);
+                if (Cursor.lockState != CursorLockMode.Locked)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
         }
 
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
@@ -167,6 +201,12 @@ namespace Goldenwere.Unity.Controller
                 workingModifierMouseZoom = !workingModifierMouseZoom;
                 else
                     workingModifierMouseZoom = context.performed;
+
+            if (!workingModifierMouseZoom)
+            {
+                Cursor.lockState = cursorNormalLockModeState;
+                Cursor.visible = true;
+            }
         }
 
         private void PerformMovement(Vector2 input)
