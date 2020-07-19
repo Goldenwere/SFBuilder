@@ -1,11 +1,8 @@
 {
-    "name": "SFBuilder.Obj",
+    "name": "Goldenwere.Unity.UI",
     "references": [
-        "GUID:e68df28b9a1e0d34997e171099f95658",
-        "GUID:1313e73d848a0924196d14bd049e8ab2",
-        "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:1ea84448a94cf904f9214c51d4449534",
-        "GUID:fce8ebc71e4725c429f3b1266645cec7"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
