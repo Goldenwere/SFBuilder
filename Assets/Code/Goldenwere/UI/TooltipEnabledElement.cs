@@ -67,12 +67,12 @@ namespace Goldenwere.Unity.UI
         private void SetText()
         {
             if (tooltipValues != null && tooltipValues.Length > 0)
-                tooltipTextElement.text = string.Format(tooltipText, tooltipValues);
+                tooltipTextElement.text = string.Format(tooltipText, tooltipValues).Replace("\\n", "\n").Replace("\\t", "\t");
             else
-                tooltipTextElement.text = tooltipText;
+                tooltipTextElement.text = tooltipText.Replace("\\n", "\n").Replace("\\t", "\t");
 
             tooltipSpawnedTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
-                tooltipTextElement.renderedHeight + tooltipTextElement.rectTransform.anchoredPosition.y);
+                tooltipTextElement.preferredHeight + tooltipTextElement.rectTransform.offsetMin.x);
         }
     }
 }
