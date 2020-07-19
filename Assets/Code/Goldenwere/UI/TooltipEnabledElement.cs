@@ -1,18 +1,24 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Goldenwere.Unity.UI
 {
     public class TooltipEnabledElement : MonoBehaviour
     {
+#pragma warning disable 0649
+        [SerializeField] private Camera         cameraThatRendersCanvas;
+        [SerializeField] private Canvas         canvasToBeAttachedTo;
         [Tooltip         ("Prefab which the topmost gameobject can be resized based on text and contains a text element that can be set")]
-        [SerializeField] private GameObject tooltipPrefab;
+        [SerializeField] private GameObject     tooltipPrefab;
         [Tooltip         ("The text to display in the tooltip")]
-        [SerializeField] private string     tooltipText;
+        [SerializeField] private string         tooltipText;
         [Tooltip         ("Values used if defining a string that needs formatting. Leave blank if no formatting is done inside tooltipText")]
-        [SerializeField] private double[]   tooltipValues;
-        /**************/ private GameObject tooltipSpawnedElement;
-        /**************/ private TMP_Text   tooltipTextElement;
+        [SerializeField] private double[]       tooltipValues;
+#pragma warning restore 0649
+        /**************/ private GameObject     tooltipSpawnedElement;
+        /**************/ private RectTransform  tooltipSpawnedTransform;
+        /**************/ private TMP_Text       tooltipTextElement;
 
         /// <summary>
         /// Sets up the tooltip at start
@@ -21,7 +27,26 @@ namespace Goldenwere.Unity.UI
         {
             tooltipSpawnedElement = Instantiate(tooltipPrefab, transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
+            tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
             SetText();
+            tooltipSpawnedElement.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (tooltipSpawnedElement.activeInHierarchy)
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasToBeAttachedTo.transform as RectTransform, Mouse.current.position.ReadValue(), cameraThatRendersCanvas, out Vector2 newPos))
+                    tooltipSpawnedTransform.anchoredPosition = newPos;
+        }
+
+        public void OnPointerEnter()
+        {
+            tooltipSpawnedElement.SetActive(true);
+        }
+
+        public void OnPointerExit()
+        {
+            tooltipSpawnedElement.SetActive(false);
         }
 
         /// <summary>
@@ -46,7 +71,7 @@ namespace Goldenwere.Unity.UI
             else
                 tooltipTextElement.text = tooltipText;
 
-            tooltipSpawnedElement.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
+            tooltipSpawnedTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
                 tooltipTextElement.renderedHeight + tooltipTextElement.rectTransform.anchoredPosition.y);
         }
     }

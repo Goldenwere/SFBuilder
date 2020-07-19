@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 92745472}
   - component: {fileID: 92745471}
   - component: {fileID: 92745474}
+  - component: {fileID: 92745475}
+  - component: {fileID: 92745476}
   m_Layer: 5
   m_Name: Button_Play
   m_TagString: Untagged
@@ -266,9 +268,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  playSoundOnCompletion: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &92745475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92745469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraThatRendersCanvas: {fileID: 325333594}
+  canvasToBeAttachedTo: {fileID: 2131888649}
+  tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
+    type: 3}
+  tooltipText: Play the game
+  tooltipValues: []
+--- !u!114 &92745476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92745469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 92745475}
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 92745475}
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &121014435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  playSoundOnCompletion: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1438150786
@@ -1878,7 +1941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  playSoundOnCompletion: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1633322699
@@ -2089,7 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
-  playSoundOnCompletion: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &2071274156
