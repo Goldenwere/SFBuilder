@@ -3,6 +3,10 @@ using UnityEngine.InputSystem;
 
 namespace Goldenwere.Unity.Controller
 {
+    /// <summary>
+    /// A GodGameCamera is a type of free-flying camera with behaviour typically associated with god-games (3D, typically involving resource/character management),
+    /// such as a horizontal plane of motion, rotating around a point, and zoom
+    /// </summary>
     public class GodGameCamera : MonoBehaviour
     {
         #region Fields
@@ -60,6 +64,9 @@ namespace Goldenwere.Unity.Controller
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Sets up the working variables on MonoBehaviour.Start()
+        /// </summary>
         private void Start()
         {
             workingDesiredPosition = transform.position;
@@ -89,12 +96,20 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the Movement input event, notify camera movement is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnMovement(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
                 workingInputMovement = context.performed;
         }
 
+        /// <summary>
+        /// On the MovementMouse input event, notify camera movement via mouse is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnMovementMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseMovement)
@@ -108,6 +123,10 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the MovementMouseModifier input event, notify camera movement via mouse is enabled/disabled
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
@@ -123,12 +142,20 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the Rotation input event, notify camera rotation is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnRotation(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
                 workingInputRotation = context.performed;
         }
 
+        /// <summary>
+        /// On the RotationMouse input event, notify camera movement via mouse is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnRotationMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseRotation)
@@ -142,6 +169,10 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the RotationMouseModifier input event, notify camera rotation via mouse is enabled/disabled
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
@@ -175,12 +206,20 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the Zoom input event, notify camera zoom is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnZoom(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
                 workingInputZoom = context.performed;
         }
 
+        /// <summary>
+        /// On the ZoomMouse input event, notify camera zoom via mouse is needed or no longer being done
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnZoomMouse(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen && workingModifierMouseZoom)
@@ -194,6 +233,10 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// On the ZoomMouseModifier input event, notify camera zoom via mouse is enabled/disabled
+        /// </summary>
+        /// <param name="context">Input context associated with event</param>
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
             if (!cameraMotionIsFrozen)
@@ -209,6 +252,10 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// Performs camera movement based on input
+        /// </summary>
+        /// <param name="input">The current magnitude/direction of movement</param>
         private void PerformMovement(Vector2 input)
         {
             Vector3 add = (pointPivot.transform.forward * input.y * settingMovementSensitivity) + (pointPivot.transform.right * input.x * settingMovementSensitivity);
@@ -216,6 +263,10 @@ namespace Goldenwere.Unity.Controller
                 workingDesiredPosition += add;
         }
 
+        /// <summary>
+        /// Performs camera rotation based on input
+        /// </summary>
+        /// <param name="input">The current magnitude/direction of rotation</param>
         private void PerformRotation(Vector2 input)
         {
             workingDesiredRotationHorizontal *= Quaternion.Euler(0, input.x * settingRotationSensitivity, 0);
@@ -246,6 +297,10 @@ namespace Goldenwere.Unity.Controller
             }
         }
 
+        /// <summary>
+        /// Performs camera zoom based on input
+        /// </summary>
+        /// <param name="input">The current magnitude/direction of zoom</param>
         private void PerformZoom(float input)
         {
             Vector3 add = pointCamera.transform.forward * input * settingZoomSensitivity;
@@ -253,6 +308,12 @@ namespace Goldenwere.Unity.Controller
                 workingDesiredPosition += add;
         }
 
+        /// <summary>
+        /// Determines whether or not the camera is about to collide with something at a future position
+        /// </summary>
+        /// <param name="pos">The new position</param>
+        /// <param name="dir">The direction of motion from old position to new position</param>
+        /// <returns>Whether or not the camera will collide with another object</returns>
         private bool WillCollideWithPosition(Vector3 pos, Vector3 dir)
         {
             Collider[] cols = Physics.OverlapSphere(pos, settingCollisionPadding);
@@ -275,6 +336,9 @@ namespace Goldenwere.Unity.Controller
         #endregion
     }
 
+    /// <summary>
+    /// Determines the rotational behaviour of a GodGameCamera
+    /// </summary>
     public enum RotationMode
     {
         /// <summary>

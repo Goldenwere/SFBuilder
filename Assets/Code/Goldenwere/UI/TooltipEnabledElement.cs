@@ -9,6 +9,7 @@ namespace Goldenwere.Unity.UI
     /// </summary>
     public class TooltipEnabledElement : MonoBehaviour
     {
+        #region Fields
 #pragma warning disable 0649
         [Tooltip         ("Needed in order to ensure proper tooltip positioning")]
         [SerializeField] private Camera         cameraThatRendersCanvas;
@@ -29,7 +30,8 @@ namespace Goldenwere.Unity.UI
         /**************/ private GameObject     tooltipSpawnedElement;
         /**************/ private RectTransform  tooltipSpawnedTransform;
         /**************/ private TMP_Text       tooltipTextElement;
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Sets up the tooltip at start
         /// </summary>
@@ -88,8 +90,8 @@ namespace Goldenwere.Unity.UI
                             break;
                     }
 
+                    #region Position clamp-to-screen
                     Rect canvasRect = (canvasToBeAttachedTo.transform as RectTransform).rect;
-
                     if (newPos.x < canvasRect.xMin + tooltipSpawnedTransform.sizeDelta.x / 2)
                         newPos.x = canvasRect.xMin + tooltipSpawnedTransform.sizeDelta.x / 2;
                     if (newPos.x + tooltipSpawnedTransform.sizeDelta.x / 2 > canvasRect.xMax)
@@ -98,6 +100,8 @@ namespace Goldenwere.Unity.UI
                         newPos.y = canvasRect.yMin + tooltipSpawnedTransform.sizeDelta.y / 2;
                     if (newPos.y + tooltipSpawnedTransform.sizeDelta.y / 2 > canvasRect.yMax)
                         newPos.y = canvasRect.yMax - tooltipSpawnedTransform.sizeDelta.y / 2;
+                    #endregion
+
                     tooltipSpawnedTransform.anchoredPosition = newPos;
                 }
             }
@@ -144,6 +148,7 @@ namespace Goldenwere.Unity.UI
             tooltipSpawnedTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
                 tooltipTextElement.preferredHeight + tooltipTextElement.rectTransform.offsetMin.x);
         }
+        #endregion
     }
 
     /// <summary>
