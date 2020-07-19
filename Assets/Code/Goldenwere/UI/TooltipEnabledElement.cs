@@ -25,7 +25,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void Start()
         {
-            tooltipSpawnedElement = Instantiate(tooltipPrefab, transform);
+            tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
             tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
             SetText();
@@ -67,9 +67,9 @@ namespace Goldenwere.Unity.UI
         private void SetText()
         {
             if (tooltipValues != null && tooltipValues.Length > 0)
-                tooltipTextElement.text = string.Format(tooltipText, tooltipValues).Replace("\\n", "\n").Replace("\\t", "\t");
+                tooltipTextElement.text = string.Format(tooltipText, tooltipValues).RepairSerializedEscaping();
             else
-                tooltipTextElement.text = tooltipText.Replace("\\n", "\n").Replace("\\t", "\t");
+                tooltipTextElement.text = tooltipText.RepairSerializedEscaping();
 
             tooltipSpawnedTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
                 tooltipTextElement.preferredHeight + tooltipTextElement.rectTransform.offsetMin.x);

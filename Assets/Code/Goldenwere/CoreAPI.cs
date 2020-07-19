@@ -153,5 +153,22 @@ namespace Goldenwere.Unity
                 Mathf.Round(self.y / precision) * precision,
                 Mathf.Round(self.z / precision) * precision);
         }
+
+        /// <summary>
+        /// Unity serialization escapes double-slashes, which breaks any sort of desired escaping in serialized string fields
+        /// </summary>
+        /// <param name="other">The string that needs fixed</param>
+        /// <returns>The string after fixing</returns>
+        public static string RepairSerializedEscaping(this string other)
+        {
+            return other
+                .Replace("\\n", "\n")
+                .Replace("\\t", "\t")
+                .Replace("\\'", "\'")
+                .Replace("\\\"", "\"")
+                .Replace("\\\\", "\\")
+                .Replace("\\b", "\b")
+                .Replace("\\r", "\r");
+        }
     }
 }
