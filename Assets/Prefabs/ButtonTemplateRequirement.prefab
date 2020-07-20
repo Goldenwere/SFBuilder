@@ -401,6 +401,8 @@ GameObject:
   - component: {fileID: 5816813921996990905}
   - component: {fileID: 4376682450455383318}
   - component: {fileID: 2248796139360105128}
+  - component: {fileID: -9175062182596010909}
+  - component: {fileID: -3051992052307276896}
   m_Layer: 5
   m_Name: ButtonTemplateRequirement
   m_TagString: Untagged
@@ -552,3 +554,66 @@ MonoBehaviour:
   playSoundDuringAnimation: 1
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &-9175062182596010909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816813921996990911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraThatRendersCanvas: {fileID: 0}
+  cameraThatRendersCanvasName: UICamera
+  canvasToBeAttachedTo: {fileID: 0}
+  tooltipAnchorPosition: 7
+  tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
+    type: 3}
+  tooltipText: Default text
+  tooltipValues: []
+--- !u!114 &-3051992052307276896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816813921996990911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -9175062182596010909}
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -9175062182596010909}
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

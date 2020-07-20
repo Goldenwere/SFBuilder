@@ -106,6 +106,29 @@ namespace Goldenwere.Unity
         }
 
         /// <summary>
+        /// Finds a matching component 
+        /// </summary>
+        /// <typeparam name="T">The Component being searched for</typeparam>
+        /// <param name="other">The GameObject to search from</param>
+        /// <returns>The found component reference if not null</returns>
+        public static T GetComponentInParents<T>(this GameObject other) where T : Component
+        {
+            if (other == null)
+                throw new System.ArgumentNullException();
+
+            Transform parent = other.transform.parent;
+            while (parent != null)
+            {
+                T pComp = parent.GetComponent<T>();
+                if (pComp != null)
+                    return pComp;
+                else
+                    parent = parent.transform.parent;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Clamps a quaternion's vertical rotation
         /// </summary>
         /// <param name="parent">The quaternion to clamp</param>

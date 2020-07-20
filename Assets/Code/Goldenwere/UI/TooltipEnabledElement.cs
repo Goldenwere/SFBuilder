@@ -11,8 +11,10 @@ namespace Goldenwere.Unity.UI
     {
         #region Fields
 #pragma warning disable 0649
-        [Tooltip         ("Needed in order to ensure proper tooltip positioning")]
+        [Tooltip         ("Needed in order to ensure proper tooltip positioning; can be left unassigned as long as the UI element itself is attached to a canvas")]
         [SerializeField] private Camera         cameraThatRendersCanvas;
+        [Tooltip         ("Optional string to provide if cannot attach camera in inspector (e.g. prefabbed UI elements instantiated at runtime)")]
+        [SerializeField] private string         cameraThatRendersCanvasName;
         [Tooltip         ("Needed in order to ensure proper tooltip positioning as well as attaching tooltip to canvas")]
         [SerializeField] private Canvas         canvasToBeAttachedTo;
         [Tooltip         ("The default anchor position. If the tooltip text overflows with this anchor, will change to another one if needed")]
@@ -37,6 +39,14 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void Start()
         {
+            if (cameraThatRendersCanvas == null)
+                if (cameraThatRendersCanvasName != null && cameraThatRendersCanvasName != "")
+                    cameraThatRendersCanvas = GameObject.Find(cameraThatRendersCanvasName).GetComponent<Camera>();
+                else
+                    cameraThatRendersCanvas = Camera.main;
+            if (canvasToBeAttachedTo == null)
+                canvasToBeAttachedTo = gameObject.GetComponentInParents<Canvas>();
+
             tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
             tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
