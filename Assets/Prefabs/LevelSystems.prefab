@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &2160716310690867532
@@ -366,6 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &3537723848366620236
@@ -629,6 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &3762693284440449700
@@ -1443,6 +1446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &5264296986584691659
@@ -1533,6 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 1
+  playSoundDuringAnimation: 0
   valueStart: {x: 90, y: 0, z: -90, w: -90}
   valueStop: {x: 10, y: 0, z: -10, w: -90}
 --- !u!1 &5264296986759185324
@@ -1885,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMotionIsFrozen: 0
+  cursorNormalLockModeState: 0
   settingMovementSensitivity: 1
   settingRotationSensitivity: 1
   settingZoomSensitivity: 0.5
@@ -2044,6 +2050,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 5264296985718816288}
+  icons:
+  - Icon: {fileID: 21300000, guid: 03f8604aa6781ae449bfd1b33fca29ab, type: 3}
+    Type: 32
+  - Icon: {fileID: 21300000, guid: e5399e7e40f8e86408cd87f8b787a811, type: 3}
+    Type: 33
+  - Icon: {fileID: 21300000, guid: 4141336770449b14ea2c84e87294edd1, type: 3}
+    Type: 34
+  - Icon: {fileID: 21300000, guid: bd18a5f3c4e1f6e48b2d82b34fc19c07, type: 3}
+    Type: 35
+  - Icon: {fileID: 21300000, guid: 2ca3ddc869b3e7e468147021ddb5ffb1, type: 3}
+    Type: 36
+  - Icon: {fileID: 21300000, guid: 9408adf01aba7984bbcca1dbc15a524d, type: 3}
+    Type: 37
+  - Icon: {fileID: 21300000, guid: 894aab2355a02a54d944fdc71237627c, type: 3}
+    Type: 48
+  - Icon: {fileID: 21300000, guid: 8cf0bcc10d33beb4790b803ca5903d06, type: 3}
+    Type: 49
+  - Icon: {fileID: 21300000, guid: 0c51044486b162f41970d16452cc3690, type: 3}
+    Type: 50
+  - Icon: {fileID: 21300000, guid: 38dde1e80d8e8cb498c83654d6e44d95, type: 3}
+    Type: 51
+  - Icon: {fileID: 21300000, guid: 353104f398a33784dabd49b64f70ddf1, type: 3}
+    Type: 64
+  - Icon: {fileID: 21300000, guid: 9e4d9eac24c82a747805204d77322416, type: 3}
+    Type: 65
+  - Icon: {fileID: 21300000, guid: f4ed68da4c5f99149851915d2c15fd9c, type: 3}
+    Type: 66
+  - Icon: {fileID: 21300000, guid: 66f0353eb5587b446876befc59062c20, type: 3}
+    Type: 67
 --- !u!1 &5596171781593913202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &7337015577952580552
@@ -2644,6 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToAnimate: 0
+  playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &8063758506404628178

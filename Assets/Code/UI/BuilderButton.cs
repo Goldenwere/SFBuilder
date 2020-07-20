@@ -14,6 +14,7 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [SerializeField] private Button                 button;
         [SerializeField] private TMPro.TMP_Text         indicatorCount;
+        [SerializeField] private Image                  indicatorIcon;
         [SerializeField] private TMPro.TMP_Text         indicatorID;
         [SerializeField] private TooltipEnabledElement  tooltipElement;
 #pragma warning restore 0649
