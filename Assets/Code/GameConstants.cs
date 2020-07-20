@@ -27,6 +27,8 @@ namespace SFBuilder
         /// </summary>
         public const float  LevelTransitionStartTime = 2.5f;
 
+        public const float  PlacementAnimationDuration = 0.5f;
+
         /// <summary>
         /// How long UI button transitions last
         /// </summary>
@@ -36,6 +38,14 @@ namespace SFBuilder
         /// The delay factor to apply to elements (multiplied by how many are in the UITransitionSystem's current list)
         /// </summary>
         public const float  UITransitionDelay = 0.25f;
+
+        /// <summary>
+        /// Returns constant animation curve for BuilderObject placement
+        /// </summary>
+        public static AnimationCurve PlacementAnimationCurve()
+        {
+            return new AnimationCurve(new Keyframe[] { new Keyframe(0, 1, 0, -5), new Keyframe(0.333f, 0, 0, 0), new Keyframe(0.75f, 1.25f, 8, 8), new Keyframe(1, 1, 8, 8) });
+        }
 
         /// <summary>
         /// Adds color tags (HTML, treated as a GameConstant) to a number depending on if it's positive or negative

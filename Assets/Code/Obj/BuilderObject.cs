@@ -54,7 +54,10 @@ namespace SFBuilder.Obj
                     ranger.enabled = false;
                     objectPlaced?.Invoke(this);
                     if (!isPlacedAtStart)
+                    {
                         StartCoroutine(ResizeAndDestroyParticles(Instantiate(placementParticlePrefab, transform)));
+                        StartCoroutine(PlaceStructureAnimation());
+                    }
                 }
                 else
                 {
@@ -64,6 +67,8 @@ namespace SFBuilder.Obj
                     ranger.SetPlaced(false);
                     ranger.enabled = true;
                     objectRecalled?.Invoke(this);
+                    if (transform.localScale != Vector3.one)
+                        transform.localScale = Vector3.one;
                 }
             }
         }
@@ -165,6 +170,22 @@ namespace SFBuilder.Obj
             collidedObjects.Remove(g);
             if (collidedObjects.Count == 0)
                 IsCollided = false;
+        }
+
+        /// <summary>
+        /// Animates placing the structure
+        /// </summary>
+        private IEnumerator PlaceStructureAnimation()
+        {
+            
+            float t = 0;
+            while (t <= GameConstants.PlacementAnimationDuration)
+            {
+                transform.localScale = Vector3.LerpUnclamped(new Vector3(1.25f, 0.75f, 1.25f), Vector3.one, GameConstants.PlacementAnimationCurve().Evaluate(t / GameConstants.PlacementAnimationDuration));
+                yield return null;
+                t += Time.deltaTime;
+            }
+            transform.localScale = Vector3.one;
         }
 
         /// <summary>
