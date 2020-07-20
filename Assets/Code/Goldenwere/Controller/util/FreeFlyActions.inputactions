@@ -27,7 +27,7 @@
                     "id": "2a31685b-579b-4555-a5ab-86ccf7ab1e18",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Hold"
                 },
                 {
                     "name": "Zoom",
@@ -51,7 +51,7 @@
                     "id": "e358a046-6b93-436a-ba19-963ba4cb201e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Hold"
                 },
                 {
                     "name": "Rotation",
@@ -75,7 +75,7 @@
                     "id": "5de08afc-e878-4ded-a254-0433781cbdfb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Hold"
                 },
                 {
                     "name": "Placement",
