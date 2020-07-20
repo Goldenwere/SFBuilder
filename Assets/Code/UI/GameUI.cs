@@ -10,7 +10,7 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject     mainCanvas;
         [SerializeField] private TypeToIcon[]   icons;
 #pragma warning restore 0649
-        public GameUI   Instance    { get; private set; }
+        public static GameUI     Instance       { get; private set; }
 
         /// <summary>
         /// Toggle the main canvas on Awake and set singleton instance

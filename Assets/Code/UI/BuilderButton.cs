@@ -37,7 +37,17 @@ namespace SFBuilder.UI
                 associatedCount = info.count;
                 associatedID = info.id;
                 isRequired = info.req;
-                indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
+                Sprite s = GameUI.Instance.GetIcon((ObjectType)info.id);
+                if (s != null)
+                {
+                    indicatorIcon.sprite = s;
+                    indicatorID.gameObject.SetActive(false);
+                }
+                else
+                {
+                    indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
+                    indicatorIcon.gameObject.SetActive(false);
+                }
                 indicatorCount.text = info.count.ToString();
                 button.interactable = associatedCount > 0;
                 BuilderObject.DescriptionOfType((ObjectType)info.id, out string desc);
