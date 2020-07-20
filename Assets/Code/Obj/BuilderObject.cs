@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace SFBuilder.Obj
@@ -13,10 +14,11 @@ namespace SFBuilder.Obj
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private BuilderObjectGrounder  grounder;
+        [SerializeField] private bool                   isPlacedAtStart;
         [SerializeField] private Material               materialNormal;
         [SerializeField] private Material               materialPlacing;
         [SerializeField] private MeshRenderer[]         objectBody;
-        [SerializeField] private bool                   isPlacedAtStart;
+        [SerializeField] private GameObject             placementParticlePrefab;
         [SerializeField] private BuilderObjectRanger    ranger;
         [SerializeField] private ObjectType             type;
 #pragma warning restore 0649
@@ -51,6 +53,7 @@ namespace SFBuilder.Obj
                     ranger.SetPlaced(true);
                     ranger.enabled = false;
                     objectPlaced?.Invoke(this);
+                    StartCoroutine(DestroyParticles(Instantiate(placementParticlePrefab, transform)));
                 }
                 else
                 {
@@ -150,6 +153,16 @@ namespace SFBuilder.Obj
                 if (collidedObjects.Count == 0)
                     IsCollided = false;
             }
+        }
+
+        /// <summary>
+        /// Destroyes particles after a certain amount of time
+        /// </summary>
+        /// <param name="spawnedParticles">The particles spawned</param>
+        private IEnumerator DestroyParticles(GameObject spawnedParticles)
+        {
+            yield return new WaitForSeconds(5f);
+            Destroy(spawnedParticles);
         }
 
         /// <summary>

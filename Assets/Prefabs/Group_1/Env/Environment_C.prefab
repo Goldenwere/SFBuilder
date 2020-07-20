@@ -78,10 +78,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounder: {fileID: 2730579551079624172}
+  isPlacedAtStart: 0
   materialNormal: {fileID: 2100000, guid: f354478e8ed01994c9c1bc0f9749a020, type: 2}
   materialPlacing: {fileID: 2100000, guid: 6f6d510812d0be7419f5ca5c028723d6, type: 2}
   objectBody:
   - {fileID: 475083108082050869}
+  placementParticlePrefab: {fileID: 7608784903369597220, guid: 1eecb7d618a02424b817542b24995053,
+    type: 3}
   ranger: {fileID: 6368505247880008065}
   type: 66
 --- !u!1 &2730579551079624175
