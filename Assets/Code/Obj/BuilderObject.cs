@@ -53,7 +53,8 @@ namespace SFBuilder.Obj
                     ranger.SetPlaced(true);
                     ranger.enabled = false;
                     objectPlaced?.Invoke(this);
-                    StartCoroutine(DestroyParticles(Instantiate(placementParticlePrefab, transform)));
+                    if (!isPlacedAtStart)
+                        StartCoroutine(DestroyParticles(Instantiate(placementParticlePrefab, transform)));
                 }
                 else
                 {
