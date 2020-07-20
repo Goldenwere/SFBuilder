@@ -188,14 +188,20 @@ namespace SFBuilder.Obj
         /// </summary>
         /// <param name="type">The type being examined</param>
         /// <param name="description">The description of the type, pre-formatted</param>
-        /// <param name="formatting">Values to be inserted into formatted text</param>
-        public static void DescriptionOfType(ObjectType type, out string description, out double[] values)
+        public static void DescriptionOfType(ObjectType type, out string description)
         {
             switch (type)
             {
+                case ObjectType.Pro_A:
+                    description = "(Prototype object) Power source providing " + GameConstants.UITooltipColorTag(3) + " power. Get a " + GameConstants.UITooltipColorTag(3) + 
+                        " bonus for each Power Source in range. Gets a " + GameConstants.UITooltipColorTag(-5) + " penalty for each Residence in range";
+                    break;
+				case ObjectType.Pro_B:
+					description = "(Prototype object) Residence taking " + GameConstants.UITooltipColorTag(-5) + " power and " UITooltipColorTag(-5) + " sustenance.";
+				case ObjectType.Pro_C:
+					description = "(Prototype object) Community garden providing " + GameConstants.UITooltipColorTag(5) + " sustenance. Provides " + UITooltipColorTag(3) + " sustenance and "  + UITooltipColorTag(3) + " happiness for all residences in range."; 
                 default:
                     description = "Missingno";
-                    values = null;
                     break;
             }
         }

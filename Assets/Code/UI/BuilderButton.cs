@@ -39,8 +39,8 @@ namespace SFBuilder.UI
                 indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
                 indicatorCount.text = info.count.ToString();
                 button.interactable = associatedCount > 0;
-                BuilderObject.DescriptionOfType((ObjectType)info.id, out string desc, out double[] val);
-                tooltipElement.UpdateText(desc, val);
+                BuilderObject.DescriptionOfType((ObjectType)info.id, out string desc);
+                tooltipElement.UpdateText(desc);
                 initialized = true;
             }
         }
