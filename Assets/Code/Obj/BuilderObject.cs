@@ -192,17 +192,56 @@ namespace SFBuilder.Obj
         {
             switch (type)
             {
+                #region Prototype
                 case ObjectType.Pro_A:
                     description = "(Prototype object) Power source providing " + GameConstants.UITooltipColorTag(3) + " power. Get a " + GameConstants.UITooltipColorTag(3) + 
                         " bonus for each Power Source in range. Gets a " + GameConstants.UITooltipColorTag(-5) + " penalty for each Residence in range";
                     break;
 				case ObjectType.Pro_B:
-					description = "(Prototype object) Residence taking " + GameConstants.UITooltipColorTag(-5) + " power and " UITooltipColorTag(-5) + " sustenance.";
+					description = "(Prototype object) Residence taking " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-5) + " sustenance.";
+					break;
 				case ObjectType.Pro_C:
-					description = "(Prototype object) Community garden providing " + GameConstants.UITooltipColorTag(5) + " sustenance. Provides " + UITooltipColorTag(3) + " sustenance and "  + UITooltipColorTag(3) + " happiness for all residences in range."; 
-                default:
-                    description = "Missingno";
-                    break;
+					description = "(Prototype object) Community garden providing " + GameConstants.UITooltipColorTag(5) + " sustenance. Provides " + 
+                        GameConstants.UITooltipColorTag(3) + " sustenance and "  + GameConstants.UITooltipColorTag(3) + " happiness for all residences in range.";
+					break;
+                #endregion
+                #region Natural
+                case ObjectType.Nat_A: description = "Alien wildlife"; break;
+				case ObjectType.Nat_B: description = "Small rocks"; break;
+				case ObjectType.Nat_C: description = "Large rocks"; break;
+				case ObjectType.Nat_D: description = "Lectrinium vein"; break;
+				case ObjectType.Nat_E: description = "Lectrinium deposit"; break;
+				case ObjectType.Nat_F: description = "Metals deposit"; break;
+                #endregion
+                #region Power
+                case ObjectType.Pow_A:
+					description = "Solar panel - provides " + GameConstants.UITooltipColorTag(3) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-1) + " happiness penalty for all residences in range.";
+					break;
+				case ObjectType.Pow_B:
+					description = "Solar tower - provides " + GameConstants.UITooltipColorTag(5) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-1) + " happiness penalty for all residences in range.";
+					break;
+				case ObjectType.Pow_C:
+					description = "Solar farm - provides " + GameConstants.UITooltipColorTag(10) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range, and a " + 
+                        GameConstants.UITooltipColorTag(1) + " power bonus for all solar panels/towers in range.";
+					break;
+				case ObjectType.Pow_D:
+					description = "Small turbine - provides " + GameConstants.UITooltipColorTag(6) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range.";
+					break;
+				case ObjectType.Pow_E:
+					description = "Large turbine - provides " + GameConstants.UITooltipColorTag(12) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-5) + " happiness penalty for all residences in range.";
+					break;
+				case ObjectType.Pow_F:
+                    description = "Lectrinium mine - takes " + GameConstants.UITooltipColorTag(-2) + " power to run, provides " +
+                        GameConstants.UITooltipColorTag(4) + " power for lectrinium veins, " + GameConstants.UITooltipColorTag(12) +
+                        " power for lectrinium deposits, and takes " + GameConstants.UITooltipColorTag(-8) + " happiness for residences in range.";
+					break;
+                #endregion
+                default: description = "Missingno"; break;
             }
         }
 
