@@ -241,6 +241,46 @@ namespace SFBuilder.Obj
                         " power for lectrinium deposits, and takes " + GameConstants.UITooltipColorTag(-8) + " happiness for residences in range.";
 					break;
                 #endregion
+				#region Residence
+				case ObjectType.Res_A:
+					description = "Small cabin - takes " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-6) + 
+                        " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
+					break;
+				case ObjectType.Res_B:
+					description = "Large cabin - takes " + GameConstants.UITooltipColorTag(-6) + " power and " + GameConstants.UITooltipColorTag(-8) + 
+                        " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
+					break;
+				case ObjectType.Res_C:
+					description = "Small apartment - takes " + GameConstants.UITooltipColorTag(-10) + " power and " + GameConstants.UITooltipColorTag(-10) + 
+                        " sustenance. Gets a " + GameConstants.UITooltipColorTag(-5) + " happiness penalty for other apartment buildings nearby.";
+					break;
+				case ObjectType.Res_D:
+					description = "Apartment tower - takes " + GameConstants.UITooltipColorTag(-15) + " power and " + GameConstants.UITooltipColorTag(-15) + 
+                        " sustenance. Gets a " + GameConstants.UITooltipColorTag(-8) + " happiness penalty for other apartment buildings nearby.";
+					break;
+				#endregion
+				#region Environment
+				case ObjectType.Env_A:
+					description = "Community garden - gives " + GameConstants.UITooltipColorTag(5) + " base sustenance, " + 
+                        GameConstants.UITooltipColorTag(1) + " sustenance for other gardens, " + GameConstants.UITooltipColorTag(2) + 
+                        " sustenance for alien wildlife, " + GameConstants.UITooltipColorTag(3) + " happiness for cabins, and " + 
+                        GameConstants.UITooltipColorTag(5) + " happiness for apartments.";
+					break;
+				case ObjectType.Env_B:
+					description = "Small farm - gives " + GameConstants.UITooltipColorTag(8) + " base sustenance, " + 
+                        GameConstants.UITooltipColorTag(2) + " sustenance for other farms, " + GameConstants.UITooltipColorTag(1) + 
+                        " happiness for cabins, and " + GameConstants.UITooltipColorTag(3) + " happiness for apartments.";
+					break;
+				case ObjectType.Env_C:
+					description = "Large farm - gives " + GameConstants.UITooltipColorTag(10) + " base sustenance and an additional " + 
+                        GameConstants.UITooltipColorTag(2) + " sustenance for other farms in range.";
+					break;
+				case ObjectType.Env_D:
+					description = "Vertical farm - gives " + GameConstants.UITooltipColorTag(20) + " base sustenance and takes " + 
+                        GameConstants.UITooltipColorTag(-3) + " power, with an additional " + GameConstants.UITooltipColorTag(-1) + 
+                        " happiness penalty for all residences in range.";
+					break;
+				#endregion
                 default: description = "Missingno"; break;
             }
         }
