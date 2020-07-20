@@ -54,7 +54,7 @@ namespace SFBuilder.Obj
                     ranger.enabled = false;
                     objectPlaced?.Invoke(this);
                     if (!isPlacedAtStart)
-                        StartCoroutine(DestroyParticles(Instantiate(placementParticlePrefab, transform)));
+                        StartCoroutine(ResizeAndDestroyParticles(Instantiate(placementParticlePrefab, transform)));
                 }
                 else
                 {
@@ -157,16 +157,6 @@ namespace SFBuilder.Obj
         }
 
         /// <summary>
-        /// Destroyes particles after a certain amount of time
-        /// </summary>
-        /// <param name="spawnedParticles">The particles spawned</param>
-        private IEnumerator DestroyParticles(GameObject spawnedParticles)
-        {
-            yield return new WaitForSeconds(5f);
-            Destroy(spawnedParticles);
-        }
-
-        /// <summary>
         /// Called by OnDestroy of another BuilderObject in order to stop tracking a collided object
         /// </summary>
         /// <param name="g">The other object that is about to be destroyed</param>
@@ -175,6 +165,21 @@ namespace SFBuilder.Obj
             collidedObjects.Remove(g);
             if (collidedObjects.Count == 0)
                 IsCollided = false;
+        }
+
+        /// <summary>
+        /// Resizes then destroys particles after a certain amount of time
+        /// </summary>
+        /// <param name="spawnedParticles">The particles spawned</param>
+        private IEnumerator ResizeAndDestroyParticles(GameObject spawnedParticles)
+        {
+            BoxCollider collider = GetComponent<BoxCollider>();
+            float maxSize = collider.bounds.size.x;
+            if (maxSize < collider.bounds.size.z)
+                maxSize = collider.bounds.size.z;
+            spawnedParticles.transform.localScale = new Vector3(maxSize / 2, maxSize / 2, maxSize / 2);
+            yield return new WaitForSeconds(5f);
+            Destroy(spawnedParticles);
         }
         #endregion
         #region Static Methods
