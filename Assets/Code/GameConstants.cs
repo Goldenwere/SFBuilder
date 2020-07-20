@@ -47,7 +47,7 @@ namespace SFBuilder
             if (num > 0)
                 return "<color=#00ffff>+" + num.ToString() + "</color>";
             else
-                return "<color=#ff0000>" + num.ToString() + "</color>";
+                return "<color=#ff0000>\u2011" + System.Math.Abs(num).ToString() + "</color>";
         }
     }
 }
