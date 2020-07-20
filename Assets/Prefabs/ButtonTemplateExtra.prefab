@@ -538,6 +538,7 @@ MonoBehaviour:
   button: {fileID: 7909465070161235292}
   indicatorCount: {fileID: 2186942571668327061}
   indicatorID: {fileID: 6055474476162717027}
+  tooltipElement: {fileID: 7006248951569158746}
 --- !u!114 &-2563226661960214107
 MonoBehaviour:
   m_ObjectHideFlags: 0

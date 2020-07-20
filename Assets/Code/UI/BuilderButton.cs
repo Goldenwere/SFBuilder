@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SFBuilder.Obj;
+using Goldenwere.Unity.UI;
 
 namespace SFBuilder.UI
 {
@@ -11,14 +12,15 @@ namespace SFBuilder.UI
     {
         #region Fields
 #pragma warning disable 0649
-        [SerializeField] private Button             button;
-        [SerializeField] private TMPro.TMP_Text     indicatorCount;
-        [SerializeField] private TMPro.TMP_Text     indicatorID;
+        [SerializeField] private Button                 button;
+        [SerializeField] private TMPro.TMP_Text         indicatorCount;
+        [SerializeField] private TMPro.TMP_Text         indicatorID;
+        [SerializeField] private TooltipEnabledElement  tooltipElement;
 #pragma warning restore 0649
-        /**************/ private int                associatedCount;
-        /**************/ private int                associatedID;
-        /**************/ private bool               initialized;
-        /**************/ private bool               isRequired;
+        /**************/ private int                    associatedCount;
+        /**************/ private int                    associatedID;
+        /**************/ private bool                   initialized;
+        /**************/ private bool                   isRequired;
         #endregion
         #region Methods
         /// <summary>
@@ -36,8 +38,10 @@ namespace SFBuilder.UI
                 isRequired = info.req;
                 indicatorID.text = BuilderObject.NameOfType((ObjectType)info.id);
                 indicatorCount.text = info.count.ToString();
-                initialized = true;
                 button.interactable = associatedCount > 0;
+                BuilderObject.DescriptionOfType((ObjectType)info.id, out string desc, out double[] val);
+                tooltipElement.UpdateText(desc, val);
+                initialized = true;
             }
         }
 

@@ -184,6 +184,23 @@ namespace SFBuilder.Obj
         #endregion
         #region Static Methods
         /// <summary>
+        /// Returns a description for a specified ObjectType for use in tooltips
+        /// </summary>
+        /// <param name="type">The type being examined</param>
+        /// <param name="description">The description of the type, pre-formatted</param>
+        /// <param name="formatting">Values to be inserted into formatted text</param>
+        public static void DescriptionOfType(ObjectType type, out string description, out double[] values)
+        {
+            switch (type)
+            {
+                default:
+                    description = "Missingno";
+                    values = null;
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Converts ObjectType to a UI-friendly string
         /// </summary>
         /// <param name="type">The type being converted</param>
