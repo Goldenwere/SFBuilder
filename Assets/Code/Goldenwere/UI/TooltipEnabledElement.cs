@@ -29,6 +29,7 @@ namespace Goldenwere.Unity.UI
         [Tooltip         ("Values used if defining a string that needs formatting. Leave blank if no formatting is done inside tooltipText")]
         [SerializeField] private double[]       tooltipValues;
 #pragma warning restore 0649
+        /**************/ private bool           isInitialized;
         /**************/ private GameObject     tooltipSpawnedElement;
         /**************/ private RectTransform  tooltipSpawnedTransform;
         /**************/ private TMP_Text       tooltipTextElement;
@@ -39,19 +40,9 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void Start()
         {
-            if (cameraThatRendersCanvas == null)
-                if (cameraThatRendersCanvasName != null && cameraThatRendersCanvasName != "")
-                    cameraThatRendersCanvas = GameObject.Find(cameraThatRendersCanvasName).GetComponent<Camera>();
-                else
-                    cameraThatRendersCanvas = Camera.main;
-            if (canvasToBeAttachedTo == null)
-                canvasToBeAttachedTo = gameObject.GetComponentInParents<Canvas>();
-
-            tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
-            tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
-            tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
+            if (!isInitialized)
+                Initialize();
             SetText();
-            tooltipSpawnedElement.SetActive(false);
         }
 
         /// <summary>
@@ -118,6 +109,28 @@ namespace Goldenwere.Unity.UI
         }
 
         /// <summary>
+        /// Initializes the tooltip; this is separate from Start in case SetText is called externally before Start gets a chance to run
+        /// </summary>
+        private void Initialize()
+        {
+            if (cameraThatRendersCanvas == null)
+                if (cameraThatRendersCanvasName != null && cameraThatRendersCanvasName != "")
+                    cameraThatRendersCanvas = GameObject.Find(cameraThatRendersCanvasName).GetComponent<Camera>();
+                else
+                    cameraThatRendersCanvas = Camera.main;
+            if (canvasToBeAttachedTo == null)
+                canvasToBeAttachedTo = gameObject.GetComponentInParents<Canvas>();
+
+            tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
+            tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
+            tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
+
+            tooltipSpawnedElement.SetActive(false);
+
+            isInitialized = true;
+        }
+
+        /// <summary>
         /// OnPointerEnter, enable the tooltip
         /// </summary>
         public void OnPointerEnter()
@@ -150,6 +163,9 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void SetText()
         {
+            if (!isInitialized)
+                Initialize();
+
             if (tooltipValues != null && tooltipValues.Length > 0)
                 tooltipTextElement.text = string.Format(tooltipText, tooltipValues).RepairSerializedEscaping();
             else
