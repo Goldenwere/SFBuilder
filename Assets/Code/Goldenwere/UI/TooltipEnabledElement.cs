@@ -120,6 +120,14 @@ namespace Goldenwere.Unity.UI
         }
 
         /// <summary>
+        /// Destroys the tooltip when the enabled element itself is destroyed
+        /// </summary>
+        private void OnDestroy()
+        {
+            Destroy(tooltipSpawnedElement);
+        }
+
+        /// <summary>
         /// Initializes the tooltip; this is separate from Start in case SetText is called externally before Start gets a chance to run
         /// </summary>
         private void Initialize()
