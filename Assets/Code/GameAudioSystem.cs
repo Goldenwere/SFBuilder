@@ -82,7 +82,9 @@ namespace SFBuilder
                 t += Time.deltaTime;
                 yield return null;
             }
-            musicSources[0].volume = 0;
+
+            musicSources[0].Stop();
+            musicSources[0].volume = GameConstants.MusicSourceMaxVolume;
             musicSources[1].volume = GameConstants.MusicSourceMaxVolume;
         }
 
