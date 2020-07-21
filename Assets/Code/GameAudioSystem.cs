@@ -53,32 +53,47 @@ namespace SFBuilder
                 musicSourceIterator = 0;
         }
 
+        /// <summary>
+        /// On Enable, subscribe to the GameStateChanged event
+        /// </summary>
         private void OnEnable()
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
         }
 
+        /// <summary>
+        /// On Disable, unsubscribe from the GameStateChanged event
+        /// </summary>
         private void OnDisable()
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
         }
 
+        /// <summary>
+        /// Coroutine for fading between the first and second audio sources after leaving the menu for the first time
+        /// </summary>
         private IEnumerator FadeSources()
         {
             float t = 0;
             while (t <= GameConstants.MusicFadeTime)
             {
-                audioSources[0].volume = AnimationCurve.Linear(0, GameConstants.MusicSourceMaxVolume, 1, 0).Evaluate(t / GameConstants.MusicFadeTime);
-                audioSources[1].volume = AnimationCurve.Linear(0, 0, 1, GameConstants.MusicSourceMaxVolume).Evaluate(t / GameConstants.MusicFadeTime);
+                musicSources[0].volume = AnimationCurve.Linear(0, GameConstants.MusicSourceMaxVolume, 1, 0).Evaluate(t / GameConstants.MusicFadeTime);
+                musicSources[1].volume = AnimationCurve.Linear(0, 0, 1, GameConstants.MusicSourceMaxVolume).Evaluate(t / GameConstants.MusicFadeTime);
+                t += Time.deltaTime;
                 yield return null;
             }
-            audioSources[0].volume = 0;
-            audioSources[1].volume = GameConstants.MusicSourceMaxVolume;
+            musicSources[0].volume = 0;
+            musicSources[1].volume = GameConstants.MusicSourceMaxVolume;
         }
 
+        /// <summary>
+        /// When leaving the menu for the first time, fade between menu music and new track in case menu music is still playing
+        /// </summary>
+        /// <param name="prev">The previous gamestate</param>
+        /// <param name="curr">The new gamestate</param>
         private void OnGameStateChanged(GameState prev, GameState curr)
         {
-            if (!leftMenuForFirstTime)
+            if (!leftMenuForFirstTime && curr == GameState.Gameplay)
             {
                 StartCoroutine(FadeSources());
                 leftMenuForFirstTime = true;
@@ -92,6 +107,9 @@ namespace SFBuilder
             }
         }
 
+        /// <summary>
+        /// Used for playing the next track after WaitToPlayNextTrack is finished
+        /// </summary>
         private void PlayNextTrack()
         {
             StopCoroutine(WaitToPlayNextTrack());
@@ -106,6 +124,9 @@ namespace SFBuilder
             StartCoroutine(WaitToPlayNextTrack());
         }
 
+        /// <summary>
+        /// Coroutine for waiting to play the next track and to grab a new index (which cannot be the old one)
+        /// </summary>
         private IEnumerator WaitToPlayNextTrack()
         {
             yield return new WaitForSecondsRealtime(GameConstants.MusicWaitTime);
