@@ -155,6 +155,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerEnter()
         {
+            StopAllCoroutines();
             SetActive(true);
         }
 
@@ -163,6 +164,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerExit()
         {
+            StopAllCoroutines();
             SetActive(false);
         }
 
