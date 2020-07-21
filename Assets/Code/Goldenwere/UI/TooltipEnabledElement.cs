@@ -243,7 +243,7 @@ namespace Goldenwere.Unity.UI
                 tooltipTextElement.text = tooltipText.RepairSerializedEscaping();
 
             tooltipSpawnedTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
-                tooltipTextElement.preferredHeight + tooltipTextElement.rectTransform.offsetMin.x);
+                tooltipTextElement.preferredHeight + tooltipTextElement.rectTransform.offsetMin.y);
         }
         #endregion
     }
