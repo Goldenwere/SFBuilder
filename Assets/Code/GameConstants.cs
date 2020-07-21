@@ -47,6 +47,8 @@ namespace SFBuilder
         /// </summary>
         public const float  PlacementAnimationDuration = 0.5f;
 
+        public const float  UIFirstLoadDuration = 2.0f;
+
         /// <summary>
         /// How long UI button transitions last
         /// </summary>

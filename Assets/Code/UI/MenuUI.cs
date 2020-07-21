@@ -9,7 +9,10 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [SerializeField] private CanvasGroup    canvas;
         [SerializeField] private GameObject[]   canvasMainElements;
+        [SerializeField] private Image          startupFadeImage;
         [SerializeField] private AnimationCurve transitionCurve;
+        [SerializeField] private AnimationCurve transitionStartupFade;
+        [SerializeField] private AnimationCurve transitionStartupToWhite;
         [SerializeField] private Image          transitionImage;
 #pragma warning restore 0649
 
@@ -20,7 +23,12 @@ namespace SFBuilder.UI
         {
             Material copy = new Material(transitionImage.material);
             transitionImage.material = copy;
-            StartCoroutine(SetActive(true));
+
+            canvas.gameObject.SetActive(false);
+            foreach (GameObject g in canvasMainElements)
+                g.SetActive(false);
+
+            StartCoroutine(StartupAnimation());
         }
 
         /// <summary>
@@ -143,6 +151,33 @@ namespace SFBuilder.UI
                 foreach (GameObject g in canvasMainElements)
                     g.SetActive(false);
             }
+        }
+
+        /// <summary>
+        /// The animation to play when the game first starts up
+        /// </summary>
+        private IEnumerator StartupAnimation()
+        {
+            yield return new WaitForFixedUpdate();
+            float t = 0;
+            while (t <= GameConstants.UIFirstLoadDuration)
+            {
+                startupFadeImage.color = new Color(
+                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 
+                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 
+                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 1);
+                yield return null;
+                t += Time.deltaTime;
+            }
+            t = 0;
+            while (t <= GameConstants.UIFirstLoadDuration)
+            {
+                startupFadeImage.color = new Color(1, 1, 1, transitionStartupFade.Evaluate(t / GameConstants.UIFirstLoadDuration));
+                yield return null;
+                t += Time.deltaTime;
+            }
+
+            StartCoroutine(SetActive(true));
         }
     }
 }
