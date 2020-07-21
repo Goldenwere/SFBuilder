@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 namespace Goldenwere.Unity.UI
 {
@@ -24,11 +25,20 @@ namespace Goldenwere.Unity.UI
                           "as this class depends on the left padding when determining container height + bottom padding\n" +
                           "Make sure that the container uses the center+center anchor preset, as this class needs to use its own anchor method due to depending on cursor position")]
         [SerializeField] private GameObject     tooltipPrefab;
+        [Tooltip         ("Needed if using fade transitions")]
+        [SerializeField] private CanvasGroup    tooltipCanvasGroup;
         [Tooltip         ("The text to display in the tooltip")]
         [SerializeField] private string         tooltipText;
+        [Tooltip         ("How long tooltip transitions last (only used if tooltipTransitionMode isn't set to None")]
+        [SerializeField] private float          tooltipTransitionDuration;
+        [Tooltip         ("The curve for animating transitions")]
+        [SerializeField] private AnimationCurve tooltipTransitionCurve;
+        [Tooltip         ("How the tooltip is transitioned/animated into/out of existence")]
+        [SerializeField] private TransitionMode tooltipTransitionMode;
         [Tooltip         ("Values used if defining a string that needs formatting. Leave blank if no formatting is done inside tooltipText")]
         [SerializeField] private double[]       tooltipValues;
 #pragma warning restore 0649
+        /**************/ private bool           isActive;
         /**************/ private bool           isInitialized;
         /**************/ private GameObject     tooltipSpawnedElement;
         /**************/ private RectTransform  tooltipSpawnedTransform;
@@ -124,9 +134,7 @@ namespace Goldenwere.Unity.UI
             tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
             tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
-
-            tooltipSpawnedElement.SetActive(false);
-
+            SetActive(false, TransitionMode.None);
             isInitialized = true;
         }
 
@@ -135,7 +143,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerEnter()
         {
-            tooltipSpawnedElement.SetActive(true);
+            SetActive(true);
         }
 
         /// <summary>
@@ -143,7 +151,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerExit()
         {
-            tooltipSpawnedElement.SetActive(false);
+            SetActive(false);
         }
 
         /// <summary>
@@ -156,6 +164,71 @@ namespace Goldenwere.Unity.UI
             tooltipText = newTooltip;
             tooltipValues = newValues;
             SetText();
+        }
+
+        /// <summary>
+        /// Coroutine for the Fade transition
+        /// </summary>
+        /// <param name="_isActive">Determines whether to fade in or out</param>
+        private IEnumerator TransitionFade(bool _isActive)
+        {
+            if (_isActive) 
+            {
+                float t = 0;
+                while (t <= tooltipTransitionDuration)
+                {
+                    if (_isActive)
+                        tooltipCanvasGroup.alpha = tooltipTransitionCurve.Evaluate(t / tooltipTransitionDuration);
+                    t += Time.deltaTime;
+                    yield return null;
+                }
+            }
+            else
+            {
+                float t = tooltipTransitionDuration;
+                while (t >= 0)
+                {
+                    if (_isActive)
+                        tooltipCanvasGroup.alpha = tooltipTransitionCurve.Evaluate(t / tooltipTransitionDuration);
+                    t -= Time.deltaTime;
+                    yield return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Activates/deactivates the tooltip, which engages in transitions if the tooltip's active state is different from the new state
+        /// </summary>
+        /// <param name="_isActive">Whether to activate or deactivate the tooltip</param>
+        private void SetActive(bool _isActive)
+        {
+            SetActive(_isActive, tooltipTransitionMode);
+        }
+
+        /// <summary>
+        /// Activates/deactivates the tooltip, which engages in transitions if the tooltip's active state is different from the new state
+        /// <para>This overload overrides the mode defined for the element</para>
+        /// </summary>
+        /// <param name="_isActive">Whether to activate or deactivate the tooltip</param>
+        /// <param name="mode">The mode of transition to use for animation</param>
+        private void SetActive(bool _isActive, TransitionMode mode)
+        {
+            if (isActive != _isActive)
+            {
+                isActive = _isActive;
+                switch (mode)
+                {
+                    case TransitionMode.Fade:
+                        if (!tooltipSpawnedElement.activeSelf)
+                            tooltipSpawnedElement.SetActive(true);
+                        StartCoroutine(TransitionFade(isActive));
+                        break;
+                    case TransitionMode.None:
+                    default:
+                        tooltipSpawnedElement.SetActive(isActive);
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -191,5 +264,14 @@ namespace Goldenwere.Unity.UI
         BottomLeft,
         BottomMiddle,
         BottomRight
+    }
+
+    /// <summary>
+    /// Defines how the tooltip should be transitioned
+    /// </summary>
+    public enum TransitionMode
+    {
+        None,
+        Fade
     }
 }

@@ -649,7 +649,35 @@ MonoBehaviour:
   tooltipAnchorPosition: 7
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipCanvasGroup: {fileID: 8986717314549769513, guid: 2a055d46c62373649bf562590a3da29d,
+    type: 3}
   tooltipText: Default text
+  tooltipTransitionDuration: 0.5
+  tooltipTransitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tooltipTransitionMode: 0
   tooltipValues: []
 --- !u!114 &-3051992052307276896
 MonoBehaviour:
