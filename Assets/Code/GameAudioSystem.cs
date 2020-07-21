@@ -106,6 +106,8 @@ namespace SFBuilder
                 musicSourceIterator++;
                 if (musicSourceIterator >= musicSources.Length)
                     musicSourceIterator = 0;
+
+                StartCoroutine(WaitToPlayNextTrack());
             }
         }
 

@@ -35,7 +35,7 @@ namespace SFBuilder
         /// <summary>
         /// Crossfading tracks involves going between 0 and this number / visa-versa; this is set less than 1 so that music normally is quieter than in-game sounds
         /// </summary>
-        public const float  MusicSourceMaxVolume = 0.7f;
+        public const float  MusicSourceMaxVolume = 0.5f;
 
         /// <summary>
         /// Wait period between playing tracks (should be at least a minute longer than the longest music track in the game)
