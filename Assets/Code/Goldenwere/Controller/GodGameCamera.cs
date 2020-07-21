@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace Goldenwere.Unity.Controller
 {
@@ -150,15 +151,20 @@ namespace Goldenwere.Unity.Controller
         {
             if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
             {
-                if (settingModifiersAreToggled)
-                    workingModifierMouseMovement = !workingModifierMouseMovement;
-                else
-                    workingModifierMouseMovement = context.performed;
-
-                if (!workingModifierMouseMovement)
+                if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null ||
+                    EventSystem.current != null && !EventSystem.current.IsPointerOverGameObject() ||
+                    EventSystem.current == null)
                 {
-                    Cursor.lockState = cursorNormalLockModeState;
-                    Cursor.visible = true;
+                    if (settingModifiersAreToggled)
+                        workingModifierMouseMovement = !workingModifierMouseMovement;
+                    else
+                        workingModifierMouseMovement = context.performed;
+
+                    if (!workingModifierMouseMovement)
+                    {
+                        Cursor.lockState = cursorNormalLockModeState;
+                        Cursor.visible = true;
+                    }
                 }
             }
         }
@@ -198,32 +204,37 @@ namespace Goldenwere.Unity.Controller
         {
             if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
             {
-                if (settingModifiersAreToggled)
-                    workingModifierMouseRotation = !workingModifierMouseRotation;
-                else
-                    workingModifierMouseRotation = context.performed;
-
-                if (settingRotationMode == RotationMode.CursorRaycast)
+                if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null ||
+                    EventSystem.current != null && !EventSystem.current.IsPointerOverGameObject() ||
+                    EventSystem.current == null)
                 {
-                    if (!workingInputMousePositionSet)
-                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
-                            workingInputMousePositionOnRotate = hit.point;
-                    workingInputMousePositionSet = workingModifierMouseRotation;
-                }
+                    if (settingModifiersAreToggled)
+                        workingModifierMouseRotation = !workingModifierMouseRotation;
+                    else
+                        workingModifierMouseRotation = context.performed;
 
-                else if (settingRotationMode == RotationMode.Raycast)
-                {
-                    if (!workingInputMousePositionSet)
-                        if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
-                            workingInputMousePositionOnRotate = hit.point;
-                    workingInputMousePositionSet = workingModifierMouseRotation;
-                }
+                    if (settingRotationMode == RotationMode.CursorRaycast)
+                    {
+                        if (!workingInputMousePositionSet)
+                            if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+                                workingInputMousePositionOnRotate = hit.point;
+                        workingInputMousePositionSet = workingModifierMouseRotation;
+                    }
+
+                    else if (settingRotationMode == RotationMode.Raycast)
+                    {
+                        if (!workingInputMousePositionSet)
+                            if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
+                                workingInputMousePositionOnRotate = hit.point;
+                        workingInputMousePositionSet = workingModifierMouseRotation;
+                    }
 
 
-                if (!workingModifierMouseRotation)
-                {
-                    Cursor.lockState = cursorNormalLockModeState;
-                    Cursor.visible = true;
+                    if (!workingModifierMouseRotation)
+                    {
+                        Cursor.lockState = cursorNormalLockModeState;
+                        Cursor.visible = true;
+                    }
                 }
             }
         }
@@ -263,15 +274,20 @@ namespace Goldenwere.Unity.Controller
         {
             if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
             {
-                if (settingModifiersAreToggled)
-                    workingModifierMouseZoom = !workingModifierMouseZoom;
-                else
-                    workingModifierMouseZoom = context.performed;
-
-                if (!workingModifierMouseZoom)
+                if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null ||
+                    EventSystem.current != null && !EventSystem.current.IsPointerOverGameObject() ||
+                    EventSystem.current == null)
                 {
-                    Cursor.lockState = cursorNormalLockModeState;
-                    Cursor.visible = true;
+                    if (settingModifiersAreToggled)
+                        workingModifierMouseZoom = !workingModifierMouseZoom;
+                    else
+                        workingModifierMouseZoom = context.performed;
+
+                    if (!workingModifierMouseZoom)
+                    {
+                        Cursor.lockState = cursorNormalLockModeState;
+                        Cursor.visible = true;
+                    }
                 }
             }
         }

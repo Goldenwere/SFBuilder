@@ -13,6 +13,15 @@ namespace SFBuilder.UI
 #pragma warning restore 0649
 
         /// <summary>
+        /// Copy the material for transitions since it messes with asset file
+        /// </summary>
+        private void Start()
+        {
+            Material copy = new Material(transitionImage.material);
+            transitionImage.material = copy;
+        }
+
+        /// <summary>
         /// On Enable, subscribe to events
         /// </summary>
         private void OnEnable()
