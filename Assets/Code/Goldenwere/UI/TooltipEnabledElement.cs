@@ -25,14 +25,14 @@ namespace Goldenwere.Unity.UI
                           "as this class depends on the left padding when determining container height + bottom padding\n" +
                           "Make sure that the container uses the center+center anchor preset, as this class needs to use its own anchor method due to depending on cursor position")]
         [SerializeField] private GameObject     tooltipPrefab;
-        [Tooltip         ("Needed if using fade transitions")]
-        [SerializeField] private CanvasGroup    tooltipCanvasGroup;
         [Tooltip         ("The text to display in the tooltip")]
         [SerializeField] private string         tooltipText;
         [Tooltip         ("How long tooltip transitions last (only used if tooltipTransitionMode isn't set to None")]
         [SerializeField] private float          tooltipTransitionDuration;
-        [Tooltip         ("The curve for animating transitions")]
-        [SerializeField] private AnimationCurve tooltipTransitionCurve;
+        [Tooltip         ("The curve for animating transitions when transitioning into existence")]
+        [SerializeField] private AnimationCurve tooltipTransitionCurveIn;
+        [Tooltip         ("The curve for animating transitions when transitioning out of existence")]
+        [SerializeField] private AnimationCurve tooltipTransitionCurveOut;
         [Tooltip         ("How the tooltip is transitioned/animated into/out of existence")]
         [SerializeField] private TransitionMode tooltipTransitionMode;
         [Tooltip         ("Values used if defining a string that needs formatting. Leave blank if no formatting is done inside tooltipText")]
@@ -40,6 +40,7 @@ namespace Goldenwere.Unity.UI
 #pragma warning restore 0649
         /**************/ private bool           isActive;
         /**************/ private bool           isInitialized;
+        /**************/ private CanvasGroup    tooltipCanvasGroup;
         /**************/ private GameObject     tooltipSpawnedElement;
         /**************/ private RectTransform  tooltipSpawnedTransform;
         /**************/ private TMP_Text       tooltipTextElement;
@@ -134,6 +135,8 @@ namespace Goldenwere.Unity.UI
             tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
             tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
+            if ((tooltipCanvasGroup = tooltipSpawnedElement.GetComponent<CanvasGroup>()) == null) 
+                tooltipCanvasGroup = tooltipSpawnedElement.AddComponent<CanvasGroup>();
             isActive = tooltipSpawnedElement.activeSelf;
             SetActive(false, TransitionMode.None);
             isInitialized = true;
@@ -173,28 +176,22 @@ namespace Goldenwere.Unity.UI
         /// <param name="_isActive">Determines whether to fade in or out</param>
         private IEnumerator TransitionFade(bool _isActive)
         {
-            if (_isActive) 
+            float t = 0;
+            while (t <= tooltipTransitionDuration)
             {
-                float t = 0;
-                while (t <= tooltipTransitionDuration)
-                {
-                    if (_isActive)
-                        tooltipCanvasGroup.alpha = tooltipTransitionCurve.Evaluate(t / tooltipTransitionDuration);
-                    t += Time.deltaTime;
-                    yield return null;
-                }
+                if (_isActive)
+                    tooltipCanvasGroup.alpha = tooltipTransitionCurveIn.Evaluate(t / tooltipTransitionDuration);
+                else
+                    tooltipCanvasGroup.alpha = tooltipTransitionCurveOut.Evaluate(t / tooltipTransitionDuration);
+
+                yield return null;
+                t += Time.deltaTime;
             }
+
+            if (_isActive)
+                tooltipCanvasGroup.alpha = 1;
             else
-            {
-                float t = tooltipTransitionDuration;
-                while (t >= 0)
-                {
-                    if (_isActive)
-                        tooltipCanvasGroup.alpha = tooltipTransitionCurve.Evaluate(t / tooltipTransitionDuration);
-                    t -= Time.deltaTime;
-                    yield return null;
-                }
-            }
+                tooltipCanvasGroup.alpha = 0;
         }
 
         /// <summary>
