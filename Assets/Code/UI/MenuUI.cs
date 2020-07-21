@@ -7,7 +7,8 @@ namespace SFBuilder.UI
     public class MenuUI : MonoBehaviour
     {
 #pragma warning disable 0649
-        [SerializeField] private GameObject     canvas;
+        [SerializeField] private CanvasGroup    canvas;
+        [SerializeField] private GameObject[]   canvasMainElements;
         [SerializeField] private AnimationCurve transitionCurve;
         [SerializeField] private Image          transitionImage;
 #pragma warning restore 0649
@@ -19,6 +20,7 @@ namespace SFBuilder.UI
         {
             Material copy = new Material(transitionImage.material);
             transitionImage.material = copy;
+            StartCoroutine(SetActive(true));
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnPlayPressed()
         {
-            canvas.SetActive(false);
+            StartCoroutine(SetActive(false));
             GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
         }
@@ -57,9 +59,9 @@ namespace SFBuilder.UI
         private void OnGameStateChanged(GameState prevState, GameState currState)
         {
             if (currState == GameState.MainMenus)
-                canvas.SetActive(true);
+                StartCoroutine(SetActive(true));
             else
-                canvas.SetActive(false);
+                StartCoroutine(SetActive(false));
         }
 
         /// <summary>
@@ -105,6 +107,42 @@ namespace SFBuilder.UI
 
             if (!isStart)
                 transitionImage.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Animation for setting the main menu canvas active or inactive
+        /// </summary>
+        /// <param name="active">Whether to fade the canvas in or out</param>
+        private IEnumerator SetActive(bool active)
+        {
+            float t = 0;
+            if (active)
+            {
+                canvas.gameObject.SetActive(true);
+                foreach (GameObject g in canvasMainElements)
+                    g.SetActive(true);
+            }
+
+            while (t <= GameConstants.UITransitionDuration)
+            {
+                if (active)
+                    canvas.alpha = AnimationCurve.Linear(0, 0, 1, 1).Evaluate(t / GameConstants.UITransitionDuration);
+                else
+                    canvas.alpha = AnimationCurve.Linear(0, 1, 1, 0).Evaluate(t / GameConstants.UITransitionDuration);
+                yield return null;
+                t += Time.deltaTime;
+            }
+
+            if (active)
+                canvas.alpha = 1;
+
+            else
+            {
+                canvas.alpha = 0;
+                canvas.gameObject.SetActive(false);
+                foreach (GameObject g in canvasMainElements)
+                    g.SetActive(false);
+            }
         }
     }
 }
