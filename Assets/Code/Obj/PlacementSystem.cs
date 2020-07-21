@@ -52,6 +52,7 @@ namespace SFBuilder.Obj
         private void Start()
         {
             prefabsPlaced = new LinkedList<BuilderObject>();
+            gameCam.CameraModifiersAreEnabled = true;
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
                 gameCam.cameraMotionIsFrozen = true;
@@ -108,6 +109,7 @@ namespace SFBuilder.Obj
                 {
                     Destroy(prefabInstance.gameObject);
                     isPlacing = false;
+                    gameCam.CameraModifiersAreEnabled = true;
                     prefabHadFirstHit = false;
                     prefabInstance = null;
                     StartCoroutine(TransitionPlacementUI());
@@ -132,6 +134,7 @@ namespace SFBuilder.Obj
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
                 isPlacing = true;
+                gameCam.CameraModifiersAreEnabled = false;
                 StartCoroutine(TransitionPlacementUI());
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 return prefabInstance;
@@ -179,6 +182,7 @@ namespace SFBuilder.Obj
                     prefabsPlaced.RemoveLast();
                 prefabInstance = null;
                 isPlacing = false;
+                gameCam.CameraModifiersAreEnabled = true;
                 prefabHadFirstHit = false;
                 StartCoroutine(TransitionPlacementUI());
                 GoalSystem.Instance.VerifyForNextGoal();
@@ -197,6 +201,7 @@ namespace SFBuilder.Obj
                 if (isPlacing)
                     Destroy(prefabInstance.gameObject);
                 isPlacing = true;
+                gameCam.CameraModifiersAreEnabled = false;
                 prefabHadFirstHit = true;
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();

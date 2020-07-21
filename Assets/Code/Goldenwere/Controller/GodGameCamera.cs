@@ -49,6 +49,7 @@ namespace Goldenwere.Unity.Controller
         /**************/ private const float    sensitivityScaleZoomMouse = 3f;
         #endregion
         #region Internal working variables      (these shouldn't need changed unless modifying how the camera works)
+        /**************/ private bool           cameraModifiersAreEnabled;
         /**************/ private Vector3        workingDesiredPosition;
         /**************/ private Quaternion     workingDesiredRotationHorizontal;
         /**************/ private Quaternion     workingDesiredRotationVertical;
@@ -62,7 +63,25 @@ namespace Goldenwere.Unity.Controller
         /**************/ private bool           workingModifierMouseZoom;
         #endregion
         #endregion
-
+        #region Properties
+        /// <summary>
+        /// Toggles whether mouse modifiers are enabled (useful if other systems need to use mouse buttons without camera movement interfering)
+        /// </summary>
+        public bool CameraModifiersAreEnabled
+        {
+            get { return cameraModifiersAreEnabled; }
+            set
+            {
+                cameraModifiersAreEnabled = value;
+                if (!cameraModifiersAreEnabled)
+                {
+                    workingModifierMouseZoom = false;
+                    workingModifierMouseRotation = false;
+                    workingModifierMouseMovement = false;
+                }
+            }
+        }
+        #endregion
         #region Methods
         /// <summary>
         /// Sets up the working variables on MonoBehaviour.Start()
@@ -129,16 +148,18 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Input context associated with event</param>
         public void OnMovementMouseModifier(InputAction.CallbackContext context)
         {
-            if (!cameraMotionIsFrozen)
+            if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
+            {
                 if (settingModifiersAreToggled)
                     workingModifierMouseMovement = !workingModifierMouseMovement;
                 else
                     workingModifierMouseMovement = context.performed;
 
-            if (!workingModifierMouseMovement)
-            {
-                Cursor.lockState = cursorNormalLockModeState;
-                Cursor.visible = true;
+                if (!workingModifierMouseMovement)
+                {
+                    Cursor.lockState = cursorNormalLockModeState;
+                    Cursor.visible = true;
+                }
             }
         }
 
@@ -175,7 +196,7 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Input context associated with event</param>
         public void OnRotationMouseModifier(InputAction.CallbackContext context)
         {
-            if (!cameraMotionIsFrozen)
+            if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
             {
                 if (settingModifiersAreToggled)
                     workingModifierMouseRotation = !workingModifierMouseRotation;
@@ -197,12 +218,13 @@ namespace Goldenwere.Unity.Controller
                             workingInputMousePositionOnRotate = hit.point;
                     workingInputMousePositionSet = workingModifierMouseRotation;
                 }
-            }
 
-            if (!workingModifierMouseRotation)
-            {
-                Cursor.lockState = cursorNormalLockModeState;
-                Cursor.visible = true;
+
+                if (!workingModifierMouseRotation)
+                {
+                    Cursor.lockState = cursorNormalLockModeState;
+                    Cursor.visible = true;
+                }
             }
         }
 
@@ -239,16 +261,18 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Input context associated with event</param>
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
-            if (!cameraMotionIsFrozen)
+            if (!cameraMotionIsFrozen && cameraModifiersAreEnabled)
+            {
                 if (settingModifiersAreToggled)
-                workingModifierMouseZoom = !workingModifierMouseZoom;
+                    workingModifierMouseZoom = !workingModifierMouseZoom;
                 else
                     workingModifierMouseZoom = context.performed;
 
-            if (!workingModifierMouseZoom)
-            {
-                Cursor.lockState = cursorNormalLockModeState;
-                Cursor.visible = true;
+                if (!workingModifierMouseZoom)
+                {
+                    Cursor.lockState = cursorNormalLockModeState;
+                    Cursor.visible = true;
+                }
             }
         }
 
