@@ -27,6 +27,24 @@ namespace SFBuilder
         /// </summary>
         public const float  LevelTransitionStartTime = 2.5f;
 
+        /// <summary>
+        /// Length of time to animate fading music sources
+        /// </summary>
+        public const float  MusicFadeTime = 2.0f;
+
+        /// <summary>
+        /// Crossfading tracks involves going between 0 and this number / visa-versa; this is set less than 1 so that music normally is quieter than in-game sounds
+        /// </summary>
+        public const float  MusicSourceMaxVolume = 0.7f;
+
+        /// <summary>
+        /// Wait period between playing tracks (should be at least a minute longer than the longest music track in the game)
+        /// </summary>
+        public const float  MusicWaitTime = 360f;
+
+        /// <summary>
+        /// Sets how long the bouncy animation for placement lasts
+        /// </summary>
         public const float  PlacementAnimationDuration = 0.5f;
 
         /// <summary>
