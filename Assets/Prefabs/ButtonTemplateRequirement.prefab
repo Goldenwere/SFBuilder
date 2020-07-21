@@ -677,7 +677,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  tooltipTransitionMode: 0
+  tooltipTransitionMode: 1
   tooltipValues: []
 --- !u!114 &-3051992052307276896
 MonoBehaviour:

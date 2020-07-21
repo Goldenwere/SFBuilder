@@ -30,7 +30,7 @@ namespace SFBuilder.UI
         /// <param name="id">The numerical id of the BuilderObject (casted to ObjectType)</param>
         /// <param name="count">The number of the specified BuilderObject the button can create</param>
         /// <param name="required">Whether or not the BuilderObject is required (determines which working set to edit)</param>
-        public void Initialize(ButtonInfo info)
+        public void SetupButton(ButtonInfo info)
         {
             if (!initialized)
             {
