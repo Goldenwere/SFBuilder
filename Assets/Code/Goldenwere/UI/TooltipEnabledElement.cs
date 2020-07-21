@@ -134,6 +134,7 @@ namespace Goldenwere.Unity.UI
             tooltipSpawnedElement = Instantiate(tooltipPrefab, canvasToBeAttachedTo.transform);
             tooltipTextElement = tooltipSpawnedElement.GetComponentInChildren<TMP_Text>();
             tooltipSpawnedTransform = tooltipSpawnedElement.GetComponent<RectTransform>();
+            isActive = tooltipSpawnedElement.activeSelf;
             SetActive(false, TransitionMode.None);
             isInitialized = true;
         }
