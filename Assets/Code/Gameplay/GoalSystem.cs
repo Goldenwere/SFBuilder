@@ -139,6 +139,7 @@ namespace SFBuilder.Gameplay
         {
             for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
                 Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
+            uiWasSetUp = false;
         }
 
         /// <summary>
@@ -209,6 +210,8 @@ namespace SFBuilder.Gameplay
                 rt.SendMessage("SetupButton", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = false });
                 buttonCount++;
             }
+
+            uiWasSetUp = true;
         }
         #endregion
     }
