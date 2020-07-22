@@ -50,16 +50,6 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// When the play button is pressed, load the game
-        /// </summary>
-        public void OnPlayPressed()
-        {
-            StartCoroutine(SetActive(false));
-            GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
-        }
-
-        /// <summary>
         /// On the GameStateChanged event, toggle the menu canvas
         /// </summary>
         /// <param name="prevState">The previous GameState</param>
@@ -80,6 +70,24 @@ namespace SFBuilder.UI
         {
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 StartCoroutine(AnimateTransition(isStart));
+        }
+
+        /// <summary>
+        /// When the play button is pressed, load the game
+        /// </summary>
+        public void OnPlayPressed()
+        {
+            StartCoroutine(SetActive(false));
+            GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
+        }
+
+        /// <summary>
+        /// When the quit button is pressed, quit the game
+        /// </summary>
+        public void OnQuitPressed()
+        {
+            Application.Quit();
         }
 
         /// <summary>
