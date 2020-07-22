@@ -169,12 +169,20 @@ namespace Goldenwere.Unity
         /// <param name="self">The Vector3 being rounded</param>
         /// <param name="precision">The precision</param>
         /// <returns></returns>
-        public static Vector3 ToPrecision(this Vector3 self, float precision)
+        public static Vector3 ToPrecision(this Vector3 self, float precision, bool roundX = true, bool roundY = true, bool roundZ = true)
         {
-            return new Vector3(
-                Mathf.Round(self.x / precision) * precision,
-                Mathf.Round(self.y / precision) * precision,
-                Mathf.Round(self.z / precision) * precision);
+            float x = self.x;
+            float y = self.y;
+            float z = self.z;
+
+            if (roundX)
+                x = Mathf.Round(self.x / precision) * precision;
+            if (roundY)
+                y = Mathf.Round(self.y / precision) * precision;
+            if (roundZ)
+                z = Mathf.Round(self.z / precision) * precision;
+
+            return new Vector3(x, y, z);
         }
 
         /// <summary>

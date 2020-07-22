@@ -87,11 +87,11 @@ namespace SFBuilder.Obj
             if (isPlacing && Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
             {
                 if (prefabHadFirstHit)
-                    prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point.ToPrecision(positionPrecision), Time.deltaTime * 25);
+                    prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point.ToPrecision(positionPrecision, true, false, true), Time.deltaTime * 25);
 
                 else
                 {
-                    prefabInstance.transform.position = hit.point.ToPrecision(positionPrecision);
+                    prefabInstance.transform.position = hit.point.ToPrecision(positionPrecision, true, false, true);
                     prefabHadFirstHit = true;
                 }
             }
@@ -177,7 +177,7 @@ namespace SFBuilder.Obj
             if (context.performed && isPlacing && prefabInstance.IsValid)
             {
                 prefabInstance.IsPlaced = true;
-                prefabInstance.transform.position = prefabInstance.transform.position.ToPrecision(positionPrecision);
+                prefabInstance.transform.position = prefabInstance.transform.position.ToPrecision(positionPrecision, true, false, true);
                 prefabsPlaced.AddFirst(prefabInstance);
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();
