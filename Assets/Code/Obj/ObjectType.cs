@@ -40,10 +40,10 @@
         Res_D = 51, // apartment tower              | +00 H -15 P -15 S | -8 H @ apartments
         
         // +S &/or +H, sometimes -P
-        Env_A = 64, // community garden             | +00 H +00 P +05 S | +3 H @ cabins, +5 H @ apartments, +2 S @ a wildlife, +1 S @ garden
-        Env_B = 65, // small farm                   | +00 H +00 P +08 S | +1 H @ cabins, +3 H @ apartments, +2 S @ farms
-        Env_C = 66, // large farm                   | +00 H +00 P +10 S | +1 S @ farms
-        Env_D = 67  // vertical farm                | +00 H -03 P +20 S | -1 H @ Res
+        Env_A = 64, // community garden             | +00 H +00 P +08 S | +3 H @ cabins, +5 H @ apartments, +2 S @ a wildlife, +1 S @ garden
+        Env_B = 65, // small farm                   | +00 H +00 P +12 S | +1 H @ cabins, +3 H @ apartments, +2 S @ farms
+        Env_C = 66, // large farm                   | +00 H +00 P +18 S | +1 S @ farms
+        Env_D = 67  // vertical farm                | +00 H -03 P +25 S | -1 H @ Res
 
         // +H, -P, sometimes -S
     }

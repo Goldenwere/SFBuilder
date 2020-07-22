@@ -294,22 +294,22 @@ namespace SFBuilder.Obj
 				#endregion
 				#region Environment
 				case ObjectType.Env_A:
-					description = "Community garden - gives " + GameConstants.UITooltipColorTag(5) + " base sustenance, " + 
+					description = "Community garden - gives " + GameConstants.UITooltipColorTag(8) + " base sustenance, " + 
                         GameConstants.UITooltipColorTag(1) + " sustenance for other gardens, " + GameConstants.UITooltipColorTag(2) + 
                         " sustenance for alien wildlife, " + GameConstants.UITooltipColorTag(3) + " happiness for cabins, and " + 
                         GameConstants.UITooltipColorTag(5) + " happiness for apartments.";
 					break;
 				case ObjectType.Env_B:
-					description = "Small farm - gives " + GameConstants.UITooltipColorTag(8) + " base sustenance, " + 
+					description = "Small farm - gives " + GameConstants.UITooltipColorTag(12) + " base sustenance, " + 
                         GameConstants.UITooltipColorTag(2) + " sustenance for other farms, " + GameConstants.UITooltipColorTag(1) + 
                         " happiness for cabins, and " + GameConstants.UITooltipColorTag(3) + " happiness for apartments.";
 					break;
 				case ObjectType.Env_C:
-					description = "Large farm - gives " + GameConstants.UITooltipColorTag(10) + " base sustenance and an additional " + 
+					description = "Large farm - gives " + GameConstants.UITooltipColorTag(18) + " base sustenance and an additional " + 
                         GameConstants.UITooltipColorTag(2) + " sustenance for other farms in range.";
 					break;
 				case ObjectType.Env_D:
-					description = "Vertical farm - gives " + GameConstants.UITooltipColorTag(20) + " base sustenance and takes " + 
+					description = "Vertical farm - gives " + GameConstants.UITooltipColorTag(25) + " base sustenance and takes " + 
                         GameConstants.UITooltipColorTag(-3) + " power, with an additional " + GameConstants.UITooltipColorTag(-1) + 
                         " happiness penalty for all residences in range.";
 					break;

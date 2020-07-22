@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7562462872275633134}
   - component: {fileID: 1668254404095367131}
   - component: {fileID: 9009214351374303597}
+  - component: {fileID: 8019930516475246565}
   m_Layer: 5
   m_Name: Viability_Icon
   m_TagString: Untagged
@@ -107,6 +108,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &8019930516475246565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215607479907431442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2160716310690867532
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +189,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ':'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -276,6 +292,7 @@ GameObject:
   - component: {fileID: 7841588084755126407}
   - component: {fileID: 3962266847416922610}
   - component: {fileID: 1874039959194243435}
+  - component: {fileID: 3131488989905598882}
   m_Layer: 5
   m_Name: Sustenance_Icon
   m_TagString: Untagged
@@ -370,6 +387,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &3131488989905598882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192377099689068411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3537723848366620236
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +469,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -539,6 +571,7 @@ GameObject:
   - component: {fileID: 8073127349546254772}
   - component: {fileID: 7228887973379278259}
   - component: {fileID: 8224459631012133024}
+  - component: {fileID: 7786318397827128054}
   m_Layer: 5
   m_Name: Goal_Icon
   m_TagString: Untagged
@@ -634,6 +667,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &7786318397827128054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713480294971123849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3762693284440449700
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +693,7 @@ GameObject:
   - component: {fileID: 6640866415110257003}
   - component: {fileID: 6045771078309587737}
   - component: {fileID: 2270453197990026013}
+  - component: {fileID: 1431546063854031327}
   m_Layer: 5
   m_Name: MinViability_Icon
   m_TagString: Untagged
@@ -708,6 +757,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1431546063854031327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762693284440449700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5048564688399348973
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,8 +839,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '##'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1315,6 +1379,7 @@ GameObject:
   - component: {fileID: 5264296986326935733}
   - component: {fileID: 5264296986326935735}
   - component: {fileID: 8635472694937336177}
+  - component: {fileID: 854502589365851082}
   m_Layer: 5
   m_Name: Button_NextGoal
   m_TagString: Untagged
@@ -1449,6 +1514,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &854502589365851082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264296986326935731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5264296986584691659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2226,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2340,7 +2420,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2482,6 +2562,7 @@ GameObject:
   - component: {fileID: 5266883783652016847}
   - component: {fileID: 2984189736605931832}
   - component: {fileID: 3244030518640455541}
+  - component: {fileID: 3653709018838310930}
   m_Layer: 5
   m_Name: Power_Icon
   m_TagString: Untagged
@@ -2576,6 +2657,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &3653709018838310930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820661074150585357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7337015577952580552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,6 +2685,7 @@ GameObject:
   - component: {fileID: 6667422767512116180}
   - component: {fileID: 6550654042350747606}
   - component: {fileID: 6088823226455272417}
+  - component: {fileID: 5192359513987082624}
   m_Layer: 5
   m_Name: Happiness_Icon
   m_TagString: Untagged
@@ -2683,6 +2780,21 @@ MonoBehaviour:
   playSoundDuringAnimation: 0
   valueStart: {x: 0, y: 0, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &5192359513987082624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337015577952580552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -0.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &8063758506404628178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2862,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2978,7 +3090,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
