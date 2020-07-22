@@ -177,6 +177,7 @@ namespace SFBuilder.Obj
             if (context.performed && isPlacing && prefabInstance.IsValid)
             {
                 prefabInstance.IsPlaced = true;
+                prefabInstance.transform.position = prefabInstance.transform.position.ToPrecision(positionPrecision);
                 prefabsPlaced.AddFirst(prefabInstance);
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();
