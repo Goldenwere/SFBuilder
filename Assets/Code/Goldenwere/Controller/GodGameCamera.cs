@@ -101,6 +101,9 @@ namespace Goldenwere.Unity.Controller
         {
             if (!cameraMotionIsFrozen)
             {
+                if (workingInputMovement || workingInputRotation || workingInputZoom)
+                    SetRotationPoint();
+
                 if (workingInputMovement)
                     PerformMovement(attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
 
@@ -213,23 +216,6 @@ namespace Goldenwere.Unity.Controller
                     else
                         workingModifierMouseRotation = context.performed;
 
-                    if (settingRotationMode == RotationMode.CursorRaycast)
-                    {
-                        if (!workingInputMousePositionSet)
-                            if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
-                                workingInputMousePositionOnRotate = hit.point;
-                        workingInputMousePositionSet = workingModifierMouseRotation;
-                    }
-
-                    else if (settingRotationMode == RotationMode.Raycast)
-                    {
-                        if (!workingInputMousePositionSet)
-                            if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
-                                workingInputMousePositionOnRotate = hit.point;
-                        workingInputMousePositionSet = workingModifierMouseRotation;
-                    }
-
-
                     if (!workingModifierMouseRotation)
                     {
                         Cursor.lockState = cursorNormalLockModeState;
@@ -289,6 +275,28 @@ namespace Goldenwere.Unity.Controller
                         Cursor.visible = true;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets the rotation point for rotation modes that require it
+        /// </summary>
+        private void SetRotationPoint()
+        {
+            if (settingRotationMode == RotationMode.CursorRaycast)
+            {
+                if (!workingInputMousePositionSet)
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+                        workingInputMousePositionOnRotate = hit.point;
+                workingInputMousePositionSet = workingModifierMouseRotation;
+            }
+
+            else if (settingRotationMode == RotationMode.Raycast)
+            {
+                if (!workingInputMousePositionSet)
+                    if (Physics.Raycast(new Ray(pointCamera.transform.position, pointCamera.transform.forward), out RaycastHit hit, 1000f))
+                        workingInputMousePositionOnRotate = hit.point;
+                workingInputMousePositionSet = workingModifierMouseRotation;
             }
         }
 
