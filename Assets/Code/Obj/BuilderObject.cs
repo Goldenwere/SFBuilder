@@ -114,11 +114,22 @@ namespace SFBuilder.Obj
             if (!IsPlaced)
             {
                 if (IsValid)
+                {
                     foreach (MeshRenderer child in objectWhenPlacingRenderers)
-                        child.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
+                    {
+                        child.material.SetVector("_Maincolor", new Vector4(0f, 0.7f, 0.7f, 1f));
+                        child.material.SetVector("_Edgecolor", new Vector4(0f, 0.7f, 0.7f, 1f));
+                    }
+                }
+
                 else
+                {
                     foreach (MeshRenderer child in objectWhenPlacingRenderers)
-                        child.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
+                    {
+                        child.material.SetVector("_Maincolor", new Vector4(0.7f, 0, 0, 1f));
+                        child.material.SetVector("_Edgecolor", new Vector4(0.7f, 0, 0f, 1f));
+                    }
+                }
             }
         }
 
