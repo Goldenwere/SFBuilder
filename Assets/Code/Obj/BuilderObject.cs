@@ -15,14 +15,14 @@ namespace SFBuilder.Obj
 #pragma warning disable 0649
         [SerializeField] private BuilderObjectGrounder  grounder;
         [SerializeField] private bool                   isPlacedAtStart;
-        [SerializeField] private Material               materialNormal;
-        [SerializeField] private Material               materialPlacing;
-        [SerializeField] private MeshRenderer[]         objectBody;
+        [SerializeField] private GameObject             objectWhenPlacing;
+        [SerializeField] private GameObject             objectWhenPlaced;
         [SerializeField] private GameObject             placementParticlePrefab;
         [SerializeField] private BuilderObjectRanger    ranger;
         [SerializeField] private ObjectType             type;
 #pragma warning restore 0649
         /**************/ private List<GameObject>       collidedObjects;
+        /**************/ private MeshRenderer[]         objectWhenPlacingRenderers;
         /**************/ private bool                   isPlaced;
         #endregion
         #region Properties
@@ -47,8 +47,8 @@ namespace SFBuilder.Obj
                 isPlaced = value;
                 if (isPlaced)
                 {
-                    foreach (MeshRenderer child in objectBody)
-                        child.material = materialNormal;
+                    objectWhenPlacing.SetActive(false);
+                    objectWhenPlaced.SetActive(true);
                     grounder.enabled = false;
                     ranger.SetPlaced(true);
                     ranger.enabled = false;
@@ -61,8 +61,8 @@ namespace SFBuilder.Obj
                 }
                 else
                 {
-                    foreach (MeshRenderer child in objectBody)
-                        child.material = materialPlacing;
+                    objectWhenPlacing.SetActive(true);
+                    objectWhenPlaced.SetActive(false);
                     grounder.enabled = true;
                     ranger.SetPlaced(false);
                     ranger.enabled = true;
@@ -100,6 +100,7 @@ namespace SFBuilder.Obj
         /// </summary>
         private void Start()
         {
+            objectWhenPlacingRenderers = objectWhenPlacing.GetComponentsInChildren<MeshRenderer>();
             collidedObjects = new List<GameObject>(16);
             if (isPlacedAtStart)
                 IsPlaced = true;
@@ -113,10 +114,10 @@ namespace SFBuilder.Obj
             if (!IsPlaced)
             {
                 if (IsValid)
-                    foreach (MeshRenderer child in objectBody)
+                    foreach (MeshRenderer child in objectWhenPlacingRenderers)
                         child.material.SetVector("_FirstOutlineColor", new Vector4(0.04f, 1, 0.08f, 0.5f));
                 else
-                    foreach (MeshRenderer child in objectBody)
+                    foreach (MeshRenderer child in objectWhenPlacingRenderers)
                         child.material.SetVector("_FirstOutlineColor", new Vector4(0.57f, 0, 0, 0.5f));
             }
         }
