@@ -632,9 +632,9 @@ Transform:
   - {fileID: 1277377948}
   - {fileID: 2127379334}
   - {fileID: 455036638}
-  - {fileID: 1516118855}
   - {fileID: 867005704}
   - {fileID: 64042709}
+  - {fileID: 1516118855}
   - {fileID: 532486043}
   - {fileID: 2091902502}
   - {fileID: 745684932}
@@ -968,7 +968,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 206c6b3876b66c34bb2076e80cbda6ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 9d409c08e76a7ee449af7549db01e8f6, type: 2}
     - target: {fileID: 919132149155446097, guid: 2c645cba966f4534da30e0e7be6194e9,
         type: 3}
       propertyPath: m_Name
