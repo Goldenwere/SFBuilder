@@ -2689,6 +2689,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9cf66c40578945963ca9cf967f91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationCurveForTransitions:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.1150794
+      outSlope: 2.1150794
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.024390243
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.4336468
+      outSlope: -0.4336468
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19826907
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   buttonBanishment: {fileID: 7775446433524927637}
   buttonNextGoal: {fileID: 5264296986326935731}
   icons:
@@ -2735,7 +2759,6 @@ GameObject:
   - component: {fileID: 9212485044787879877}
   - component: {fileID: 8799524226948467751}
   - component: {fileID: 3335961047944811742}
-  - component: {fileID: 8384199363303130750}
   - component: {fileID: 3761118059275969038}
   m_Layer: 5
   m_Name: Button_CancelBanish
@@ -2855,22 +2878,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8384199363303130750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516221783263507203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partToAnimate: 0
-  playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &3761118059275969038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,7 +2905,6 @@ GameObject:
   - component: {fileID: 2962191984668716820}
   - component: {fileID: 6027315845505276034}
   - component: {fileID: 2814705669807838366}
-  - component: {fileID: 3886180982519241716}
   - component: {fileID: 6492304559761373984}
   m_Layer: 5
   m_Name: Button_ConfirmBanish
@@ -3018,22 +3024,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3886180982519241716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556674485101683662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partToAnimate: 0
-  playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &6492304559761373984
 MonoBehaviour:
   m_ObjectHideFlags: 0

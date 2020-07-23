@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using SFBuilder.Obj;
 using System.Linq;
+using System.Collections;
 
 namespace SFBuilder.UI
 {
     public class GameUI : MonoBehaviour
     {
 #pragma warning disable 0649
+        [SerializeField] private AnimationCurve animationCurveForTransitions;
         [SerializeField] private GameObject     buttonBanishment;
         [SerializeField] private GameObject     buttonNextGoal;
         [SerializeField] private TypeToIcon[]   icons;
@@ -33,7 +35,7 @@ namespace SFBuilder.UI
                 mainCanvas.SetActive(true);
 
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
-            windowBanishmentRT.anchoredPosition = new Vector2(0, 100);
+            windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
         }
 
         /// <summary>
@@ -80,7 +82,8 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnBanishButtonPressed()
         {
-
+            StartCoroutine(TransitionWindowBanishment(true));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
         /// <summary>
@@ -88,7 +91,8 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnCancelBanishButtonPressed()
         {
-
+            StartCoroutine(TransitionWindowBanishment(false));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
         /// <summary>
@@ -97,6 +101,28 @@ namespace SFBuilder.UI
         public void OnConfirmBanishButtonPressed()
         {
             GameEventSystem.Instance.CallForBanishment();
+            StartCoroutine(TransitionWindowBanishment(false));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        private IEnumerator TransitionWindowBanishment(bool setActive)
+        {
+            float t = 0;
+            Vector2 start = new Vector2(0, -100);
+            Vector3 end = Vector2.zero;
+            if (!setActive)
+            {
+                end = start;
+                start = Vector2.zero;
+            }
+
+            while (t <= GameConstants.UITransitionDuration)
+            {
+                windowBanishmentRT.anchoredPosition = Vector2.LerpUnclamped(start, end, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
+                yield return null;
+                t += Time.deltaTime;
+            }
+            windowBanishmentRT.anchoredPosition = end;
         }
     }
 
