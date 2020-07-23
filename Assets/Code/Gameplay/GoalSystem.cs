@@ -59,7 +59,7 @@ namespace SFBuilder.Gameplay
         /// </summary>
         private void Start()
         {
-            CurrentGoalWorkingSet = goals[CurrentGoal];
+            CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             uiWasSetUp = false;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 GameEventSystem.Instance.UpdatePlacementPanel();
@@ -125,7 +125,7 @@ namespace SFBuilder.Gameplay
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 if (CurrentGoal < goals.Length)
                 {
-                    CurrentGoalWorkingSet = goals[CurrentGoal];
+                    CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
                     GameEventSystem.Instance.UpdatePlacementPanel();
@@ -177,8 +177,7 @@ namespace SFBuilder.Gameplay
         private void OnLevelBanished()
         {
             CurrentGoal = 0;
-            CurrentGoalWorkingSet = goals[CurrentGoal];
-            uiWasSetUp = false;
+            CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             GameEventSystem.Instance.UpdatePlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
         }
