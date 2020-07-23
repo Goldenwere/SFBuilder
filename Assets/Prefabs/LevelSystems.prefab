@@ -2253,12 +2253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goals: []
-  templateExtraButton: {fileID: 9081054196352696325, guid: f2b520bb3409f7b448496c3f75d6ac94,
-    type: 3}
-  templateRequirementButton: {fileID: 5816813921996990911, guid: a09336e8fe1bf374594e3bd7b4edd31d,
-    type: 3}
-  uiButtonPadding: 5
-  uiButtonPanel: {fileID: 5264296986584691659}
 --- !u!1 &5264296987418984782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2713,12 @@ MonoBehaviour:
   - Icon: {fileID: 21300000, guid: 66f0353eb5587b446876befc59062c20, type: 3}
     Type: 67
   mainCanvas: {fileID: 5264296985718816288}
+  templateExtraButton: {fileID: 9081054196352696325, guid: f2b520bb3409f7b448496c3f75d6ac94,
+    type: 3}
+  templateRequirementButton: {fileID: 5816813921996990911, guid: a09336e8fe1bf374594e3bd7b4edd31d,
+    type: 3}
   panelPlacement: {fileID: 8268297863278577966}
+  panelPlacementButtonPadding: 5
   windowBanishment: {fileID: 3597570895368706916}
 --- !u!1 &5516221783263507203
 GameObject:

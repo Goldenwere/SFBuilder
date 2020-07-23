@@ -52,6 +52,11 @@ namespace SFBuilder
         public static event BoolDelegate    LevelTransitioned;
 
         /// <summary>
+        /// Used for updating the placement panel UI
+        /// </summary>
+        public static event BoolDelegate    PlacementPanelUpdateDesired;
+
+        /// <summary>
         /// Used for notifying placement state change
         /// </summary>
         public static event BoolDelegate    PlacementStateChanged;
@@ -116,6 +121,15 @@ namespace SFBuilder
         public void UpdateGoalMetState(bool isMet)
         {
             GoalMet?.Invoke(isMet);
+        }
+
+        /// <summary>
+        /// Use this to update the placement panel UI
+        /// </summary>
+        /// <param name="clearOnly">Whether to only clear the UI or to fully set it up</param>
+        public void UpdatePlacementPanel(bool clearOnly = false)
+        {
+            PlacementPanelUpdateDesired?.Invoke(clearOnly);
         }
 
         /// <summary>

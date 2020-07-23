@@ -1,26 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SFBuilder.Obj;
+using SFBuilder.Gameplay;
 using System.Linq;
 using System.Collections;
 
 namespace SFBuilder.UI
 {
+    /// <summary>
+    /// Manages UI while in-game
+    /// </summary>
     public class GameUI : MonoBehaviour
     {
+        #region Fields
 #pragma warning disable 0649
         [SerializeField] private AnimationCurve animationCurveForTransitions;
         [SerializeField] private Button         buttonBanishment;
         [SerializeField] private Button         buttonNextGoal;
         [SerializeField] private TypeToIcon[]   icons;
         [SerializeField] private GameObject     mainCanvas;
+        [SerializeField] private GameObject     templateExtraButton;
+        [SerializeField] private GameObject     templateRequirementButton;
         [SerializeField] private GameObject     panelPlacement;
+        [SerializeField] private int            panelPlacementButtonPadding;
         [SerializeField] private GameObject     windowBanishment;
 #pragma warning restore 0649
         /**************/ private RectTransform  panelPlacementRT;
+        /**************/ private Transform      panelPlacementButtons;
         /**************/ private RectTransform  windowBanishmentRT;
+        #endregion
+        #region Properties
         public static GameUI     Instance       { get; private set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Toggle the main canvas on Awake and set singleton instance
         /// </summary>
@@ -39,6 +51,7 @@ namespace SFBuilder.UI
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
             windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
             panelPlacementRT = panelPlacement.GetComponent<RectTransform>();
+            panelPlacementButtons = panelPlacement.transform.GetChild(0);
         }
 
         /// <summary>
@@ -49,6 +62,7 @@ namespace SFBuilder.UI
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GameEventSystem.PlacementStateChanged += OnPlacementStateChanged;
             GameEventSystem.GoalMet += OnGoalMet;
+            GameEventSystem.PlacementPanelUpdateDesired += OnPlacementPanelUpdateDesired;
         }
 
         /// <summary>
@@ -59,6 +73,16 @@ namespace SFBuilder.UI
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.PlacementStateChanged -= OnPlacementStateChanged;
             GameEventSystem.GoalMet -= OnGoalMet;
+            GameEventSystem.PlacementPanelUpdateDesired -= OnPlacementPanelUpdateDesired;
+        }
+
+        /// <summary>
+        /// Used for clearing out the placement panel
+        /// </summary>
+        private void ClearPlacementPanel()
+        {
+            for (int i = 0, count = panelPlacementButtons.childCount; i < count; i++)
+                Destroy(panelPlacementButtons.GetChild(i).gameObject);
         }
 
         /// <summary>
@@ -86,12 +110,51 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Handler for the PlacementPanelUpdateDesired event
+        /// </summary>
+        /// <param name="clearOnly">Whether to only clear the panel or to fully set it up</param>
+        private void OnPlacementPanelUpdateDesired(bool clearOnly)
+        {
+            ClearPlacementPanel();
+            if (!clearOnly)
+                SetupPlacementPanel();
+        }
+
+        /// <summary>
         /// Handler for the PlacementStateChanged event
         /// </summary>
         /// <param name="isPlacing">Whether in the placing state or not</param>
         private void OnPlacementStateChanged(bool isPlacing)
         {
             StartCoroutine(TransitionPlacementUI(isPlacing));
+        }
+
+        /// <summary>
+        /// Sets up the placement panel UI each goal
+        /// </summary>
+        private void SetupPlacementPanel()
+        {
+            int buttonCount = 0;
+
+            foreach (GoalItem g in GoalSystem.Instance.CurrentGoalWorkingSet.goalRequirements)
+            {
+                RectTransform rt = Instantiate(templateRequirementButton, panelPlacementButtons, false).GetComponent<RectTransform>();
+                Vector3 pos = rt.anchoredPosition;
+                pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
+                rt.anchoredPosition = pos;
+                rt.SendMessage("SetupButton", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = true });
+                buttonCount++;
+            }
+
+            foreach (GoalItem g in GoalSystem.Instance.CurrentGoalWorkingSet.goalExtras)
+            {
+                RectTransform rt = Instantiate(templateExtraButton, panelPlacementButtons, false).GetComponent<RectTransform>();
+                Vector3 pos = rt.anchoredPosition;
+                pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
+                rt.anchoredPosition = pos;
+                rt.SendMessage("SetupButton", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = false });
+                buttonCount++;
+            }
         }
 
         /// <summary>
@@ -173,6 +236,7 @@ namespace SFBuilder.UI
             }
             windowBanishmentRT.anchoredPosition = end;
         }
+        #endregion
     }
 
     /// <summary>

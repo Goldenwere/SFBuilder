@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SFBuilder.Gameplay
 {
@@ -15,10 +14,6 @@ namespace SFBuilder.Gameplay
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private GoalContainer[]    goals;
-        [SerializeField] private GameObject         templateExtraButton;
-        [SerializeField] private GameObject         templateRequirementButton;
-        [SerializeField] private int                uiButtonPadding;
-        [SerializeField] private GameObject         uiButtonPanel;
 #pragma warning restore 0649
         /**************/ private bool               canMoveOn;
         /**************/ private bool               uiWasSetUp;
@@ -67,7 +62,7 @@ namespace SFBuilder.Gameplay
             CurrentGoalWorkingSet = goals[CurrentGoal];
             uiWasSetUp = false;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
-                SetupPlacementPanel();
+                GameEventSystem.Instance.UpdatePlacementPanel();
         }
 
         /// <summary>
@@ -98,7 +93,6 @@ namespace SFBuilder.Gameplay
             if (canMoveOn)
             {
                 CurrentGoal++;
-                ClearPlacementPanel();
                 GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 if (CurrentGoal < goals.Length)
@@ -106,13 +100,14 @@ namespace SFBuilder.Gameplay
                     CurrentGoalWorkingSet = goals[CurrentGoal];
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
-                    SetupPlacementPanel();
+                    GameEventSystem.Instance.UpdatePlacementPanel();
                 }
                 else
                 {
                     LevelingSystem.Instance.CurrentLevel++;
                     // will be made redundant as there will be a scene change 
                     CurrentGoal = 0;
+                    GameEventSystem.Instance.UpdatePlacementPanel(true);
                 }
             }
         }
@@ -132,16 +127,6 @@ namespace SFBuilder.Gameplay
         }
 
         /// <summary>
-        /// Used for clearing out the placement panel
-        /// </summary>
-        private void ClearPlacementPanel()
-        {
-            for (int i = 0, count = uiButtonPanel.transform.childCount; i < count; i++)
-                Destroy(uiButtonPanel.transform.GetChild(i).gameObject);
-            uiWasSetUp = false;
-        }
-
-        /// <summary>
         /// Handler for the GameStateChanged event
         /// </summary>
         /// <param name="prevState">The previous GameState</param>
@@ -149,7 +134,7 @@ namespace SFBuilder.Gameplay
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState == GameState.Gameplay && !uiWasSetUp)
-                SetupPlacementPanel();
+                GameEventSystem.Instance.UpdatePlacementPanel();
         }
 
         /// <summary>
@@ -190,40 +175,8 @@ namespace SFBuilder.Gameplay
             CurrentGoal = 0;
             CurrentGoalWorkingSet = goals[CurrentGoal];
             uiWasSetUp = false;
-            ClearPlacementPanel();
-            SetupPlacementPanel();
+            GameEventSystem.Instance.UpdatePlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
-        }
-
-        /// <summary>
-        /// Sets up the placement panel UI each goal
-        /// </summary>
-        private void SetupPlacementPanel()
-        {
-            VerifyForNextGoal();
-            int buttonCount = 0;
-
-            foreach (GoalItem g in CurrentGoalWorkingSet.goalRequirements)
-            {
-                RectTransform rt = Instantiate(templateRequirementButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
-                Vector3 pos = rt.anchoredPosition;
-                pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
-                rt.anchoredPosition = pos;
-                rt.SendMessage("SetupButton", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = true });
-                buttonCount++;
-            }
-
-            foreach (GoalItem g in CurrentGoalWorkingSet.goalExtras)
-            {
-                RectTransform rt = Instantiate(templateExtraButton, uiButtonPanel.transform, false).GetComponent<RectTransform>();
-                Vector3 pos = rt.anchoredPosition;
-                pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (uiButtonPadding * (buttonCount + 1));
-                rt.anchoredPosition = pos;
-                rt.SendMessage("SetupButton", new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = false });
-                buttonCount++;
-            }
-
-            uiWasSetUp = true;
         }
         #endregion
     }
