@@ -78,6 +78,7 @@ namespace SFBuilder.Gameplay
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GameEventSystem.GoalChanged += OnGoalChanged;
+            GameEventSystem.LevelBanished += OnLevelBanished;
         }
 
         /// <summary>
@@ -87,6 +88,7 @@ namespace SFBuilder.Gameplay
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.GoalChanged -= OnGoalChanged;
+            GameEventSystem.LevelBanished -= OnLevelBanished;
         }
 
         /// <summary>
@@ -181,6 +183,18 @@ namespace SFBuilder.Gameplay
                 else
                     CurrentGoalWorkingSet.goalExtras[i].goalStructureCount--;
             }
+        }
+
+        /// <summary>
+        /// On the LevelBanished event, reset GoalSystem back to first goal
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            CurrentGoal = 0;
+            CurrentGoalWorkingSet = goals[CurrentGoal];
+            uiWasSetUp = false;
+            SetupPlacementPanel();
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
         }
 
         /// <summary>

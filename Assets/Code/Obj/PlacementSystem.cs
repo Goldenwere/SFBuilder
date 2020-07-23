@@ -67,6 +67,7 @@ namespace SFBuilder.Obj
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GoalSystem.newGoal += OnNewGoal;
+            GameEventSystem.LevelBanished += OnLevelBanished;
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace SFBuilder.Obj
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GoalSystem.newGoal -= OnNewGoal;
+            GameEventSystem.LevelBanished -= OnLevelBanished;
         }
 
         /// <summary>
@@ -236,6 +238,14 @@ namespace SFBuilder.Obj
                 gameCam.cameraMotionIsFrozen = true;
             else
                 gameCam.cameraMotionIsFrozen = false;
+        }
+
+        /// <summary>
+        /// On the LevelBanished event, reset the PlacementSystem
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            prefabsPlaced.Clear();
         }
 
         /// <summary>

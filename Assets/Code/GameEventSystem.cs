@@ -32,14 +32,14 @@ namespace SFBuilder
         public static event GameStateChange GameStateChanged;
 
         /// <summary>
-        /// Used for reseting a level back to its original state
-        /// </summary>
-        public static event GenericDelegate BanishLevel;
-
-        /// <summary>
         /// Used for updating goals
         /// </summary>
         public static event GoalChange      GoalChanged;
+
+        /// <summary>
+        /// Used for reseting a level back to its original state
+        /// </summary>
+        public static event GenericDelegate LevelBanished;
 
         /// <summary>
         /// Used for transitioning between scenes
@@ -75,7 +75,7 @@ namespace SFBuilder
         /// </summary>
         public void CallForBanishment()
         {
-            BanishLevel?.Invoke();
+            LevelBanished?.Invoke();
         }
 
         /// <summary>

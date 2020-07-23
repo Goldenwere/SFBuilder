@@ -72,6 +72,7 @@ namespace SFBuilder.Gameplay
         private void OnEnable()
         {
             GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
+            GameEventSystem.LevelBanished += OnLevelBanished;
         }
 
         /// <summary>
@@ -80,6 +81,7 @@ namespace SFBuilder.Gameplay
         private void OnDisable()
         {
             GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
+            GameEventSystem.LevelBanished -= OnLevelBanished;
         }
 
         /// <summary>
@@ -136,6 +138,28 @@ namespace SFBuilder.Gameplay
                 GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
                 TotalSustenance -= sustenance;
             }
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+        }
+
+        /// <summary>
+        /// On the LevelBanished event, clear scores
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            TotalHappiness = 0;
+            TotalPower = 0;
+            TotalSustenance = 0;
+            PotentialHappiness = 0;
+            PotentialPower = 0;
+            PotentialSustenance = 0;
+
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
         }
 

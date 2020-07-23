@@ -107,6 +107,22 @@ namespace SFBuilder.Obj
         }
 
         /// <summary>
+        /// On Enable, subscribe to the LevelBanished event
+        /// </summary>
+        private void OnEnable()
+        {
+            GameEventSystem.LevelBanished += OnLevelBanished;
+        }
+
+        /// <summary>
+        /// On Disable, unsubscribe from the LevelBanished event
+        /// </summary>
+        private void OnDisable()
+        {
+            GameEventSystem.LevelBanished -= OnLevelBanished;
+        }
+
+        /// <summary>
         /// Set the material outline of the object when in placing state to indicate whether the object's placement will be valid
         /// </summary>
         private void Update()
@@ -171,6 +187,14 @@ namespace SFBuilder.Obj
                 if (collidedObjects.Count == 0)
                     IsCollided = false;
             }
+        }
+
+        /// <summary>
+        /// When the level is banished, destroy this object's associated GameObject
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            Destroy(gameObject);
         }
 
         /// <summary>
