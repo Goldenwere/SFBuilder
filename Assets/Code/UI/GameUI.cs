@@ -7,9 +7,14 @@ namespace SFBuilder.UI
     public class GameUI : MonoBehaviour
     {
 #pragma warning disable 0649
-        [SerializeField] private GameObject     mainCanvas;
+        [SerializeField] private GameObject     buttonBanishment;
+        [SerializeField] private GameObject     buttonNextGoal;
         [SerializeField] private TypeToIcon[]   icons;
+        [SerializeField] private GameObject     mainCanvas;
+        [SerializeField] private GameObject     panelPlacement;
+        [SerializeField] private GameObject     windowBanishment;
 #pragma warning restore 0649
+        /**************/ private RectTransform  windowBanishmentRT;
         public static GameUI     Instance       { get; private set; }
 
         /// <summary>
@@ -26,6 +31,9 @@ namespace SFBuilder.UI
                 mainCanvas.SetActive(false);
             else
                 mainCanvas.SetActive(true);
+
+            windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
+            windowBanishmentRT.anchoredPosition = new Vector2(0, 100);
         }
 
         /// <summary>
@@ -65,6 +73,30 @@ namespace SFBuilder.UI
         public Sprite GetIcon(ObjectType type)
         {
             return icons.FirstOrDefault(i => i.Type == type).Icon;
+        }
+
+        /// <summary>
+        /// When the BanishButton is pressed, open the banishment confirmation prompt
+        /// </summary>
+        public void OnBanishButtonPressed()
+        {
+
+        }
+
+        /// <summary>
+        /// When the CancelBanishButton is pressed, close the banishment confirmation prompt
+        /// </summary>
+        public void OnCancelBanishButtonPressed()
+        {
+
+        }
+
+        /// <summary>
+        /// When the ConfirmBanishButton is pressed, banish a level
+        /// </summary>
+        public void OnConfirmBanishButtonPressed()
+        {
+            GameEventSystem.Instance.CallForBanishment();
         }
     }
 

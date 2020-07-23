@@ -3,6 +3,7 @@
 namespace SFBuilder
 {
     public delegate void GameStateChange(GameState prevState, GameState newState);
+    public delegate void GenericDelegate();
     public delegate void GoalChange(bool isUndo, int id, bool isRequired);
     public delegate void LevelTransition(bool isStart);
     public delegate void ScoreChange(ScoreType scoreChanged, int number);
@@ -31,10 +32,18 @@ namespace SFBuilder
         public static event GameStateChange GameStateChanged;
 
         /// <summary>
+        /// Used for reseting a level back to its original state
+        /// </summary>
+        public static event GenericDelegate BanishLevel;
+
+        /// <summary>
         /// Used for updating goals
         /// </summary>
         public static event GoalChange      GoalChanged;
 
+        /// <summary>
+        /// Used for transitioning between scenes
+        /// </summary>
         public static event LevelTransition LevelTransitioned;
 
         /// <summary>
@@ -59,6 +68,14 @@ namespace SFBuilder
                 Instance = this;
 
             CurrentGameState = GameState.MainMenus;
+        }
+
+        /// <summary>
+        /// Banishes a level back to its original state
+        /// </summary>
+        public void CallForBanishment()
+        {
+            BanishLevel?.Invoke();
         }
 
         /// <summary>

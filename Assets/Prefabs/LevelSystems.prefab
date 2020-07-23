@@ -2689,7 +2689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9cf66c40578945963ca9cf967f91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 5264296985718816288}
+  buttonBanishment: {fileID: 7775446433524927637}
+  buttonNextGoal: {fileID: 5264296986326935731}
   icons:
   - Icon: {fileID: 21300000, guid: 03f8604aa6781ae449bfd1b33fca29ab, type: 3}
     Type: 32
@@ -2719,6 +2720,9 @@ MonoBehaviour:
     Type: 66
   - Icon: {fileID: 21300000, guid: 66f0353eb5587b446876befc59062c20, type: 3}
     Type: 67
+  mainCanvas: {fileID: 5264296985718816288}
+  panelPlacement: {fileID: 8268297863278577966}
+  windowBanishment: {fileID: 3597570895368706916}
 --- !u!1 &5516221783263507203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2843,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8799524226948467751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5264296987454752399}
+        m_MethodName: OnCancelBanishButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8384199363303130750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,7 +3006,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6027315845505276034}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5264296987454752399}
+        m_MethodName: OnConfirmBanishButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3886180982519241716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4025,7 +4051,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4179089500914358923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5264296987454752399}
+        m_MethodName: OnBanishButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7452987945550405544
 MonoBehaviour:
   m_ObjectHideFlags: 0
