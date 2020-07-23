@@ -1,4 +1,4 @@
-﻿namespace SFBuilder.Obj
+﻿namespace SFBuilder
 {
     /// <summary>
     /// Represents the associated type which describes what a specific BuilderObject is and what kind of values it gives for game scoring
