@@ -196,6 +196,15 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// When the NextGoalButton is pressed, advance the goal and disable button interaction
+        /// </summary>
+        public void OnNextGoalButtonPressed()
+        {
+            GameEventSystem.Instance.CallToAdvanceGoal();
+            buttonNextGoal.interactable = false;
+        }
+
+        /// <summary>
         /// Transitions the Placement UI's position by sliding it out of the way when placing and sliding it back when no longer placing
         /// </summary>
         private IEnumerator TransitionPlacementUI(bool isPlacing)

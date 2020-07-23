@@ -32,9 +32,14 @@ namespace SFBuilder
         public static event GameStateChange GameStateChanged;
 
         /// <summary>
+        /// Used for advancing goals
+        /// </summary>
+        public static event GenericDelegate GoalChanged;
+
+        /// <summary>
         /// Used for updating goals
         /// </summary>
-        public static event GoalChange      GoalChanged;
+        public static event GoalChange      GoalInfoChanged;
 
         /// <summary>
         /// Used for allowing to move on to next goal
@@ -86,6 +91,14 @@ namespace SFBuilder
         }
 
         /// <summary>
+        /// Advances the goal
+        /// </summary>
+        public void CallToAdvanceGoal()
+        {
+            GoalChanged?.Invoke();
+        }
+
+        /// <summary>
         /// Banishes a level back to its original state
         /// </summary>
         public void CallForBanishment()
@@ -111,7 +124,7 @@ namespace SFBuilder
         /// <param name="isRequired">Whether the BuilderObject was a requirement</param>
         public void UpdateGoalAmount(bool isUndo, int id, bool isRequired)
         {
-            GoalChanged?.Invoke(isUndo, id, isRequired);
+            GoalInfoChanged?.Invoke(isUndo, id, isRequired);
         }
 
         /// <summary>

@@ -2062,7 +2062,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5264296986759185325}
+      - m_Target: {fileID: 5264296987454752399}
         m_MethodName: OnNextGoalButtonPressed
         m_Mode: 1
         m_Arguments:

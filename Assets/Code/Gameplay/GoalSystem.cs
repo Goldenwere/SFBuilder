@@ -63,6 +63,7 @@ namespace SFBuilder.Gameplay
             uiWasSetUp = false;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 GameEventSystem.Instance.UpdatePlacementPanel();
+            VerifyForNextGoal();
         }
 
         /// <summary>
@@ -71,8 +72,9 @@ namespace SFBuilder.Gameplay
         private void OnEnable()
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
-            GameEventSystem.GoalChanged += OnGoalChanged;
+            GameEventSystem.GoalInfoChanged += OnGoalInfoChanged;
             GameEventSystem.LevelBanished += OnLevelBanished;
+            GameEventSystem.GoalChanged += OnGoalChanged;
         }
 
         /// <summary>
@@ -81,35 +83,9 @@ namespace SFBuilder.Gameplay
         private void OnDisable()
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
-            GameEventSystem.GoalChanged -= OnGoalChanged;
+            GameEventSystem.GoalInfoChanged -= OnGoalInfoChanged;
             GameEventSystem.LevelBanished -= OnLevelBanished;
-        }
-
-        /// <summary>
-        /// When the NextGoal button is pressed, move to next goal if canMoveOn
-        /// </summary>
-        public void OnNextGoalButtonPressed()
-        {
-            if (canMoveOn)
-            {
-                CurrentGoal++;
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-                if (CurrentGoal < goals.Length)
-                {
-                    CurrentGoalWorkingSet = goals[CurrentGoal];
-                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
-                    newGoal?.Invoke(CurrentGoal);
-                    GameEventSystem.Instance.UpdatePlacementPanel();
-                }
-                else
-                {
-                    LevelingSystem.Instance.CurrentLevel++;
-                    // will be made redundant as there will be a scene change 
-                    CurrentGoal = 0;
-                    GameEventSystem.Instance.UpdatePlacementPanel(true);
-                }
-            }
+            GameEventSystem.GoalChanged -= OnGoalChanged;
         }
 
         /// <summary>
@@ -138,12 +114,39 @@ namespace SFBuilder.Gameplay
         }
 
         /// <summary>
-        /// On the GoalChanged event, update the current working set
+        /// When the NextGoal button is pressed, move to next goal if canMoveOn
+        /// </summary>
+        private void OnGoalChanged()
+        {
+            if (canMoveOn)
+            {
+                CurrentGoal++;
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                if (CurrentGoal < goals.Length)
+                {
+                    CurrentGoalWorkingSet = goals[CurrentGoal];
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
+                    newGoal?.Invoke(CurrentGoal);
+                    GameEventSystem.Instance.UpdatePlacementPanel();
+                }
+                else
+                {
+                    LevelingSystem.Instance.CurrentLevel++;
+                    // will be made redundant as there will be a scene change 
+                    CurrentGoal = 0;
+                    GameEventSystem.Instance.UpdatePlacementPanel(true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// On the GoalInfoChanged event, update the current working set
         /// </summary>
         /// <param name="isUndo">Whether to increase or decrease a goal value (undo increases, normal decreases)</param>
         /// <param name="id">The id of the BuilderObject associated with the goal</param>
         /// <param name="isRequired">Whether the BuilderObject was a requirement</param>
-        private void OnGoalChanged(bool isUndo, int id, bool isRequired)
+        private void OnGoalInfoChanged(bool isUndo, int id, bool isRequired)
         {
             if (isRequired)
             {
@@ -165,6 +168,7 @@ namespace SFBuilder.Gameplay
                 else
                     CurrentGoalWorkingSet.goalExtras[i].goalStructureCount--;
             }
+            VerifyForNextGoal();
         }
 
         /// <summary>
