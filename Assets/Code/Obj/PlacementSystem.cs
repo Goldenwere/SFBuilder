@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using Goldenwere.Unity;
 using Goldenwere.Unity.Controller;
@@ -39,6 +38,18 @@ namespace SFBuilder.Obj
                 if (value != isPlacing)
                     GameEventSystem.Instance.UpdatePlacementState(value);
                 isPlacing = value;
+
+                if (isPlacing)
+                {
+                    gameCam.CameraModifiersAreEnabled = false;
+                }
+
+                else
+                {
+                    gameCam.CameraModifiersAreEnabled = true;
+                    prefabHadFirstHit = false;
+                    prefabInstance = null;
+                }
             }
         }
         #endregion
@@ -119,9 +130,6 @@ namespace SFBuilder.Obj
                 {
                     Destroy(prefabInstance.gameObject);
                     IsPlacing = false;
-                    gameCam.CameraModifiersAreEnabled = true;
-                    prefabHadFirstHit = false;
-                    prefabInstance = null;
                 }
 
                 else
@@ -140,10 +148,8 @@ namespace SFBuilder.Obj
             {
                 prefabInstance = Instantiate(prefabs.First(p => p.type == (ObjectType)id).prefab).GetComponent<BuilderObject>();
                 prefabInstance.transform.Rotate(Vector3.up, workingLastRotation);
-                prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
                 IsPlacing = true;
-                gameCam.CameraModifiersAreEnabled = false;
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 return prefabInstance;
             }
@@ -189,10 +195,7 @@ namespace SFBuilder.Obj
                 prefabsPlaced.AddFirst(prefabInstance);
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();
-                prefabInstance = null;
                 IsPlacing = false;
-                gameCam.CameraModifiersAreEnabled = true;
-                prefabHadFirstHit = false;
                 GoalSystem.Instance.VerifyForNextGoal();
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement);
             }
@@ -209,7 +212,6 @@ namespace SFBuilder.Obj
                 if (isPlacing)
                     Destroy(prefabInstance.gameObject);
                 IsPlacing = true;
-                gameCam.CameraModifiersAreEnabled = false;
                 prefabHadFirstHit = true;
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();
