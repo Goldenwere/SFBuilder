@@ -51,7 +51,6 @@ namespace SFBuilder.Obj
                     objectWhenPlaced.SetActive(true);
                     grounder.enabled = false;
                     ranger.SetPlaced(true);
-                    ranger.enabled = false;
                     objectPlaced?.Invoke(this);
                     if (!isPlacedAtStart)
                     {
@@ -65,7 +64,6 @@ namespace SFBuilder.Obj
                     objectWhenPlaced.SetActive(false);
                     grounder.enabled = true;
                     ranger.SetPlaced(false);
-                    ranger.enabled = true;
                     objectRecalled?.Invoke(this);
                     if (transform.localScale != Vector3.one)
                         transform.localScale = Vector3.one;

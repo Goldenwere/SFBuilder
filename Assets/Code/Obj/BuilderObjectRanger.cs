@@ -21,6 +21,7 @@ namespace SFBuilder.Obj
         /**************/ private int                    placedHappiness;
         /**************/ private int                    placedPower;
         /**************/ private int                    placedSustenance;
+        /**************/ private bool                   toBeBanished;
         #endregion
         #region Methods
         /// <summary>
@@ -38,16 +39,35 @@ namespace SFBuilder.Obj
         }
 
         /// <summary>
+        /// On Enable, subscribe to the LevelBanished event
+        /// </summary>
+        private void OnEnable()
+        {
+            GameEventSystem.LevelBanished += OnLevelBanished;
+        }
+
+        /// <summary>
+        /// OnDisable, unsubscribe from the LevelBanished event
+        /// </summary>
+        private void OnDisable()
+        {
+            GameEventSystem.LevelBanished -= OnLevelBanished;
+        }
+
+        /// <summary>
         /// When the ranger is being destroyed, ensure the score system gets updated
         /// </summary>
         private void OnDestroy()
         {
-            if (placedHappiness != 0)
-                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, -placedHappiness);
-            if (placedPower != 0)
-                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, -placedPower);
-            if (placedSustenance != 0)
-                GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, -placedSustenance);
+            if (!toBeBanished)
+            {
+                if (placedHappiness != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialHappiness, -placedHappiness);
+                if (placedPower != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, -placedPower);
+                if (placedSustenance != 0)
+                    GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, -placedSustenance);
+            }
         }
 
         /// <summary>
@@ -159,6 +179,14 @@ namespace SFBuilder.Obj
                 GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialPower, deltaPower);
             if (deltaSustenance != 0)
                 GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, deltaSustenance);
+        }
+
+        /// <summary>
+        /// When the level is to be banished, track this to ensure score doesn't get updated OnDestroy
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            toBeBanished = true;
         }
         #endregion
     }

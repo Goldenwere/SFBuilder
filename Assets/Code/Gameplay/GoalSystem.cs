@@ -193,6 +193,7 @@ namespace SFBuilder.Gameplay
             CurrentGoal = 0;
             CurrentGoalWorkingSet = goals[CurrentGoal];
             uiWasSetUp = false;
+            ClearPlacementPanel();
             SetupPlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
         }
