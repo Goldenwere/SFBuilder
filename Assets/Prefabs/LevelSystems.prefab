@@ -2257,7 +2257,6 @@ MonoBehaviour:
     type: 3}
   templateRequirementButton: {fileID: 5816813921996990911, guid: a09336e8fe1bf374594e3bd7b4edd31d,
     type: 3}
-  uiButtonNextGoal: {fileID: 5264296986326935735}
   uiButtonPadding: 5
   uiButtonPanel: {fileID: 5264296986584691659}
 --- !u!1 &5264296987418984782
@@ -2575,31 +2574,6 @@ MonoBehaviour:
   positionPrecision: 0.1
   prefabs: []
   prefabUndoMaxCount: 16
-  placementUI: {fileID: 8268297863278577966}
-  placementUIAnimCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 3.2075472
-      outSlope: 3.2075472
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.0375
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   rotationAngleMagnitude: 15
 --- !u!1 &5264296987454752396
 GameObject:
@@ -2713,8 +2687,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  buttonBanishment: {fileID: 7775446433524927637}
-  buttonNextGoal: {fileID: 5264296986326935731}
+  buttonBanishment: {fileID: 2527506469567232772}
+  buttonNextGoal: {fileID: 5264296986326935735}
   icons:
   - Icon: {fileID: 21300000, guid: 03f8604aa6781ae449bfd1b33fca29ab, type: 3}
     Type: 32

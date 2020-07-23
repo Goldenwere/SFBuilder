@@ -17,7 +17,6 @@ namespace SFBuilder.Gameplay
         [SerializeField] private GoalContainer[]    goals;
         [SerializeField] private GameObject         templateExtraButton;
         [SerializeField] private GameObject         templateRequirementButton;
-        [SerializeField] private Button             uiButtonNextGoal;
         [SerializeField] private int                uiButtonPadding;
         [SerializeField] private GameObject         uiButtonPanel;
 #pragma warning restore 0649
@@ -129,9 +128,7 @@ namespace SFBuilder.Gameplay
                     test = false;
             canMoveOn = test && GameScoring.Instance.TotalViability >= CurrentGoalWorkingSet.goalViability &&
                 GameScoring.Instance.TotalHappiness > 0 && GameScoring.Instance.TotalPower > 0 && GameScoring.Instance.TotalSustenance > 0;
-            if (!uiButtonNextGoal.interactable && canMoveOn)
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal, 0.5f);
-            uiButtonNextGoal.interactable = canMoveOn;
+            GameEventSystem.Instance.UpdateGoalMetState(canMoveOn);
         }
 
         /// <summary>

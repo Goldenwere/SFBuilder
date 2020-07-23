@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using SFBuilder.Obj;
 using System.Linq;
 using System.Collections;
@@ -9,8 +10,8 @@ namespace SFBuilder.UI
     {
 #pragma warning disable 0649
         [SerializeField] private AnimationCurve animationCurveForTransitions;
-        [SerializeField] private GameObject     buttonBanishment;
-        [SerializeField] private GameObject     buttonNextGoal;
+        [SerializeField] private Button         buttonBanishment;
+        [SerializeField] private Button         buttonNextGoal;
         [SerializeField] private TypeToIcon[]   icons;
         [SerializeField] private GameObject     mainCanvas;
         [SerializeField] private GameObject     panelPlacement;
@@ -47,6 +48,7 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GameEventSystem.PlacementStateChanged += OnPlacementStateChanged;
+            GameEventSystem.GoalMet += OnGoalMet;
         }
 
         /// <summary>
@@ -56,6 +58,7 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.PlacementStateChanged -= OnPlacementStateChanged;
+            GameEventSystem.GoalMet -= OnGoalMet;
         }
 
         /// <summary>
@@ -69,6 +72,17 @@ namespace SFBuilder.UI
                 mainCanvas.SetActive(false);
             else
                 mainCanvas.SetActive(true);
+        }
+
+        /// <summary>
+        /// Handler for the GoalMet event
+        /// </summary>
+        /// <param name="isMet">Whether the current goal was met</param>
+        private void OnGoalMet(bool isMet)
+        {
+            if (!buttonNextGoal.interactable && isMet)
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal, 0.5f);
+            buttonNextGoal.interactable = isMet;
         }
 
         /// <summary>

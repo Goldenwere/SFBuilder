@@ -37,6 +37,11 @@ namespace SFBuilder
         public static event GoalChange      GoalChanged;
 
         /// <summary>
+        /// Used for allowing to move on to next goal
+        /// </summary>
+        public static event BoolDelegate    GoalMet;
+
+        /// <summary>
         /// Used for reseting a level back to its original state
         /// </summary>
         public static event GenericDelegate LevelBanished;
@@ -102,6 +107,15 @@ namespace SFBuilder
         public void UpdateGoalAmount(bool isUndo, int id, bool isRequired)
         {
             GoalChanged?.Invoke(isUndo, id, isRequired);
+        }
+
+        /// <summary>
+        /// Updates the GoalMet state
+        /// </summary>
+        /// <param name="isMet">Whether the current goal was met or not</param>
+        public void UpdateGoalMetState(bool isMet)
+        {
+            GoalMet?.Invoke(isMet);
         }
 
         /// <summary>
