@@ -142,7 +142,7 @@ namespace SFBuilder.UI
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = true });
+                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = true });
                 buttonCount++;
             }
 
@@ -152,7 +152,7 @@ namespace SFBuilder.UI
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = g.goalStructureID, req = true });
+                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = false });
                 buttonCount++;
             }
         }

@@ -149,7 +149,7 @@ namespace SFBuilder.Gameplay
             {
                 int i = System.Array.IndexOf(
                     CurrentGoalWorkingSet.goalRequirements,
-                    CurrentGoalWorkingSet.goalRequirements.First(g => g.goalStructureID == id));
+                    CurrentGoalWorkingSet.goalRequirements.First(g => (int)g.goalStructureID == id));
                 if (isUndo)
                     CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount++;
                 else
@@ -159,7 +159,7 @@ namespace SFBuilder.Gameplay
             {
                 int i = System.Array.IndexOf(
                     CurrentGoalWorkingSet.goalExtras,
-                    CurrentGoalWorkingSet.goalExtras.First(g => g.goalStructureID == id));
+                    CurrentGoalWorkingSet.goalExtras.First(g => (int)g.goalStructureID == id));
                 if (isUndo)
                     CurrentGoalWorkingSet.goalExtras[i].goalStructureCount++;
                 else

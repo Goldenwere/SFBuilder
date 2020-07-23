@@ -6,7 +6,7 @@
     [System.Serializable]
     public struct GoalItem
     {
-        public int goalStructureCount;
-        public int goalStructureID;
+        public int          goalStructureCount;
+        public ObjectType   goalStructureID;
     }
 }
