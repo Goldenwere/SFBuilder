@@ -33,6 +33,16 @@ namespace SFBuilder.Obj
         #endregion
         #region Properties
         public static PlacementSystem   Instance    { get; private set; }
+        public bool IsPlacing
+        {
+            get { return isPlacing; }
+            set
+            {
+                if (value != isPlacing)
+                    GameEventSystem.Instance.UpdatePlacementState(value);
+                isPlacing = value;
+            }
+        }
         #endregion
         #region Methods
         /// <summary>
@@ -110,7 +120,7 @@ namespace SFBuilder.Obj
                 if (isPlacing)
                 {
                     Destroy(prefabInstance.gameObject);
-                    isPlacing = false;
+                    IsPlacing = false;
                     gameCam.CameraModifiersAreEnabled = true;
                     prefabHadFirstHit = false;
                     prefabInstance = null;
@@ -135,7 +145,7 @@ namespace SFBuilder.Obj
                 prefabInstance.transform.Rotate(Vector3.up, workingLastRotation);
                 prefabHadFirstHit = false;
                 prefabInstance.IsPlaced = false;
-                isPlacing = true;
+                IsPlacing = true;
                 gameCam.CameraModifiersAreEnabled = false;
                 StartCoroutine(TransitionPlacementUI());
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
@@ -184,7 +194,7 @@ namespace SFBuilder.Obj
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();
                 prefabInstance = null;
-                isPlacing = false;
+                IsPlacing = false;
                 gameCam.CameraModifiersAreEnabled = true;
                 prefabHadFirstHit = false;
                 StartCoroutine(TransitionPlacementUI());
@@ -203,7 +213,7 @@ namespace SFBuilder.Obj
             {
                 if (isPlacing)
                     Destroy(prefabInstance.gameObject);
-                isPlacing = true;
+                IsPlacing = true;
                 gameCam.CameraModifiersAreEnabled = false;
                 prefabHadFirstHit = true;
                 prefabInstance = prefabsPlaced.First.Value;

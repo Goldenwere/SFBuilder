@@ -2,10 +2,10 @@
 
 namespace SFBuilder
 {
+    public delegate void BoolDelegate(bool val);
     public delegate void GameStateChange(GameState prevState, GameState newState);
     public delegate void GenericDelegate();
     public delegate void GoalChange(bool isUndo, int id, bool isRequired);
-    public delegate void LevelTransition(bool isStart);
     public delegate void ScoreChange(ScoreType scoreChanged, int number);
 
     /// <summary>
@@ -44,7 +44,12 @@ namespace SFBuilder
         /// <summary>
         /// Used for transitioning between scenes
         /// </summary>
-        public static event LevelTransition LevelTransitioned;
+        public static event BoolDelegate    LevelTransitioned;
+
+        /// <summary>
+        /// Used for notifying placement state change
+        /// </summary>
+        public static event BoolDelegate    PlacementStateChanged;
 
         /// <summary>
         /// Used for updating UI
@@ -97,6 +102,15 @@ namespace SFBuilder
         public void UpdateGoalAmount(bool isUndo, int id, bool isRequired)
         {
             GoalChanged?.Invoke(isUndo, id, isRequired);
+        }
+
+        /// <summary>
+        /// Notifies handlers that the placement state has changed
+        /// </summary>
+        /// <param name="isPlacing">Whether in the placing state or not</param>
+        public void UpdatePlacementState(bool isPlacing)
+        {
+            PlacementStateChanged?.Invoke(isPlacing);
         }
 
         /// <summary>
