@@ -20,8 +20,6 @@ namespace SFBuilder.Obj
         [SerializeField] private float                          positionPrecision;
         [SerializeField] private BuilderObjectTypeToPrefab[]    prefabs;
         [SerializeField] private int                            prefabUndoMaxCount;
-        [SerializeField] private GameObject                     placementUI;
-        [SerializeField] private AnimationCurve                 placementUIAnimCurve;
         [SerializeField] private float                          rotationAngleMagnitude;
 #pragma warning restore 0649
         /**************/ private bool                           isPlacing;
@@ -124,7 +122,6 @@ namespace SFBuilder.Obj
                     gameCam.CameraModifiersAreEnabled = true;
                     prefabHadFirstHit = false;
                     prefabInstance = null;
-                    StartCoroutine(TransitionPlacementUI());
                 }
 
                 else
@@ -147,7 +144,6 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 IsPlacing = true;
                 gameCam.CameraModifiersAreEnabled = false;
-                StartCoroutine(TransitionPlacementUI());
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 return prefabInstance;
             }
@@ -197,7 +193,6 @@ namespace SFBuilder.Obj
                 IsPlacing = false;
                 gameCam.CameraModifiersAreEnabled = true;
                 prefabHadFirstHit = false;
-                StartCoroutine(TransitionPlacementUI());
                 GoalSystem.Instance.VerifyForNextGoal();
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement);
             }
@@ -219,7 +214,6 @@ namespace SFBuilder.Obj
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();
                 prefabInstance.IsPlaced = false;
-                StartCoroutine(TransitionPlacementUI());
                 GoalSystem.Instance.VerifyForNextGoal();
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Undo);
             }
@@ -265,25 +259,6 @@ namespace SFBuilder.Obj
         private void OnNewGoal(int newGoal)
         {
             prefabsPlaced.Clear();
-        }
-
-        /// <summary>
-        /// Transitions the Placement UI's position by sliding it out of the way when placing and sliding it back when no longer placing
-        /// </summary>
-        private IEnumerator TransitionPlacementUI()
-        {
-            float t = 0;
-            RectTransform rt = placementUI.GetComponent<RectTransform>();
-            Vector3 start = rt.localPosition;
-            Vector3 end = new Vector3(rt.localPosition.x, -20, rt.localPosition.z);
-            if (!isPlacing)
-                end = new Vector3(rt.localPosition.x, 0, rt.localPosition.z);
-            while (t <= GameConstants.UITransitionDuration)
-            {
-                placementUI.GetComponent<RectTransform>().localPosition = Vector3.LerpUnclamped(start, end, placementUIAnimCurve.Evaluate(t / GameConstants.UITransitionDuration));
-                t += Time.deltaTime;
-                yield return null;
-            }
         }
         #endregion
     }

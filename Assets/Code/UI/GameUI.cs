@@ -16,6 +16,7 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject     panelPlacement;
         [SerializeField] private GameObject     windowBanishment;
 #pragma warning restore 0649
+        /**************/ private RectTransform  panelPlacementRT;
         /**************/ private RectTransform  windowBanishmentRT;
         public static GameUI     Instance       { get; private set; }
 
@@ -36,6 +37,7 @@ namespace SFBuilder.UI
 
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
             windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
+            panelPlacementRT = panelPlacement.GetComponent<RectTransform>();
         }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace SFBuilder.UI
         private void OnEnable()
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
+            GameEventSystem.PlacementStateChanged += OnPlacementStateChanged;
         }
 
         /// <summary>
@@ -52,6 +55,7 @@ namespace SFBuilder.UI
         private void OnDisable()
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
+            GameEventSystem.PlacementStateChanged -= OnPlacementStateChanged;
         }
 
         /// <summary>
@@ -65,6 +69,15 @@ namespace SFBuilder.UI
                 mainCanvas.SetActive(false);
             else
                 mainCanvas.SetActive(true);
+        }
+
+        /// <summary>
+        /// Handler for the PlacementStateChanged event
+        /// </summary>
+        /// <param name="isPlacing">Whether in the placing state or not</param>
+        private void OnPlacementStateChanged(bool isPlacing)
+        {
+            StartCoroutine(TransitionPlacementUI(isPlacing));
         }
 
         /// <summary>
@@ -105,6 +118,28 @@ namespace SFBuilder.UI
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
+        /// <summary>
+        /// Transitions the Placement UI's position by sliding it out of the way when placing and sliding it back when no longer placing
+        /// </summary>
+        private IEnumerator TransitionPlacementUI(bool isPlacing)
+        {
+            float t = 0;
+            Vector3 start = panelPlacementRT.localPosition;
+            Vector3 end = new Vector3(panelPlacementRT.localPosition.x, -20, panelPlacementRT.localPosition.z);
+            if (!isPlacing)
+                end = new Vector3(panelPlacementRT.localPosition.x, 0, panelPlacementRT.localPosition.z);
+            while (t <= GameConstants.UITransitionDuration)
+            {
+                panelPlacementRT.localPosition = Vector3.LerpUnclamped(start, end, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        /// <summary>
+        /// Coroutine for animating the banishment window
+        /// </summary>
+        /// <param name="setActive">Whether the window is being enabled or disabled</param>
         private IEnumerator TransitionWindowBanishment(bool setActive)
         {
             float t = 0;
