@@ -2162,7 +2162,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2177,7 +2177,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalExtras.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2187,27 +2187,47 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalRequirements.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalRequirements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalRequirements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalViability
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalViability
-      value: 80
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalRequirements.Array.data[0].goalStructureCount
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2222,17 +2242,17 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalExtras.Array.data[0].goalStructureID
-      value: 64
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalExtras.Array.data[1].goalStructureCount
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalExtras.Array.data[1].goalStructureID
-      value: 32
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2247,7 +2267,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalRequirements.Array.data[1].goalStructureCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2262,7 +2282,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalExtras.Array.data[0].goalStructureID
-      value: 32
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2272,7 +2292,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalExtras.Array.data[1].goalStructureID
-      value: 33
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2297,37 +2317,37 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalViability
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
-        type: 3}
-      propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
-        type: 3}
-      propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureID
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
-        type: 3}
-      propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureCount
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
-      propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureID
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[0].goalStructureID
       value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[1].goalStructureID
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.data[0].goalStructureCount
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.data[0].goalStructureID
-      value: 32
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2348,6 +2368,126 @@ PrefabInstance:
         type: 3}
       propertyPath: goals.Array.data[2].goalExtras.Array.data[2].goalStructureID
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[2].goalStructureID
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[2].goalRequirements.Array.data[2].goalStructureCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalViability
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalRequirements.Array.data[0].goalStructureID
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalRequirements.Array.data[1].goalStructureID
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalRequirements.Array.data[1].goalStructureCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalRequirements.Array.data[0].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[0].goalStructureID
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[0].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[1].goalStructureID
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[1].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[2].goalStructureID
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[3].goalExtras.Array.data[2].goalStructureCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalViability
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalRequirements.Array.data[0].goalStructureID
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalRequirements.Array.data[0].goalStructureCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalRequirements.Array.data[1].goalStructureID
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalRequirements.Array.data[1].goalStructureCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[0].goalStructureID
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[0].goalStructureCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[1].goalStructureID
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[1].goalStructureCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[2].goalStructureID
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
+        type: 3}
+      propertyPath: goals.Array.data[4].goalExtras.Array.data[2].goalStructureCount
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185327, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
