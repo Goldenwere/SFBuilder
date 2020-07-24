@@ -292,7 +292,7 @@ namespace SFBuilder.Obj
 					break;
 				case ObjectType.Pow_F:
                     description = "Lectrinium mine - takes " + GameConstants.UITooltipColorTag(-2) + " power to run, provides " +
-                        GameConstants.UITooltipColorTag(4) + " power for lectrinium veins, " + GameConstants.UITooltipColorTag(12) +
+                        GameConstants.UITooltipColorTag(5) + " power for lectrinium veins, " + GameConstants.UITooltipColorTag(15) +
                         " power for lectrinium deposits, and takes " + GameConstants.UITooltipColorTag(-8) + " happiness for residences in range.";
 					break;
                 #endregion
@@ -306,11 +306,11 @@ namespace SFBuilder.Obj
                         " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
 					break;
 				case ObjectType.Res_C:
-					description = "Small apartment - takes " + GameConstants.UITooltipColorTag(-10) + " power and " + GameConstants.UITooltipColorTag(-10) + 
+					description = "Small apartment - takes " + GameConstants.UITooltipColorTag(-10) + " power and " + GameConstants.UITooltipColorTag(-15) + 
                         " sustenance. Gets a " + GameConstants.UITooltipColorTag(-5) + " happiness penalty for other apartment buildings nearby.";
 					break;
 				case ObjectType.Res_D:
-					description = "Apartment tower - takes " + GameConstants.UITooltipColorTag(-15) + " power and " + GameConstants.UITooltipColorTag(-15) + 
+					description = "Apartment tower - takes " + GameConstants.UITooltipColorTag(-15) + " power and " + GameConstants.UITooltipColorTag(-20) + 
                         " sustenance. Gets a " + GameConstants.UITooltipColorTag(-8) + " happiness penalty for other apartment buildings nearby.";
 					break;
 				#endregion
@@ -398,10 +398,10 @@ namespace SFBuilder.Obj
                 case ObjectType.Env_B: happiness = +00; power = +00; sustenance = +12; break;
                 case ObjectType.Env_C: happiness = +00; power = +00; sustenance = +18; break;
                 case ObjectType.Env_D: happiness = +00; power = -03; sustenance = +25; break;
-                case ObjectType.Res_A: happiness = +00; power = -06; sustenance = -05; break;
+                case ObjectType.Res_A: happiness = +00; power = -05; sustenance = -05; break;
                 case ObjectType.Res_B: happiness = +00; power = -06; sustenance = -08; break;
-                case ObjectType.Res_C: happiness = +00; power = -10; sustenance = -10; break;
-                case ObjectType.Res_D: happiness = +00; power = -15; sustenance = -15; break;
+                case ObjectType.Res_C: happiness = +00; power = -10; sustenance = -15; break;
+                case ObjectType.Res_D: happiness = +00; power = -15; sustenance = -20; break;
                 case ObjectType.Pow_A: happiness = +00; power = +03; sustenance = +00; break;
                 case ObjectType.Pow_B: happiness = +00; power = +05; sustenance = +00; break;
                 case ObjectType.Pow_C: happiness = +00; power = +10; sustenance = +00; break;
@@ -493,8 +493,8 @@ namespace SFBuilder.Obj
                 case ObjectType.Pow_F:
                     switch (existing)
                     {
-                        case ObjectType.Nat_D: happiness = +00; power = +03; sustenance = +00; break;
-                        case ObjectType.Nat_E: happiness = +00; power = +10; sustenance = +00; break;
+                        case ObjectType.Nat_D: happiness = +00; power = +05; sustenance = +00; break;
+                        case ObjectType.Nat_E: happiness = +00; power = +15; sustenance = +00; break;
                         case ObjectType.Res_A:
                         case ObjectType.Res_B:
                         case ObjectType.Res_C:
