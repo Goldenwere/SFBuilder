@@ -18,7 +18,8 @@ namespace SFBuilder.UI
         [SerializeField] private Button         buttonBanishment;
         [SerializeField] private Button         buttonNextGoal;
         [SerializeField] private TypeToIcon[]   icons;
-        [SerializeField] private GameObject     mainCanvas;
+        [SerializeField] private CanvasGroup    mainCanvasGroup;
+        [SerializeField] private GameObject[]   mainCanvasTransitionedElements;
         [SerializeField] private GameObject     templateExtraButton;
         [SerializeField] private GameObject     templateRequirementButton;
         [SerializeField] private GameObject     panelPlacement;
@@ -44,9 +45,9 @@ namespace SFBuilder.UI
                 Instance = this;
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
-                mainCanvas.SetActive(false);
+                SetCanvasActive(false);
             else
-                mainCanvas.SetActive(true);
+                SetCanvasActive(true);
 
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
             windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
@@ -93,9 +94,9 @@ namespace SFBuilder.UI
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState != GameState.Gameplay)
-                mainCanvas.SetActive(false);
+                SetCanvasActive(false);
             else
-                mainCanvas.SetActive(true);
+                SetCanvasActive(true);
         }
 
         /// <summary>
@@ -127,6 +128,17 @@ namespace SFBuilder.UI
         private void OnPlacementStateChanged(bool isPlacing)
         {
             StartCoroutine(TransitionPlacementUI(isPlacing));
+        }
+
+        /// <summary>
+        /// Sets canvas elements as active
+        /// </summary>
+        /// <param name="isActive">Whether to set canvas elements active or inactive</param>
+        private void SetCanvasActive(bool isActive)
+        {
+            foreach (GameObject g in mainCanvasTransitionedElements)
+                g.SetActive(isActive);
+            StartCoroutine(TransitionCanvasOpacity(isActive));
         }
 
         /// <summary>
@@ -202,6 +214,25 @@ namespace SFBuilder.UI
         {
             GameEventSystem.Instance.CallToAdvanceGoal();
             buttonNextGoal.interactable = false;
+        }
+
+        /// <summary>
+        /// Transitions the opacity of the game UI canvas
+        /// </summary>
+        /// <param name="isActive">Whether to set opacity to 1 or 0</param>
+        private IEnumerator TransitionCanvasOpacity(bool isActive)
+        {
+            float t = 0;
+            float start = System.Convert.ToInt32(!isActive);
+            float end = System.Convert.ToInt32(isActive);
+            AnimationCurve curve = AnimationCurve.Linear(0, start, 1, end);
+            while (t <= GameConstants.UITransitionDuration)
+            {
+                mainCanvasGroup.alpha = curve.Evaluate(t / GameConstants.UITransitionDuration);
+                yield return null;
+                t += Time.deltaTime;
+            }
+            mainCanvasGroup.alpha = end;
         }
 
         /// <summary>
