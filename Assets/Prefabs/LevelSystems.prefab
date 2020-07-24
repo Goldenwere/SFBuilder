@@ -2265,6 +2265,112 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goals: []
+  goalPresetsEasy:
+  - goalExtras:
+    - goalStructureCount: 6
+      goalStructureID: 32
+    - goalStructureCount: 2
+      goalStructureID: 64
+    goalRequirements:
+    - goalStructureCount: 3
+      goalStructureID: 48
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 4
+      goalStructureID: 32
+    - goalStructureCount: 2
+      goalStructureID: 33
+    - goalStructureCount: 2
+      goalStructureID: 65
+    goalRequirements:
+    - goalStructureCount: 3
+      goalStructureID: 49
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 3
+      goalStructureID: 35
+    - goalStructureCount: 2
+      goalStructureID: 36
+    - goalStructureCount: 3
+      goalStructureID: 67
+    goalRequirements: []
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 4
+      goalStructureID: 33
+    - goalStructureCount: 1
+      goalStructureID: 34
+    - goalStructureCount: 1
+      goalStructureID: 66
+    goalRequirements: []
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 2
+      goalStructureID: 65
+    - goalStructureCount: 1
+      goalStructureID: 37
+    goalRequirements:
+    - goalStructureCount: 1
+      goalStructureID: 50
+    - goalStructureCount: 1
+      goalStructureID: 51
+    goalViability: 0
+  goalPresetsHard:
+  - goalExtras:
+    - goalStructureCount: 3
+      goalStructureID: 67
+    - goalStructureCount: 2
+      goalStructureID: 33
+    goalRequirements:
+    - goalStructureCount: 1
+      goalStructureID: 37
+    - goalStructureCount: 2
+      goalStructureID: 50
+    - goalStructureCount: 1
+      goalStructureID: 51
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 4
+      goalStructureID: 32
+    - goalStructureCount: 1
+      goalStructureID: 34
+    goalRequirements: []
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 2
+      goalStructureID: 67
+    - goalStructureCount: 2
+      goalStructureID: 64
+    - goalStructureCount: 2
+      goalStructureID: 65
+    goalRequirements: []
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 3
+      goalStructureID: 35
+    - goalStructureCount: 3
+      goalStructureID: 36
+    - goalStructureCount: 2
+      goalStructureID: 67
+    goalRequirements:
+    - goalStructureCount: 5
+      goalStructureID: 48
+    - goalStructureCount: 5
+      goalStructureID: 49
+    goalViability: 0
+  - goalExtras:
+    - goalStructureCount: 2
+      goalStructureID: 34
+    - goalStructureCount: 2
+      goalStructureID: 36
+    - goalStructureCount: 3
+      goalStructureID: 67
+    goalRequirements:
+    - goalStructureCount: 3
+      goalStructureID: 50
+    - goalStructureCount: 2
+      goalStructureID: 51
+    goalViability: 0
 --- !u!1 &5264296987418984782
 GameObject:
   m_ObjectHideFlags: 0

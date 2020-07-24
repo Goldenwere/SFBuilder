@@ -14,6 +14,8 @@ namespace SFBuilder.Gameplay
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private GoalContainer[]    goals;
+        [SerializeField] private GoalContainer[]    goalPresetsEasy;
+        [SerializeField] private GoalContainer[]    goalPresetsHard;
 #pragma warning restore 0649
         /**************/ private bool               canMoveOn;
         /**************/ private bool               uiWasSetUp;
