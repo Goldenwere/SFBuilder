@@ -659,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 5816813921996990905}
+  buttonImage: {fileID: 5816813921996990904}
   indicatorCount: {fileID: 5816813920465180397}
   indicatorIcon: {fileID: 8855549797396617288}
   indicatorID: {fileID: 5816813921870458067}

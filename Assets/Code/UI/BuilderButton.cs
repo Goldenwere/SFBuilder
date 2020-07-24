@@ -13,6 +13,7 @@ namespace SFBuilder.UI
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private Button                 button;
+        [SerializeField] private Image                  buttonImage;
         [SerializeField] private TMPro.TMP_Text         indicatorCount;
         [SerializeField] private Image                  indicatorIcon;
         [SerializeField] private TMPro.TMP_Text         indicatorID;
@@ -27,9 +28,7 @@ namespace SFBuilder.UI
         /// <summary>
         /// When the button is first being created, call this to associate it with a BuilderObject
         /// </summary>
-        /// <param name="id">The numerical id of the BuilderObject (casted to ObjectType)</param>
-        /// <param name="count">The number of the specified BuilderObject the button can create</param>
-        /// <param name="required">Whether or not the BuilderObject is required (determines which working set to edit)</param>
+        /// <param name="info">The info to set the button up with</param>
         public void SetupButton(ButtonInfo info)
         {
             if (!initialized)
@@ -54,6 +53,20 @@ namespace SFBuilder.UI
                 tooltipElement.UpdateText(desc);
                 initialized = true;
             }
+        }
+
+        /// <summary>
+        /// When the button is first being created, call this to associate it with a BuilderObject
+        /// </summary>
+        /// <param name="info">The info to set the button up with</param>
+        /// <param name="palette">Color palette to load into the button</param>
+        public void SetupButton(ButtonInfo info, ColorPalette palette)
+        {
+            SetupButton(info);
+            if (isRequired)
+                buttonImage.color = palette.PlacementRequiredColor;
+            else
+                buttonImage.color = palette.PlacementExtraColor;
         }
 
         /// <summary>

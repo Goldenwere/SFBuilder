@@ -24,6 +24,7 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject     templateRequirementButton;
         [SerializeField] private GameObject     panelPlacement;
         [SerializeField] private int            panelPlacementButtonPadding;
+        [SerializeField] private ColorPalette   uiPalette;
         [SerializeField] private GameObject     windowBanishment;
 #pragma warning restore 0649
         /**************/ private RectTransform  panelPlacementRT;
@@ -43,6 +44,10 @@ namespace SFBuilder.UI
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            ColorEnabledElement[] colorElems = GetComponentsInChildren<ColorEnabledElement>();
+            foreach (ColorEnabledElement elem in colorElems)
+                elem.SetupColors(uiPalette);
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
                 SetCanvasActive(false);
@@ -154,7 +159,7 @@ namespace SFBuilder.UI
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = true });
+                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = true }, uiPalette);
                 buttonCount++;
             }
 
@@ -164,7 +169,7 @@ namespace SFBuilder.UI
                 Vector3 pos = rt.anchoredPosition;
                 pos.x = (rt.rect.width / 2) + (buttonCount * rt.rect.width) + (panelPlacementButtonPadding * (buttonCount + 1));
                 rt.anchoredPosition = pos;
-                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = false });
+                rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = false }, uiPalette);
                 buttonCount++;
             }
         }
@@ -287,5 +292,21 @@ namespace SFBuilder.UI
     {
         public Sprite       Icon;
         public ObjectType   Type;
+    }
+
+    /// <summary>
+    /// Struct for associating colors to UI per scene
+    /// </summary>
+    [System.Serializable]
+    public struct ColorPalette
+    {
+        public Color BackgroundPrimaryColor;
+        public Color BackgroundSecondaryColor;
+        public Color BackgroundAccentColor;
+        public Color ForegroundPrimaryColor;
+        public Color ForegroundSecondaryColor;
+        public Color ForegroundAccentColor;
+        public Color PlacementExtraColor;
+        public Color PlacementRequiredColor;
     }
 }
