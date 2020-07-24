@@ -2713,12 +2713,12 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalViability
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[1].goalViability
-      value: 2
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2733,7 +2733,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[0].goalExtras.Array.data[0].goalStructureCount
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2813,7 +2813,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[2].goalViability
-      value: 3
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2888,7 +2888,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[3].goalViability
-      value: 4
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -2933,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: goals.Array.data[4].goalViability
-      value: 5
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 5264296986759185325, guid: ada32da2ae820d348827e520e513726c,
         type: 3}

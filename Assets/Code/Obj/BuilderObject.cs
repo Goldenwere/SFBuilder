@@ -298,7 +298,7 @@ namespace SFBuilder.Obj
                 #endregion
 				#region Residence
 				case ObjectType.Res_A:
-					description = "Small cabin - takes " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-6) + 
+					description = "Small cabin - takes " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-5) + 
                         " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
 					break;
 				case ObjectType.Res_B:

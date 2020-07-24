@@ -51,7 +51,7 @@ namespace SFBuilder.Gameplay
             else
                 Instance = this;
 
-            // First set the private member to 0 (replaced with save data) so that it will be the same when setting CurrentLevel
+            // First set the private member to 1 (replaced with save data) so that it will be the same when setting CurrentLevel
             currentLevel = 1;
             CurrentLevel = 1;
         }
