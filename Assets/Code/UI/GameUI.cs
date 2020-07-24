@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using SFBuilder.Obj;
 using SFBuilder.Gameplay;
 using System.Linq;
 using System.Collections;
+using Goldenwere.Unity.UI;
 
 namespace SFBuilder.UI
 {
@@ -48,6 +48,9 @@ namespace SFBuilder.UI
             ColorEnabledElement[] colorElems = GetComponentsInChildren<ColorEnabledElement>();
             foreach (ColorEnabledElement elem in colorElems)
                 elem.SetupColors(uiPalette);
+            TooltipEnabledElement[] tooltips = GetComponentsInChildren<TooltipEnabledElement>();
+            foreach (TooltipEnabledElement tooltip in tooltips)
+                tooltip.SetColors(uiPalette.BackgroundAccentColor, uiPalette.ForegroundAccentColor);
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
                 SetCanvasActive(false);
@@ -172,6 +175,10 @@ namespace SFBuilder.UI
                 rt.GetComponent<BuilderButton>().SetupButton(new ButtonInfo { count = g.goalStructureCount, id = (int)g.goalStructureID, req = false }, uiPalette);
                 buttonCount++;
             }
+
+            TooltipEnabledElement[] tooltips = panelPlacementButtons.GetComponentsInChildren<TooltipEnabledElement>();
+            foreach (TooltipEnabledElement tooltip in tooltips)
+                tooltip.SetColors(uiPalette.BackgroundAccentColor, uiPalette.ForegroundAccentColor);
         }
 
         /// <summary>

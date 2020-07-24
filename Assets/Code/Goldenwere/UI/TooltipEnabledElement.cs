@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Goldenwere.Unity.UI
 {
@@ -166,6 +167,26 @@ namespace Goldenwere.Unity.UI
         {
             StopAllCoroutines();
             SetActive(false);
+        }
+
+        /// <summary>
+        /// Set the tooltip's colors with this method
+        /// </summary>
+        /// <param name="background">Color applied to any non-text graphic</param>
+        /// <param name="foreground">Color applied to any text graphic</param>
+        public void SetColors(Color background, Color foreground)
+        {
+            if (!isInitialized)
+                Initialize();
+
+            Graphic[] graphics = tooltipSpawnedElement.GetComponentsInChildren<Graphic>();
+            foreach(Graphic graphic in graphics)
+            {
+                if (graphic.GetType().Namespace == "TMPro")
+                    graphic.color = foreground;
+                else
+                    graphic.color = background;
+            }
         }
 
         /// <summary>
