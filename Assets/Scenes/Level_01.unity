@@ -3132,17 +3132,17 @@ PrefabInstance:
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundPrimaryColor.r
-      value: 0.504717
+      value: 0.31118724
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundPrimaryColor.g
-      value: 0.65815765
+      value: 0.39882973
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundPrimaryColor.b
-      value: 1
+      value: 0.5943396
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -3157,12 +3157,12 @@ PrefabInstance:
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundSecondaryColor.g
-      value: 0.7755026
+      value: 0.7463101
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundSecondaryColor.b
-      value: 0.514151
+      value: 0.4481132
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -3172,17 +3172,17 @@ PrefabInstance:
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundAccentColor.r
-      value: 0.754717
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundAccentColor.g
-      value: 0.3809185
+      value: 0.24737452
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.BackgroundAccentColor.b
-      value: 0.48068053
+      value: 0.31135023
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
@@ -3237,17 +3237,17 @@ PrefabInstance:
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.ForegroundAccentColor.r
-      value: 1
+      value: 0.8018868
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.ForegroundAccentColor.g
-      value: 1
+      value: 0.8018868
       objectReference: {fileID: 0}
     - target: {fileID: 5264296987454752399, guid: ada32da2ae820d348827e520e513726c,
         type: 3}
       propertyPath: uiPalette.ForegroundAccentColor.b
-      value: 1
+      value: 0.8018868
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada32da2ae820d348827e520e513726c, type: 3}
