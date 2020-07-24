@@ -13,37 +13,61 @@
         // 064-095: environment
         // 096-127: commercial/municipal
 
-        Pro_A = 00, // power source                 | +00 H +03 P +00 S | -5 H @ residence, +3 P @ power source
-        Pro_B = 01, // residence                    | +00 H -05 P -05 S | x
-        Pro_C = 02, // community garden             | +00 H +00 P +05 S | +3 S +3 H @ residence
+        /**** Used for prototyping ****/
+        /// <summary> Power Source </summary>
+        Pro_A = 00,
+        /// <summary> Residence </summary>
+        Pro_B = 01,
+        /// <summary> Community Garden </summary>
+        Pro_C = 02,
 
-        // Pre-existing, no rules
-        Nat_A = 16, // alien wildlife               | +00 H +00 P +00 S | x
-        Nat_B = 17, // small rocks                  | +00 H +00 P +00 S | x
-        Nat_C = 18, // large rocks                  | +00 H +00 P +00 S | x
-        Nat_D = 19, // lectrinium vein              | +00 H +00 P +00 S | x
-        Nat_E = 20, // lectrinium deposit           | +00 H +00 P +00 S | x
-        Nat_F = 21, // metals deposit               | +00 H +00 P +00 S | x
-        
-        // +P, -H
-        Pow_A = 32, // solar panel                  | +00 H +03 P +00 S | -1 H @ Res
-        Pow_B = 33, // solar tower                  | +00 H +05 P +00 S | -1 H @ Res
-        Pow_C = 34, // solar farm                   | +00 H +10 P +00 S | -3 H @ Res, +1 P @ s panel/s tower
-        Pow_D = 35, // small turbine                | +00 H +06 P +00 S | -3 H @ Res
-        Pow_E = 36, // large turbine                | +00 H +12 P +00 S | -5 H @ Res
-        Pow_F = 37, // lectrinium mine              | +00 H -02 P +00 S | -8 H @ Res, +4 P @ l vein, +12 P @ l deposit
-        
-        // -S, -P, -H when crowding
-        Res_A = 48, // small cabin                  | +00 H -05 P -06 S | +1 P +1 S @ cabins
-        Res_B = 49, // large cabin                  | +00 H -06 P -08 S | +1 P +1 S @ cabins
-        Res_C = 50, // small apartment              | +00 H -10 P -10 S | -5 H @ apartments
-        Res_D = 51, // apartment tower              | +00 H -15 P -15 S | -8 H @ apartments
-        
-        // +S &/or +H, sometimes -P
-        Env_A = 64, // community garden             | +00 H +00 P +08 S | +3 H @ cabins, +5 H @ apartments, +2 S @ a wildlife, +1 S @ garden
-        Env_B = 65, // small farm                   | +00 H +00 P +12 S | +1 H @ cabins, +3 H @ apartments, +2 S @ farms
-        Env_C = 66, // large farm                   | +00 H +00 P +18 S | +1 S @ farms
-        Env_D = 67  // vertical farm                | +00 H -03 P +25 S | -1 H @ Res
+        /**** Pre-existing, no rules ****/
+        /// <summary> Alien Wildlife </summary>
+        Nat_A = 16,
+        /// <summary> Small Rocks </summary>
+        Nat_B = 17,
+        /// <summary> Large Rocks </summary>
+        Nat_C = 18,
+        /// <summary> Lectrinium Vein </summary>
+        Nat_D = 19,
+        /// <summary> Lectrinium Deposit </summary>
+        Nat_E = 20,
+        /// <summary> Metals Deposit </summary>
+        Nat_F = 21,
+
+        /**** +P, -H ****/
+        /// <summary> Solar Panel </summary>
+        Pow_A = 32,
+        /// <summary> Solar Tower </summary>
+        Pow_B = 33,
+        /// <summary> Solar Farm </summary>
+        Pow_C = 34,
+        /// <summary> Small Turbine </summary>
+        Pow_D = 35,
+        /// <summary> Large Turbine </summary>
+        Pow_E = 36,
+        /// <summary> Lectrinium Mine </summary>
+        Pow_F = 37,
+
+        /**** -S, -P, -H when crowding ****/
+        /// <summary> Small Cabin </summary>
+        Res_A = 48,
+        /// <summary> Large Cabin </summary>
+        Res_B = 49,
+        /// <summary> Small Apartment </summary>
+        Res_C = 50,
+        /// <summary> Apartment Tower </summary>
+        Res_D = 51, // apartment tower
+
+        /**** +S &/or +H, sometimes -P ****/
+        /// <summary> Community Garden </summary>
+        Env_A = 64,
+        /// <summary> Small Farm </summary>
+        Env_B = 65,
+        /// <summary> Large Farm </summary>
+        Env_C = 66,
+        /// <summary> Vertical Farm </summary>
+        Env_D = 67
 
         // +H, -P, sometimes -S
     }
