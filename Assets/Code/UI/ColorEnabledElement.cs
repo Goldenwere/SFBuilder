@@ -8,6 +8,7 @@ namespace SFBuilder.UI
     /// </summary>
     public class ColorEnabledElement : MonoBehaviour
     {
+        #region Fields
 #pragma warning disable 0649
         [SerializeField] private float          alphaBackground = 1f;
         [SerializeField] private float          alphaForeground = 1f;
@@ -15,7 +16,8 @@ namespace SFBuilder.UI
         [SerializeField] private Graphic[]      foregroundElements;
         [SerializeField] private ElementType    type;
 #pragma warning restore 0649
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Method for color initialization
         /// </summary>
@@ -50,6 +52,7 @@ namespace SFBuilder.UI
             foreach (Graphic foregroundElement in foregroundElements)
                 foregroundElement.color = new Color(foregroundElement.color.r, foregroundElement.color.g, foregroundElement.color.b, alphaForeground);
         }
+        #endregion
     }
 
     /// <summary>
