@@ -2733,6 +2733,7 @@ MonoBehaviour:
     type: 3}
   templateRequirementButton: {fileID: 5816813921996990911, guid: a09336e8fe1bf374594e3bd7b4edd31d,
     type: 3}
+  panelOtherButtons: {fileID: 8166111002129402094}
   panelPlacement: {fileID: 8268297863278577966}
   panelPlacementButtonPadding: 5
   uiPalette:

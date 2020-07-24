@@ -22,11 +22,13 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject[]   mainCanvasTransitionedElements;
         [SerializeField] private GameObject     templateExtraButton;
         [SerializeField] private GameObject     templateRequirementButton;
+        [SerializeField] private GameObject     panelOtherButtons;
         [SerializeField] private GameObject     panelPlacement;
         [SerializeField] private int            panelPlacementButtonPadding;
         [SerializeField] private ColorPalette   uiPalette;
         [SerializeField] private GameObject     windowBanishment;
 #pragma warning restore 0649
+        /**************/ private RectTransform  panelOtherButtonsRT;
         /**************/ private RectTransform  panelPlacementRT;
         /**************/ private Transform      panelPlacementButtons;
         /**************/ private RectTransform  windowBanishmentRT;
@@ -57,6 +59,7 @@ namespace SFBuilder.UI
             else
                 SetCanvasActive(true);
 
+            panelOtherButtonsRT = panelOtherButtons.GetComponent<RectTransform>();
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
             windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
             panelPlacementRT = panelPlacement.GetComponent<RectTransform>();
@@ -197,6 +200,7 @@ namespace SFBuilder.UI
         public void OnBanishButtonPressed()
         {
             StartCoroutine(TransitionWindowBanishment(true));
+            StartCoroutine(TransitionPlacementUI(true));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
@@ -206,6 +210,7 @@ namespace SFBuilder.UI
         public void OnCancelBanishButtonPressed()
         {
             StartCoroutine(TransitionWindowBanishment(false));
+            StartCoroutine(TransitionPlacementUI(false));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
@@ -216,6 +221,7 @@ namespace SFBuilder.UI
         {
             GameEventSystem.Instance.CallForBanishment();
             StartCoroutine(TransitionWindowBanishment(false));
+            StartCoroutine(TransitionPlacementUI(false));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
@@ -253,16 +259,35 @@ namespace SFBuilder.UI
         private IEnumerator TransitionPlacementUI(bool isPlacing)
         {
             float t = 0;
+
+            // Numbers are based off of what is set in inspector and what would put them out of view with reference canvas set at 100x100
             Vector3 start = panelPlacementRT.localPosition;
             Vector3 end = new Vector3(panelPlacementRT.localPosition.x, -20, panelPlacementRT.localPosition.z);
+
+            Vector2 startOtherMin = panelOtherButtonsRT.offsetMin;
+            Vector2 startOtherMax = panelOtherButtonsRT.offsetMax;
+            Vector2 endOtherMin = new Vector2(-20, 0);
+            Vector2 endOtherMax = new Vector2(20, -90);
+
             if (!isPlacing)
+            {
                 end = new Vector3(panelPlacementRT.localPosition.x, 0, panelPlacementRT.localPosition.z);
+                endOtherMin = new Vector2(10, 0);
+                endOtherMax = new Vector2(-10, 90);
+            }
+
             while (t <= GameConstants.UITransitionDuration)
             {
                 panelPlacementRT.localPosition = Vector3.LerpUnclamped(start, end, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
+                panelOtherButtonsRT.offsetMin = Vector2.LerpUnclamped(startOtherMin, endOtherMin, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
+                panelOtherButtonsRT.offsetMax = Vector2.LerpUnclamped(startOtherMax, endOtherMax, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
                 t += Time.deltaTime;
                 yield return null;
             }
+
+            panelPlacementRT.localPosition = end;
+            panelOtherButtonsRT.offsetMin = endOtherMin;
+            panelOtherButtonsRT.offsetMax = endOtherMax;
         }
 
         /// <summary>
