@@ -62,7 +62,7 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void Update()
         {
-            if (tooltipSpawnedElement.activeInHierarchy)
+            if (isActive)
             {
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasToBeAttachedTo.transform as RectTransform, Mouse.current.position.ReadValue(), cameraThatRendersCanvas, out Vector2 newPos))
                 {
@@ -242,7 +242,7 @@ namespace Goldenwere.Unity.UI
         /// <param name="mode">The mode of transition to use for animation</param>
         private void SetActive(bool _isActive, TransitionMode mode)
         {
-            if (isActive != _isActive)
+            if (isActive != _isActive || !isActive)
             {
                 isActive = _isActive;
                 switch (mode)
@@ -250,7 +250,8 @@ namespace Goldenwere.Unity.UI
                     case TransitionMode.Fade:
                         if (!tooltipSpawnedElement.activeSelf)
                             tooltipSpawnedElement.SetActive(true);
-                        StartCoroutine(TransitionFade(isActive));
+                        if (!isActive && tooltipCanvasGroup.alpha > 0 || isActive)
+                            StartCoroutine(TransitionFade(isActive));
                         break;
                     case TransitionMode.None:
                     default:
