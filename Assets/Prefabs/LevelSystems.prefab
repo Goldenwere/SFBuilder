@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -985,7 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1072,6 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -3202,7 +3204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3270,6 +3272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -4266,7 +4269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4353,6 +4356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -4592,7 +4596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4679,6 +4683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -5691,7 +5696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5778,6 +5783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
@@ -6482,7 +6488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6569,6 +6575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}

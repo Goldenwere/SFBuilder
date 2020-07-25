@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -64,7 +65,10 @@ namespace Goldenwere.Unity.UI
         {
             if (isActive)
             {
-                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasToBeAttachedTo.transform as RectTransform, Mouse.current.position.ReadValue(), cameraThatRendersCanvas, out Vector2 newPos))
+                if (!EventSystem.current.IsPointerOverGameObject())
+                    SetActive(false);
+
+                else if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasToBeAttachedTo.transform as RectTransform, Mouse.current.position.ReadValue(), cameraThatRendersCanvas, out Vector2 newPos))
                 {
                     switch (tooltipAnchorPosition)
                     {
