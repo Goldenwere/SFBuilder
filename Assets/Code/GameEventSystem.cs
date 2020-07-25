@@ -57,6 +57,11 @@ namespace SFBuilder
         public static event BoolDelegate    LevelTransitioned;
 
         /// <summary>
+        /// Used for updating whether the next level is ready or not
+        /// </summary>
+        public static event BoolDelegate    NextLevelReadyStateChanged;
+
+        /// <summary>
         /// Used for updating the placement panel UI
         /// </summary>
         public static event BoolDelegate    PlacementPanelUpdateDesired;
@@ -104,6 +109,15 @@ namespace SFBuilder
         public void CallForBanishment()
         {
             LevelBanished?.Invoke();
+        }
+
+        /// <summary>
+        /// Allows/Disallows for moving on to next level
+        /// </summary>
+        /// <param name="isReady">Whether the player can move on to the next level or not</param>
+        public void NotifyLevelReadyState(bool isReady)
+        {
+            NextLevelReadyStateChanged?.Invoke(isReady);
         }
 
         /// <summary>

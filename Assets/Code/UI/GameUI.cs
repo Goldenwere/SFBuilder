@@ -80,6 +80,7 @@ namespace SFBuilder.UI
             GameEventSystem.PlacementStateChanged += OnPlacementStateChanged;
             GameEventSystem.GoalMet += OnGoalMet;
             GameEventSystem.PlacementPanelUpdateDesired += OnPlacementPanelUpdateDesired;
+            GameEventSystem.NextLevelReadyStateChanged += OnNextLevelReadyStateChanged;
         }
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace SFBuilder.UI
             GameEventSystem.PlacementStateChanged -= OnPlacementStateChanged;
             GameEventSystem.GoalMet -= OnGoalMet;
             GameEventSystem.PlacementPanelUpdateDesired -= OnPlacementPanelUpdateDesired;
+            GameEventSystem.NextLevelReadyStateChanged -= OnNextLevelReadyStateChanged;
         }
 
         /// <summary>
@@ -124,6 +126,15 @@ namespace SFBuilder.UI
             if (!buttonNextGoal.interactable && isMet)
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal, 0.5f);
             buttonNextGoal.interactable = isMet;
+        }
+
+        /// <summary>
+        /// Handler for the NextLevelReadyStateChanged event
+        /// </summary>
+        /// <param name="isReady">Whether the next level is ready or not</param>
+        private void OnNextLevelReadyStateChanged(bool isReady)
+        {
+            buttonNextLevel.gameObject.SetActive(isReady);
         }
 
         /// <summary>
@@ -247,6 +258,7 @@ namespace SFBuilder.UI
         {
             StartCoroutine(TransitionWindow(false, windowNextLevelRT));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
+            LevelingSystem.Instance.CurrentLevel++;
         }
 
         /// <summary>

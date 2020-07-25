@@ -66,6 +66,7 @@ namespace SFBuilder.Gameplay
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 GameEventSystem.Instance.UpdatePlacementPanel();
             VerifyForNextGoal();
+            GameEventSystem.Instance.NotifyLevelReadyState(false);
         }
 
         /// <summary>
@@ -134,10 +135,11 @@ namespace SFBuilder.Gameplay
                 }
                 else
                 {
-                    LevelingSystem.Instance.CurrentLevel++;
+                    // LevelingSystem.Instance.CurrentLevel++;
                     // will be made redundant as there will be a scene change 
                     CurrentGoal = 0;
                     GameEventSystem.Instance.UpdatePlacementPanel(true);
+                    GameEventSystem.Instance.NotifyLevelReadyState(true);
                 }
             }
         }
