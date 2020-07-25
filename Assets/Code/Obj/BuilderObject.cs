@@ -29,17 +29,17 @@ namespace SFBuilder.Obj
         /// <summary>
         /// Whether or not something is colliding with this object
         /// </summary>
-        public bool IsCollided  { get; private set; }
+        public bool             IsCollided  { get; private set; }
 
         /// <summary>
         /// Whether or not the object is grounded
         /// </summary>
-        public bool IsGrounded  { get { return grounder.IsGrounded; } }
+        public bool             IsGrounded  { get { return grounder.IsGrounded; } }
 
         /// <summary>
         /// Whether or not the object is placed; used for setting the state of the object and listeners
         /// </summary>
-        public bool IsPlaced
+        public bool             IsPlaced
         {
             get { return isPlaced; }
             set
@@ -74,12 +74,20 @@ namespace SFBuilder.Obj
         /// <summary>
         /// Whether or not the object's placement is valid (a combination of ground-state and collision-state)
         /// </summary>
-        public bool IsValid     { get { return IsGrounded && !IsCollided; } }
+        public bool             IsValid     { get { return IsGrounded && !IsCollided; } }
 
         /// <summary>
         /// The type of the object, set in inspector at prefab level
         /// </summary>
-        public ObjectType Type  { get { return type; } }
+        public ObjectType       Type        { get { return type; } }
+
+        /// <summary>
+        /// The animation used when placing objects
+        /// </summary>
+        private AnimationCurve  PlacementAnimationCurve 
+        { 
+            get { return new AnimationCurve(new Keyframe[] { new Keyframe(0, 1, 0, -5), new Keyframe(0.333f, 0, 0, 0), new Keyframe(0.75f, 1.25f, 8, 8), new Keyframe(1, 1, 8, 8) }); }
+        }
         #endregion
         #region Events
         /// <summary>
@@ -215,7 +223,7 @@ namespace SFBuilder.Obj
             float t = 0;
             while (t <= GameConstants.PlacementAnimationDuration)
             {
-                transform.localScale = Vector3.LerpUnclamped(new Vector3(1.25f, 0.75f, 1.25f), Vector3.one, GameConstants.PlacementAnimationCurve().Evaluate(t / GameConstants.PlacementAnimationDuration));
+                transform.localScale = Vector3.LerpUnclamped(new Vector3(1.25f, 0.75f, 1.25f), Vector3.one, PlacementAnimationCurve.Evaluate(t / GameConstants.PlacementAnimationDuration));
                 yield return null;
                 t += Time.deltaTime;
             }
