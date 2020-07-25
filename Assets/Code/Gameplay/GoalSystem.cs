@@ -135,11 +135,18 @@ namespace SFBuilder.Gameplay
                 }
                 else
                 {
-                    // LevelingSystem.Instance.CurrentLevel++;
-                    // will be made redundant as there will be a scene change 
-                    CurrentGoal = 0;
-                    GameEventSystem.Instance.UpdatePlacementPanel(true);
+                    if (CurrentGoal > goals.Length * GameConstants.InfiniPlayFromEasyToHard)
+                        CurrentGoalWorkingSet = GoalContainer.Copy(
+                            goalPresetsHard[Random.Range(0, goalPresetsHard.Length)], 
+                            CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayHardViabilityIncrease);
+                    else
+                        CurrentGoalWorkingSet = GoalContainer.Copy(
+                            goalPresetsEasy[Random.Range(0, goalPresetsEasy.Length)], 
+                            CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayEasyViabilityIncrease);
+                    GameEventSystem.Instance.UpdatePlacementPanel();
                     GameEventSystem.Instance.NotifyLevelReadyState(true);
+                    GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
+                    newGoal?.Invoke(CurrentGoal);
                 }
             }
         }

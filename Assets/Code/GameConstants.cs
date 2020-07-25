@@ -8,6 +8,21 @@ namespace SFBuilder
     public struct GameConstants
     {
         /// <summary>
+        /// Multiplier used on goalset length for switching from easy goalsets to hard goalsets
+        /// </summary>
+        public const float  InfiniPlayFromEasyToHard = 1.75f;
+
+        /// <summary>
+        /// How much viability increases for each new easy goal preset
+        /// </summary>
+        public const int    InfiniPlayEasyViabilityIncrease = 50;
+
+        /// <summary>
+        /// How much viability increases for each new hard goal preset
+        /// </summary>
+        public const int    InfiniPlayHardViabilityIncrease = 75;
+
+        /// <summary>
         /// Wait period for animating post-level-load transition
         /// </summary>
         public const float  LevelTransitionEndTime = 2.5f;
