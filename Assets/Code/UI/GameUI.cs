@@ -17,6 +17,7 @@ namespace SFBuilder.UI
         [SerializeField] private AnimationCurve animationCurveForTransitions;
         [SerializeField] private Button         buttonBanishment;
         [SerializeField] private Button         buttonNextGoal;
+        [SerializeField] private Button         buttonNextLevel;
         [SerializeField] private TypeToIcon[]   icons;
         [SerializeField] private CanvasGroup    mainCanvasGroup;
         [SerializeField] private GameObject[]   mainCanvasTransitionedElements;
@@ -27,11 +28,13 @@ namespace SFBuilder.UI
         [SerializeField] private int            panelPlacementButtonPadding;
         [SerializeField] private ColorPalette   uiPalette;
         [SerializeField] private GameObject     windowBanishment;
+        [SerializeField] private GameObject     windowNextLevel;
 #pragma warning restore 0649
         /**************/ private RectTransform  panelOtherButtonsRT;
         /**************/ private RectTransform  panelPlacementRT;
         /**************/ private Transform      panelPlacementButtons;
         /**************/ private RectTransform  windowBanishmentRT;
+        /**************/ private RectTransform  windowNextLevelRT;
         #endregion
         #region Properties
         public static GameUI     Instance       { get; private set; }
@@ -62,6 +65,8 @@ namespace SFBuilder.UI
             panelOtherButtonsRT = panelOtherButtons.GetComponent<RectTransform>();
             windowBanishmentRT = windowBanishment.GetComponent<RectTransform>();
             windowBanishmentRT.anchoredPosition = new Vector2(0, -100);
+            windowNextLevelRT = windowNextLevel.GetComponent<RectTransform>();
+            windowNextLevelRT.anchoredPosition = new Vector2(0, -100);
             panelPlacementRT = panelPlacement.GetComponent<RectTransform>();
             panelPlacementButtons = panelPlacement.transform.GetChild(0);
         }
@@ -199,7 +204,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnBanishButtonPressed()
         {
-            StartCoroutine(TransitionWindowBanishment(true));
+            StartCoroutine(TransitionWindow(true, windowBanishmentRT));
             StartCoroutine(TransitionPlacementUI(true));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
@@ -209,7 +214,17 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnCancelBanishButtonPressed()
         {
-            StartCoroutine(TransitionWindowBanishment(false));
+            StartCoroutine(TransitionWindow(false, windowBanishmentRT));
+            StartCoroutine(TransitionPlacementUI(false));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
+        /// When the CancelNextLevelButton is pressed, close the next level confirmation prompt
+        /// </summary>
+        public void OnCancelNextLevelButtonPressed()
+        {
+            StartCoroutine(TransitionWindow(false, windowNextLevelRT));
             StartCoroutine(TransitionPlacementUI(false));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
@@ -220,8 +235,27 @@ namespace SFBuilder.UI
         public void OnConfirmBanishButtonPressed()
         {
             GameEventSystem.Instance.CallForBanishment();
-            StartCoroutine(TransitionWindowBanishment(false));
+            StartCoroutine(TransitionWindow(false, windowBanishmentRT));
             StartCoroutine(TransitionPlacementUI(false));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
+        /// When the ConfirmNextLevelButton is pressed, move on to the next level
+        /// </summary>
+        public void OnConfirmNextLevelButtonPressed()
+        {
+            StartCoroutine(TransitionWindow(false, windowNextLevelRT));
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
+        }
+
+        /// <summary>
+        /// When the NextLevelButton is pressed, open the next level confirmation prompt
+        /// </summary>
+        public void OnNextLevelButtonPressed()
+        {
+            StartCoroutine(TransitionWindow(true, windowNextLevelRT));
+            StartCoroutine(TransitionPlacementUI(true));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
@@ -294,7 +328,7 @@ namespace SFBuilder.UI
         /// Coroutine for animating the banishment window
         /// </summary>
         /// <param name="setActive">Whether the window is being enabled or disabled</param>
-        private IEnumerator TransitionWindowBanishment(bool setActive)
+        private IEnumerator TransitionWindow(bool setActive, RectTransform window)
         {
             float t = 0;
             Vector2 start = new Vector2(0, -100);
@@ -307,11 +341,11 @@ namespace SFBuilder.UI
 
             while (t <= GameConstants.UITransitionDuration)
             {
-                windowBanishmentRT.anchoredPosition = Vector2.LerpUnclamped(start, end, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
+                window.anchoredPosition = Vector2.LerpUnclamped(start, end, animationCurveForTransitions.Evaluate(t / GameConstants.UITransitionDuration));
                 yield return null;
                 t += Time.deltaTime;
             }
-            windowBanishmentRT.anchoredPosition = end;
+            window.anchoredPosition = end;
         }
         #endregion
     }
