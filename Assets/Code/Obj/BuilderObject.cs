@@ -174,7 +174,7 @@ namespace SFBuilder.Obj
         /// <param name="other">The other collider that entered</param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.name != "Ranger")
+            if (other.name != "Ranger" && other.name != "Grounder")
             {
                 IsCollided = true;
                 collidedObjects.Add(other.gameObject);
