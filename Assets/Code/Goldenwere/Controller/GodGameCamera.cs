@@ -104,6 +104,13 @@ namespace Goldenwere.Unity.Controller
                 if (workingInputMovement || workingInputRotation || workingInputZoom)
                     SetRotationPoint();
 
+                if (workingModifierMouseMovement && attachedControls.actions["MovementMouseModifier"].ReadValue<float>() == 0)
+                    workingModifierMouseMovement = false;
+                if (workingModifierMouseRotation && attachedControls.actions["RotationMouseModifier"].ReadValue<float>() == 0)
+                    workingModifierMouseRotation = false;
+                if (workingModifierMouseZoom && attachedControls.actions["ZoomMouseModifier"].ReadValue<float>() == 0)
+                    workingModifierMouseZoom = false;
+
                 if (workingInputMovement)
                     PerformMovement(attachedControls.actions["Movement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
 
