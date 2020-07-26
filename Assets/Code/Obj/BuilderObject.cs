@@ -291,13 +291,15 @@ namespace SFBuilder.Obj
                         GameConstants.UITooltipColorTag(1) + " power bonus for all solar panels/towers in range.";
 					break;
 				case ObjectType.Pow_D:
-					description = "Small turbine - provides " + GameConstants.UITooltipColorTag(6) + " power. Gets a " + 
-                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range.";
+                    description = "Small turbine - provides " + GameConstants.UITooltipColorTag(8) + " power. Gets a " +
+                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range and a " +
+                        GameConstants.UITooltipColorTag(-2) + " power penalty for all turbines in range.";
 					break;
 				case ObjectType.Pow_E:
-					description = "Large turbine - provides " + GameConstants.UITooltipColorTag(12) + " power. Gets a " + 
-                        GameConstants.UITooltipColorTag(-5) + " happiness penalty for all residences in range.";
-					break;
+					description = "Large turbine - provides " + GameConstants.UITooltipColorTag(15) + " power. Gets a " + 
+                        GameConstants.UITooltipColorTag(-5) + " happiness penalty for all residences in range and a " +
+                        GameConstants.UITooltipColorTag(-2) + " power penalty for all turbines in range.";
+                    break;
 				case ObjectType.Pow_F:
                     description = "Lectrinium mine - takes " + GameConstants.UITooltipColorTag(-2) + " power to run, provides " +
                         GameConstants.UITooltipColorTag(5) + " power for lectrinium veins, " + GameConstants.UITooltipColorTag(15) +
@@ -413,8 +415,8 @@ namespace SFBuilder.Obj
                 case ObjectType.Pow_A: happiness = +00; power = +03; sustenance = +00; break;
                 case ObjectType.Pow_B: happiness = +00; power = +05; sustenance = +00; break;
                 case ObjectType.Pow_C: happiness = +00; power = +10; sustenance = +00; break;
-                case ObjectType.Pow_D: happiness = +00; power = +06; sustenance = +00; break;
-                case ObjectType.Pow_E: happiness = +00; power = +12; sustenance = +00; break;
+                case ObjectType.Pow_D: happiness = +00; power = +08; sustenance = +00; break;
+                case ObjectType.Pow_E: happiness = +00; power = +15; sustenance = +00; break;
                 case ObjectType.Pow_F: happiness = +00; power = -02; sustenance = +00; break;
             }
         }
@@ -487,6 +489,8 @@ namespace SFBuilder.Obj
                         case ObjectType.Res_B:
                         case ObjectType.Res_C:
                         case ObjectType.Res_D: happiness = -03; power = +00; sustenance = +00; break;
+                        case ObjectType.Pow_D:
+                        case ObjectType.Pow_E: happiness = +00; power = -02; sustenance = +00; break;
                     }
                     break;
                 case ObjectType.Pow_E:
@@ -496,6 +500,8 @@ namespace SFBuilder.Obj
                         case ObjectType.Res_B:
                         case ObjectType.Res_C:
                         case ObjectType.Res_D: happiness = -05; power = +00; sustenance = +00; break;
+                        case ObjectType.Pow_D:
+                        case ObjectType.Pow_E: happiness = +00; power = -02; sustenance = +00; break;
                     }
                     break;
                 case ObjectType.Pow_F:
