@@ -126,6 +126,59 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// When the save button is pressed on the settings menu, save settings
+        /// </summary>
+        public void OnSettingsSavePressed()
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
+        /// Update effects vol on slider change
+        /// </summary>
+        /// <param name="val">New volume setting</param>
+        public void OnValueChanged_Audio_Effects(float val)
+        {
+
+        }
+
+        /// <summary>
+        /// Update music vol on slider change
+        /// </summary>
+        /// <param name="val">New volume setting</param>
+        public void OnValueChanged_Audio_Music(float val)
+        {
+
+        }
+
+        /// <summary>
+        /// Update AO on toggle change
+        /// </summary>
+        /// <param name="val">New toggle setting</param>
+        public void OnValueChanged_Graphics_AO(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
+        /// Update bloom on toggle change
+        /// </summary>
+        /// <param name="val">New toggle setting</param>
+        public void OnValueChanged_Graphics_Bloom(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
+        /// Update SSR on toggle change
+        /// </summary>
+        /// <param name="val">New toggle setting</param>
+        public void OnValueChanged_Graphics_SSR(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+        }
+
+        /// <summary>
         /// Coroutine for animating transition Image
         /// </summary>
         /// <param name="isStart">Whether starting or ending animation</param>
