@@ -16,6 +16,7 @@ namespace SFBuilder.UI
         [SerializeField] private AnimationCurve transitionStartupToWhite;
         [SerializeField] private Image          transitionImage;
 #pragma warning restore 0649
+        /**************/ private SettingsData   workingSettings;
 
         /// <summary>
         /// Copy the material for transitions since it messes with asset file
@@ -24,6 +25,7 @@ namespace SFBuilder.UI
         {
             Material copy = new Material(transitionImage.material);
             transitionImage.material = copy;
+            workingSettings = GameSettings.Instance.Settings;
 
             canvas.gameObject.SetActive(false);
 
@@ -92,6 +94,7 @@ namespace SFBuilder.UI
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings = GameSettings.Instance.Settings;
         }
 
         /// <summary>
@@ -131,6 +134,7 @@ namespace SFBuilder.UI
         public void OnSettingsSavePressed()
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            GameSettings.Instance.Settings = workingSettings;
         }
 
         /// <summary>
@@ -139,7 +143,7 @@ namespace SFBuilder.UI
         /// <param name="val">New volume setting</param>
         public void OnValueChanged_Audio_Effects(float val)
         {
-
+            workingSettings.volEffects = val;
         }
 
         /// <summary>
@@ -148,7 +152,7 @@ namespace SFBuilder.UI
         /// <param name="val">New volume setting</param>
         public void OnValueChanged_Audio_Music(float val)
         {
-
+            workingSettings.volMusic = val;
         }
 
         /// <summary>
@@ -158,6 +162,7 @@ namespace SFBuilder.UI
         public void OnValueChanged_Graphics_AO(bool val)
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.postprocAO = val;
         }
 
         /// <summary>
@@ -167,6 +172,7 @@ namespace SFBuilder.UI
         public void OnValueChanged_Graphics_Bloom(bool val)
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.postprocBloom = val;
         }
 
         /// <summary>
@@ -176,6 +182,7 @@ namespace SFBuilder.UI
         public void OnValueChanged_Graphics_SSR(bool val)
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.postprocSSR = val;
         }
 
         /// <summary>
