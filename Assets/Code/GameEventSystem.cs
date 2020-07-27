@@ -80,6 +80,11 @@ namespace SFBuilder
         /// Used for updating score system
         /// </summary>
         public static event ScoreChange     ScoreUpdateDesired;
+
+        /// <summary>
+        /// Used for notifying of change in settings
+        /// </summary>
+        public static event GenericDelegate SettingsUpdated;
         #endregion
         #region Methods
         /// <summary>
@@ -118,6 +123,14 @@ namespace SFBuilder
         public void NotifyLevelReadyState(bool isReady)
         {
             NextLevelReadyStateChanged?.Invoke(isReady);
+        }
+
+        /// <summary>
+        /// Notifies that GameSettings has updated
+        /// </summary>
+        public void NotifySettingsChanged()
+        {
+            SettingsUpdated?.Invoke();
         }
 
         /// <summary>
