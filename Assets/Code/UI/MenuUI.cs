@@ -26,6 +26,8 @@ namespace SFBuilder.UI
             transitionImage.material = copy;
 
             canvas.gameObject.SetActive(false);
+            foreach (GameObject g in canvasSettingsElements)
+                g.SetActive(false);
             foreach (GameObject g in canvasMainElements)
                 g.SetActive(false);
 
