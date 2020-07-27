@@ -1377,6 +1377,12 @@ MonoBehaviour:
   - {fileID: 626241710}
   - {fileID: 312050632}
   - {fileID: 803671045}
+  settingsMenuElements:
+    postprocAO: {fileID: 1491764320}
+    postprocBloom: {fileID: 1499005382}
+    postprocSSR: {fileID: 702898267}
+    volMusic: {fileID: 91400046}
+    volEffects: {fileID: 513977173}
   startupFadeImage: {fileID: 17871758}
   transitionCurve:
     serializedVersion: 2

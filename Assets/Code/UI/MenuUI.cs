@@ -6,18 +6,35 @@ namespace SFBuilder.UI
 {
     public class MenuUI : MonoBehaviour
     {
+        #region Fields
 #pragma warning disable 0649
-        [SerializeField] private CanvasGroup    canvas;
-        [SerializeField] private GameObject[]   canvasMainElements;
-        [SerializeField] private GameObject[]   canvasSettingsElements;
-        [SerializeField] private Image          startupFadeImage;
-        [SerializeField] private AnimationCurve transitionCurve;
-        [SerializeField] private AnimationCurve transitionStartupFade;
-        [SerializeField] private AnimationCurve transitionStartupToWhite;
-        [SerializeField] private Image          transitionImage;
+        [SerializeField] private CanvasGroup            canvas;
+        [SerializeField] private GameObject[]           canvasMainElements;
+        [SerializeField] private GameObject[]           canvasSettingsElements;
+        [SerializeField] private SettingsMenuElements   settingsMenuElements;
+        [SerializeField] private Image                  startupFadeImage;
+        [SerializeField] private AnimationCurve         transitionCurve;
+        [SerializeField] private AnimationCurve         transitionStartupFade;
+        [SerializeField] private AnimationCurve         transitionStartupToWhite;
+        [SerializeField] private Image                  transitionImage;
 #pragma warning restore 0649
-        /**************/ private SettingsData   workingSettings;
-
+        /**************/ private SettingsData           workingSettings;
+        #endregion
+        #region Inline Classes
+        /// <summary>
+        /// Collection of elements on the settings menu, whose values are set every time the menu loads
+        /// </summary>
+        [System.Serializable]
+        protected class SettingsMenuElements
+        {
+            public Toggle   postprocAO;
+            public Toggle   postprocBloom;
+            public Toggle   postprocSSR;
+            public Slider   volMusic;
+            public Slider   volEffects;
+        }
+        #endregion
+        #region Methods
         /// <summary>
         /// Copy the material for transitions since it messes with asset file
         /// </summary>
@@ -282,5 +299,6 @@ namespace SFBuilder.UI
 
             StartCoroutine(SetActive(true));
         }
+        #endregion
     }
 }
