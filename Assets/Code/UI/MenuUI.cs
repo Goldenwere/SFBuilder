@@ -9,6 +9,7 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [SerializeField] private CanvasGroup    canvas;
         [SerializeField] private GameObject[]   canvasMainElements;
+        [SerializeField] private GameObject[]   canvasSettingsElements;
         [SerializeField] private Image          startupFadeImage;
         [SerializeField] private AnimationCurve transitionCurve;
         [SerializeField] private AnimationCurve transitionStartupFade;
@@ -73,6 +74,17 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// When the main menu button is pressed, load the main menu
+        /// </summary>
+        public void OnMainMenuPressed()
+        {
+            foreach (GameObject g in canvasMainElements)
+                g.SetActive(true);
+            foreach (GameObject g in canvasSettingsElements)
+                g.SetActive(false);
+        }
+
+        /// <summary>
         /// When the play button is pressed, load the game
         /// </summary>
         public void OnPlayPressed()
@@ -88,6 +100,17 @@ namespace SFBuilder.UI
         public void OnQuitPressed()
         {
             Application.Quit();
+        }
+
+        /// <summary>
+        /// When the settings menu button is pressed, load the settings menu
+        /// </summary>
+        public void OnSettingsPressed()
+        {
+            foreach (GameObject g in canvasMainElements)
+                g.SetActive(false);
+            foreach (GameObject g in canvasSettingsElements)
+                g.SetActive(true);
         }
 
         /// <summary>
