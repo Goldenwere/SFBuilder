@@ -26,10 +26,15 @@ namespace SFBuilder.UI
             transitionImage.material = copy;
 
             canvas.gameObject.SetActive(false);
+
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
+            // these need disabled first before re-enabling to ensure proper transition order
             foreach (GameObject g in canvasMainElements)
                 g.SetActive(false);
+
+            // Clear elements that were initially added that are now disabled
+            UITransitionSystem.Instance.ClearElements();
 
             StartCoroutine(StartupAnimation());
         }
@@ -59,6 +64,8 @@ namespace SFBuilder.UI
         /// <param name="currState">The current GameState</param>
         private void OnGameStateChanged(GameState prevState, GameState currState)
         {
+            UITransitionSystem.Instance.ClearElements();
+
             if (currState == GameState.MainMenus)
                 StartCoroutine(SetActive(true));
             else
@@ -84,6 +91,7 @@ namespace SFBuilder.UI
                 g.SetActive(true);
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
         /// <summary>
@@ -101,6 +109,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnQuitPressed()
         {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             Application.Quit();
         }
 
@@ -113,6 +122,7 @@ namespace SFBuilder.UI
                 g.SetActive(false);
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(true);
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
         }
 
         /// <summary>

@@ -60,6 +60,14 @@ namespace SFBuilder.UI
                 currentElements.Add(elem);
             return currentElements.Count - 1;
         }
+
+        /// <summary>
+        /// Clears the elements list
+        /// </summary>
+        public void ClearElements()
+        {
+            currentElements.Clear();
+        }
         #endregion
     }
 }
