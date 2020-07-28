@@ -102,6 +102,18 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Loads settings data into the UI
+        /// </summary>
+        private void LoadSettings()
+        {
+            settingsMenuElements.postprocAO.SetIsOnWithoutNotify(workingSettings.postprocAO);
+            settingsMenuElements.postprocBloom.SetIsOnWithoutNotify(workingSettings.postprocBloom);
+            settingsMenuElements.postprocSSR.SetIsOnWithoutNotify(workingSettings.postprocSSR);
+            settingsMenuElements.volEffects.SetValueWithoutNotify(workingSettings.volEffects);
+            settingsMenuElements.volMusic.SetValueWithoutNotify(workingSettings.volMusic);
+        }
+
+        /// <summary>
         /// When the main menu button is pressed, load the main menu
         /// </summary>
         public void OnMainMenuPressed()
@@ -111,7 +123,6 @@ namespace SFBuilder.UI
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings = GameSettings.Instance.Settings;
         }
 
         /// <summary>
@@ -138,6 +149,8 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnSettingsPressed()
         {
+            workingSettings = GameSettings.Instance.Settings;
+            LoadSettings();
             foreach (GameObject g in canvasMainElements)
                 g.SetActive(false);
             foreach (GameObject g in canvasSettingsElements)
