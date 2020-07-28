@@ -460,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286296193}
   - component: {fileID: 286296194}
+  - component: {fileID: 286296195}
   m_Layer: 8
   m_Name: Universal
   m_TagString: Untagged
@@ -498,6 +499,19 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &286296195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286296192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cecd093fb9e42744b203bf78042fe4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedVol: {fileID: 286296194}
 --- !u!1 &377836119
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +521,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 377836121}
-  - component: {fileID: 377836120}
   m_Layer: 8
   m_Name: PostProc
   m_TagString: Untagged
@@ -515,23 +528,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &377836120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377836119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 0}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &377836121
 Transform:
   m_ObjectHideFlags: 0
