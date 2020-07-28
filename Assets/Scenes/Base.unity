@@ -2431,7 +2431,6 @@ GameObject:
   - component: {fileID: 755476630}
   - component: {fileID: 755476633}
   - component: {fileID: 755476632}
-  - component: {fileID: 755476631}
   m_Layer: 5
   m_Name: Heading_Audio
   m_TagString: Untagged
@@ -2458,22 +2457,6 @@ RectTransform:
   m_AnchoredPosition: {x: -12, y: 18}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &755476631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755476629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partToAnimate: 0
-  playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &755476632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2826,7 +2809,6 @@ GameObject:
   - component: {fileID: 931069693}
   - component: {fileID: 931069696}
   - component: {fileID: 931069695}
-  - component: {fileID: 931069694}
   m_Layer: 5
   m_Name: Heading_Graphics
   m_TagString: Untagged
@@ -2853,22 +2835,6 @@ RectTransform:
   m_AnchoredPosition: {x: 12, y: 18}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &931069694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931069692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partToAnimate: 0
-  playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &931069695
 MonoBehaviour:
   m_ObjectHideFlags: 0
