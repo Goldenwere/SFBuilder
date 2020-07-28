@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace SFBuilder
 {
@@ -11,6 +12,7 @@ namespace SFBuilder
     {
         #region Fields
 #pragma warning disable 0649
+        [SerializeField] private AudioMixer             audioMixer;
         [SerializeField] private AudioSource[]          audioSources;
         [SerializeField] private AudioClipAssociation[] audioClips;
         [SerializeField] private AudioSource[]          musicSources;
@@ -51,6 +53,8 @@ namespace SFBuilder
             musicSourceIterator++;
             if (musicSourceIterator >= musicSources.Length)
                 musicSourceIterator = 0;
+
+            LoadAudioSettings();
         }
 
         /// <summary>
@@ -59,6 +63,7 @@ namespace SFBuilder
         private void OnEnable()
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
+            GameEventSystem.SettingsUpdated += OnSettingsUpdated;
         }
 
         /// <summary>
@@ -67,25 +72,16 @@ namespace SFBuilder
         private void OnDisable()
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
+            GameEventSystem.SettingsUpdated -= OnSettingsUpdated;
         }
 
         /// <summary>
-        /// Coroutine for fading between the first and second audio sources after leaving the menu for the first time
+        /// Loads audio settings
         /// </summary>
-        private IEnumerator FadeSources()
+        private void LoadAudioSettings()
         {
-            float t = 0;
-            while (t <= GameConstants.MusicFadeTime)
-            {
-                musicSources[0].volume = AnimationCurve.Linear(0, GameConstants.MusicSourceMaxVolume, 1, 0).Evaluate(t / GameConstants.MusicFadeTime);
-                musicSources[1].volume = AnimationCurve.Linear(0, 0, 1, GameConstants.MusicSourceMaxVolume).Evaluate(t / GameConstants.MusicFadeTime);
-                t += Time.deltaTime;
-                yield return null;
-            }
-
-            musicSources[0].Stop();
-            musicSources[0].volume = GameConstants.MusicSourceMaxVolume;
-            musicSources[1].volume = GameConstants.MusicSourceMaxVolume;
+            audioMixer.SetFloat(GameConstants.AudioParamEffects, Mathf.Log10(GameSettings.Instance.Settings.volEffects) * 20);
+            audioMixer.SetFloat(GameConstants.AudioParamMusic, Mathf.Log10(GameSettings.Instance.Settings.volMusic) * 20);
         }
 
         /// <summary>
@@ -112,6 +108,14 @@ namespace SFBuilder
         }
 
         /// <summary>
+        /// Handler for the SettingsUpdated event
+        /// </summary>
+        private void OnSettingsUpdated()
+        {
+            LoadAudioSettings();
+        }
+
+        /// <summary>
         /// Used for playing the next track after WaitToPlayNextTrack is finished
         /// </summary>
         private void PlayNextTrack()
@@ -129,21 +133,6 @@ namespace SFBuilder
         }
 
         /// <summary>
-        /// Coroutine for waiting to play the next track and to grab a new index (which cannot be the old one)
-        /// </summary>
-        private IEnumerator WaitToPlayNextTrack()
-        {
-            yield return new WaitForSecondsRealtime(GameConstants.MusicWaitTime);
-
-            int newIndex = currentMusicIndex;
-            while (newIndex == currentMusicIndex)
-                newIndex = Random.Range(0, musicTracks.Length);
-            currentMusicIndex = newIndex;
-
-            PlayNextTrack();
-        }
-
-        /// <summary>
         /// Use to play an audio clip
         /// </summary>
         /// <param name="clipToPlay">The clip to play in the audio system</param>
@@ -157,6 +146,40 @@ namespace SFBuilder
             audioSourceIterator++;
             if (audioSourceIterator >= audioSources.Length)
                 audioSourceIterator = 0;
+        }
+
+        /// <summary>
+        /// Coroutine for fading between the first and second audio sources after leaving the menu for the first time
+        /// </summary>
+        private IEnumerator FadeSources()
+        {
+            float t = 0;
+            while (t <= GameConstants.MusicFadeTime)
+            {
+                musicSources[0].volume = AnimationCurve.Linear(0, GameConstants.MusicSourceMaxVolume, 1, 0).Evaluate(t / GameConstants.MusicFadeTime);
+                musicSources[1].volume = AnimationCurve.Linear(0, 0, 1, GameConstants.MusicSourceMaxVolume).Evaluate(t / GameConstants.MusicFadeTime);
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            musicSources[0].Stop();
+            musicSources[0].volume = GameConstants.MusicSourceMaxVolume;
+            musicSources[1].volume = GameConstants.MusicSourceMaxVolume;
+        }
+
+        /// <summary>
+        /// Coroutine for waiting to play the next track and to grab a new index (which cannot be the old one)
+        /// </summary>
+        private IEnumerator WaitToPlayNextTrack()
+        {
+            yield return new WaitForSecondsRealtime(GameConstants.MusicWaitTime);
+
+            int newIndex = currentMusicIndex;
+            while (newIndex == currentMusicIndex)
+                newIndex = Random.Range(0, musicTracks.Length);
+            currentMusicIndex = newIndex;
+
+            PlayNextTrack();
         }
         #endregion
     }
