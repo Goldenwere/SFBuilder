@@ -6,14 +6,14 @@
     public struct GameConstants
     {
         /// <summary>
-        /// Name of effects group in GameAudioMixer
+        /// Name of effects group volume in GameAudioMixer
         /// </summary>
-        public const string AudioParamEffects = "Effects";
+        public const string AudioParamEffects = "VolEffects";
 
         /// <summary>
-        /// Name of music group in GameAudioMixer
+        /// Name of music group volume in GameAudioMixer
         /// </summary>
-        public const string AudioParamMusic = "Music";
+        public const string AudioParamMusic = "VolMusic";
 
         /// <summary>
         /// Path to settings file
