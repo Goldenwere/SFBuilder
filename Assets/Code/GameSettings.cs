@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+using UnityEngine;
 
 namespace SFBuilder
 {
@@ -26,6 +29,7 @@ namespace SFBuilder
             { 
                 settings = value;
                 GameEventSystem.Instance.NotifySettingsChanged();
+                SaveSettings();
             }
         }
         #endregion
@@ -39,6 +43,83 @@ namespace SFBuilder
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            LoadSettings();
+        }
+
+        /// <summary>
+        /// Loads game settings
+        /// </summary>
+        private void LoadSettings()
+        {
+            if (File.Exists(Application.persistentDataPath + GameConstants.DataPathSettings))
+            {
+                XmlSerializer xs;
+                TextReader txtReader = null;
+
+                try
+                {
+                    xs = new XmlSerializer(typeof(SettingsData));
+                    txtReader = new StreamReader(Application.persistentDataPath + GameConstants.DataPathSettings);
+                    Settings = (SettingsData)xs.Deserialize(txtReader);
+                }
+
+                catch (Exception)
+                {
+                    // TO-DO: singleton exception handler that opens a UI canvas outputting errors
+                }
+
+                finally
+                {
+                    if (txtReader != null)
+                        txtReader.Close();
+                }
+            }
+
+            else
+            {
+                settings = new SettingsData
+                {
+                    postprocAO = false,
+                    postprocBloom = false,
+                    postprocSSR = false,
+                    volEffects = 1.0f,
+                    volMusic = 1.0f
+                };
+                if (SaveSettings())
+                    LoadSettings();
+            }
+        }
+
+        /// <summary>
+        /// Save game settings
+        /// </summary>
+        /// <returns>Whether there was an error or not</returns>
+        private bool SaveSettings()
+        {
+            XmlSerializer xs;
+            TextWriter txtWriter = null;
+
+            try
+            {
+                xs = new XmlSerializer(typeof(SettingsData));
+                txtWriter = new StreamWriter(Application.persistentDataPath + GameConstants.DataPathSettings);
+                xs.Serialize(txtWriter, settings);
+                return true;
+            }
+
+            catch (Exception)
+            {
+                // TO-DO: singleton exception handler that opens a UI canvas outputting errors
+            }
+
+            finally
+            {
+                if (txtWriter != null)
+                    txtWriter.Close();
+            }
+
+            return false;
         }
         #endregion
     }

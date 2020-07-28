@@ -1,12 +1,15 @@
-﻿using UnityEngine;
-
-namespace SFBuilder
+﻿namespace SFBuilder
 {
     /// <summary>
     /// Keep all hardcoded values here that are settings or related to files outside of code
     /// </summary>
     public struct GameConstants
     {
+        /// <summary>
+        /// Path to settings file
+        /// </summary>
+        public const string DataPathSettings = "/settings.xml";
+
         /// <summary>
         /// Multiplier used on goalset length for switching from easy goalsets to hard goalsets
         /// </summary>

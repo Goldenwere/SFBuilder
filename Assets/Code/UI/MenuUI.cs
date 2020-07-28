@@ -4,6 +4,9 @@ using System.Collections;
 
 namespace SFBuilder.UI
 {
+    /// <summary>
+    /// Manages UI and associated input/output for the game's menus
+    /// </summary>
     public class MenuUI : MonoBehaviour
     {
         #region Fields
