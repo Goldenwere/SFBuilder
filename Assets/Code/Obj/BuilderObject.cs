@@ -200,7 +200,8 @@ namespace SFBuilder.Obj
         /// </summary>
         private void OnLevelBanished()
         {
-            Destroy(gameObject);
+            if (!isPlacedAtStart)
+                Destroy(gameObject);
         }
 
         /// <summary>
