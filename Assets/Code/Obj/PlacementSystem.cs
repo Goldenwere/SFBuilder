@@ -190,6 +190,7 @@ namespace SFBuilder.Obj
         {
             if (context.performed && isPlacing && prefabInstance.IsValid)
             {
+                GameSave.Instance.AddBuilderObject(prefabInstance.transform.position, prefabInstance.transform.rotation, prefabInstance.Type);
                 prefabInstance.IsPlaced = true;
                 prefabInstance.transform.position = prefabInstance.transform.position.ToPrecision(positionPrecision, true, false, true);
                 prefabsPlaced.AddFirst(prefabInstance);
@@ -218,6 +219,7 @@ namespace SFBuilder.Obj
                 prefabInstance.IsPlaced = false;
                 GoalSystem.Instance.VerifyForNextGoal();
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Undo);
+                GameSave.Instance.PopBuilderObject();
             }
         }
 
