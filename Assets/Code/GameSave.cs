@@ -204,6 +204,7 @@ namespace SFBuilder
     /// <summary>
     /// Holds data regarding placed BuilderObjects for use in SaveData
     /// </summary>
+    [System.Serializable]
     public struct PlacedBuilderObjectData
     {
         public Vector3      position;
@@ -214,6 +215,7 @@ namespace SFBuilder
     /// <summary>
     /// Holds data regarding GameSave
     /// </summary>
+    [System.Serializable]
     public struct SaveData
     {
         public int                          goal;
