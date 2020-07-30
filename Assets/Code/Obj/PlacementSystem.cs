@@ -65,7 +65,7 @@ namespace SFBuilder.Obj
                 Instance = this;
 
             foreach (PlacedBuilderObjectData pbod in GameSave.Instance.CurrentlyPlacedObjects)
-                Instantiate(prefabs.First(p => p.type == pbod.type).prefab, pbod.position, pbod.rotation);
+                Instantiate(prefabs.First(p => p.type == pbod.type).prefab, pbod.position, pbod.rotation).GetComponent<BuilderObject>().IsPlaced = true;
         }
 
         /// <summary>
@@ -193,9 +193,9 @@ namespace SFBuilder.Obj
         {
             if (context.performed && isPlacing && prefabInstance.IsValid)
             {
-                GameSave.Instance.AddBuilderObject(prefabInstance.transform.position, prefabInstance.transform.rotation, prefabInstance.Type);
                 prefabInstance.IsPlaced = true;
                 prefabInstance.transform.position = prefabInstance.transform.position.ToPrecision(positionPrecision, true, false, true);
+                GameSave.Instance.AddBuilderObject(prefabInstance.transform.position, prefabInstance.transform.rotation, prefabInstance.Type);
                 prefabsPlaced.AddFirst(prefabInstance);
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();

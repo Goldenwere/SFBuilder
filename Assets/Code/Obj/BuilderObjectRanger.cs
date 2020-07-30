@@ -123,7 +123,8 @@ namespace SFBuilder.Obj
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.TotalSustenance, placedSustenance);
                     GameEventSystem.Instance.UpdateScoreSystem(ScoreType.PotentialSustenance, -placedSustenance);
                 }
-                othersCollided.Clear();
+                if (othersCollided != null)
+                    othersCollided.Clear();
             }
 
             else
