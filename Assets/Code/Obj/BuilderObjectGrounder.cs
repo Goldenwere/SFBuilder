@@ -44,6 +44,8 @@ namespace SFBuilder.Obj
         /// <param name="other">The other collider that entered</param>
         private void OnTriggerEnter(Collider other)
         {
+            if (collidedObjects == null)
+                collidedObjects = new List<Collider>(16);
             if (other.name != "Ranger")
                 collidedObjects.Add(other);
         }
@@ -54,6 +56,8 @@ namespace SFBuilder.Obj
         /// <param name="other">The other collider that exited</param>
         private void OnTriggerExit(Collider other)
         {
+            if (collidedObjects == null)
+                collidedObjects = new List<Collider>(16);
             if (other.name != "Ranger")
                 collidedObjects.Remove(other);
         }
