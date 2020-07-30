@@ -32,6 +32,7 @@ namespace SFBuilder.Gameplay
                 {
                     GameEventSystem.Instance.UpdateGameState(GameState.MainMenus);
                 }
+                GameSave.Instance.currentLevel = currentLevel;
             }
         }
 

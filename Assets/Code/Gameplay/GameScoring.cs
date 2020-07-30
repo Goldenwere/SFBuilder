@@ -113,6 +113,7 @@ namespace SFBuilder.Gameplay
             PotentialPower = 0;
             PotentialSustenance = 0;
             PotentialHappiness = 0;
+            UpdateSavedValues();
         }
 
         /// <summary>
@@ -139,6 +140,7 @@ namespace SFBuilder.Gameplay
                 TotalSustenance -= sustenance;
             }
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+            UpdateSavedValues();
         }
 
         /// <summary>
@@ -161,6 +163,7 @@ namespace SFBuilder.Gameplay
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+            UpdateSavedValues();
         }
 
         /// <summary>
@@ -203,6 +206,16 @@ namespace SFBuilder.Gameplay
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Updates GameSave with current values
+        /// </summary>
+        private void UpdateSavedValues()
+        {
+            GameSave.Instance.currentHappiness = TotalHappiness;
+            GameSave.Instance.currentPower = TotalPower;
+            GameSave.Instance.currentSustenance = TotalSustenance;
         }
         #endregion
     }
