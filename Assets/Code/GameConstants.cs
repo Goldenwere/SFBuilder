@@ -16,6 +16,11 @@
         public const string AudioParamMusic = "VolMusic";
 
         /// <summary>
+        /// Path to save file
+        /// </summary>
+        public const string DataPathSave = "save.json";
+
+        /// <summary>
         /// Path to settings file
         /// </summary>
         public const string DataPathSettings = "/settings.xml";

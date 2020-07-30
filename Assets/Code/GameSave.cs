@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.IO;
 using System.Collections.Generic;
 
 namespace SFBuilder
@@ -10,8 +11,8 @@ namespace SFBuilder
     {
         #region Fields
         private List<PlacedBuilderObjectData>   currentlyPlacedObjects;
-        public  int                             currentLevel;
         public  int                             currentHappiness;
+        public  int                             currentLevel;
         public  int                             currentPower;
         public  int                             currentSustenance;
         #endregion
@@ -89,7 +90,28 @@ namespace SFBuilder
         /// </summary>
         public void DataLoad()
         {
+            TextReader txtReader = null;
 
+            try
+            {
+                txtReader = new StreamReader(Application.persistentDataPath + GameConstants.DataPathSave);
+                SaveData dataToLoad = (SaveData)JsonUtility.FromJson(txtReader.ReadToEnd(), typeof(SaveData));
+                currentLevel = dataToLoad.level;
+                currentHappiness = dataToLoad.statHappiness;
+                currentPower = dataToLoad.statPower;
+                currentSustenance = dataToLoad.statSustenance;
+            }
+
+            catch (System.Exception)
+            {
+
+            }
+
+            finally
+            {
+                if (txtReader != null)
+                    txtReader.Close();
+            }
         }
 
         /// <summary>
@@ -97,7 +119,34 @@ namespace SFBuilder
         /// </summary>
         public void DataSave()
         {
+            SaveData dataToSave = new SaveData
+            {
+                level = currentLevel,
+                placedObjects = currentlyPlacedObjects.ToArray(),
+                statHappiness = currentHappiness,
+                statPower = currentPower,
+                statSustenance = currentSustenance
+            };
 
+            string data = JsonUtility.ToJson(dataToSave);
+            TextWriter txtWriter = null;
+
+            try
+            {
+                txtWriter = new StreamWriter(Application.persistentDataPath + GameConstants.DataPathSave);
+                txtWriter.WriteAsync(data);
+            }
+
+            catch(System.Exception)
+            {
+
+            }
+
+            finally
+            {
+                if (txtWriter != null)
+                    txtWriter.Close();
+            }
         }
 
         /// <summary>
@@ -121,14 +170,14 @@ namespace SFBuilder
     }
 
     /// <summary>
-    /// Holds data regarding SaveData
+    /// Holds data regarding GameSave
     /// </summary>
     public struct SaveData
     {
-        public int                          currentLevel;
-        public int                          currentStatHappiness;
-        public int                          currentStatPower;
-        public int                          currentStatSustenance;
+        public int                          level;
         public PlacedBuilderObjectData[]    placedObjects;
+        public int                          statHappiness;
+        public int                          statPower;
+        public int                          statSustenance;
     }
 }
