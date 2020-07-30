@@ -116,7 +116,10 @@ namespace SFBuilder
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
                     currentSustenance = dataToLoad.statSustenance;
-                    CurrentlyPlacedObjects = new List<PlacedBuilderObjectData>(dataToLoad.placedObjects);
+                    if (dataToLoad.placedObjects != null)
+                        CurrentlyPlacedObjects = new List<PlacedBuilderObjectData>(dataToLoad.placedObjects);
+                    else
+                        CurrentlyPlacedObjects = new List<PlacedBuilderObjectData>();
                 }
 
                 catch (System.Exception)
@@ -139,7 +142,8 @@ namespace SFBuilder
         public bool DataSave()
         {
             SaveData dataToSave;
-            if (!File.Exists(Application.persistentDataPath + GameConstants.DataPathSave))
+            bool exists = File.Exists(Application.persistentDataPath + GameConstants.DataPathSave);
+            if (!exists)
                 dataToSave = new SaveData
                 {
                     goal = 0,
@@ -166,7 +170,10 @@ namespace SFBuilder
             try
             {
                 txtWriter = new StreamWriter(Application.persistentDataPath + GameConstants.DataPathSave);
-                txtWriter.WriteAsync(data);
+                if (!exists)
+                    txtWriter.Write(data);
+                else
+                    txtWriter.WriteAsync(data);
                 return true;
             }
 
