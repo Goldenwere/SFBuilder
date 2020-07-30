@@ -155,6 +155,7 @@ namespace SFBuilder.Gameplay
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
                     break;
             }
+            UpdateSavedValues();
         }
 
         /// <summary>
@@ -165,38 +166,6 @@ namespace SFBuilder.Gameplay
             GameSave.Instance.currentHappiness = TotalHappiness;
             GameSave.Instance.currentPower = TotalPower;
             GameSave.Instance.currentSustenance = TotalSustenance;
-        }
-
-        /// <summary>
-        /// Applies potential to current scores once a BuilderObject is placed
-        /// </summary>
-        public void ApplyScore()
-        {
-            if (PotentialHappiness != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
-            }
-            if (PotentialPower != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
-            }
-            if (PotentialSustenance != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
-            }
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
-
-            TotalPower += PotentialPower;
-            TotalSustenance += PotentialSustenance;
-            TotalHappiness += PotentialHappiness;
-            PotentialPower = 0;
-            PotentialSustenance = 0;
-            PotentialHappiness = 0;
-            UpdateSavedValues();
         }
 
         /// <summary>
