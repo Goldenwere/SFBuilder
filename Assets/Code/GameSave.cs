@@ -11,6 +11,7 @@ namespace SFBuilder
     {
         #region Fields
         private List<PlacedBuilderObjectData>   currentlyPlacedObjects;
+        public  int                             currentGoal;
         public  int                             currentHappiness;
         public  int                             currentLevel;
         public  int                             currentPower;
@@ -32,6 +33,8 @@ namespace SFBuilder
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            DataLoad();
         }
 
         /// <summary>
@@ -90,37 +93,49 @@ namespace SFBuilder
         /// </summary>
         public void DataLoad()
         {
-            TextReader txtReader = null;
-
-            try
+            if (!File.Exists(Application.persistentDataPath + GameConstants.DataPathSave))
             {
-                txtReader = new StreamReader(Application.persistentDataPath + GameConstants.DataPathSave);
-                SaveData dataToLoad = (SaveData)JsonUtility.FromJson(txtReader.ReadToEnd(), typeof(SaveData));
-                currentLevel = dataToLoad.level;
-                currentHappiness = dataToLoad.statHappiness;
-                currentPower = dataToLoad.statPower;
-                currentSustenance = dataToLoad.statSustenance;
+                if (DataSave())
+                    DataLoad();
             }
 
-            catch (System.Exception)
+            else
             {
+                TextReader txtReader = null;
 
-            }
+                try
+                {
+                    txtReader = new StreamReader(Application.persistentDataPath + GameConstants.DataPathSave);
+                    SaveData dataToLoad = (SaveData)JsonUtility.FromJson(txtReader.ReadToEnd(), typeof(SaveData));
+                    currentGoal = dataToLoad.goal;
+                    currentLevel = dataToLoad.level;
+                    currentHappiness = dataToLoad.statHappiness;
+                    currentPower = dataToLoad.statPower;
+                    currentSustenance = dataToLoad.statSustenance;
+                }
 
-            finally
-            {
-                if (txtReader != null)
-                    txtReader.Close();
+                catch (System.Exception)
+                {
+
+                }
+
+                finally
+                {
+                    if (txtReader != null)
+                        txtReader.Close();
+                }
             }
         }
 
         /// <summary>
         /// Saves current data to JSON
         /// </summary>
-        public void DataSave()
+        /// <returns>Whether there was an error or not</returns>
+        public bool DataSave()
         {
             SaveData dataToSave = new SaveData
             {
+                goal = currentGoal,
                 level = currentLevel,
                 placedObjects = currentlyPlacedObjects.ToArray(),
                 statHappiness = currentHappiness,
@@ -135,6 +150,7 @@ namespace SFBuilder
             {
                 txtWriter = new StreamWriter(Application.persistentDataPath + GameConstants.DataPathSave);
                 txtWriter.WriteAsync(data);
+                return true;
             }
 
             catch(System.Exception)
@@ -147,6 +163,8 @@ namespace SFBuilder
                 if (txtWriter != null)
                     txtWriter.Close();
             }
+
+            return false;
         }
 
         /// <summary>
@@ -174,6 +192,7 @@ namespace SFBuilder
     /// </summary>
     public struct SaveData
     {
+        public int                          goal;
         public int                          level;
         public PlacedBuilderObjectData[]    placedObjects;
         public int                          statHappiness;
