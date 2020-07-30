@@ -35,7 +35,8 @@ namespace SFBuilder.Obj
             objectHappiness = hp;
             objectPower = pp;
             objectSustenance = sp;
-            Calculate();
+            if (rangerSphereCollider.enabled)
+                Calculate();
         }
 
         /// <summary>
