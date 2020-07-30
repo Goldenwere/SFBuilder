@@ -18,12 +18,27 @@ namespace SFBuilder.UI
         private void Start()
         {
             workingString = new string[2] { "", "" };
-            if (associatedType == ScoreType.CurrentGoal)
-                OnScoreWasChanged(associatedType, 1);
-            else if (associatedType == ScoreType.CurrentGoalMinimumViability)
-                OnScoreWasChanged(associatedType, GoalSystem.Instance.CurrentGoalWorkingSet.goalViability);
-            else
-                OnScoreWasChanged(associatedType, 0);
+            switch (associatedType)
+            {
+                case ScoreType.CurrentGoal:
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentGoal);
+                    break;
+                case ScoreType.CurrentGoalMinimumViability:
+                    OnScoreWasChanged(associatedType, GoalSystem.Instance.CurrentGoalWorkingSet.goalViability);
+                    break;
+                case ScoreType.TotalHappiness:
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentHappiness);
+                    break;
+                case ScoreType.TotalPower:
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentPower);
+                    break;
+                case ScoreType.TotalSustenance:
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentSustenance);
+                    break;
+                case ScoreType.TotalViability:
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentHappiness + GameSave.Instance.currentPower + GameSave.Instance.currentSustenance);
+                    break;
+            }
         }
 
         /// <summary>

@@ -68,10 +68,6 @@ namespace SFBuilder.Gameplay
             TotalHappiness = GameSave.Instance.currentHappiness;
             TotalPower = GameSave.Instance.currentPower;
             TotalSustenance = GameSave.Instance.currentSustenance;
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
         }
 
         /// <summary>
