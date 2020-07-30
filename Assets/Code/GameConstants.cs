@@ -18,7 +18,7 @@
         /// <summary>
         /// Path to save file
         /// </summary>
-        public const string DataPathSave = "save.json";
+        public const string DataPathSave = "/save.json";
 
         /// <summary>
         /// Path to settings file
