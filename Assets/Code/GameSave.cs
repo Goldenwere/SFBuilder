@@ -10,7 +10,6 @@ namespace SFBuilder
     public class GameSave : MonoBehaviour
     {
         #region Fields
-        private List<PlacedBuilderObjectData>   currentlyPlacedObjects;
         public  int                             currentGoal;
         public  int                             currentHappiness;
         public  int                             currentLevel;
@@ -26,7 +25,7 @@ namespace SFBuilder
         /// <summary>
         /// Currently placed BuilderObjects based on SaveData
         /// </summary>
-        public List<PlacedBuilderObjectData> CurrentlyPlacedObjects { get { return currentlyPlacedObjects; } }
+        public List<PlacedBuilderObjectData> CurrentlyPlacedObjects { get; private set; }
         #endregion
         #region Methods
         /// <summary>
@@ -85,7 +84,7 @@ namespace SFBuilder
         /// <param name="_type">The ObjectType of the BuilderObject</param>
         public void AddBuilderObject(Vector3 _position, Quaternion _rotation, ObjectType _type)
         {
-            currentlyPlacedObjects.Add(new PlacedBuilderObjectData
+            CurrentlyPlacedObjects.Add(new PlacedBuilderObjectData
             { 
                 position = _position,
                 rotation = _rotation,
@@ -117,7 +116,7 @@ namespace SFBuilder
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
                     currentSustenance = dataToLoad.statSustenance;
-                    currentlyPlacedObjects = new List<PlacedBuilderObjectData>(dataToLoad.placedObjects);
+                    CurrentlyPlacedObjects = new List<PlacedBuilderObjectData>(dataToLoad.placedObjects);
                 }
 
                 catch (System.Exception)
@@ -155,7 +154,7 @@ namespace SFBuilder
                 {
                     goal = currentGoal,
                     level = currentLevel,
-                    placedObjects = currentlyPlacedObjects.ToArray(),
+                    placedObjects = CurrentlyPlacedObjects.ToArray(),
                     statHappiness = currentHappiness,
                     statPower = currentPower,
                     statSustenance = currentSustenance
@@ -190,7 +189,7 @@ namespace SFBuilder
         /// </summary>
         public void PopBuilderObject()
         {
-            currentlyPlacedObjects.RemoveAt(currentlyPlacedObjects.Count - 1);
+            CurrentlyPlacedObjects.RemoveAt(CurrentlyPlacedObjects.Count - 1);
         }
         #endregion
     }
