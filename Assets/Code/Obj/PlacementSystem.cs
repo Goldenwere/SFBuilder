@@ -63,6 +63,9 @@ namespace SFBuilder.Obj
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            foreach (PlacedBuilderObjectData pbod in GameSave.Instance.CurrentlyPlacedObjects)
+                Instantiate(prefabs.First(p => p.type == pbod.type).prefab, pbod.position, pbod.rotation);
         }
 
         /// <summary>

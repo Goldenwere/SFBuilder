@@ -64,6 +64,14 @@ namespace SFBuilder.Gameplay
                 Destroy(gameObject);
             else
                 Instance = this;
+
+            TotalHappiness = GameSave.Instance.currentHappiness;
+            TotalPower = GameSave.Instance.currentPower;
+            TotalSustenance = GameSave.Instance.currentSustenance;
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
         }
 
         /// <summary>
@@ -82,65 +90,6 @@ namespace SFBuilder.Gameplay
         {
             GameEventSystem.ScoreUpdateDesired += OnScoreWasChanged;
             GameEventSystem.LevelBanished -= OnLevelBanished;
-        }
-
-        /// <summary>
-        /// Applies potential to current scores once a BuilderObject is placed
-        /// </summary>
-        public void ApplyScore()
-        {
-            if (PotentialHappiness != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
-            }
-            if (PotentialPower != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
-            }
-            if (PotentialSustenance != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
-            }
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
-
-            TotalPower += PotentialPower;
-            TotalSustenance += PotentialSustenance;
-            TotalHappiness += PotentialHappiness;
-            PotentialPower = 0;
-            PotentialSustenance = 0;
-            PotentialHappiness = 0;
-            UpdateSavedValues();
-        }
-
-        /// <summary>
-        /// Revokes a score when a BuilderObject is undone
-        /// </summary>
-        /// <param name="happiness">BuilderObject's placed happiness value</param>
-        /// <param name="power">BuilderObject's placed power value</param>
-        /// <param name="sustenance">BuilderObject's placed sustenace value</param>
-        public void RevokeScore(int happiness, int power, int sustenance)
-        {
-            if (happiness != 0)
-            {
-                TotalHappiness -= happiness;
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
-            }
-            if (power != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
-                TotalPower -= power;
-            }
-            if (sustenance != 0)
-            {
-                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
-                TotalSustenance -= sustenance;
-            }
-            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
-            UpdateSavedValues();
         }
 
         /// <summary>
@@ -216,6 +165,65 @@ namespace SFBuilder.Gameplay
             GameSave.Instance.currentHappiness = TotalHappiness;
             GameSave.Instance.currentPower = TotalPower;
             GameSave.Instance.currentSustenance = TotalSustenance;
+        }
+
+        /// <summary>
+        /// Applies potential to current scores once a BuilderObject is placed
+        /// </summary>
+        public void ApplyScore()
+        {
+            if (PotentialHappiness != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialHappiness, PotentialHappiness);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            }
+            if (PotentialPower != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalPower, TotalPower);
+            }
+            if (PotentialSustenance != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialSustenance, PotentialSustenance);
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+            }
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialViability, PotentialViability);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+
+            TotalPower += PotentialPower;
+            TotalSustenance += PotentialSustenance;
+            TotalHappiness += PotentialHappiness;
+            PotentialPower = 0;
+            PotentialSustenance = 0;
+            PotentialHappiness = 0;
+            UpdateSavedValues();
+        }
+
+        /// <summary>
+        /// Revokes a score when a BuilderObject is undone
+        /// </summary>
+        /// <param name="happiness">BuilderObject's placed happiness value</param>
+        /// <param name="power">BuilderObject's placed power value</param>
+        /// <param name="sustenance">BuilderObject's placed sustenace value</param>
+        public void RevokeScore(int happiness, int power, int sustenance)
+        {
+            if (happiness != 0)
+            {
+                TotalHappiness -= happiness;
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalHappiness, TotalHappiness);
+            }
+            if (power != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.PotentialPower, PotentialPower);
+                TotalPower -= power;
+            }
+            if (sustenance != 0)
+            {
+                GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalSustenance, TotalSustenance);
+                TotalSustenance -= sustenance;
+            }
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.TotalViability, TotalViability);
+            UpdateSavedValues();
         }
         #endregion
     }

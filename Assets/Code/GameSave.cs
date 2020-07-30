@@ -22,6 +22,11 @@ namespace SFBuilder
         /// Singleton instance of GameSettings in the base scene
         /// </summary>
         public static GameSave  Instance { get; private set; }
+
+        /// <summary>
+        /// Currently placed BuilderObjects based on SaveData
+        /// </summary>
+        public List<PlacedBuilderObjectData> CurrentlyPlacedObjects { get { return currentlyPlacedObjects; } }
         #endregion
         #region Methods
         /// <summary>
@@ -112,6 +117,7 @@ namespace SFBuilder
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
                     currentSustenance = dataToLoad.statSustenance;
+                    currentlyPlacedObjects = new List<PlacedBuilderObjectData>(dataToLoad.placedObjects);
                 }
 
                 catch (System.Exception)
@@ -133,15 +139,27 @@ namespace SFBuilder
         /// <returns>Whether there was an error or not</returns>
         public bool DataSave()
         {
-            SaveData dataToSave = new SaveData
-            {
-                goal = currentGoal,
-                level = currentLevel,
-                placedObjects = currentlyPlacedObjects.ToArray(),
-                statHappiness = currentHappiness,
-                statPower = currentPower,
-                statSustenance = currentSustenance
-            };
+            SaveData dataToSave;
+            if (!File.Exists(Application.persistentDataPath + GameConstants.DataPathSave))
+                dataToSave = new SaveData
+                {
+                    goal = 0,
+                    level = 1,
+                    placedObjects = new PlacedBuilderObjectData[0],
+                    statHappiness = 0,
+                    statPower = 0,
+                    statSustenance = 0
+                };
+            else
+                dataToSave = new SaveData
+                {
+                    goal = currentGoal,
+                    level = currentLevel,
+                    placedObjects = currentlyPlacedObjects.ToArray(),
+                    statHappiness = currentHappiness,
+                    statPower = currentPower,
+                    statSustenance = currentSustenance
+                };
 
             string data = JsonUtility.ToJson(dataToSave);
             TextWriter txtWriter = null;

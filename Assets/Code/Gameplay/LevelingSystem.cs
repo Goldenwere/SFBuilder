@@ -53,8 +53,8 @@ namespace SFBuilder.Gameplay
                 Instance = this;
 
             // First set the private member to 1 (replaced with save data) so that it will be the same when setting CurrentLevel
-            currentLevel = 1;
-            CurrentLevel = 1;
+            currentLevel = GameSave.Instance.currentLevel;
+            CurrentLevel = currentLevel;
         }
 
         /// <summary>
