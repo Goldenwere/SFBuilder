@@ -21,7 +21,7 @@ namespace SFBuilder.UI
             switch (associatedType)
             {
                 case ScoreType.CurrentGoal:
-                    OnScoreWasChanged(associatedType, GameSave.Instance.currentGoal);
+                    OnScoreWasChanged(associatedType, GameSave.Instance.currentGoal + 1);
                     break;
                 case ScoreType.CurrentGoalMinimumViability:
                     OnScoreWasChanged(associatedType, GoalSystem.Instance.CurrentGoalWorkingSet.goalViability);
