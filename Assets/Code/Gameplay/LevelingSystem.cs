@@ -83,6 +83,7 @@ namespace SFBuilder.Gameplay
 
             load.allowSceneActivation = true;
             SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(newSceneIndex));
+            GameEventSystem.Instance.NotifySceneActivated();
 
             Resources.UnloadUnusedAssets();
 

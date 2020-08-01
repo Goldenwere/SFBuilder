@@ -64,8 +64,6 @@ namespace SFBuilder.Obj
             else
                 Instance = this;
 
-            foreach (PlacedBuilderObjectData pbod in GameSave.Instance.CurrentlyPlacedObjects)
-                Instantiate(prefabs.First(p => p.type == pbod.type).prefab, pbod.position, pbod.rotation).GetComponent<BuilderObject>().IsPlaced = true;
         }
 
         /// <summary>
@@ -90,6 +88,7 @@ namespace SFBuilder.Obj
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GoalSystem.newGoal += OnNewGoal;
             GameEventSystem.LevelBanished += OnLevelBanished;
+            GameEventSystem.SceneActivated += OnSceneActivated;
         }
 
         /// <summary>
@@ -100,6 +99,7 @@ namespace SFBuilder.Obj
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GoalSystem.newGoal -= OnNewGoal;
             GameEventSystem.LevelBanished -= OnLevelBanished;
+            GameEventSystem.SceneActivated -= OnSceneActivated;
         }
 
         /// <summary>
@@ -119,6 +119,45 @@ namespace SFBuilder.Obj
                     prefabHadFirstHit = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// Handler for the GameStateChanged event
+        /// </summary>
+        /// <param name="prevState">The previous GameState</param>
+        /// <param name="newState">The new GameState</param>
+        private void OnGameStateChanged(GameState prevState, GameState newState)
+        {
+            if (newState != GameState.Gameplay)
+                gameCam.cameraMotionIsFrozen = true;
+            else
+                gameCam.cameraMotionIsFrozen = false;
+        }
+
+        /// <summary>
+        /// On the LevelBanished event, reset the PlacementSystem
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            prefabsPlaced.Clear();
+        }
+
+        /// <summary>
+        /// On the NewGoal event, clear the prefabs placed list to prevent undoing past-goal BuilderObjects
+        /// </summary>
+        /// <param name="newGoal">The new goal level (unused by this method)</param>
+        private void OnNewGoal(int newGoal)
+        {
+            prefabsPlaced.Clear();
+        }
+
+        /// <summary>
+        /// On the SceneActivated event, spawn saved builder objects
+        /// </summary>
+        private void OnSceneActivated()
+        {
+            foreach (PlacedBuilderObjectData pbod in GameSave.Instance.CurrentlyPlacedObjects)
+                Instantiate(prefabs.First(p => p.type == pbod.type).prefab, pbod.position.ToPrecision(positionPrecision, true, false, true), pbod.rotation).GetComponent<BuilderObject>().IsPlaced = true;
         }
 
         /// <summary>
@@ -236,36 +275,6 @@ namespace SFBuilder.Obj
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;
-        }
-
-        /// <summary>
-        /// Handler for the GameStateChanged event
-        /// </summary>
-        /// <param name="prevState">The previous GameState</param>
-        /// <param name="newState">The new GameState</param>
-        private void OnGameStateChanged(GameState prevState, GameState newState)
-        {
-            if (newState != GameState.Gameplay)
-                gameCam.cameraMotionIsFrozen = true;
-            else
-                gameCam.cameraMotionIsFrozen = false;
-        }
-
-        /// <summary>
-        /// On the LevelBanished event, reset the PlacementSystem
-        /// </summary>
-        private void OnLevelBanished()
-        {
-            prefabsPlaced.Clear();
-        }
-
-        /// <summary>
-        /// On the NewGoal event, clear the prefabs placed list to prevent undoing past-goal BuilderObjects
-        /// </summary>
-        /// <param name="newGoal">The new goal level (unused by this method)</param>
-        private void OnNewGoal(int newGoal)
-        {
-            prefabsPlaced.Clear();
         }
         #endregion
     }

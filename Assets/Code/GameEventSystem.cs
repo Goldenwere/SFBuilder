@@ -72,6 +72,11 @@ namespace SFBuilder
         public static event BoolDelegate    PlacementStateChanged;
 
         /// <summary>
+        /// Used for notifying that a scene was activated
+        /// </summary>
+        public static event GenericDelegate SceneActivated;
+
+        /// <summary>
         /// Used for updating UI
         /// </summary>
         public static event ScoreChange     ScoreWasChanged;
@@ -123,6 +128,14 @@ namespace SFBuilder
         public void NotifyLevelReadyState(bool isReady)
         {
             NextLevelReadyStateChanged?.Invoke(isReady);
+        }
+
+        /// <summary>
+        /// Notifies that a scene was activated
+        /// </summary>
+        public void NotifySceneActivated()
+        {
+            SceneActivated?.Invoke();
         }
 
         /// <summary>
