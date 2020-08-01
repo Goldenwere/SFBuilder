@@ -146,8 +146,7 @@ namespace SFBuilder
         public bool DataSave()
         {
             SaveData dataToSave;
-            bool exists = File.Exists(Application.persistentDataPath + GameConstants.DataPathSave);
-            if (!exists)
+            if (!File.Exists(Application.persistentDataPath + GameConstants.DataPathSave))
                 dataToSave = new SaveData
                 {
                     goal = 0,
@@ -181,10 +180,7 @@ namespace SFBuilder
             try
             {
                 txtWriter = new StreamWriter(Application.persistentDataPath + GameConstants.DataPathSave);
-                if (!exists)
-                    txtWriter.Write(data);
-                else
-                    txtWriter.WriteAsync(data);
+                txtWriter.Write(data);
                 return true;
             }
 
