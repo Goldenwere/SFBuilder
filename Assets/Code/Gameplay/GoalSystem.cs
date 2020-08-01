@@ -151,6 +151,7 @@ namespace SFBuilder.Gameplay
                             CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayEasyViabilityIncrease);
                     }
                     GameSave.Instance.currentGoalSetIndex = index;
+                    GameSave.Instance.currentGoalSetViability = CurrentGoalWorkingSet.goalViability;
                     GameEventSystem.Instance.UpdatePlacementPanel();
                     GameEventSystem.Instance.NotifyLevelReadyState(true);
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
