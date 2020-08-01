@@ -61,7 +61,15 @@ namespace SFBuilder.Gameplay
         /// </summary>
         private void Start()
         {
-            CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
+            CurrentGoal = GameSave.Instance.currentGoal;
+            if (CurrentGoal < goals.Length)
+                CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
+            else
+                if (CurrentGoal > goals.Length * GameConstants.InfiniPlayFromEasyToHard)
+                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsHard[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
+                else
+                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsEasy[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
+
             uiWasSetUp = false;
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 GameEventSystem.Instance.UpdatePlacementPanel();
