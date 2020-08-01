@@ -135,19 +135,36 @@ namespace SFBuilder.Gameplay
                 }
                 else
                 {
+                    int index;
                     if (CurrentGoal > goals.Length * GameConstants.InfiniPlayFromEasyToHard)
+                    {
+                        index = Random.Range(0, goalPresetsHard.Length);
                         CurrentGoalWorkingSet = GoalContainer.Copy(
-                            goalPresetsHard[Random.Range(0, goalPresetsHard.Length)], 
+                            goalPresetsHard[index],
                             CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayHardViabilityIncrease);
+                    }
                     else
+                    {
+                        index = Random.Range(0, goalPresetsEasy.Length);
                         CurrentGoalWorkingSet = GoalContainer.Copy(
-                            goalPresetsEasy[Random.Range(0, goalPresetsEasy.Length)], 
+                            goalPresetsEasy[index],
                             CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayEasyViabilityIncrease);
+                    }
+                    GameSave.Instance.currentGoalSetIndex = index;
                     GameEventSystem.Instance.UpdatePlacementPanel();
                     GameEventSystem.Instance.NotifyLevelReadyState(true);
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
                 }
+
+                int[] saveGoalSet = new int[CurrentGoalWorkingSet.goalRequirements.Length + CurrentGoalWorkingSet.goalExtras.Length];
+                int lengthOfReq = CurrentGoalWorkingSet.goalRequirements.Length;
+                int lengthOfExt = CurrentGoalWorkingSet.goalExtras.Length;
+                for (int i = 0; i < lengthOfReq; i++)
+                    saveGoalSet[i] = CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount;
+                for (int i = lengthOfReq; i < lengthOfReq + lengthOfExt; i++)
+                    saveGoalSet[i] = CurrentGoalWorkingSet.goalExtras[i - lengthOfReq].goalStructureCount;
+                GameSave.Instance.currentGoalSetCount = saveGoalSet;
             }
         }
 

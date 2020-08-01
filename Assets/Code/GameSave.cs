@@ -11,6 +11,8 @@ namespace SFBuilder
     {
         #region Fields
         public  int                             currentGoal;
+        public  int[]                           currentGoalSetCount;
+        public  int                             currentGoalSetIndex;
         public  int                             currentHappiness;
         public  int                             currentLevel;
         public  int                             currentPower;
@@ -112,6 +114,7 @@ namespace SFBuilder
                     txtReader = new StreamReader(Application.persistentDataPath + GameConstants.DataPathSave);
                     SaveData dataToLoad = (SaveData)JsonUtility.FromJson(txtReader.ReadToEnd(), typeof(SaveData));
                     currentGoal = dataToLoad.goal;
+                    currentGoalSetCount = dataToLoad.goalSetCount;
                     currentLevel = dataToLoad.level;
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
@@ -147,6 +150,9 @@ namespace SFBuilder
                 dataToSave = new SaveData
                 {
                     goal = 0,
+                    // this is currently based off of what is set in Level_01
+                    goalSetCount = new int[] { 8, 2, 3 },
+                    goalSetIndex = 0,
                     level = 1,
                     placedObjects = new PlacedBuilderObjectData[0],
                     statHappiness = 0,
@@ -157,6 +163,8 @@ namespace SFBuilder
                 dataToSave = new SaveData
                 {
                     goal = currentGoal,
+                    goalSetCount = currentGoalSetCount,
+                    goalSetIndex = currentGoalSetIndex,
                     level = currentLevel,
                     placedObjects = CurrentlyPlacedObjects.ToArray(),
                     statHappiness = currentHappiness,
@@ -219,6 +227,8 @@ namespace SFBuilder
     public struct SaveData
     {
         public int                          goal;
+        public int[]                        goalSetCount;
+        public int                          goalSetIndex;
         public int                          level;
         public PlacedBuilderObjectData[]    placedObjects;
         public int                          statHappiness;
