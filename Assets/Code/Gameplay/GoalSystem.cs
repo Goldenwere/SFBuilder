@@ -182,9 +182,15 @@ namespace SFBuilder.Gameplay
                     CurrentGoalWorkingSet.goalRequirements,
                     CurrentGoalWorkingSet.goalRequirements.First(g => (int)g.goalStructureID == id));
                 if (isUndo)
+                {
                     CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount++;
+                    GameSave.Instance.currentGoalSetCount[i]++;
+                }
                 else
+                {
                     CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount--;
+                    GameSave.Instance.currentGoalSetCount[i]--;
+                }
             }
             else
             {
@@ -192,9 +198,15 @@ namespace SFBuilder.Gameplay
                     CurrentGoalWorkingSet.goalExtras,
                     CurrentGoalWorkingSet.goalExtras.First(g => (int)g.goalStructureID == id));
                 if (isUndo)
+                {
                     CurrentGoalWorkingSet.goalExtras[i].goalStructureCount++;
+                    GameSave.Instance.currentGoalSetCount[i + CurrentGoalWorkingSet.goalRequirements.Length]++;
+                }
                 else
+                {
                     CurrentGoalWorkingSet.goalExtras[i].goalStructureCount--;
+                    GameSave.Instance.currentGoalSetCount[i + CurrentGoalWorkingSet.goalRequirements.Length]--;
+                }
             }
             VerifyForNextGoal();
         }
