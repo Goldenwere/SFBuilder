@@ -151,7 +151,7 @@ namespace SFBuilder
                 {
                     goal = 0,
                     // this is currently based off of what is set in Level_01
-                    goalSetCount = new int[] { 8, 2, 3 },
+                    goalSetCount = new int[] { 3, 8, 2 },
                     goalSetIndex = 0,
                     goalSetViability = 0,
                     level = 1,
