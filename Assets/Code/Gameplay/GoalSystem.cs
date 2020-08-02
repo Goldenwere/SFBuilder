@@ -182,6 +182,7 @@ namespace SFBuilder.Gameplay
                 for (int i = lengthOfReq; i < lengthOfReq + lengthOfExt; i++)
                     saveGoalSet[i] = CurrentGoalWorkingSet.goalExtras[i - lengthOfReq].goalStructureCount;
                 GameSave.Instance.currentGoalSetCount = saveGoalSet;
+                GameSave.Instance.currentGoal = CurrentGoal;
             }
         }
 

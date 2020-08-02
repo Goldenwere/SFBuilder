@@ -116,6 +116,8 @@ namespace SFBuilder
                     SaveData dataToLoad = (SaveData)JsonUtility.FromJson(txtReader.ReadToEnd(), typeof(SaveData));
                     currentGoal = dataToLoad.goal;
                     currentGoalSetCount = dataToLoad.goalSetCount;
+                    currentGoalSetIndex = dataToLoad.goalSetIndex;
+                    currentGoalSetViability = dataToLoad.goalSetViability;
                     currentLevel = dataToLoad.level;
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
