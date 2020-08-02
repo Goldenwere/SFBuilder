@@ -70,12 +70,21 @@ namespace SFBuilder.Gameplay
                 else
                     CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsEasy[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
 
-            for (int i = 0; i < GameSave.Instance.currentGoalSetCount.Length; i++)
+            if (!GameSave.Instance.workingBetweenTransition)
             {
-                if (i < CurrentGoalWorkingSet.goalRequirements.Length)
-                    CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount = GameSave.Instance.currentGoalSetCount[i];
-                else
-                    CurrentGoalWorkingSet.goalExtras[i - CurrentGoalWorkingSet.goalRequirements.Length].goalStructureCount = GameSave.Instance.currentGoalSetCount[i];
+                for (int i = 0; i < GameSave.Instance.currentGoalSetCount.Length; i++)
+                {
+                    if (i < CurrentGoalWorkingSet.goalRequirements.Length)
+                        CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount = GameSave.Instance.currentGoalSetCount[i];
+                    else
+                        CurrentGoalWorkingSet.goalExtras[i - CurrentGoalWorkingSet.goalRequirements.Length].goalStructureCount = GameSave.Instance.currentGoalSetCount[i];
+                }
+            }
+
+            else
+            {
+                SetGameSaveOnNewGoal();
+                GameSave.Instance.workingBetweenTransition = false;
             }
 
             uiWasSetUp = false;
@@ -94,6 +103,7 @@ namespace SFBuilder.Gameplay
             GameEventSystem.GoalInfoChanged += OnGoalInfoChanged;
             GameEventSystem.LevelBanished += OnLevelBanished;
             GameEventSystem.GoalChanged += OnGoalChanged;
+            GameEventSystem.LevelTransitioned += OnLevelTransitioned;
         }
 
         /// <summary>
@@ -105,6 +115,7 @@ namespace SFBuilder.Gameplay
             GameEventSystem.GoalInfoChanged -= OnGoalInfoChanged;
             GameEventSystem.LevelBanished -= OnLevelBanished;
             GameEventSystem.GoalChanged -= OnGoalChanged;
+            GameEventSystem.LevelTransitioned -= OnLevelTransitioned;
         }
 
         /// <summary>
@@ -229,6 +240,25 @@ namespace SFBuilder.Gameplay
             GameEventSystem.Instance.UpdatePlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
             SetGameSaveOnNewGoal();
+        }
+
+        /// <summary>
+        /// Handler for the LevelTransitioned event
+        /// </summary>
+        /// <param name="isStart">Whether start of or end of transition</param>
+        private void OnLevelTransitioned(bool isStart)
+        {
+            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
+            {
+                GameSave.Instance.currentGoal = 0;
+                GameSave.Instance.currentGoalSetIndex = 0;
+                GameSave.Instance.currentHappiness = 0;
+                GameSave.Instance.currentPower = 0;
+                GameSave.Instance.currentSustenance = 0;
+                GameSave.Instance.CurrentlyPlacedObjects.Clear();
+                if (isStart)
+                    GameSave.Instance.workingBetweenTransition = true;
+            }
         }
 
         /// <summary>

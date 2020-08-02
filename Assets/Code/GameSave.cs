@@ -18,6 +18,7 @@ namespace SFBuilder
         public  int                             currentLevel;
         public  int                             currentPower;
         public  int                             currentSustenance;
+        public  bool                            workingBetweenTransition;
         #endregion
         #region Properties
         /// <summary>
@@ -42,6 +43,7 @@ namespace SFBuilder
                 Instance = this;
 
             DataLoad();
+            workingBetweenTransition = false;
         }
 
         /// <summary>
