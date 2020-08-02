@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaBackground: 0.5
+  alphaBackground: 0.8
   alphaForeground: 1
   backgroundElements:
   - {fileID: 8066494906547216854}
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaBackground: 0.5
+  alphaBackground: 0.8
   alphaForeground: 1
   backgroundElements:
   - {fileID: 4084695380417960772}
@@ -6975,7 +6975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaBackground: 0.5
+  alphaBackground: 0.8
   alphaForeground: 1
   backgroundElements:
   - {fileID: 5264296986584691660}
