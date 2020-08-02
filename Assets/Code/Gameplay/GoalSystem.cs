@@ -148,6 +148,7 @@ namespace SFBuilder.Gameplay
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
                     GameEventSystem.Instance.UpdatePlacementPanel();
+                    SetGameSaveOnNewGoal();
                 }
                 else
                 {
@@ -166,23 +167,12 @@ namespace SFBuilder.Gameplay
                             goalPresetsEasy[index],
                             CurrentGoalWorkingSet.goalViability + GameConstants.InfiniPlayEasyViabilityIncrease);
                     }
-                    GameSave.Instance.currentGoalSetIndex = index;
-                    GameSave.Instance.currentGoalSetViability = CurrentGoalWorkingSet.goalViability;
                     GameEventSystem.Instance.UpdatePlacementPanel();
                     GameEventSystem.Instance.NotifyLevelReadyState(true);
                     GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
                     newGoal?.Invoke(CurrentGoal);
+                    SetGameSaveOnNewGoal(index);
                 }
-
-                int[] saveGoalSet = new int[CurrentGoalWorkingSet.goalRequirements.Length + CurrentGoalWorkingSet.goalExtras.Length];
-                int lengthOfReq = CurrentGoalWorkingSet.goalRequirements.Length;
-                int lengthOfExt = CurrentGoalWorkingSet.goalExtras.Length;
-                for (int i = 0; i < lengthOfReq; i++)
-                    saveGoalSet[i] = CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount;
-                for (int i = lengthOfReq; i < lengthOfReq + lengthOfExt; i++)
-                    saveGoalSet[i] = CurrentGoalWorkingSet.goalExtras[i - lengthOfReq].goalStructureCount;
-                GameSave.Instance.currentGoalSetCount = saveGoalSet;
-                GameSave.Instance.currentGoal = CurrentGoal;
             }
         }
 
@@ -238,6 +228,27 @@ namespace SFBuilder.Gameplay
             CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             GameEventSystem.Instance.UpdatePlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
+            SetGameSaveOnNewGoal();
+        }
+
+        /// <summary>
+        /// Sets GameSave info when a new goalset is made
+        /// </summary>
+        /// <param name="index">Indicates which index of corresponding preset collection when beyond the hard-coded goals (left at 0 if not beyond said goals)</param>
+        private void SetGameSaveOnNewGoal(int index = 0)
+        {
+            int[] saveGoalSet = new int[CurrentGoalWorkingSet.goalRequirements.Length + CurrentGoalWorkingSet.goalExtras.Length];
+            int lengthOfReq = CurrentGoalWorkingSet.goalRequirements.Length;
+            int lengthOfExt = CurrentGoalWorkingSet.goalExtras.Length;
+            for (int i = 0; i < lengthOfReq; i++)
+                saveGoalSet[i] = CurrentGoalWorkingSet.goalRequirements[i].goalStructureCount;
+            for (int i = lengthOfReq; i < lengthOfReq + lengthOfExt; i++)
+                saveGoalSet[i] = CurrentGoalWorkingSet.goalExtras[i - lengthOfReq].goalStructureCount;
+            GameSave.Instance.currentGoalSetCount = saveGoalSet;
+            GameSave.Instance.currentGoal = CurrentGoal;
+
+            GameSave.Instance.currentGoalSetIndex = index;
+            GameSave.Instance.currentGoalSetViability = CurrentGoalWorkingSet.goalViability;
         }
         #endregion
     }
