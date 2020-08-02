@@ -82,7 +82,7 @@ namespace SFBuilder.Gameplay
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 GameEventSystem.Instance.UpdatePlacementPanel();
             VerifyForNextGoal();
-            GameEventSystem.Instance.NotifyLevelReadyState(false);
+            GameEventSystem.Instance.NotifyLevelReadyState(CurrentGoal >= goals.Length);
         }
 
         /// <summary>
