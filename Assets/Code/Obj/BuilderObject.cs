@@ -237,7 +237,7 @@ namespace SFBuilder.Obj
         /// <param name="spawnedParticles">The particles spawned</param>
         private IEnumerator ResizeAndDestroyParticles(GameObject spawnedParticles)
         {
-            BoxCollider collider = GetComponent<BoxCollider>();
+            Collider collider = GetComponent<Collider>();
             float maxSize = collider.bounds.size.x;
             if (maxSize < collider.bounds.size.z)
                 maxSize = collider.bounds.size.z;
