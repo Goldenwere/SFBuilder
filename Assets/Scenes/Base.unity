@@ -633,10 +633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
+  partToAnimate: 1
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
+  valueStart: {x: 0, y: -8, z: 0, w: 8}
+  valueStop: {x: -24, y: -8, z: 24, w: 8}
 --- !u!114 &92745475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,10 +1030,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
+  partToAnimate: 1
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
+  valueStart: {x: 0, y: 26.5, z: 0, w: 41.5}
+  valueStop: {x: -16, y: 26.5, z: 16, w: 41.5}
 --- !u!114 &312050635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
@@ -2678,10 +2678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
+  partToAnimate: 1
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
+  valueStart: {x: 0, y: 10.5, z: 0, w: 25.5}
+  valueStop: {x: -16, y: 10.5, z: 16, w: 25.5}
 --- !u!114 &803671048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,7 +3315,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
@@ -3986,7 +3986,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
@@ -4187,10 +4187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
+  partToAnimate: 1
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
+  valueStart: {x: 0, y: -26, z: 0, w: -10}
+  valueStop: {x: -24, y: -26, z: 24, w: -10}
 --- !u!114 &1392665733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5270,7 +5270,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
@@ -5807,10 +5807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 0
+  partToAnimate: 1
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
-  valueStop: {x: 1, y: 1, z: 1, w: 0}
+  valueStart: {x: 0, y: -44, z: 0, w: -28}
+  valueStop: {x: -24, y: -44, z: 24, w: -28}
 --- !u!114 &2003936566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6156,7 +6156,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
