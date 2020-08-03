@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28412dc8ec996ec4a8d8ccfedaf536fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36c300da1cfa76647a12dcd9053a5b22, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -619,11 +619,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 1fa87e63a80b1274fa1f2cd53b126c4b,
+    m_HighlightedSprite: {fileID: 21300000, guid: 950d8bd388c26814e833e0a3f1a66d28,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 4095853076c099443b40ac749835872e, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: be9f843ff8ddc0742aa52c2d9ddae146, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 82905cc310584a24c8522439c1ac8e9d, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 6916acabf03a9f04eb3e4ef70e26782c, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 7b1e30de3c3fb434e87a589fac5d4a0c, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 36699ce612ffff746b7b775f3a9c55ac, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -692,7 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedButton: {fileID: 0}
   cameraThatRendersCanvas: {fileID: 0}
   cameraThatRendersCanvasName: UICamera
   canvasToBeAttachedTo: {fileID: 0}
