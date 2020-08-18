@@ -256,6 +256,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2414701036344984432}
   - component: {fileID: 3990006557896421274}
+  - component: {fileID: 7570776304673818110}
+  - component: {fileID: 2014998072835053633}
   m_Layer: 5
   m_Name: Tooltip_Alt
   m_TagString: Untagged
@@ -292,3 +294,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2644378345820482497}
   m_CullTransparentMesh: 0
+--- !u!114 &7570776304673818110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2644378345820482497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6492117124fb5d74d8d33f0cd12de583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 0}
+  arrowEnabled: 0
+  canvasGroup: {fileID: 2014998072835053633}
+  text: {fileID: 1187793098008025236}
+--- !u!225 &2014998072835053633
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2644378345820482497}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
