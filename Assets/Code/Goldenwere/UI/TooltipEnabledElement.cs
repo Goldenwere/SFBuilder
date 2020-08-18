@@ -6,7 +6,7 @@
 *** File Info:
 ***     Description - Contains the TooltipEnabledElement class and associated structures AnchorMode, AnchorPosition, MiddlePosition, and TransitionMode
 ***     Pkg Name    - TooltipSystem
-***     Pkg Ver     - 1.0.0
+***     Pkg Ver     - 1.0.1
 ***     Pkg Req     - CoreAPI
 **/
 
@@ -663,6 +663,10 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         private void SetText()
         {
+            bool needsEnabled = false;
+            if (!gameObject.activeInHierarchy)
+                needsEnabled = true;
+
             if (!isInitialized)
                 Initialize();
 
@@ -671,8 +675,22 @@ namespace Goldenwere.Unity.UI
             else
                 tooltipInstance.Text.text = tooltipText.RepairSerializedEscaping();
 
-            tooltipInstance.RTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
-                tooltipInstance.Text.preferredHeight + tooltipInstance.Text.rectTransform.offsetMin.y * 2);
+            if (needsEnabled)
+            {
+                Transform parent = tooltipInstance.transform.parent;
+                tooltipInstance.transform.SetParent(null, true);
+                bool activeSelf = tooltipInstance.gameObject.activeSelf;
+                tooltipInstance.gameObject.SetActive(true);
+                tooltipInstance.Text.ForceMeshUpdate();
+                tooltipInstance.RTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                        tooltipInstance.Text.preferredHeight + tooltipInstance.Text.rectTransform.offsetMin.y * 2);
+                tooltipInstance.transform.SetParent(parent, true);
+                tooltipInstance.gameObject.SetActive(activeSelf);
+            }
+
+            else
+                tooltipInstance.RTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                    tooltipInstance.Text.preferredHeight + tooltipInstance.Text.rectTransform.offsetMin.y * 2);
         }
 
         /// <summary>
