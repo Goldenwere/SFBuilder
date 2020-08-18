@@ -185,7 +185,7 @@ namespace SFBuilder
     }
 
     /// <summary>
-    /// Used for tying audio clips to 
+    /// Used for tying audio clips to
     /// </summary>
     [System.Serializable]
     public struct AudioClipAssociation

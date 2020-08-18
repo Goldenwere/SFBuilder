@@ -21,7 +21,7 @@ namespace Goldenwere.Unity.Controller
         #endregion
         #region Inspector-set variables         (all of these are required, and speed/padding should be greater than 0)
 #pragma warning disable 0649
-        [Tooltip                                ("Anchor used for rotating around when settingRotateAroundAnchor is enabled")]   
+        [Tooltip                                ("Anchor used for rotating around when settingRotateAroundAnchor is enabled")]
         [SerializeField] private Transform      anchorRotationPivot;
         [Tooltip                                ("Input values are read from here")]
         [SerializeField] private PlayerInput    attachedControls;

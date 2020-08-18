@@ -84,8 +84,8 @@ namespace SFBuilder.Obj
         /// <summary>
         /// The animation used when placing objects
         /// </summary>
-        private AnimationCurve  PlacementAnimationCurve 
-        { 
+        private AnimationCurve  PlacementAnimationCurve
+        {
             get { return new AnimationCurve(new Keyframe[] { new Keyframe(0, 1, 0, -5), new Keyframe(0.333f, 0, 0, 0), new Keyframe(0.75f, 1.25f, 8, 8), new Keyframe(1, 1, 8, 8) }); }
         }
         #endregion
@@ -220,7 +220,7 @@ namespace SFBuilder.Obj
         /// </summary>
         private IEnumerator PlaceStructureAnimation()
         {
-            
+
             float t = 0;
             while (t <= GameConstants.PlacementAnimationDuration)
             {
@@ -258,14 +258,14 @@ namespace SFBuilder.Obj
             {
                 #region Prototype
                 case ObjectType.Pro_A:
-                    description = "(Prototype object) Power source providing " + GameConstants.UITooltipColorTag(3) + " power. Get a " + GameConstants.UITooltipColorTag(3) + 
+                    description = "(Prototype object) Power source providing " + GameConstants.UITooltipColorTag(3) + " power. Get a " + GameConstants.UITooltipColorTag(3) +
                         " bonus for each Power Source in range. Gets a " + GameConstants.UITooltipColorTag(-5) + " penalty for each Residence in range";
                     break;
 				case ObjectType.Pro_B:
 					description = "(Prototype object) Residence taking " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-5) + " sustenance.";
 					break;
 				case ObjectType.Pro_C:
-					description = "(Prototype object) Community garden providing " + GameConstants.UITooltipColorTag(5) + " sustenance. Provides " + 
+					description = "(Prototype object) Community garden providing " + GameConstants.UITooltipColorTag(5) + " sustenance. Provides " +
                         GameConstants.UITooltipColorTag(3) + " sustenance and "  + GameConstants.UITooltipColorTag(3) + " happiness for all residences in range.";
 					break;
                 #endregion
@@ -279,16 +279,16 @@ namespace SFBuilder.Obj
                 #endregion
                 #region Power
                 case ObjectType.Pow_A:
-					description = "Solar panel - provides " + GameConstants.UITooltipColorTag(3) + " power. Gets a " + 
+					description = "Solar panel - provides " + GameConstants.UITooltipColorTag(3) + " power. Gets a " +
                         GameConstants.UITooltipColorTag(-1) + " happiness penalty for all residences in range.";
 					break;
 				case ObjectType.Pow_B:
-					description = "Solar tower - provides " + GameConstants.UITooltipColorTag(5) + " power. Gets a " + 
+					description = "Solar tower - provides " + GameConstants.UITooltipColorTag(5) + " power. Gets a " +
                         GameConstants.UITooltipColorTag(-1) + " happiness penalty for all residences in range.";
 					break;
 				case ObjectType.Pow_C:
-					description = "Solar farm - provides " + GameConstants.UITooltipColorTag(10) + " power. Gets a " + 
-                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range, and a " + 
+					description = "Solar farm - provides " + GameConstants.UITooltipColorTag(10) + " power. Gets a " +
+                        GameConstants.UITooltipColorTag(-3) + " happiness penalty for all residences in range, and a " +
                         GameConstants.UITooltipColorTag(1) + " power bonus for all solar panels/towers in range.";
 					break;
 				case ObjectType.Pow_D:
@@ -297,7 +297,7 @@ namespace SFBuilder.Obj
                         GameConstants.UITooltipColorTag(-2) + " power penalty for all turbines in range.";
 					break;
 				case ObjectType.Pow_E:
-					description = "Large turbine - provides " + GameConstants.UITooltipColorTag(15) + " power. Gets a " + 
+					description = "Large turbine - provides " + GameConstants.UITooltipColorTag(15) + " power. Gets a " +
                         GameConstants.UITooltipColorTag(-5) + " happiness penalty for all residences in range and a " +
                         GameConstants.UITooltipColorTag(-2) + " power penalty for all turbines in range.";
                     break;
@@ -309,41 +309,41 @@ namespace SFBuilder.Obj
                 #endregion
 				#region Residence
 				case ObjectType.Res_A:
-					description = "Small cabin - takes " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-5) + 
+					description = "Small cabin - takes " + GameConstants.UITooltipColorTag(-5) + " power and " + GameConstants.UITooltipColorTag(-5) +
                         " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
 					break;
 				case ObjectType.Res_B:
-					description = "Large cabin - takes " + GameConstants.UITooltipColorTag(-6) + " power and " + GameConstants.UITooltipColorTag(-8) + 
+					description = "Large cabin - takes " + GameConstants.UITooltipColorTag(-6) + " power and " + GameConstants.UITooltipColorTag(-8) +
                         " sustenance. Gives back " + GameConstants.UITooltipColorTag(1) + " power and sustenance for other cabins in range.";
 					break;
 				case ObjectType.Res_C:
-					description = "Small apartment - takes " + GameConstants.UITooltipColorTag(-10) + " power and " + GameConstants.UITooltipColorTag(-15) + 
+					description = "Small apartment - takes " + GameConstants.UITooltipColorTag(-10) + " power and " + GameConstants.UITooltipColorTag(-15) +
                         " sustenance. Gets a " + GameConstants.UITooltipColorTag(-5) + " happiness penalty for other apartment buildings nearby.";
 					break;
 				case ObjectType.Res_D:
-					description = "Apartment tower - takes " + GameConstants.UITooltipColorTag(-15) + " power and " + GameConstants.UITooltipColorTag(-20) + 
+					description = "Apartment tower - takes " + GameConstants.UITooltipColorTag(-15) + " power and " + GameConstants.UITooltipColorTag(-20) +
                         " sustenance. Gets a " + GameConstants.UITooltipColorTag(-8) + " happiness penalty for other apartment buildings nearby.";
 					break;
 				#endregion
 				#region Environment
 				case ObjectType.Env_A:
-					description = "Community garden - gives " + GameConstants.UITooltipColorTag(8) + " base sustenance, " + 
-                        GameConstants.UITooltipColorTag(1) + " sustenance for other gardens, " + GameConstants.UITooltipColorTag(2) + 
-                        " sustenance for alien wildlife, " + GameConstants.UITooltipColorTag(3) + " happiness for cabins, and " + 
+					description = "Community garden - gives " + GameConstants.UITooltipColorTag(8) + " base sustenance, " +
+                        GameConstants.UITooltipColorTag(1) + " sustenance for other gardens, " + GameConstants.UITooltipColorTag(2) +
+                        " sustenance for alien wildlife, " + GameConstants.UITooltipColorTag(3) + " happiness for cabins, and " +
                         GameConstants.UITooltipColorTag(5) + " happiness for apartments.";
 					break;
 				case ObjectType.Env_B:
-					description = "Small farm - gives " + GameConstants.UITooltipColorTag(12) + " base sustenance, " + 
-                        GameConstants.UITooltipColorTag(2) + " sustenance for other farms, " + GameConstants.UITooltipColorTag(1) + 
+					description = "Small farm - gives " + GameConstants.UITooltipColorTag(12) + " base sustenance, " +
+                        GameConstants.UITooltipColorTag(2) + " sustenance for other farms, " + GameConstants.UITooltipColorTag(1) +
                         " happiness for cabins, and " + GameConstants.UITooltipColorTag(3) + " happiness for apartments.";
 					break;
 				case ObjectType.Env_C:
-					description = "Large farm - gives " + GameConstants.UITooltipColorTag(18) + " base sustenance and an additional " + 
+					description = "Large farm - gives " + GameConstants.UITooltipColorTag(18) + " base sustenance and an additional " +
                         GameConstants.UITooltipColorTag(2) + " sustenance for other farms in range.";
 					break;
 				case ObjectType.Env_D:
-					description = "Vertical farm - gives " + GameConstants.UITooltipColorTag(25) + " base sustenance and takes " + 
-                        GameConstants.UITooltipColorTag(-3) + " power, with an additional " + GameConstants.UITooltipColorTag(-1) + 
+					description = "Vertical farm - gives " + GameConstants.UITooltipColorTag(25) + " base sustenance and takes " +
+                        GameConstants.UITooltipColorTag(-3) + " power, with an additional " + GameConstants.UITooltipColorTag(-1) +
                         " happiness penalty for all residences in range.";
 					break;
 				#endregion

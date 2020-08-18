@@ -25,8 +25,8 @@ namespace SFBuilder
         public SettingsData         Settings
         {
             get { return settings; }
-            set 
-            { 
+            set
+            {
                 settings = value;
                 GameEventSystem.Instance.NotifySettingsChanged();
                 SaveSettings();

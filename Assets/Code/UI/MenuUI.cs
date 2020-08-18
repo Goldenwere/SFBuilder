@@ -299,8 +299,8 @@ namespace SFBuilder.UI
             while (t <= GameConstants.UIFirstLoadDuration)
             {
                 startupFadeImage.color = new Color(
-                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 
-                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 
+                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration),
+                    transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration),
                     transitionStartupToWhite.Evaluate(t / GameConstants.UIFirstLoadDuration), 1);
                 yield return null;
                 t += Time.deltaTime;

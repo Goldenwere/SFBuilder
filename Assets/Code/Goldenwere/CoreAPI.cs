@@ -106,7 +106,7 @@ namespace Goldenwere.Unity
         }
 
         /// <summary>
-        /// Finds a matching component 
+        /// Finds a matching component
         /// </summary>
         /// <typeparam name="T">The Component being searched for</typeparam>
         /// <param name="other">The GameObject to search from</param>

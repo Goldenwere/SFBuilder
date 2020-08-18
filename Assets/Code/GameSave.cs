@@ -90,7 +90,7 @@ namespace SFBuilder
         public void AddBuilderObject(Vector3 _position, Quaternion _rotation, ObjectType _type)
         {
             CurrentlyPlacedObjects.Add(new PlacedBuilderObjectData
-            { 
+            {
                 position = _position,
                 rotation = _rotation,
                 type = _type
