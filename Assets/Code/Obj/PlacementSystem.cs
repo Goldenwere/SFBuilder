@@ -135,10 +135,10 @@ namespace SFBuilder.Obj
         {
             if (newState != GameState.Gameplay) 
                 foreach (ManagementCamera gameCam in gameCams)
-                    gameCam.controlMotionEnabled = true;
+                    gameCam.controlMotionEnabled = false;
             else
                 foreach (ManagementCamera gameCam in gameCams)
-                    gameCam.controlMotionEnabled = false;
+                    gameCam.controlMotionEnabled = true;
         }
 
         /// <summary>
