@@ -355,7 +355,7 @@ MonoBehaviour:
   downcastMaxDistance: 100
   transformPivot: {fileID: 5455443449026255704}
   transformTilt: {fileID: 5455443448654695347}
-  smoothMotionSpeed: 10
+  smoothMotionSpeed: 15
   useCameraSmoothing: 1
   verticalClamping: {x: -10, y: 40}
   defaultPointDistance: 100
@@ -385,7 +385,7 @@ MonoBehaviour:
   downcastMaxDistance: 100
   transformPivot: {fileID: 5455443449026255704}
   transformTilt: {fileID: 5455443448654695347}
-  smoothMotionSpeed: 10
+  smoothMotionSpeed: 15
   useCameraSmoothing: 1
   verticalClamping: {x: -10, y: 40}
 --- !u!114 &5455443448607622000
