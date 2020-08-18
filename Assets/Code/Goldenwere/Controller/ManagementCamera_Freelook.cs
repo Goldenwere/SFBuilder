@@ -6,7 +6,7 @@
 *** File Info:
 ***     Description - Contains the ManagementCamera_Freelook class
 ***     Pkg Name    - ManagementCamera
-***     Pkg Ver     - 1.0.0
+***     Pkg Ver     - 1.1.0
 ***     Pkg Req     - CoreAPI
 **/
 
