@@ -700,7 +700,7 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 0}
   tooltipDelay: 0.2
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1.5, y: 1.5, z: 1.5, w: 1.5}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
   tooltipText: Default text

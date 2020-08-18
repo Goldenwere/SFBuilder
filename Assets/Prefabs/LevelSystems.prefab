@@ -163,31 +163,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
   tooltipText: Move on to next level
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -215,16 +215,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &4142933997212240824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,31 +1080,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
-  tooltipText: Confirm (cannot be undone)
+  tooltipText: Confirm (can't be undone)
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -1132,16 +1132,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &3848135171162496624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3284,31 +3284,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
   tooltipText: Move on to next goal
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -3336,16 +3336,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &4266346558182460911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4373,31 +4373,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
   tooltipText: Cancel and go back
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -4425,16 +4425,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &4874830206050112848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4705,31 +4705,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
-  tooltipText: Confirm (cannot be undone)
+  tooltipText: Confirm (can't be undone)
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -4757,16 +4757,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &1801199242400753324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5810,31 +5810,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
   tooltipText: Cancel and go back
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -5862,16 +5862,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &8744235139739908167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6607,31 +6607,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorMode: 0
-  anchorPosition: 0
+  anchorPosition: 7
   arrowDefaultPositionAtMiddle: 0
   cameraThatRendersCanvas: {fileID: 5264296987454752398}
   cameraThatRendersCanvasName: 
   canvasToBeAttachedTo: {fileID: 5264296985718816292}
-  tooltipDelay: 0
+  tooltipDelay: 0.4
   tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 4, y: 4, z: 4, w: 4}
+  tooltipPadding: {x: 1, y: 2, z: 1, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
     type: 3}
   tooltipText: Banish this settlement
   tooltipValues: []
-  transitionDuration: 0
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0403116
+      outSlope: 2.0403116
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08103855
     - serializedVersion: 3
       time: 1
       value: 1
@@ -6659,16 +6659,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0466974
+      outSlope: -2.0466974
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.036192
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 0
+  transitionMode: 1
 --- !u!114 &4884377476934625028
 MonoBehaviour:
   m_ObjectHideFlags: 0
