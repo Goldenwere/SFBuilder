@@ -81,7 +81,7 @@ namespace Goldenwere.Unity.UI
     /// <summary>
     /// Adds a tooltip to a UI element
     /// </summary>
-    public class TooltipEnabledElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+    public class TooltipEnabledElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, ISubmitHandler, IPointerClickHandler
     {
         #region Fields
 #pragma warning disable 0649
@@ -248,6 +248,25 @@ namespace Goldenwere.Unity.UI
         }
 
         /// <summary>
+        /// OnPointerClick, disable the tooltip
+        /// </summary>
+        public void OnPointerClick(PointerEventData data)
+        {
+            if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
+            {
+                if (isTransitioning)
+                {
+                    Transform parent = tooltipInstance.transform.parent;
+                    tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
+                    Destroy(parent.gameObject);
+                    tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                }
+            }
+            StopAllCoroutines();
+            SetActive(false);
+        }
+
+        /// <summary>
         /// OnPointerEnter, enable the tooltip
         /// </summary>
         public void OnPointerEnter(PointerEventData data)
@@ -288,6 +307,25 @@ namespace Goldenwere.Unity.UI
                 StartCoroutine(DelayOpening());
             else
                 SetActive(true);
+        }
+
+        /// <summary>
+        /// OnSubmit, disable the tooltip
+        /// </summary>
+        public void OnSubmit(BaseEventData data)
+        {
+            if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
+            {
+                if (isTransitioning)
+                {
+                    Transform parent = tooltipInstance.transform.parent;
+                    tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
+                    Destroy(parent.gameObject);
+                    tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                }
+            }
+            StopAllCoroutines();
+            SetActive(false);
         }
         #endregion
 
