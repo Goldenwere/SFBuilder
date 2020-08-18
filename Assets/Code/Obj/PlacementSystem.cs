@@ -15,6 +15,7 @@ namespace SFBuilder.Obj
     {
         #region Fields
 #pragma warning disable 0649
+        [SerializeField] private new Camera                     camera;
         [SerializeField] private ManagementCamera[]             gameCams;
         [SerializeField] private float                          positionPrecision;
         [SerializeField] private BuilderObjectTypeToPrefab[]    prefabs;
@@ -27,6 +28,7 @@ namespace SFBuilder.Obj
         /**************/ private LinkedList<BuilderObject>      prefabsPlaced;
         /**************/ private float                          workingLastRotation;
         /**************/ private bool                           workingModifierMouseZoom;
+        /**************/ private int                            workingSelectedCamera;
         #endregion
         #region Properties
         public static PlacementSystem   Instance    { get; private set; }
@@ -79,10 +81,10 @@ namespace SFBuilder.Obj
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
                 foreach (ManagementCamera gameCam in gameCams)
-                        gameCam.controlMotionEnabled = true;
+                    gameCam.controlMotionEnabled = false;
             else
                 foreach (ManagementCamera gameCam in gameCams)
-                    gameCam.controlMotionEnabled = false;
+                    gameCam.controlMotionEnabled = true;
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace SFBuilder.Obj
         /// <remarks>(may eventually have a gamepad cursor for gamepad support, otherwise will just rely on camera movement in order to move a BuilderObject's position)</remarks>
         private void Update()
         {
-            if (isPlacing && Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
+            if (isPlacing && Physics.Raycast(camera.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 1000f))
             {
                 if (prefabHadFirstHit)
                     prefabInstance.transform.position = Vector3.Lerp(prefabInstance.transform.position, hit.point.ToPrecision(positionPrecision, true, false, true), Time.deltaTime * 25);
@@ -252,6 +254,20 @@ namespace SFBuilder.Obj
         }
 
         /// <summary>
+        /// On the SwapCamera input event, update the currently selected camera
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnSwapCamera(InputAction.CallbackContext context)
+        {
+            if (context.performed && gameCams.Length > 0)
+            {
+                workingSelectedCamera++;
+                if (workingSelectedCamera >= gameCams.Length)
+                    workingSelectedCamera = 0;
+            }
+        }
+
+        /// <summary>
         /// On the Undo input event, undo a previously placed BuilderObject
         /// </summary>
         /// <param name="context">The related context to the input event</param>
@@ -278,7 +294,7 @@ namespace SFBuilder.Obj
         /// <param name="context">The related context to the input event</param>
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
-            if (gameCams[0].settingMouseMotionIsToggled)
+            if (gameCams[workingSelectedCamera].settingMouseMotionIsToggled)
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;

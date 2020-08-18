@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d97e3351615f048a64fc8dc9142f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlMotionEnabled: 1
+  controlMotionEnabled: 0
   controlMouseEnabled: 0
   settingMouseMotionIsToggled: 0
   settingMovementSensitivity: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82064a83df5fa447bc3e611a07bfb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlMotionEnabled: 1
+  controlMotionEnabled: 0
   controlMouseEnabled: 0
   settingMouseMotionIsToggled: 0
   settingMovementSensitivity: 1

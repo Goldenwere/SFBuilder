@@ -1303,66 +1303,6 @@ MonoBehaviour:
   m_canvasRenderer: {fileID: 4140711311418558345}
   m_TextComponent: {fileID: 8256035255464468893}
   m_materialReferenceIndex: 1
---- !u!114 &7629754894631353926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7376675319693708045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 7376675319693708047}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1 &3537723848366620236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,6 +5800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec93727998a4834b9af344a1829c132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 7376675319693708046}
   gameCams:
   - {fileID: 7376675319505929170}
   - {fileID: 7376675319505929166}
@@ -5867,6 +5808,66 @@ MonoBehaviour:
   prefabs: []
   prefabUndoMaxCount: 4
   rotationAngleMagnitude: 15
+--- !u!114 &7629754894631353926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376675319693708045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 7376675319693708047}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &7430831760670400948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7134,6 +7135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_ActionId
       value: e53b8f7e-1b5a-4ad0-945a-1009a55433d4
       objectReference: {fileID: 0}
@@ -7287,6 +7293,31 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[7].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4462322245916594782}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnSwapCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455443448607621999, guid: cc074d911375cfe419a3cf36435348d7,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5455443448607622001, guid: cc074d911375cfe419a3cf36435348d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7389,6 +7420,12 @@ GameObject:
 --- !u!4 &7376675319693708047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5455443448654695347, guid: cc074d911375cfe419a3cf36435348d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3308623963989967036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &7376675319693708046 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5455443448654695346, guid: cc074d911375cfe419a3cf36435348d7,
     type: 3}
   m_PrefabInstance: {fileID: 3308623963989967036}
   m_PrefabAsset: {fileID: 0}
