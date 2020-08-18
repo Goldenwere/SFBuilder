@@ -27,6 +27,7 @@ namespace Goldenwere.Unity.Controller
 #pragma warning disable 0649
         [Header("Game Settings")]               // useful exposed code for circumstances such as changes in game state
         /**************/ public bool            controlMotionEnabled;
+        /**************/ public bool            controlMouseEnabled;
 
         [Header("UX Settings")]                 // expose these via a settings/controls menu if possible rather than set them in Inspector
         /**************/ public bool            settingMouseMotionIsToggled;
@@ -215,15 +216,18 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Holds bool regarding performed or cancelled</param>
         public void OnInput_MouseToggleMovement(InputAction.CallbackContext context)
         {
-            if (settingMouseMotionIsToggled)
-                workingInputMouseToggleMovement = !workingInputMouseToggleMovement;
-            else
-                workingInputMouseToggleMovement = context.performed;
+            if (controlMouseEnabled)
+            {
+                if (settingMouseMotionIsToggled)
+                    workingInputMouseToggleMovement = !workingInputMouseToggleMovement;
+                else
+                    workingInputMouseToggleMovement = context.performed;
 
-            if (workingInputMouseToggleMovement)
-                CameraMouseStateChanged?.Invoke(true);
-            else if (!workingInputMouseToggleRotation)
-                CameraMouseStateChanged?.Invoke(false);
+                if (workingInputMouseToggleMovement)
+                    CameraMouseStateChanged?.Invoke(true);
+                else if (!workingInputMouseToggleRotation)
+                    CameraMouseStateChanged?.Invoke(false);
+            }
         }
 
         /// <summary>
@@ -232,15 +236,18 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Holds bool regarding performed or cancelled</param>
         public void OnInput_MouseToggleRotation(InputAction.CallbackContext context)
         {
-            if (settingMouseMotionIsToggled)
-                workingInputMouseToggleRotation = !workingInputMouseToggleRotation;
-            else
-                workingInputMouseToggleRotation = context.performed;
+            if (controlMouseEnabled)
+            {
+                if (settingMouseMotionIsToggled)
+                    workingInputMouseToggleRotation = !workingInputMouseToggleRotation;
+                else
+                    workingInputMouseToggleRotation = context.performed;
 
-            if (workingInputMouseToggleRotation)
-                CameraMouseStateChanged?.Invoke(true);
-            else if (!workingInputMouseToggleMovement)
-                CameraMouseStateChanged?.Invoke(false);
+                if (workingInputMouseToggleRotation)
+                    CameraMouseStateChanged?.Invoke(true);
+                else if (!workingInputMouseToggleMovement)
+                    CameraMouseStateChanged?.Invoke(false);
+            }
         }
 
         /// <summary>
@@ -249,10 +256,13 @@ namespace Goldenwere.Unity.Controller
         /// <param name="context">Holds bool regarding performed or cancelled</param>
         public void OnInput_MouseToggleZoom(InputAction.CallbackContext context)
         {
-            if (settingMouseMotionIsToggled)
-                workingInputMouseToggleZoom = !workingInputMouseToggleZoom;
-            else
-                workingInputMouseToggleZoom = context.performed;
+            if (controlMouseEnabled)
+            {
+                if (settingMouseMotionIsToggled)
+                    workingInputMouseToggleZoom = !workingInputMouseToggleZoom;
+                else
+                    workingInputMouseToggleZoom = context.performed;
+            }
         }
         #endregion
 

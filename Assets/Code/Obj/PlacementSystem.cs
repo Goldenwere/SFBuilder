@@ -15,7 +15,7 @@ namespace SFBuilder.Obj
     {
         #region Fields
 #pragma warning disable 0649
-        [SerializeField] private GodGameCamera                  gameCam;
+        [SerializeField] private ManagementCamera[]             gameCams;
         [SerializeField] private float                          positionPrecision;
         [SerializeField] private BuilderObjectTypeToPrefab[]    prefabs;
         [SerializeField] private int                            prefabUndoMaxCount;
@@ -41,12 +41,14 @@ namespace SFBuilder.Obj
 
                 if (isPlacing)
                 {
-                    gameCam.CameraModifiersAreEnabled = false;
+                    foreach (ManagementCamera gameCam in gameCams)
+                        gameCam.controlMouseEnabled = false;
                 }
 
                 else
                 {
-                    gameCam.CameraModifiersAreEnabled = true;
+                    foreach (ManagementCamera gameCam in gameCams)
+                        gameCam.controlMouseEnabled = true;
                     prefabHadFirstHit = false;
                     prefabInstance = null;
                 }
@@ -72,12 +74,15 @@ namespace SFBuilder.Obj
         private void Start()
         {
             prefabsPlaced = new LinkedList<BuilderObject>();
-            gameCam.CameraModifiersAreEnabled = true;
+            foreach (ManagementCamera gameCam in gameCams)
+                gameCam.controlMouseEnabled = true;
 
             if (GameEventSystem.Instance.CurrentGameState != GameState.Gameplay)
-                gameCam.cameraMotionIsFrozen = true;
+                foreach (ManagementCamera gameCam in gameCams)
+                        gameCam.controlMotionEnabled = true;
             else
-                gameCam.cameraMotionIsFrozen = false;
+                foreach (ManagementCamera gameCam in gameCams)
+                    gameCam.controlMotionEnabled = false;
         }
 
         /// <summary>
@@ -128,10 +133,12 @@ namespace SFBuilder.Obj
         /// <param name="newState">The new GameState</param>
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
-            if (newState != GameState.Gameplay)
-                gameCam.cameraMotionIsFrozen = true;
+            if (newState != GameState.Gameplay) 
+                foreach (ManagementCamera gameCam in gameCams)
+                    gameCam.controlMotionEnabled = true;
             else
-                gameCam.cameraMotionIsFrozen = false;
+                foreach (ManagementCamera gameCam in gameCams)
+                    gameCam.controlMotionEnabled = false;
         }
 
         /// <summary>
@@ -271,7 +278,7 @@ namespace SFBuilder.Obj
         /// <param name="context">The related context to the input event</param>
         public void OnZoomMouseModifier(InputAction.CallbackContext context)
         {
-            if (gameCam.settingModifiersAreToggled)
+            if (gameCams[0].settingMouseMotionIsToggled)
                 workingModifierMouseZoom = !workingModifierMouseZoom;
             else
                 workingModifierMouseZoom = context.performed;
