@@ -1,4 +1,16 @@
-﻿using UnityEngine;
+﻿/**
+*** Copyright (C) 2020 Goldenwere
+*** Part of the Goldenwere Standard Unity repository
+*** The Goldenwere Standard Unity Repository is licensed under the MIT license
+***
+*** File Info:
+***     Description - Contains API that can be used by other code within the Goldenwere Standard Unity project
+***     Pkg Name    - CoreAPI
+***     Pkg Ver     - 1.0.0
+***     Pkg Req     - None
+**/
+
+using UnityEngine;
 
 namespace Goldenwere.Unity
 {
@@ -70,7 +82,7 @@ namespace Goldenwere.Unity
             for (int i = 0; i < parent.transform.childCount; i++)
             {
                 GameObject child = parent.transform.GetChild(i).gameObject;
-                if (child.tag == tag)
+                if (child.CompareTag(tag))
                     return child;
             }
 
@@ -91,7 +103,7 @@ namespace Goldenwere.Unity
             for (int i = 0; i < parent.transform.childCount; i++)
             {
                 GameObject child = parent.transform.GetChild(i).gameObject;
-                if (child.tag == tag)
+                if (child.CompareTag(tag))
                     return child;
 
                 else if (child.transform.childCount > 0)
@@ -129,6 +141,60 @@ namespace Goldenwere.Unity
         }
 
         /// <summary>
+        /// Unity serialization escapes double-slashes, which breaks any sort of desired escaping in serialized string fields
+        /// </summary>
+        /// <param name="other">The string that needs fixed</param>
+        /// <returns>The string after fixing</returns>
+        public static string RepairSerializedEscaping(this string other)
+        {
+            return other
+                .Replace("\\n", "\n")
+                .Replace("\\t", "\t")
+                .Replace("\\'", "\'")
+                .Replace("\\\"", "\"")
+                .Replace("\\\\", "\\")
+                .Replace("\\b", "\b")
+                .Replace("\\r", "\r");
+        }
+
+        /// <summary>
+        /// Rotates a point around another point
+        /// </summary>
+        /// <param name="self">The original point to rotate</param>
+        /// <param name="pivot">The point to rotate around</param>
+        /// <param name="eulerAngles">The angle at which the point is being rotated</param>
+        /// <returns>The original point after rotation</returns>
+        public static Vector3 RotateSelfAroundPoint(this Vector3 self, Vector3 pivot, Vector3 eulerAngles)
+        {
+            return Quaternion.Euler(eulerAngles) * (self - pivot) + pivot;
+        }
+
+        /// <summary>
+        /// Rounds a Vector3's values to the nearest precision
+        /// </summary>
+        /// <param name="self">The Vector3 being rounded</param>
+        /// <param name="precision">The precision</param>
+        /// <param name="roundX">Whether to round the x value or not (if false, value is left untouched)</param>
+        /// <param name="roundY">Whether to round the y value or not (if false, value is left untouched)</param>
+        /// <param name="roundZ">Whether to round the z value or not (if false, value is left untouched)</param>
+        /// <returns>The Vector3 after rounding</returns>
+        public static Vector3 ToPrecision(this Vector3 self, float precision, bool roundX = true, bool roundY = true, bool roundZ = true)
+        {
+            float x = self.x;
+            float y = self.y;
+            float z = self.z;
+
+            if (roundX)
+                x = Mathf.Round(self.x / precision) * precision;
+            if (roundY)
+                y = Mathf.Round(self.y / precision) * precision;
+            if (roundZ)
+                z = Mathf.Round(self.z / precision) * precision;
+
+            return new Vector3(x, y, z);
+        }
+
+        /// <summary>
         /// Clamps a quaternion's vertical rotation
         /// </summary>
         /// <param name="parent">The quaternion to clamp</param>
@@ -149,57 +215,6 @@ namespace Goldenwere.Unity
             parent.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
             return parent;
-        }
-
-        /// <summary>
-        /// Rotates a point around another point
-        /// </summary>
-        /// <param name="self">The original point to rotate</param>
-        /// <param name="pivot">The point to rotate around</param>
-        /// <param name="eulerAngles">The angle at which the point is being rotated</param>
-        /// <returns>The original point after rotation</returns>
-        public static Vector3 RotateSelfAroundPoint(this Vector3 self, Vector3 pivot, Vector3 eulerAngles)
-		{
-            return Quaternion.Euler(eulerAngles) * (self - pivot) + pivot;
-		}
-
-        /// <summary>
-        /// Rounds a Vector3's values to the nearest precision
-        /// </summary>
-        /// <param name="self">The Vector3 being rounded</param>
-        /// <param name="precision">The precision</param>
-        /// <returns></returns>
-        public static Vector3 ToPrecision(this Vector3 self, float precision, bool roundX = true, bool roundY = true, bool roundZ = true)
-        {
-            float x = self.x;
-            float y = self.y;
-            float z = self.z;
-
-            if (roundX)
-                x = Mathf.Round(self.x / precision) * precision;
-            if (roundY)
-                y = Mathf.Round(self.y / precision) * precision;
-            if (roundZ)
-                z = Mathf.Round(self.z / precision) * precision;
-
-            return new Vector3(x, y, z);
-        }
-
-        /// <summary>
-        /// Unity serialization escapes double-slashes, which breaks any sort of desired escaping in serialized string fields
-        /// </summary>
-        /// <param name="other">The string that needs fixed</param>
-        /// <returns>The string after fixing</returns>
-        public static string RepairSerializedEscaping(this string other)
-        {
-            return other
-                .Replace("\\n", "\n")
-                .Replace("\\t", "\t")
-                .Replace("\\'", "\'")
-                .Replace("\\\"", "\"")
-                .Replace("\\\\", "\\")
-                .Replace("\\b", "\b")
-                .Replace("\\r", "\r");
         }
     }
 }
