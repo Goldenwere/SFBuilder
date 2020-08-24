@@ -52,6 +52,7 @@ namespace SFBuilder
         private void OnEnable()
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
+            GameEventSystem.LevelBanished += OnLevelBanished;
         }
 
         /// <summary>
@@ -60,6 +61,7 @@ namespace SFBuilder
         private void OnDisable()
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
+            GameEventSystem.LevelBanished -= OnLevelBanished;
         }
 
         /// <summary>
@@ -79,6 +81,14 @@ namespace SFBuilder
         {
             if (curr == GameState.MainMenus)
                 DataSave();
+        }
+
+        /// <summary>
+        /// On the level banished event, clear saved structures
+        /// </summary>
+        private void OnLevelBanished()
+        {
+            CurrentlyPlacedObjects.Clear();
         }
 
         /// <summary>
