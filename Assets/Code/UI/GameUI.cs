@@ -35,6 +35,8 @@ namespace SFBuilder.UI
         /**************/ private Transform      panelPlacementButtons;
         /**************/ private RectTransform  windowBanishmentRT;
         /**************/ private RectTransform  windowNextLevelRT;
+        /**************/ private bool           windowOpenedBanishment;
+        /**************/ private bool           windowOpenedNextLevel;
         #endregion
         #region Properties
         public static GameUI     Instance       { get; private set; }
@@ -112,7 +114,13 @@ namespace SFBuilder.UI
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState != GameState.Gameplay)
+            {
                 SetCanvasActive(false);
+                if (windowOpenedBanishment)
+                    StartCoroutine(TransitionWindow(false, windowBanishmentRT));
+                if (windowOpenedNextLevel)
+                    StartCoroutine(TransitionWindow(false, windowNextLevelRT));
+            }
             else
                 SetCanvasActive(true);
         }
@@ -215,6 +223,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnBanishButtonPressed()
         {
+            windowOpenedBanishment = true;
             StartCoroutine(TransitionWindow(true, windowBanishmentRT));
             StartCoroutine(TransitionPlacementUI(true));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
@@ -225,6 +234,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnCancelBanishButtonPressed()
         {
+            windowOpenedBanishment = false;
             StartCoroutine(TransitionWindow(false, windowBanishmentRT));
             StartCoroutine(TransitionPlacementUI(false));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
@@ -235,6 +245,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnCancelNextLevelButtonPressed()
         {
+            windowOpenedNextLevel = false;
             StartCoroutine(TransitionWindow(false, windowNextLevelRT));
             StartCoroutine(TransitionPlacementUI(false));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
@@ -245,6 +256,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnConfirmBanishButtonPressed()
         {
+            windowOpenedBanishment = false;
             GameEventSystem.Instance.CallForBanishment();
             StartCoroutine(TransitionWindow(false, windowBanishmentRT));
             StartCoroutine(TransitionPlacementUI(false));
@@ -256,6 +268,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnConfirmNextLevelButtonPressed()
         {
+            windowOpenedNextLevel = false;
             StartCoroutine(TransitionWindow(false, windowNextLevelRT));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
             LevelingSystem.Instance.CurrentLevel++;
@@ -266,6 +279,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnNextLevelButtonPressed()
         {
+            windowOpenedNextLevel = true;
             StartCoroutine(TransitionWindow(true, windowNextLevelRT));
             StartCoroutine(TransitionPlacementUI(true));
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);

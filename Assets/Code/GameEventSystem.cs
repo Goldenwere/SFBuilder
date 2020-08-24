@@ -119,6 +119,8 @@ namespace SFBuilder
         public void CallForBanishment()
         {
             LevelBanished?.Invoke();
+            NextLevelReadyStateChanged?.Invoke(false);
+            GoalMet?.Invoke(false);
         }
 
         /// <summary>
