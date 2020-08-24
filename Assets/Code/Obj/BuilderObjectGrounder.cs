@@ -24,7 +24,6 @@ namespace SFBuilder.Obj
 #pragma warning disable 0649
         [SerializeField] private BoxCollider    attachedCollider;
 #pragma warning restore 0649
-        /**************/ private List<Collider> collidedObjects;
         /**************/ private GrounderFace   currentFacePosition;
         /**************/ private const float    rayLength = 0.25f;
         #endregion
@@ -35,20 +34,11 @@ namespace SFBuilder.Obj
         public bool IsGrounded  { get; private set; }
 
         /// <summary>
-        /// Instantiate working list on Start
+        /// Instantiate current face position on Start
         /// </summary>
         private void Start()
         {
-            collidedObjects = new List<Collider>(16);
             currentFacePosition = new GrounderFace();
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawSphere(currentFacePosition.CornerA, 0.5f);
-            Gizmos.DrawSphere(currentFacePosition.CornerB, 0.5f);
-            Gizmos.DrawSphere(currentFacePosition.CornerC, 0.5f);
-            Gizmos.DrawSphere(currentFacePosition.CornerD, 0.5f);
         }
 
         /// <summary>
@@ -72,30 +62,6 @@ namespace SFBuilder.Obj
                 Physics.Raycast(new Ray(currentFacePosition.CornerB, Vector3.down), rayLength) &&
                 Physics.Raycast(new Ray(currentFacePosition.CornerC, Vector3.down), rayLength) &&
                 Physics.Raycast(new Ray(currentFacePosition.CornerD, Vector3.down), rayLength);
-        }
-
-        /// <summary>
-        /// When something enters the grounder, keep track of it
-        /// </summary>
-        /// <param name="other">The other collider that entered</param>
-        private void OnTriggerEnter(Collider other)
-        {
-            if (collidedObjects == null)
-                collidedObjects = new List<Collider>(16);
-            if (other.name != "Ranger")
-                collidedObjects.Add(other);
-        }
-
-        /// <summary>
-        /// When something exits the grounder, don't keep track of it anymore
-        /// </summary>
-        /// <param name="other">The other collider that exited</param>
-        private void OnTriggerExit(Collider other)
-        {
-            if (collidedObjects == null)
-                collidedObjects = new List<Collider>(16);
-            if (other.name != "Ranger")
-                collidedObjects.Remove(other);
         }
         #endregion
     }
