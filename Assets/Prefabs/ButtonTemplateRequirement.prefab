@@ -705,7 +705,7 @@ MonoBehaviour:
     type: 3}
   tooltipText: Default text
   tooltipValues: []
-  transitionDuration: 0.5
+  transitionDuration: 0.2
   transitionCurveIn:
     serializedVersion: 2
     m_Curve:
@@ -754,7 +754,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  transitionMode: 4
+  transitionMode: 5
 --- !u!114 &-3051992052307276896
 MonoBehaviour:
   m_ObjectHideFlags: 0
