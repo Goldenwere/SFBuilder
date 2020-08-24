@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Goldenwere.Unity;
 using UnityEngine;
 
 namespace SFBuilder.Obj
@@ -55,10 +56,10 @@ namespace SFBuilder.Obj
         /// </summary>
         private void Update()
         {
-            currentFacePosition.CornerA = attachedCollider.bounds.center + new Vector3(attachedCollider.size.x, -attachedCollider.size.y, attachedCollider.size.z) * 0.5f;
-            currentFacePosition.CornerB = attachedCollider.bounds.center + new Vector3(-attachedCollider.size.x, -attachedCollider.size.y, attachedCollider.size.z) * 0.5f;
-            currentFacePosition.CornerC = attachedCollider.bounds.center + new Vector3(-attachedCollider.size.x, -attachedCollider.size.y, -attachedCollider.size.z) * 0.5f;
-            currentFacePosition.CornerD = attachedCollider.bounds.center + new Vector3(attachedCollider.size.x, -attachedCollider.size.y, -attachedCollider.size.z) * 0.5f;
+            currentFacePosition.CornerA = attachedCollider.transform.TransformPoint(attachedCollider.center + new Vector3(attachedCollider.size.x, -attachedCollider.size.y, attachedCollider.size.z) * 0.5f);
+            currentFacePosition.CornerB = attachedCollider.transform.TransformPoint(attachedCollider.center + new Vector3(-attachedCollider.size.x, -attachedCollider.size.y, attachedCollider.size.z) * 0.5f);
+            currentFacePosition.CornerC = attachedCollider.transform.TransformPoint(attachedCollider.center + new Vector3(-attachedCollider.size.x, -attachedCollider.size.y, -attachedCollider.size.z) * 0.5f);
+            currentFacePosition.CornerD = attachedCollider.transform.TransformPoint(attachedCollider.center + new Vector3(attachedCollider.size.x, -attachedCollider.size.y, -attachedCollider.size.z) * 0.5f);
         }
 
         /// <summary>
