@@ -5888,6 +5888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 702898266}
   - component: {fileID: 702898267}
+  - component: {fileID: 702898268}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -5974,6 +5975,81 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!114 &702898268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702898265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorMode: 0
+  anchorPosition: 8
+  arrowDefaultPositionAtMiddle: 0
+  cameraThatRendersCanvas: {fileID: 325333594}
+  cameraThatRendersCanvasName: 
+  canvasToBeAttachedTo: {fileID: 2131888649}
+  tooltipDelay: 0.5
+  tooltipHorizontalFactor: 1
+  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
+  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
+    type: 3}
+  tooltipText: Adds reflections between certain objects
+  tooltipValues: []
+  transitionDuration: 0.5
+  transitionCurveIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionCurveOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionMode: 1
 --- !u!1 &714599175
 GameObject:
   m_ObjectHideFlags: 0
@@ -14607,6 +14683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491764319}
   - component: {fileID: 1491764320}
+  - component: {fileID: 1491764321}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -14693,6 +14770,81 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!114 &1491764321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491764318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorMode: 0
+  anchorPosition: 8
+  arrowDefaultPositionAtMiddle: 0
+  cameraThatRendersCanvas: {fileID: 325333594}
+  cameraThatRendersCanvasName: 
+  canvasToBeAttachedTo: {fileID: 2131888649}
+  tooltipDelay: 0.5
+  tooltipHorizontalFactor: 1
+  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
+  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
+    type: 3}
+  tooltipText: Post-processing effect which adds subtle shadows between objects
+  tooltipValues: []
+  transitionDuration: 0.5
+  transitionCurveIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionCurveOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionMode: 1
 --- !u!1 &1493448537
 GameObject:
   m_ObjectHideFlags: 0
@@ -14779,6 +14931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499005381}
   - component: {fileID: 1499005382}
+  - component: {fileID: 1499005383}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -14865,6 +15018,81 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!114 &1499005383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499005380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorMode: 0
+  anchorPosition: 8
+  arrowDefaultPositionAtMiddle: 0
+  cameraThatRendersCanvas: {fileID: 325333594}
+  cameraThatRendersCanvasName: 
+  canvasToBeAttachedTo: {fileID: 2131888649}
+  tooltipDelay: 0.5
+  tooltipHorizontalFactor: 1
+  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
+  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
+    type: 3}
+  tooltipText: Adds a subtle glow to bright areas
+  tooltipValues: []
+  transitionDuration: 0.5
+  transitionCurveIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionCurveOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  transitionMode: 1
 --- !u!1 &1511429631
 GameObject:
   m_ObjectHideFlags: 0
