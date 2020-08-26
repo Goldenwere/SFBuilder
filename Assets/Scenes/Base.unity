@@ -827,6 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91400045}
   - component: {fileID: 91400046}
+  - component: {fileID: 91400047}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -919,6 +920,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &91400047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91400044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c102f5943134634a9dba93839b5bc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedSlider: {fileID: 91400046}
+  associatedTextElement: {fileID: 2109093459}
 --- !u!1 &92745469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3801,11 +3816,39 @@ MonoBehaviour:
   - {fileID: 312050632}
   - {fileID: 803671045}
   settingsMenuElements:
+    generalKeyboardControls:
+      cameraMovementBackward: {fileID: 0}
+      cameraMovementForward: {fileID: 0}
+      cameraMovementLeft: {fileID: 0}
+      cameraMovementRight: {fileID: 0}
+      cameraRotateLeft: {fileID: 0}
+      cameraRotateRight: {fileID: 0}
+      cameraTiltUp: {fileID: 0}
+      cameraTiltDown: {fileID: 0}
+      cameraZoomIn: {fileID: 0}
+      cameraZoomOut: {fileID: 0}
+      gameplayCancelAndMenu: {fileID: 0}
+      gameplayPlacement: {fileID: 0}
+      gameplayUndo: {fileID: 0}
+    generalGamepadControls:
+      cameraMovementBackward: {fileID: 0}
+      cameraMovementForward: {fileID: 0}
+      cameraMovementLeft: {fileID: 0}
+      cameraMovementRight: {fileID: 0}
+      cameraRotateLeft: {fileID: 0}
+      cameraRotateRight: {fileID: 0}
+      cameraTiltUp: {fileID: 0}
+      cameraTiltDown: {fileID: 0}
+      cameraZoomIn: {fileID: 0}
+      cameraZoomOut: {fileID: 0}
+      gameplayCancelAndMenu: {fileID: 0}
+      gameplayPlacement: {fileID: 0}
+      gameplayUndo: {fileID: 0}
     postprocAO: {fileID: 1491764320}
     postprocBloom: {fileID: 1499005382}
     postprocSSR: {fileID: 702898267}
-    volMusic: {fileID: 91400046}
-    volEffects: {fileID: 1861769899}
+    volMusic: {fileID: 91400047}
+    volEffects: {fileID: 1861769900}
   startupFadeImage: {fileID: 17871758}
   transitionCurve:
     serializedVersion: 2
@@ -14399,6 +14442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107603327}
   - component: {fileID: 1107603328}
+  - component: {fileID: 1107603329}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -14480,6 +14524,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1107603329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107603326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c102f5943134634a9dba93839b5bc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedSlider: {fileID: 1107603328}
+  associatedTextElement: {fileID: 814005838}
 --- !u!1 &1110414263
 GameObject:
   m_ObjectHideFlags: 0
@@ -15607,6 +15665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170611972}
   - component: {fileID: 1170611973}
+  - component: {fileID: 1170611974}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -15688,6 +15747,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1170611974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170611971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c102f5943134634a9dba93839b5bc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedSlider: {fileID: 1170611973}
+  associatedTextElement: {fileID: 571382816}
 --- !u!1 &1180588147
 GameObject:
   m_ObjectHideFlags: 0
@@ -16827,7 +16900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -8, y: 165}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1228010932
@@ -26149,6 +26222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861769898}
   - component: {fileID: 1861769899}
+  - component: {fileID: 1861769900}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -26241,6 +26315,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1861769900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861769897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c102f5943134634a9dba93839b5bc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedSlider: {fileID: 1861769899}
+  associatedTextElement: {fileID: 1084467282}
 --- !u!1 &1879155151
 GameObject:
   m_ObjectHideFlags: 0
@@ -28266,6 +28354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037338222}
   - component: {fileID: 2037338223}
+  - component: {fileID: 2037338224}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -28347,6 +28436,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2037338224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037338221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c102f5943134634a9dba93839b5bc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedSlider: {fileID: 2037338223}
+  associatedTextElement: {fileID: 1323762317}
 --- !u!1 &2048923470
 GameObject:
   m_ObjectHideFlags: 0
