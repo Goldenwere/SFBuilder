@@ -26,6 +26,7 @@ namespace SFBuilder.UI
         [SerializeField] private CanvasGroup            canvas;
         [SerializeField] private GameObject[]           canvasMainElements;
         [SerializeField] private GameObject[]           canvasSettingsElements;
+        [SerializeField] private GameObject[]           canvasSettingsSubmenuActiveBackgrounds;
         [SerializeField] private RectTransform          canvasSettingsSubmenuContainer;
         [SerializeField] private GameObject[]           canvasSettingsSubmenuElements;
         [SerializeField] private SettingsMenuElements   settingsMenuElements;
@@ -217,6 +218,13 @@ namespace SFBuilder.UI
                     go.SetActive(true);
                     canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, go.GetComponent<RectTransform>().sizeDelta.y);
                 }
+                else
+                    go.SetActive(false);
+            }
+            foreach (GameObject go in canvasSettingsSubmenuActiveBackgrounds)
+            {
+                if (go.name == name)
+                    go.SetActive(true);
                 else
                     go.SetActive(false);
             }
