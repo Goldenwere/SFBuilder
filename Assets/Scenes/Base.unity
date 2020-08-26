@@ -1823,7 +1823,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179722656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnSettingsSubmenuGraphicsPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &179722656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3816,6 +3827,11 @@ MonoBehaviour:
   - {fileID: 2061757762}
   - {fileID: 1920825964}
   - {fileID: 1278803182}
+  canvasSettingsSubmenuContainer: {fileID: 1650678066}
+  canvasSettingsSubmenuElements:
+  - {fileID: 1006357840}
+  - {fileID: 626241710}
+  - {fileID: 1227832113}
   settingsMenuElements:
     generalKeyboardControls:
       cameraMovementBackward: {fileID: 1532583620}
@@ -6174,7 +6190,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 475038140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnSettingsSubmenuControlsPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &475038140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9632,7 +9659,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 702880277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnSettingsSubmenuAudioPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &702880277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17475,7 +17513,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -8, y: 165}
+  m_SizeDelta: {x: -8, y: 345}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1228010932
 GameObject:
@@ -24411,7 +24449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -25084,7 +25122,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.031250298
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -29331,7 +29369,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSavePressed
+        m_MethodName: OnSettingsRevertPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

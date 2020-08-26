@@ -1,10 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using System.Collections;
 using Goldenwere.Unity.UI;
 
 namespace SFBuilder.UI
 {
+    /// <summary>
+    /// Defines the submenus available in the settings menu
+    /// </summary>
+    public enum SettingsSubmenu
+    {
+        audio,
+        controls,
+        graphics
+    }
+
     /// <summary>
     /// Manages UI and associated input/output for the game's menus
     /// </summary>
@@ -15,6 +26,8 @@ namespace SFBuilder.UI
         [SerializeField] private CanvasGroup            canvas;
         [SerializeField] private GameObject[]           canvasMainElements;
         [SerializeField] private GameObject[]           canvasSettingsElements;
+        [SerializeField] private RectTransform          canvasSettingsSubmenuContainer;
+        [SerializeField] private GameObject[]           canvasSettingsSubmenuElements;
         [SerializeField] private SettingsMenuElements   settingsMenuElements;
         [SerializeField] private Image                  startupFadeImage;
         [SerializeField] private AnimationCurve         transitionCurve;
@@ -23,7 +36,9 @@ namespace SFBuilder.UI
         [SerializeField] private Image                  transitionImage;
 #pragma warning restore 0649
         /**************/ private SettingsData           workingSettings;
+        /**************/ private SettingsSubmenu        workingSettingsSubmenuState;
         #endregion
+
         #region Inline Classes
         /// <summary>
         /// Collection of elements related to generic controls menu elements (there are two sets of these - one for keyboard, one for gamepad)
@@ -93,6 +108,7 @@ namespace SFBuilder.UI
             public SliderTextLoadExtension      volEffects;
         }
         #endregion
+
         #region Methods
         /// <summary>
         /// Copy the material for transitions since it messes with asset file
@@ -115,6 +131,7 @@ namespace SFBuilder.UI
             UITransitionSystem.Instance.ClearElements();
 
             StartCoroutine(StartupAnimation());
+            LoadSubmenu(SettingsSubmenu.graphics);
         }
 
         /// <summary>
@@ -173,6 +190,40 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Loads appropriate settings submenus based on the new submenu state
+        /// </summary>
+        /// <param name="newState">The submenu to load</param>
+        private void LoadSubmenu(SettingsSubmenu newState)
+        {
+            string name;
+            switch (newState)
+            {
+                case SettingsSubmenu.audio:
+                    name = "Audio";
+                    break;
+                case SettingsSubmenu.controls:
+                    name = "Controls";
+                    break;
+                case SettingsSubmenu.graphics:
+                default:
+                    name = "Graphics";
+                    break;
+            }
+
+            foreach (GameObject go in canvasSettingsSubmenuElements)
+            {
+                if (go.name == name)
+                {
+                    go.SetActive(true);
+                    canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, go.GetComponent<RectTransform>().sizeDelta.y);
+                }
+                else
+                    go.SetActive(false);
+            }
+            workingSettingsSubmenuState = newState;
+        }
+
+        /// <summary>
         /// When the main menu button is pressed, load the main menu
         /// </summary>
         public void OnMainMenuPressed()
@@ -224,6 +275,51 @@ namespace SFBuilder.UI
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             GameSettings.Instance.Settings = workingSettings;
+        }
+
+        /// <summary>
+        /// When the revert button is pressed on the settings menu, revert all pending changes
+        /// </summary>
+        public void OnSettingsRevertPressed()
+        {
+            workingSettings = GameSettings.Instance.Settings;
+            LoadSettings();
+        }
+
+        /// <summary>
+        /// When the audio button is pressed, switch to that submenu
+        /// </summary>
+        public void OnSettingsSubmenuAudioPressed()
+        {
+            if (workingSettingsSubmenuState != SettingsSubmenu.audio)
+            {
+                LoadSubmenu(SettingsSubmenu.audio);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            }
+        }
+
+        /// <summary>
+        /// When the controls button is pressed, switch to that submenu
+        /// </summary>
+        public void OnSettingsSubmenuControlsPressed()
+        {
+            if (workingSettingsSubmenuState != SettingsSubmenu.controls)
+            {
+                LoadSubmenu(SettingsSubmenu.controls);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            }
+        }
+
+        /// <summary>
+        /// When the graphics button is pressed, switch to that submenu
+        /// </summary>
+        public void OnSettingsSubmenuGraphicsPressed()
+        {
+            if (workingSettingsSubmenuState != SettingsSubmenu.graphics)
+            {
+                LoadSubmenu(SettingsSubmenu.graphics);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            }
         }
 
         /// <summary>
