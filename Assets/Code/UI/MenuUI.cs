@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Goldenwere.Unity.UI;
 
 namespace SFBuilder.UI
 {
@@ -25,16 +26,68 @@ namespace SFBuilder.UI
         #endregion
         #region Inline Classes
         /// <summary>
+        /// Collection of elements related to generic controls menu elements (there are two sets of these - one for keyboard, one for gamepad)
+        /// </summary>
+        [System.Serializable]
+        protected class GenericControlsMenuElements
+        {
+            public Button   cameraMovementBackward;
+            public Button   cameraMovementForward;
+            public Button   cameraMovementLeft;
+            public Button   cameraMovementRight;
+
+            public Button   cameraRotateLeft;
+            public Button   cameraRotateRight;
+            public Button   cameraTiltUp;
+            public Button   cameraTiltDown;
+
+            public Button   cameraZoomIn;
+            public Button   cameraZoomOut;
+
+            public Button   gameplayCancelAndMenu;
+            public Button   gameplayPlacement;
+            public Button   gameplayUndo;
+        }
+
+        /// <summary>
+        /// Collection of remaining controls menu elements (which are single-set)
+        /// </summary>
+        [System.Serializable]
+        protected class OtherControlsMenuElements
+        {
+            public Button                   gamepadCursorDown;
+            public Button                   gamepadCursorLeft;
+            public Button                   gamepadCursorRight;
+            public Button                   gamepadCursorUp;
+
+            public Button                   gamepadToggleZoom;
+
+            public Toggle                   mouseInvertDeltaHoriztonal;
+            public Toggle                   mouseInvertDeltaVertical;
+            public Toggle                   mouseInvertZoom;
+
+            public Button                   mouseToggleMovement;
+            public Button                   mouseToggleRotation;
+            public Button                   mouseToggleZoom;
+
+            public SliderTextLoadExtension  sensitivityMovement;
+            public SliderTextLoadExtension  sensitivityRotation;
+            public SliderTextLoadExtension  sensitivityZoom;
+        }
+
+        /// <summary>
         /// Collection of elements on the settings menu, whose values are set every time the menu loads
         /// </summary>
         [System.Serializable]
         protected class SettingsMenuElements
         {
-            public Toggle   postprocAO;
-            public Toggle   postprocBloom;
-            public Toggle   postprocSSR;
-            public Slider   volMusic;
-            public Slider   volEffects;
+            public GenericControlsMenuElements  generalKeyboardControls;
+            public GenericControlsMenuElements  generalGamepadControls;
+            public Toggle                       postprocAO;
+            public Toggle                       postprocBloom;
+            public Toggle                       postprocSSR;
+            public SliderTextLoadExtension      volMusic;
+            public SliderTextLoadExtension      volEffects;
         }
         #endregion
         #region Methods
@@ -112,8 +165,8 @@ namespace SFBuilder.UI
             settingsMenuElements.postprocAO.SetIsOnWithoutNotify(workingSettings.postprocAO);
             settingsMenuElements.postprocBloom.SetIsOnWithoutNotify(workingSettings.postprocBloom);
             settingsMenuElements.postprocSSR.SetIsOnWithoutNotify(workingSettings.postprocSSR);
-            settingsMenuElements.volEffects.SetValueWithoutNotify(workingSettings.volEffects);
-            settingsMenuElements.volMusic.SetValueWithoutNotify(workingSettings.volMusic);
+            settingsMenuElements.volEffects.AssociatedSlider.SetValueWithoutNotify(workingSettings.volEffects);
+            settingsMenuElements.volMusic.AssociatedSlider.SetValueWithoutNotify(workingSettings.volMusic);
         }
 
         /// <summary>
