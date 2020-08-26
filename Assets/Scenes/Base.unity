@@ -3811,10 +3811,11 @@ MonoBehaviour:
   - {fileID: 2003936560}
   canvasSettingsElements:
   - {fileID: 1254947469}
-  - {fileID: 1006357840}
-  - {fileID: 626241710}
-  - {fileID: 312050632}
   - {fileID: 803671045}
+  - {fileID: 312050632}
+  - {fileID: 2061757762}
+  - {fileID: 1920825964}
+  - {fileID: 1278803182}
   settingsMenuElements:
     generalKeyboardControls:
       cameraMovementBackward: {fileID: 1532583620}
@@ -10053,7 +10054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Undo
+  m_text: Revert
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
@@ -10122,7 +10123,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 714599177}
-    characterCount: 4
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -18218,6 +18219,7 @@ GameObject:
   - component: {fileID: 1278803186}
   - component: {fileID: 1278803185}
   - component: {fileID: 1278803184}
+  - component: {fileID: 1278803187}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -18245,7 +18247,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -8}
-  m_SizeDelta: {x: 0, y: 62}
+  m_SizeDelta: {x: 0, y: 64}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1278803184
 MonoBehaviour:
@@ -18314,6 +18316,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278803182}
   m_CullTransparentMesh: 0
+--- !u!114 &1278803187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278803182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partToAnimate: 0
+  playSoundDuringAnimation: 0
+  valueStart: {x: 1, y: 0, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1282232101
 GameObject:
   m_ObjectHideFlags: 0
@@ -24393,7 +24411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000333786, y: 0.000011444092}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -25066,7 +25084,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.031250298
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -27717,6 +27735,7 @@ GameObject:
   - component: {fileID: 1920825965}
   - component: {fileID: 1920825967}
   - component: {fileID: 1920825966}
+  - component: {fileID: 1920825968}
   m_Layer: 5
   m_Name: TabContainer
   m_TagString: Untagged
@@ -27783,6 +27802,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920825964}
   m_CullTransparentMesh: 0
+--- !u!114 &1920825968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920825964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partToAnimate: 0
+  playSoundDuringAnimation: 0
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &1936641493
 GameObject:
   m_ObjectHideFlags: 0
@@ -29194,7 +29229,7 @@ GameObject:
   - component: {fileID: 2061757765}
   - component: {fileID: 2061757764}
   m_Layer: 5
-  m_Name: Button_Undo
+  m_Name: Button_Revert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
