@@ -62,6 +62,8 @@ namespace SFBuilder.UI
 
             public Button                   gamepadToggleZoom;
 
+            public Toggle                   modifiersHeld;
+
             public Toggle                   mouseInvertDeltaHoriztonal;
             public Toggle                   mouseInvertDeltaVertical;
             public Toggle                   mouseInvertZoom;
@@ -83,6 +85,7 @@ namespace SFBuilder.UI
         {
             public GenericControlsMenuElements  generalKeyboardControls;
             public GenericControlsMenuElements  generalGamepadControls;
+            public OtherControlsMenuElements    otherControls;
             public Toggle                       postprocAO;
             public Toggle                       postprocBloom;
             public Toggle                       postprocSSR;
