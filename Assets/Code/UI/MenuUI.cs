@@ -187,7 +187,9 @@ namespace SFBuilder.UI
             settingsMenuElements.postprocBloom.SetIsOnWithoutNotify(workingSettings.postprocBloom);
             settingsMenuElements.postprocSSR.SetIsOnWithoutNotify(workingSettings.postprocSSR);
             settingsMenuElements.volEffects.AssociatedSlider.SetValueWithoutNotify(workingSettings.volEffects);
+            settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", workingSettings.volEffects));
             settingsMenuElements.volMusic.AssociatedSlider.SetValueWithoutNotify(workingSettings.volMusic);
+            settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", workingSettings.volMusic));
         }
 
         /// <summary>
@@ -337,6 +339,7 @@ namespace SFBuilder.UI
         public void OnValueChanged_Audio_Effects(float val)
         {
             workingSettings.volEffects = val;
+            settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", val));
         }
 
         /// <summary>
@@ -346,6 +349,7 @@ namespace SFBuilder.UI
         public void OnValueChanged_Audio_Music(float val)
         {
             workingSettings.volMusic = val;
+            settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", val));
         }
 
         /// <summary>
