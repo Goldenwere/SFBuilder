@@ -95,96 +95,62 @@
         /// </summary>
         public const float  UITransitionDelay = 0.25f;
 
+        /// <summary>
+        /// Converts a keyboard key from InputSystem to the symbol it represents
+        /// </summary>
+        /// <param name="name">Identifier used in InputSystem</param>
+        /// <returns>A symbol or shorthand identifier for the key provided</returns>
         public static string InputNameToChar(string name)
         {
             switch (name)
             {
-                case "backquote":
-                    return "`";
-                case "leftBracket":
-                    return "[";
-                case "rightBracket":
-                    return "]";
-                case "minus":
-                    return "-";
-                case "plus":
-                    return "+";
-                case "equals":
-                    return "=";
-                case "semicolon":
-                    return ";";
-                case "quote":
-                    return "'";
-                case "backslash":
-                    return "\\";
-                case "comma":
-                    return ",";
-                case "period":
-                    return ".";
-                case "slash":
-                    return "/";
-                case "leftCtrl":
-                    return "L CTRL";
-                case "rightCtrl":
-                    return "R CTRL";
-                case "leftAlt":
-                    return "L ALT";
-                case "rightAlt":
-                    return "R ALT";
-                case "insert":
-                    return "INS";
-                case "delete":
-                    return "DEL";
-                case "home":
-                    return "HOME";
-                case "end":
-                    return "END";
-                case "pageUp":
-                    return "PgUp";
-                case "pageDown":
-                    return "PgDn";
-                case "escape":
-                    return "ESC";
-                case "numpadMultiply":
-                    return "NUM*";
-                case "numpadDivide":
-                    return "NUM/";
-                case "numpadPlus":
-                    return "NUM+";
-                case "numpadMinus":
-                    return "NUM-";
-                case "numpadEquals":
-                    return "NUM=";
-                case "numpadPeriod":
-                    return "NUM.";
-                case "numpadEnter":
-                    return "NUM\nEnter";
-                case "numpad1":
-                    return "NUM1";
-                case "numpad2":
-                    return "NUM2";
-                case "numpad3":
-                    return "NUM3";
-                case "numpad4":
-                    return "NUM4";
-                case "numpad5":
-                    return "NUM5";
-                case "numpad6":
-                    return "NUM6";
-                case "numpad7":
-                    return "NUM7";
-                case "numpad8":
-                    return "NUM8";
-                case "numpad9":
-                    return "NUM9";
-                case "numpad0":
-                    return "NUM0";
-                case "contextMenu":
-                    return "Context\nMenu";
-                default:
-                    return name;
+                case "backquote":       return "`";
+                case "leftBracket":     return "[";
+                case "rightBracket":    return "]";
+                case "minus":           return "-";
+                case "plus":            return "+";
+                case "equals":          return "=";
+                case "semicolon":       return ";";
+                case "quote":           return "'";
+                case "backslash":       return "\\";
+                case "comma":           return ",";
+                case "period":          return ".";
+                case "slash":           return "/";
+                case "leftCtrl":        return "L CTRL";
+                case "rightCtrl":       return "R CTRL";
+                case "leftAlt":         return "L ALT";
+                case "rightAlt":        return "R ALT";
+                case "ctrl":            return "CTRL";
+                case "alt":             return "ALT";
+                case "shift":           return "SHIFT";
+                case "insert":          return "INS";
+                case "delete":          return "DEL";
+                case "home":            return "HOME";
+                case "end":             return "END";
+                case "pageUp":          return "PgUp";
+                case "pageDown":        return "PgDn";
+                case "escape":          return "ESC";
+                case "numpadMultiply":  return "NUM*";
+                case "numpadDivide":    return "NUM/";
+                case "numpadPlus":      return "NUM+";
+                case "numpadMinus":     return "NUM-";
+                case "numpadEquals":    return "NUM=";
+                case "numpadPeriod":    return "NUM.";
+                case "numpadEnter":     return "NUM\nEnter";
+                case "numpad1":         return "NUM1";
+                case "numpad2":         return "NUM2";
+                case "numpad3":         return "NUM3";
+                case "numpad4":         return "NUM4";
+                case "numpad5":         return "NUM5";
+                case "numpad6":         return "NUM6";
+                case "numpad7":         return "NUM7";
+                case "numpad8":         return "NUM8";
+                case "numpad9":         return "NUM9";
+                case "numpad0":         return "NUM0";
+                case "contextMenu":     return "Context\nMenu";
+                default:                return name;
             }
-}
+        }
 
         /// <summary>
         /// Adds color tags (HTML, treated as a GameConstant) to a number depending on if it's positive or negative

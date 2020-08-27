@@ -307,96 +307,48 @@ namespace SFBuilder.UI
                     imageObj.SetActive(true);
                     switch (pathSplit[1])
                     {
-                        case "buttonNorth":
-                            image.sprite = controlsMenuImages.gamepad_button_north;
-                            break;
-                        case "buttonSouth":
-                            image.sprite = controlsMenuImages.gamepad_button_south;
-                            break;
-                        case "buttonEast":
-                            image.sprite = controlsMenuImages.gamepad_button_east;
-                            break;
-                        case "buttonWest":
-                            image.sprite = controlsMenuImages.gamepad_button_west;
-                            break;
-                        case "select":
-                            image.sprite = controlsMenuImages.gamepad_button_select;
-                            break;
+                        case "buttonNorth":         image.sprite = controlsMenuImages.gamepad_button_north; break;
+                        case "buttonSouth":         image.sprite = controlsMenuImages.gamepad_button_south; break;
+                        case "buttonEast":          image.sprite = controlsMenuImages.gamepad_button_east; break;
+                        case "buttonWest":          image.sprite = controlsMenuImages.gamepad_button_west; break;
+                        case "select":              image.sprite = controlsMenuImages.gamepad_button_select; break;
                         case "start":
-                        case "systemButton":
-                            image.sprite = controlsMenuImages.gamepad_button_start;
-                            break;
+                        case "systemButton":        image.sprite = controlsMenuImages.gamepad_button_start; break;
                         case "leftStick":
                             switch (pathSplit[2])
                             {
-                                case "up":
-                                    image.sprite = controlsMenuImages.gamepad_lthumbstick_up;
-                                    break;
-                                case "down":
-                                    image.sprite = controlsMenuImages.gamepad_lthumbstick_down;
-                                    break;
-                                case "left":
-                                    image.sprite = controlsMenuImages.gamepad_lthumbstick_left;
-                                    break;
-                                case "right":
-                                    image.sprite = controlsMenuImages.gamepad_lthumbstick_right;
-                                    break;
+                                case "up":          image.sprite = controlsMenuImages.gamepad_lthumbstick_up; break;
+                                case "down":        image.sprite = controlsMenuImages.gamepad_lthumbstick_down; break;
+                                case "left":        image.sprite = controlsMenuImages.gamepad_lthumbstick_left; break;
+                                case "right":       image.sprite = controlsMenuImages.gamepad_lthumbstick_right; break;
                             }
                             break;
                         case "rightStick":
                             switch (pathSplit[2])
                             {
-                                case "up":
-                                    image.sprite = controlsMenuImages.gamepad_rthumbstick_up;
-                                    break;
-                                case "down":
-                                    image.sprite = controlsMenuImages.gamepad_rthumbstick_down;
-                                    break;
-                                case "left":
-                                    image.sprite = controlsMenuImages.gamepad_rthumbstick_left;
-                                    break;
-                                case "right":
-                                    image.sprite = controlsMenuImages.gamepad_rthumbstick_right;
-                                    break;
+                                case "up":          image.sprite = controlsMenuImages.gamepad_rthumbstick_up; break;
+                                case "down":        image.sprite = controlsMenuImages.gamepad_rthumbstick_down; break;
+                                case "left":        image.sprite = controlsMenuImages.gamepad_rthumbstick_left; break;
+                                case "right":       image.sprite = controlsMenuImages.gamepad_rthumbstick_right; break;
                             }
                             break;
                         case "dpad":
                             switch (pathSplit[2])
                             {
-                                case "up":
-                                    image.sprite = controlsMenuImages.gamepad_dpad_up;
-                                    break;
-                                case "down":
-                                    image.sprite = controlsMenuImages.gamepad_dpad_down;
-                                    break;
-                                case "left":
-                                    image.sprite = controlsMenuImages.gamepad_dpad_left;
-                                    break;
-                                case "right":
-                                    image.sprite = controlsMenuImages.gamepad_dpad_right;
-                                    break;
+                                case "up":          image.sprite = controlsMenuImages.gamepad_dpad_up; break;
+                                case "down":        image.sprite = controlsMenuImages.gamepad_dpad_down; break;
+                                case "left":        image.sprite = controlsMenuImages.gamepad_dpad_left; break;
+                                case "right":       image.sprite = controlsMenuImages.gamepad_dpad_right; break;
                             }
                             break;
-                        case "leftShoulder":
-                            image.sprite = controlsMenuImages.gamepad_lshoulder;
-                            break;
-                        case "rightShoulder":
-                            image.sprite = controlsMenuImages.gamepad_rshoulder;
-                            break;
+                        case "leftShoulder":        image.sprite = controlsMenuImages.gamepad_lshoulder; break;
+                        case "rightShoulder":       image.sprite = controlsMenuImages.gamepad_rshoulder; break;
                         case "leftTrigger":
-                        case "leftTriggerButton":
-                            image.sprite = controlsMenuImages.gamepad_ltrigger;
-                            break;
+                        case "leftTriggerButton":   image.sprite = controlsMenuImages.gamepad_ltrigger; break;
                         case "rightTrigger":
-                        case "rightTriggerButton":
-                            image.sprite = controlsMenuImages.gamepad_rtrigger;
-                            break;
-                        case "leftStickPress":
-                            image.sprite = controlsMenuImages.gamepad_lthumbstick_press;
-                            break;
-                        case "rightStickPress":
-                            image.sprite = controlsMenuImages.gamepad_rthumbstick_press;
-                            break;
+                        case "rightTriggerButton":  image.sprite = controlsMenuImages.gamepad_rtrigger; break;
+                        case "leftStickPress":      image.sprite = controlsMenuImages.gamepad_lthumbstick_press; break;
+                        case "rightStickPress":     image.sprite = controlsMenuImages.gamepad_rthumbstick_press; break;
                         default:
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
@@ -415,21 +367,11 @@ namespace SFBuilder.UI
                     imageObj.SetActive(true);
                     switch (pathSplit[1])
                     {
-                        case "leftButton":
-                            image.sprite = controlsMenuImages.mouse_left;
-                            break;
-                        case "middleButton":
-                            image.sprite = controlsMenuImages.mouse_middle;
-                            break;
-                        case "rightButton":
-                            image.sprite = controlsMenuImages.mouse_right;
-                            break;
-                        case "forward":
-                            image.sprite = controlsMenuImages.mouse_forward;
-                            break;
-                        case "back":
-                            image.sprite = controlsMenuImages.mouse_back;
-                            break;
+                        case "leftButton":      image.sprite = controlsMenuImages.mouse_left; break;
+                        case "middleButton":    image.sprite = controlsMenuImages.mouse_middle; break;
+                        case "rightButton":     image.sprite = controlsMenuImages.mouse_right; break;
+                        case "forward":         image.sprite = controlsMenuImages.mouse_forward; break;
+                        case "back":            image.sprite = controlsMenuImages.mouse_back; break;
                         default:
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
@@ -454,119 +396,87 @@ namespace SFBuilder.UI
 
                     else
                     {
-                        #region Image-based keys
-                        #region Shift Keys
-                        if (pathSplit[1] == "leftShift")
+                        // Image-based keys
+                        switch(pathSplit[1])
                         {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_lshift;
+                            case "leftShift":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_lshift;
+                                break;
+                            case "rightShift":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_rshift;
+                                break;
+                            case "space":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_space;
+                                break;
+                            case "backspace":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_backspace;
+                                break;
+                            case "enter":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_enter;
+                                break;
+                            case "tab":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_tab;
+                                break;
+                            case "capsLock":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_caps;
+                                break;
+                            case "numLock":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_num;
+                                break;
+                            case "scrollLock":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_scr;
+                                break;
+                            case "downArrow":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_down;
+                                break;
+                            case "leftArrow":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_left;
+                                break;
+                            case "rightArrow":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_right;
+                                break;
+                            case "upArrow":
+                                textObj.SetActive(false);
+                                imageObj.SetActive(true);
+                                image.sprite = controlsMenuImages.keyboard_up;
+                                break;
+                            default:
+                                string converted = GameConstants.InputNameToChar(pathSplit[1]);
+                                text.text = converted;
+                                /*
+                                if (converted.Length < 4)
+                                    text.fontSize = GameConstants.MenuControlsFontSizeChar;
+                                else if (converted.Length < 8)
+                                    text.fontSize = GameConstants.MenuControlsFontSizeMiniWord;
+                                else
+                                    text.fontSize = GameConstants.MenuControlsFontSizeWord;
+                                */
+                                break;
                         }
-
-                        else if (pathSplit[1] == "rightShift")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_rshift;
-                        }
-                        #endregion
-
-                        #region Character Keys (bspace, space, enter, tab)
-                        else if (pathSplit[1] == "space")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_space;
-                        }
-
-                        else if (pathSplit[1] == "backspace")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_backspace;
-                        }
-
-                        else if (pathSplit[1] == "enter")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_enter;
-                        }
-
-                        else if (pathSplit[1] == "tab")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_tab;
-                        }
-                        #endregion
-
-                        #region Lock keys
-                        else if (pathSplit[1] == "capsLock")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_caps;
-                        }
-
-                        else if (pathSplit[1] == "numLock")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_num;
-                        }
-
-                        else if (pathSplit[1] == "scrollLock")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_scr;
-                        }
-                        #endregion
-
-                        #region Arrow keys
-                        else if (pathSplit[1] == "downArrow")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_down;
-                        }
-
-                        else if (pathSplit[1] == "leftArrow")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_left;
-                        }
-
-                        else if (pathSplit[1] == "rightArrow")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_right;
-                        }
-
-                        else if (pathSplit[1] == "upArrow")
-                        {
-                            textObj.SetActive(false);
-                            imageObj.SetActive(true);
-                            image.sprite = controlsMenuImages.keyboard_up;
-                        }
-                        #endregion
-                        #endregion
-
-                        #region Remaining keys
-                        string converted = GameConstants.InputNameToChar(pathSplit[1]);
-                        text.text = converted;
-                        /*
-                        if (converted.Length < 4)
-                            text.fontSize = GameConstants.MenuControlsFontSizeChar;
-                        else if (converted.Length < 8)
-                            text.fontSize = GameConstants.MenuControlsFontSizeMiniWord;
-                        else
-                            text.fontSize = GameConstants.MenuControlsFontSizeWord;
-                        */
-                        #endregion
                     }
                     break;
                     #endregion
