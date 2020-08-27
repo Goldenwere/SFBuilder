@@ -38,6 +38,9 @@ namespace Goldenwere.Unity.Controller
         [Header("Core Components")]
         [Tooltip                                ("The attached PlayerInput class")]
         [SerializeField] protected PlayerInput  attachedInput;
+        [Range(0.1f,5)][Tooltip                 ("How fast the camera's motion is, applied after scale constants and before sensitivity settings; " +
+                                                "useful if game scale or style depends on a base speed")]
+        [SerializeField] protected float        cameraMotionSpeed = 2f;
         [Range(0.01f, 100)][Tooltip             ("Distance that must be kept between the camera and any object not under IgnoreRaycast with a collider")]
         [SerializeField] protected float        collisionPadding = 3f;
         [Tooltip                                ("Whether to raycast downward to keep the camera the same distance off the ground when ground height changes")]
@@ -57,13 +60,12 @@ namespace Goldenwere.Unity.Controller
 #pragma warning restore 0649
         #endregion
         #region Sensitivty Constants (these shouldn't need tweaked, as they are for ensuring that different inputs result in similar sensitivity at base; use other settings instead)
-        /**************/
-        protected const float  sensitivityScaleMovement = 0.35f;
-        /**************/ protected const float  sensitivityScaleMovementMouse = 0.05f;
-        /**************/ protected const float  sensitivityScaleRotation = 1f;
-        /**************/ protected const float  sensitivityScaleRotationMouse = 0.1f;
-        /**************/ protected const float  sensitivityScaleZoom = 1f;
-        /**************/ protected const float  sensitivityScaleZoomMouse = 3f;
+        /**************/ protected const float  sensitivityScaleMovement = 0.4f;
+        /**************/ protected const float  sensitivityScaleMovementMouse = 0.075f;
+        /**************/ protected const float  sensitivityScaleRotation = 0.75f;
+        /**************/ protected const float  sensitivityScaleRotationMouse = 0.095f;
+        /**************/ protected const float  sensitivityScaleZoom = 0.6f;
+        /**************/ protected const float  sensitivityScaleZoomMouse = 1.6f;
         #endregion
         #region Working Variables (these are used for the camera's functionality)
         /**************/ protected Vector3      workingDesiredPosition;
@@ -112,15 +114,15 @@ namespace Goldenwere.Unity.Controller
                 if (workingInputActionMovement)
                 {
                     if (!workingInputGamepadToggleZoom)
-                        PerformMovement(attachedInput.actions["ActionMovement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement);
+                        PerformMovement(attachedInput.actions["ActionMovement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement * cameraMotionSpeed);
                 }
 
                 if (workingInputActionRotation)
-                    PerformRotation(attachedInput.actions["ActionRotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation);
+                    PerformRotation(attachedInput.actions["ActionRotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation * cameraMotionSpeed);
 
                 if (workingInputActionZoom)
                     if (attachedInput.actions["ActionZoom"].activeControl.path.Contains("Keyboard") || workingInputGamepadToggleZoom)
-                        PerformZoom(attachedInput.actions["ActionZoom"].ReadValue<float>() * sensitivityScaleZoom);
+                        PerformZoom(attachedInput.actions["ActionZoom"].ReadValue<float>() * sensitivityScaleZoom * cameraMotionSpeed);
 
                 if (useCameraSmoothing)
                 {
@@ -189,9 +191,9 @@ namespace Goldenwere.Unity.Controller
             if (controlMotionEnabled)
             {
                 if (workingInputMouseToggleMovement)
-                    PerformMovement(workingInputMouseDelta * sensitivityScaleMovementMouse);
+                    PerformMovement(workingInputMouseDelta * sensitivityScaleMovementMouse * cameraMotionSpeed);
                 if (workingInputMouseToggleRotation)
-                    PerformRotation(workingInputMouseDelta * sensitivityScaleRotationMouse);
+                    PerformRotation(workingInputMouseDelta * sensitivityScaleRotationMouse * cameraMotionSpeed);
             }
         }
 
@@ -206,7 +208,7 @@ namespace Goldenwere.Unity.Controller
             if (controlMotionEnabled)
             {
                 if (workingInputMouseToggleZoom)
-                    PerformZoom(workingInputMouseZoom * sensitivityScaleZoomMouse);
+                    PerformZoom(workingInputMouseZoom * sensitivityScaleZoomMouse * cameraMotionSpeed);
             }
         }
 
