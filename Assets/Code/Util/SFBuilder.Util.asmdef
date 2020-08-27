@@ -1,0 +1,16 @@
+{
+    "name": "SFBuilder.Util",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:fce8ebc71e4725c429f3b1266645cec7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

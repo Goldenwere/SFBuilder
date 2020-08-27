@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Goldenwere
   productName: SFBuilderDemo
-  defaultCursor: {fileID: 2800000, guid: bc9a144caead2f6498a6f13494840a7b, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 2c2c3e0736e05794cb6866fda353d528, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -126,7 +126,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.19
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 32c6b6a2891460447bdce8fece39ef88, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
