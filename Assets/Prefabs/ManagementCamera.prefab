@@ -350,6 +350,7 @@ MonoBehaviour:
   settingRotationSensitivity: 1
   settingZoomSensitivity: 1
   attachedInput: {fileID: 5455443448607621999}
+  cameraMotionSpeed: 1.5
   collisionPadding: 3
   downcastEnabled: 0
   downcastMaxDistance: 100
@@ -380,6 +381,7 @@ MonoBehaviour:
   settingRotationSensitivity: 1
   settingZoomSensitivity: 1
   attachedInput: {fileID: 5455443448607621999}
+  cameraMotionSpeed: 2
   collisionPadding: 3
   downcastEnabled: 0
   downcastMaxDistance: 100
