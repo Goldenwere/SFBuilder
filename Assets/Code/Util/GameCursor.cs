@@ -9,13 +9,16 @@ namespace SFBuilder.Util
     /// </summary>
     public class GameCursor : MonoBehaviour
     {
+        #region Fields
         /**************/ public  Vector2            cursorSize;
 #pragma warning disable 0649
         [SerializeField] private Sprite             cursor;
         [SerializeField] private ManagementCamera[] cameras;
 #pragma warning restore 0649
         /**************/ private bool               drawCursor;
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Set cursor state on Start
         /// </summary>
@@ -81,7 +84,8 @@ namespace SFBuilder.Util
         /// </summary>
         private void OnSettingsUpdated()
         {
-            throw new System.NotImplementedException();
+            
         }
+        #endregion
     }
 }
