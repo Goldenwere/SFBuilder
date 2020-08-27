@@ -9,21 +9,79 @@ namespace SFBuilder.Util
     /// </summary>
     public class GameCursor : MonoBehaviour
     {
-        /**************/ public  Vector2    cursorSize;
+        /**************/ public  Vector2            cursorSize;
 #pragma warning disable 0649
-        [SerializeField] private Sprite     cursor;
+        [SerializeField] private Sprite             cursor;
+        [SerializeField] private ManagementCamera[] cameras;
 #pragma warning restore 0649
+        /**************/ private bool               drawCursor;
 
+        /// <summary>
+        /// Set cursor state on Start
+        /// </summary>
         private void Start()
         {
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            drawCursor = true;
         }
 
+        /// <summary>
+        /// Subscribe to events on Enable
+        /// </summary>
+        private void OnEnable()
+        {
+            foreach(ManagementCamera mc in cameras)
+                mc.CameraMouseStateChanged += OnCameraStateChanged;
+
+            GameEventSystem.SettingsUpdated += OnSettingsUpdated;
+        }
+
+        /// <summary>
+        /// Unsubscribe from events on Disable
+        /// </summary>
+        private void OnDisable()
+        {
+            foreach (ManagementCamera mc in cameras)
+                mc.CameraMouseStateChanged -= OnCameraStateChanged;
+
+            GameEventSystem.SettingsUpdated -= OnSettingsUpdated;
+        }
+
+        /// <summary>
+        /// Draw cursor on GUI
+        /// </summary>
         private void OnGUI()
         {
-            Vector2 pos = Mouse.current.position.ReadValue();
-            pos.y = Screen.height - pos.y;
-            GUI.DrawTexture(new Rect(pos, cursorSize), cursor.texture);
+            if (drawCursor)
+            {
+                Vector2 pos = Mouse.current.position.ReadValue();
+                pos.y = Screen.height - pos.y;
+                GUI.DrawTexture(new Rect(pos, cursorSize), cursor.texture);
+            }
+        }
+
+        /// <summary>
+        /// Handle cursor changes when controller uses mouse
+        /// </summary>
+        /// <param name="isMouseBeingUsed">Whether the mouse is currently being used (and thus whether the cursor should be hidden)</param>
+        private void OnCameraStateChanged(bool isMouseBeingUsed)
+        {
+            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
+                drawCursor = !isMouseBeingUsed;
+
+            if (drawCursor)
+                Cursor.lockState = CursorLockMode.Confined;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        /// <summary>
+        /// Handle changes to settings
+        /// </summary>
+        private void OnSettingsUpdated()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
