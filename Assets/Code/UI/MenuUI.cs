@@ -32,9 +32,6 @@ namespace SFBuilder.UI
         [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
         [SerializeField] private GameObject[]                   canvasSettingsSubmenuElements;
         [SerializeField] private ControlsMenuImages             controlsMenuImages;
-        [SerializeField] private GenericControlsMenuElements    controlsMenuButtonsGenericGamepad;
-        [SerializeField] private GenericControlsMenuElements    controlsMenuButtonsGenericKeyboard;
-        [SerializeField] private OtherControlsMenuElements      controlsMenuButtonsOther;
         [SerializeField] private SettingsMenuElements           settingsMenuElements;
         [SerializeField] private Image                          startupFadeImage;
         [SerializeField] private AnimationCurve                 transitionCurve;
@@ -217,42 +214,42 @@ namespace SFBuilder.UI
         /// </summary>
         private void InitializeButtons()
         {
-            controlsMenuButtonsGenericGamepad.cameraMovementBackward.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveBackward,    true));
-            controlsMenuButtonsGenericGamepad.cameraMovementForward.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveForward,     true));
-            controlsMenuButtonsGenericGamepad.cameraMovementLeft.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_MoveLeft,        true));
-            controlsMenuButtonsGenericGamepad.cameraMovementRight.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_MoveRight,       true));
-            controlsMenuButtonsGenericGamepad.cameraRotateLeft.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_RotateLeft,      true));
-            controlsMenuButtonsGenericGamepad.cameraRotateRight.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_RotateRight,     true));
-            controlsMenuButtonsGenericGamepad.cameraTiltDown.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_TiltDown,        true));
-            controlsMenuButtonsGenericGamepad.cameraTiltUp.onClick.AddListener(             () => OnSetControl(GenericControl.Camera_TiltUp,          true));
-            controlsMenuButtonsGenericGamepad.cameraZoomIn.onClick.AddListener(             () => OnSetControl(GenericControl.Camera_ZoomIn,          true));
-            controlsMenuButtonsGenericGamepad.cameraZoomOut.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_ZoomOut,         true));
-            controlsMenuButtonsGenericGamepad.gameplayCancelAndMenu.onClick.AddListener(    () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, true));
-            controlsMenuButtonsGenericGamepad.gameplayPlacement.onClick.AddListener(        () => OnSetControl(GenericControl.Gameplay_Placement,     true));
-            controlsMenuButtonsGenericGamepad.gameplayUndo.onClick.AddListener(             () => OnSetControl(GenericControl.Gameplay_Undo,          true));
+            settingsMenuElements.generalGamepadControls.cameraMovementBackward.onClick.AddListener( () => OnSetControl(GenericControl.Camera_MoveBackward,    true));
+            settingsMenuElements.generalGamepadControls.cameraMovementForward.onClick.AddListener(  () => OnSetControl(GenericControl.Camera_MoveForward,     true));
+            settingsMenuElements.generalGamepadControls.cameraMovementLeft.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_MoveLeft,        true));
+            settingsMenuElements.generalGamepadControls.cameraMovementRight.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveRight,       true));
+            settingsMenuElements.generalGamepadControls.cameraRotateLeft.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_RotateLeft,      true));
+            settingsMenuElements.generalGamepadControls.cameraRotateRight.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_RotateRight,     true));
+            settingsMenuElements.generalGamepadControls.cameraTiltDown.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_TiltDown,        true));
+            settingsMenuElements.generalGamepadControls.cameraTiltUp.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_TiltUp,          true));
+            settingsMenuElements.generalGamepadControls.cameraZoomIn.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_ZoomIn,          true));
+            settingsMenuElements.generalGamepadControls.cameraZoomOut.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_ZoomOut,         true));
+            settingsMenuElements.generalGamepadControls.gameplayCancelAndMenu.onClick.AddListener(  () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, true));
+            settingsMenuElements.generalGamepadControls.gameplayPlacement.onClick.AddListener(      () => OnSetControl(GenericControl.Gameplay_Placement,     true));
+            settingsMenuElements.generalGamepadControls.gameplayUndo.onClick.AddListener(           () => OnSetControl(GenericControl.Gameplay_Undo,          true));
 
-            controlsMenuButtonsGenericKeyboard.cameraMovementBackward.onClick.AddListener(  () => OnSetControl(GenericControl.Camera_MoveBackward,    false));
-            controlsMenuButtonsGenericKeyboard.cameraMovementForward.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveForward,     false));
-            controlsMenuButtonsGenericKeyboard.cameraMovementLeft.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_MoveLeft,        false));
-            controlsMenuButtonsGenericKeyboard.cameraMovementRight.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_MoveRight,       false));
-            controlsMenuButtonsGenericKeyboard.cameraRotateLeft.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_RotateLeft,      false));
-            controlsMenuButtonsGenericKeyboard.cameraRotateRight.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_RotateRight,     false));
-            controlsMenuButtonsGenericKeyboard.cameraTiltDown.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_TiltDown,        false));
-            controlsMenuButtonsGenericKeyboard.cameraTiltUp.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_TiltUp,          false));
-            controlsMenuButtonsGenericKeyboard.cameraZoomIn.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_ZoomIn,          false));
-            controlsMenuButtonsGenericKeyboard.cameraZoomOut.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_ZoomOut,         false));
-            controlsMenuButtonsGenericKeyboard.gameplayCancelAndMenu.onClick.AddListener(   () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, false));
-            controlsMenuButtonsGenericKeyboard.gameplayPlacement.onClick.AddListener(       () => OnSetControl(GenericControl.Gameplay_Placement,     false));
-            controlsMenuButtonsGenericKeyboard.gameplayUndo.onClick.AddListener(            () => OnSetControl(GenericControl.Gameplay_Undo,          false));
+            settingsMenuElements.generalKeyboardControls.cameraMovementBackward.onClick.AddListener(() => OnSetControl(GenericControl.Camera_MoveBackward,    false));
+            settingsMenuElements.generalKeyboardControls.cameraMovementForward.onClick.AddListener( () => OnSetControl(GenericControl.Camera_MoveForward,     false));
+            settingsMenuElements.generalKeyboardControls.cameraMovementLeft.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveLeft,        false));
+            settingsMenuElements.generalKeyboardControls.cameraMovementRight.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveRight,       false));
+            settingsMenuElements.generalKeyboardControls.cameraRotateLeft.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_RotateLeft,      false));
+            settingsMenuElements.generalKeyboardControls.cameraRotateRight.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_RotateRight,     false));
+            settingsMenuElements.generalKeyboardControls.cameraTiltDown.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_TiltDown,        false));
+            settingsMenuElements.generalKeyboardControls.cameraTiltUp.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_TiltUp,          false));
+            settingsMenuElements.generalKeyboardControls.cameraZoomIn.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_ZoomIn,          false));
+            settingsMenuElements.generalKeyboardControls.cameraZoomOut.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_ZoomOut,         false));
+            settingsMenuElements.generalKeyboardControls.gameplayCancelAndMenu.onClick.AddListener( () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, false));
+            settingsMenuElements.generalKeyboardControls.gameplayPlacement.onClick.AddListener(     () => OnSetControl(GenericControl.Gameplay_Placement,     false));
+            settingsMenuElements.generalKeyboardControls.gameplayUndo.onClick.AddListener(          () => OnSetControl(GenericControl.Gameplay_Undo,          false));
 
-            controlsMenuButtonsOther.gamepadCursorDown.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorDown));
-            controlsMenuButtonsOther.gamepadCursorLeft.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorLeft));
-            controlsMenuButtonsOther.gamepadCursorRight.onClick.AddListener(    () => OnSetControl(OtherControl.Gamepad_CursorRight));
-            controlsMenuButtonsOther.gamepadCursorUp.onClick.AddListener(       () => OnSetControl(OtherControl.Gamepad_CursorUp));
-            controlsMenuButtonsOther.gamepadToggleZoom.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_ZoomToggle));
-            controlsMenuButtonsOther.mouseToggleMovement.onClick.AddListener(   () => OnSetControl(OtherControl.Mouse_ToggleMovement));
-            controlsMenuButtonsOther.mouseToggleRotation.onClick.AddListener(   () => OnSetControl(OtherControl.Mouse_ToggleRotation));
-            controlsMenuButtonsOther.mouseToggleZoom.onClick.AddListener(       () => OnSetControl(OtherControl.Mouse_ToggleZoom));
+            settingsMenuElements.otherControls.gamepadCursorDown.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_CursorDown));
+            settingsMenuElements.otherControls.gamepadCursorLeft.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_CursorLeft));
+            settingsMenuElements.otherControls.gamepadCursorRight.onClick.AddListener(  () => OnSetControl(OtherControl.Gamepad_CursorRight));
+            settingsMenuElements.otherControls.gamepadCursorUp.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorUp));
+            settingsMenuElements.otherControls.gamepadToggleZoom.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_ZoomToggle));
+            settingsMenuElements.otherControls.mouseToggleMovement.onClick.AddListener( () => OnSetControl(OtherControl.Mouse_ToggleMovement));
+            settingsMenuElements.otherControls.mouseToggleRotation.onClick.AddListener( () => OnSetControl(OtherControl.Mouse_ToggleRotation));
+            settingsMenuElements.otherControls.mouseToggleZoom.onClick.AddListener(     () => OnSetControl(OtherControl.Mouse_ToggleZoom));
         }
 
         /// <summary>

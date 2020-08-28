@@ -3901,50 +3901,6 @@ MonoBehaviour:
     mouse_left: {fileID: 21300000, guid: 06c143e6eab72e54e918268a7be0c927, type: 3}
     mouse_middle: {fileID: 21300000, guid: ca1e55195a4980f42971ebbf244cb7fa, type: 3}
     mouse_right: {fileID: 21300000, guid: 316bb8b2066021a49af9faeddc7ef446, type: 3}
-  controlsMenuButtonsGenericGamepad:
-    cameraMovementBackward: {fileID: 0}
-    cameraMovementForward: {fileID: 0}
-    cameraMovementLeft: {fileID: 0}
-    cameraMovementRight: {fileID: 0}
-    cameraRotateLeft: {fileID: 0}
-    cameraRotateRight: {fileID: 0}
-    cameraTiltUp: {fileID: 0}
-    cameraTiltDown: {fileID: 0}
-    cameraZoomIn: {fileID: 0}
-    cameraZoomOut: {fileID: 0}
-    gameplayCancelAndMenu: {fileID: 0}
-    gameplayPlacement: {fileID: 0}
-    gameplayUndo: {fileID: 0}
-  controlsMenuButtonsGenericKeyboard:
-    cameraMovementBackward: {fileID: 0}
-    cameraMovementForward: {fileID: 0}
-    cameraMovementLeft: {fileID: 0}
-    cameraMovementRight: {fileID: 0}
-    cameraRotateLeft: {fileID: 0}
-    cameraRotateRight: {fileID: 0}
-    cameraTiltUp: {fileID: 0}
-    cameraTiltDown: {fileID: 0}
-    cameraZoomIn: {fileID: 0}
-    cameraZoomOut: {fileID: 0}
-    gameplayCancelAndMenu: {fileID: 0}
-    gameplayPlacement: {fileID: 0}
-    gameplayUndo: {fileID: 0}
-  controlsMenuButtonsOther:
-    gamepadCursorDown: {fileID: 0}
-    gamepadCursorLeft: {fileID: 0}
-    gamepadCursorRight: {fileID: 0}
-    gamepadCursorUp: {fileID: 0}
-    gamepadToggleZoom: {fileID: 0}
-    modifiersHeld: {fileID: 0}
-    mouseInvertDeltaHoriztonal: {fileID: 0}
-    mouseInvertDeltaVertical: {fileID: 0}
-    mouseInvertZoom: {fileID: 0}
-    mouseToggleMovement: {fileID: 0}
-    mouseToggleRotation: {fileID: 0}
-    mouseToggleZoom: {fileID: 0}
-    sensitivityMovement: {fileID: 0}
-    sensitivityRotation: {fileID: 0}
-    sensitivityZoom: {fileID: 0}
   settingsMenuElements:
     generalKeyboardControls:
       cameraMovementBackward: {fileID: 1532583620}
