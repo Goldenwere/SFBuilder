@@ -27,6 +27,8 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [SerializeField] private CanvasGroup                    canvas;
         [SerializeField] private GameObject[]                   canvasMainElements;
+        [SerializeField] private GameObject                     canvasRebindWindow;
+        [SerializeField] private TMP_Text                       canvasRebindWindowTextIndicator;
         [SerializeField] private GameObject[]                   canvasSettingsElements;
         [SerializeField] private GameObject[]                   canvasSettingsSubmenuActiveBackgrounds;
         [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
