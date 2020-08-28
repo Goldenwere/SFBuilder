@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using Goldenwere.Unity.UI;
 using Goldenwere.Unity;
@@ -24,29 +25,32 @@ namespace SFBuilder.UI
     {
         #region Fields
 #pragma warning disable 0649
-        [SerializeField] private CanvasGroup            canvas;
-        [SerializeField] private GameObject[]           canvasMainElements;
-        [SerializeField] private GameObject[]           canvasSettingsElements;
-        [SerializeField] private GameObject[]           canvasSettingsSubmenuActiveBackgrounds;
-        [SerializeField] private RectTransform          canvasSettingsSubmenuContainer;
-        [SerializeField] private GameObject[]           canvasSettingsSubmenuElements;
-        [SerializeField] private ControlsMenuImages     controlsMenuImages;
-        [SerializeField] private SettingsMenuElements   settingsMenuElements;
-        [SerializeField] private Image                  startupFadeImage;
-        [SerializeField] private AnimationCurve         transitionCurve;
-        [SerializeField] private AnimationCurve         transitionStartupFade;
-        [SerializeField] private AnimationCurve         transitionStartupToWhite;
-        [SerializeField] private Image                  transitionImage;
+        [SerializeField] private CanvasGroup                    canvas;
+        [SerializeField] private GameObject[]                   canvasMainElements;
+        [SerializeField] private GameObject[]                   canvasSettingsElements;
+        [SerializeField] private GameObject[]                   canvasSettingsSubmenuActiveBackgrounds;
+        [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
+        [SerializeField] private GameObject[]                   canvasSettingsSubmenuElements;
+        [SerializeField] private ControlsMenuImages             controlsMenuImages;
+        [SerializeField] private GenericControlsMenuElements    controlsMenuButtonsGenericGamepad;
+        [SerializeField] private GenericControlsMenuElements    controlsMenuButtonsGenericKeyboard;
+        [SerializeField] private OtherControlsMenuElements      controlsMenuButtonsOther;
+        [SerializeField] private SettingsMenuElements           settingsMenuElements;
+        [SerializeField] private Image                          startupFadeImage;
+        [SerializeField] private AnimationCurve                 transitionCurve;
+        [SerializeField] private AnimationCurve                 transitionStartupFade;
+        [SerializeField] private AnimationCurve                 transitionStartupToWhite;
+        [SerializeField] private Image                          transitionImage;
 #pragma warning restore 0649
-        /**************/ private SettingsData           workingSettings;
-        /**************/ private SettingsSubmenu        workingSettingsSubmenuState;
+        /**************/ private SettingsData                   workingSettings;
+        /**************/ private SettingsSubmenu                workingSettingsSubmenuState;
         #endregion
 
         #region Inline Classes
         /// <summary>
         /// Collection of images used for the controls menu
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         protected class ControlsMenuImages
         {
             public Sprite   gamepad_button_east;
@@ -98,7 +102,7 @@ namespace SFBuilder.UI
         /// <summary>
         /// Collection of elements related to generic controls menu elements (there are two sets of these - one for keyboard, one for gamepad)
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         protected class GenericControlsMenuElements
         {
             public Button   cameraMovementBackward;
@@ -122,7 +126,7 @@ namespace SFBuilder.UI
         /// <summary>
         /// Collection of remaining controls menu elements (which are single-set)
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         protected class OtherControlsMenuElements
         {
             public Button                   gamepadCursorDown;
@@ -150,7 +154,7 @@ namespace SFBuilder.UI
         /// <summary>
         /// Collection of elements on the settings menu, whose values are set every time the menu loads
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         protected class SettingsMenuElements
         {
             public GenericControlsMenuElements  generalKeyboardControls;
@@ -185,6 +189,7 @@ namespace SFBuilder.UI
             // Clear elements that were initially added that are now disabled
             UITransitionSystem.Instance.ClearElements();
 
+            InitializeButtons();
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
         }
@@ -208,28 +213,46 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// On the GameStateChanged event, toggle the menu canvas
+        /// Attaches handlers to buttons
         /// </summary>
-        /// <param name="prevState">The previous GameState</param>
-        /// <param name="currState">The current GameState</param>
-        private void OnGameStateChanged(GameState prevState, GameState currState)
+        private void InitializeButtons()
         {
-            UITransitionSystem.Instance.ClearElements();
+            controlsMenuButtonsGenericGamepad.cameraMovementBackward.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveBackward,    true));
+            controlsMenuButtonsGenericGamepad.cameraMovementForward.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveForward,     true));
+            controlsMenuButtonsGenericGamepad.cameraMovementLeft.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_MoveLeft,        true));
+            controlsMenuButtonsGenericGamepad.cameraMovementRight.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_MoveRight,       true));
+            controlsMenuButtonsGenericGamepad.cameraRotateLeft.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_RotateLeft,      true));
+            controlsMenuButtonsGenericGamepad.cameraRotateRight.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_RotateRight,     true));
+            controlsMenuButtonsGenericGamepad.cameraTiltDown.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_TiltDown,        true));
+            controlsMenuButtonsGenericGamepad.cameraTiltUp.onClick.AddListener(             () => OnSetControl(GenericControl.Camera_TiltUp,          true));
+            controlsMenuButtonsGenericGamepad.cameraZoomIn.onClick.AddListener(             () => OnSetControl(GenericControl.Camera_ZoomIn,          true));
+            controlsMenuButtonsGenericGamepad.cameraZoomOut.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_ZoomOut,         true));
+            controlsMenuButtonsGenericGamepad.gameplayCancelAndMenu.onClick.AddListener(    () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, true));
+            controlsMenuButtonsGenericGamepad.gameplayPlacement.onClick.AddListener(        () => OnSetControl(GenericControl.Gameplay_Placement,     true));
+            controlsMenuButtonsGenericGamepad.gameplayUndo.onClick.AddListener(             () => OnSetControl(GenericControl.Gameplay_Undo,          true));
 
-            if (currState == GameState.MainMenus)
-                StartCoroutine(SetActive(true));
-            else
-                StartCoroutine(SetActive(false));
-        }
+            controlsMenuButtonsGenericKeyboard.cameraMovementBackward.onClick.AddListener(  () => OnSetControl(GenericControl.Camera_MoveBackward,    false));
+            controlsMenuButtonsGenericKeyboard.cameraMovementForward.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveForward,     false));
+            controlsMenuButtonsGenericKeyboard.cameraMovementLeft.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_MoveLeft,        false));
+            controlsMenuButtonsGenericKeyboard.cameraMovementRight.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_MoveRight,       false));
+            controlsMenuButtonsGenericKeyboard.cameraRotateLeft.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_RotateLeft,      false));
+            controlsMenuButtonsGenericKeyboard.cameraRotateRight.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_RotateRight,     false));
+            controlsMenuButtonsGenericKeyboard.cameraTiltDown.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_TiltDown,        false));
+            controlsMenuButtonsGenericKeyboard.cameraTiltUp.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_TiltUp,          false));
+            controlsMenuButtonsGenericKeyboard.cameraZoomIn.onClick.AddListener(            () => OnSetControl(GenericControl.Camera_ZoomIn,          false));
+            controlsMenuButtonsGenericKeyboard.cameraZoomOut.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_ZoomOut,         false));
+            controlsMenuButtonsGenericKeyboard.gameplayCancelAndMenu.onClick.AddListener(   () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, false));
+            controlsMenuButtonsGenericKeyboard.gameplayPlacement.onClick.AddListener(       () => OnSetControl(GenericControl.Gameplay_Placement,     false));
+            controlsMenuButtonsGenericKeyboard.gameplayUndo.onClick.AddListener(            () => OnSetControl(GenericControl.Gameplay_Undo,          false));
 
-        /// <summary>
-        /// On the LevelTransitioned event, animate the transition Image to start/stop hiding level unloading/loading
-        /// </summary>
-        /// <param name="isStart">Whether starting or ending transition</param>
-        private void OnLevelTransitioned(bool isStart)
-        {
-            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
-                StartCoroutine(AnimateTransition(isStart));
+            controlsMenuButtonsOther.gamepadCursorDown.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorDown));
+            controlsMenuButtonsOther.gamepadCursorLeft.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorLeft));
+            controlsMenuButtonsOther.gamepadCursorRight.onClick.AddListener(    () => OnSetControl(OtherControl.Gamepad_CursorRight));
+            controlsMenuButtonsOther.gamepadCursorUp.onClick.AddListener(       () => OnSetControl(OtherControl.Gamepad_CursorUp));
+            controlsMenuButtonsOther.gamepadToggleZoom.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_ZoomToggle));
+            controlsMenuButtonsOther.mouseToggleMovement.onClick.AddListener(   () => OnSetControl(OtherControl.Mouse_ToggleMovement));
+            controlsMenuButtonsOther.mouseToggleRotation.onClick.AddListener(   () => OnSetControl(OtherControl.Mouse_ToggleRotation));
+            controlsMenuButtonsOther.mouseToggleZoom.onClick.AddListener(       () => OnSetControl(OtherControl.Mouse_ToggleZoom));
         }
 
         /// <summary>
@@ -285,6 +308,31 @@ namespace SFBuilder.UI
                     go.SetActive(false);
             }
             workingSettingsSubmenuState = newState;
+        }
+
+        /// <summary>
+        /// On the GameStateChanged event, toggle the menu canvas
+        /// </summary>
+        /// <param name="prevState">The previous GameState</param>
+        /// <param name="currState">The current GameState</param>
+        private void OnGameStateChanged(GameState prevState, GameState currState)
+        {
+            UITransitionSystem.Instance.ClearElements();
+
+            if (currState == GameState.MainMenus)
+                StartCoroutine(SetActive(true));
+            else
+                StartCoroutine(SetActive(false));
+        }
+
+        /// <summary>
+        /// On the LevelTransitioned event, animate the transition Image to start/stop hiding level unloading/loading
+        /// </summary>
+        /// <param name="isStart">Whether starting or ending transition</param>
+        private void OnLevelTransitioned(bool isStart)
+        {
+            if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
+                StartCoroutine(AnimateTransition(isStart));
         }
 
         /// <summary>
@@ -512,6 +560,25 @@ namespace SFBuilder.UI
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             Application.Quit();
+        }
+
+        /// <summary>
+        /// Update a control when a control button is pressed
+        /// </summary>
+        /// <param name="control">The control associated with the button</param>
+        /// <param name="isGamepad">Whether the button is associated with the gamepad or keyboard</param>
+        public void OnSetControl(GenericControl control, bool isGamepad)
+        {
+            
+        }
+
+        /// <summary>
+        /// Update a control when a control button is pressed
+        /// </summary>
+        /// <param name="control">The control associated with the button</param>
+        public void OnSetControl(OtherControl control)
+        {
+
         }
 
         /// <summary>
