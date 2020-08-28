@@ -3837,48 +3837,114 @@ MonoBehaviour:
   - {fileID: 626241710}
   - {fileID: 1227832113}
   controlsMenuImages:
-    gamepad_button_east: {fileID: 0}
-    gamepad_button_north: {fileID: 0}
-    gamepad_button_select: {fileID: 0}
-    gamepad_button_south: {fileID: 0}
-    gamepad_button_start: {fileID: 0}
-    gamepad_button_west: {fileID: 0}
-    gamepad_dpad_down: {fileID: 0}
-    gamepad_dpad_left: {fileID: 0}
-    gamepad_dpad_right: {fileID: 0}
-    gamepad_dpad_up: {fileID: 0}
-    gamepad_lthumbstick_down: {fileID: 0}
-    gamepad_lthumbstick_left: {fileID: 0}
-    gamepad_lthumbstick_press: {fileID: 0}
-    gamepad_lthumbstick_right: {fileID: 0}
-    gamepad_lthumbstick_up: {fileID: 0}
-    gamepad_lshoulder: {fileID: 0}
-    gamepad_ltrigger: {fileID: 0}
-    gamepad_rthumbstick_down: {fileID: 0}
-    gamepad_rthumbstick_left: {fileID: 0}
-    gamepad_rthumbstick_press: {fileID: 0}
-    gamepad_rthumbstick_right: {fileID: 0}
-    gamepad_rthumbstick_up: {fileID: 0}
-    gamepad_rshoulder: {fileID: 0}
-    gamepad_rtrigger: {fileID: 0}
-    keyboard_backspace: {fileID: 0}
-    keyboard_caps: {fileID: 0}
-    keyboard_down: {fileID: 0}
-    keyboard_enter: {fileID: 0}
-    keyboard_left: {fileID: 0}
-    keyboard_lshift: {fileID: 0}
-    keyboard_num: {fileID: 0}
-    keyboard_right: {fileID: 0}
-    keyboard_rshift: {fileID: 0}
-    keyboard_scr: {fileID: 0}
-    keyboard_space: {fileID: 0}
-    keyboard_tab: {fileID: 0}
-    keyboard_up: {fileID: 0}
-    mouse_back: {fileID: 0}
-    mouse_forward: {fileID: 0}
-    mouse_left: {fileID: 0}
-    mouse_middle: {fileID: 0}
-    mouse_right: {fileID: 0}
+    gamepad_button_east: {fileID: 21300000, guid: e38eb80feb7a1ee47b71d77b437c822b,
+      type: 3}
+    gamepad_button_north: {fileID: 21300000, guid: 0bd97afbad76c9a46bdcf6aa135b813e,
+      type: 3}
+    gamepad_button_select: {fileID: 21300000, guid: 1509151a927c055458e3eb3bffd22e54,
+      type: 3}
+    gamepad_button_south: {fileID: 21300000, guid: 82eb4f9412f641448bcf612b848f45b7,
+      type: 3}
+    gamepad_button_start: {fileID: 21300000, guid: d2ea27fade2fca64aa9b003eb1f985c0,
+      type: 3}
+    gamepad_button_west: {fileID: 21300000, guid: 3ea8e08f6c5c1ed48a566a92d848d416,
+      type: 3}
+    gamepad_dpad_down: {fileID: 21300000, guid: 6190d6b29186f3745aab98e5e1519862,
+      type: 3}
+    gamepad_dpad_left: {fileID: 21300000, guid: fc110a9f15a6e6243b8cbaec1971653c,
+      type: 3}
+    gamepad_dpad_right: {fileID: 21300000, guid: d5737f04ed0639349a888f81b6e0347a,
+      type: 3}
+    gamepad_dpad_up: {fileID: 21300000, guid: 0a350efaca8c3bc4c9db73457544efc3, type: 3}
+    gamepad_lthumbstick_down: {fileID: 21300000, guid: dae1a82db8af56146bcd87bd4ae1f2dd,
+      type: 3}
+    gamepad_lthumbstick_left: {fileID: 21300000, guid: 87fbee456551f7142b1b45787abaabb2,
+      type: 3}
+    gamepad_lthumbstick_press: {fileID: 21300000, guid: 386bb374026dd6f4a9cba564090eb4e0,
+      type: 3}
+    gamepad_lthumbstick_right: {fileID: 21300000, guid: 0c85ee4362c098f49b3ac5aabc0a5409,
+      type: 3}
+    gamepad_lthumbstick_up: {fileID: 21300000, guid: 502b970fdeebbfa44ace8b1b935a2642,
+      type: 3}
+    gamepad_lshoulder: {fileID: 21300000, guid: cd894b2bf6c3415459945aa2d706496b,
+      type: 3}
+    gamepad_ltrigger: {fileID: 21300000, guid: 86b286216c0f6e2408aa6531832de982, type: 3}
+    gamepad_rthumbstick_down: {fileID: 21300000, guid: 191f4ef6667d834428e05856e8806c60,
+      type: 3}
+    gamepad_rthumbstick_left: {fileID: 21300000, guid: 9b3ead51538e7474a8fca7ba703ab847,
+      type: 3}
+    gamepad_rthumbstick_press: {fileID: 21300000, guid: dd7cd22f7b2ed41428decb345edb9c92,
+      type: 3}
+    gamepad_rthumbstick_right: {fileID: 21300000, guid: b71b9ee7b5b29f6489d6aefc803d406b,
+      type: 3}
+    gamepad_rthumbstick_up: {fileID: 21300000, guid: ac449e26415e335449c4b56000ad1c85,
+      type: 3}
+    gamepad_rshoulder: {fileID: 21300000, guid: 64b4d3e8d23b34148bcf1f0365fab803,
+      type: 3}
+    gamepad_rtrigger: {fileID: 21300000, guid: 3c2fbe88149c27146953e0d9c165f9bc, type: 3}
+    keyboard_backspace: {fileID: 21300000, guid: 3aec78c2138338443bef2ebf84a70488,
+      type: 3}
+    keyboard_caps: {fileID: 21300000, guid: 8e72b4eac2b1f344fbf4c304fb4657af, type: 3}
+    keyboard_down: {fileID: 21300000, guid: 46cf4d4a588c19f42aa3d8435dfa785e, type: 3}
+    keyboard_enter: {fileID: 21300000, guid: 0b369eb90e2aa2048a64a3248f02622e, type: 3}
+    keyboard_left: {fileID: 21300000, guid: c4720bea48f2ddb47b0e9a2e4a81129f, type: 3}
+    keyboard_lshift: {fileID: 21300000, guid: 60157dbbd0c1d7e48affd63016b3c97c, type: 3}
+    keyboard_num: {fileID: 21300000, guid: 9722880003dfde7408159e4fc0f2d679, type: 3}
+    keyboard_right: {fileID: 21300000, guid: 33844573c8cf64a4ea495f75c98910a1, type: 3}
+    keyboard_rshift: {fileID: 21300000, guid: fa4b8764c93a79548b2924265cc28d1b, type: 3}
+    keyboard_scr: {fileID: 21300000, guid: b3e29c9d262350c43a2566b88d66c0cd, type: 3}
+    keyboard_space: {fileID: 21300000, guid: f83f84f3ba5dac14295275415ab40a44, type: 3}
+    keyboard_tab: {fileID: 21300000, guid: 96d3b44bbebd583458221cdaa7fa0bf0, type: 3}
+    keyboard_up: {fileID: 21300000, guid: 412d1344f7628004cb8ab57040adf82d, type: 3}
+    mouse_back: {fileID: 21300000, guid: 3fb59da6fec51f24bb4b8c809576b916, type: 3}
+    mouse_forward: {fileID: 21300000, guid: 93131eedf2734a54c91d3501df7224e3, type: 3}
+    mouse_left: {fileID: 21300000, guid: 06c143e6eab72e54e918268a7be0c927, type: 3}
+    mouse_middle: {fileID: 21300000, guid: ca1e55195a4980f42971ebbf244cb7fa, type: 3}
+    mouse_right: {fileID: 21300000, guid: 316bb8b2066021a49af9faeddc7ef446, type: 3}
+  controlsMenuButtonsGenericGamepad:
+    cameraMovementBackward: {fileID: 0}
+    cameraMovementForward: {fileID: 0}
+    cameraMovementLeft: {fileID: 0}
+    cameraMovementRight: {fileID: 0}
+    cameraRotateLeft: {fileID: 0}
+    cameraRotateRight: {fileID: 0}
+    cameraTiltUp: {fileID: 0}
+    cameraTiltDown: {fileID: 0}
+    cameraZoomIn: {fileID: 0}
+    cameraZoomOut: {fileID: 0}
+    gameplayCancelAndMenu: {fileID: 0}
+    gameplayPlacement: {fileID: 0}
+    gameplayUndo: {fileID: 0}
+  controlsMenuButtonsGenericKeyboard:
+    cameraMovementBackward: {fileID: 0}
+    cameraMovementForward: {fileID: 0}
+    cameraMovementLeft: {fileID: 0}
+    cameraMovementRight: {fileID: 0}
+    cameraRotateLeft: {fileID: 0}
+    cameraRotateRight: {fileID: 0}
+    cameraTiltUp: {fileID: 0}
+    cameraTiltDown: {fileID: 0}
+    cameraZoomIn: {fileID: 0}
+    cameraZoomOut: {fileID: 0}
+    gameplayCancelAndMenu: {fileID: 0}
+    gameplayPlacement: {fileID: 0}
+    gameplayUndo: {fileID: 0}
+  controlsMenuButtonsOther:
+    gamepadCursorDown: {fileID: 0}
+    gamepadCursorLeft: {fileID: 0}
+    gamepadCursorRight: {fileID: 0}
+    gamepadCursorUp: {fileID: 0}
+    gamepadToggleZoom: {fileID: 0}
+    modifiersHeld: {fileID: 0}
+    mouseInvertDeltaHoriztonal: {fileID: 0}
+    mouseInvertDeltaVertical: {fileID: 0}
+    mouseInvertZoom: {fileID: 0}
+    mouseToggleMovement: {fileID: 0}
+    mouseToggleRotation: {fileID: 0}
+    mouseToggleZoom: {fileID: 0}
+    sensitivityMovement: {fileID: 0}
+    sensitivityRotation: {fileID: 0}
+    sensitivityZoom: {fileID: 0}
   settingsMenuElements:
     generalKeyboardControls:
       cameraMovementBackward: {fileID: 1532583620}
