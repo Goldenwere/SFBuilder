@@ -12,7 +12,9 @@ namespace SFBuilder
     public class GameSettings : MonoBehaviour
     {
         #region Fields
-        [SerializeField] private InputActionMap     defaultActionMap;
+#pragma warning disable 0649
+        [SerializeField] private InputActionAsset   defaultActionMap;
+#pragma warning restore 0649
         /**************/ private SettingsData       settings;
         #endregion
 
@@ -20,7 +22,7 @@ namespace SFBuilder
         /// <summary>
         /// The default action map for use in determining bindings
         /// </summary>
-        public InputActionMap       DefaultActionMap { get { return defaultActionMap; } }
+        public InputActionMap       DefaultActionMap { get { return defaultActionMap.actionMaps[0]; } }
 
         /// <summary>
         /// Singleton instance of GameSettings in the base scene
