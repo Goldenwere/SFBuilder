@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using System;
 using System.Collections;
 using Goldenwere.Unity.UI;
@@ -568,7 +569,15 @@ namespace SFBuilder.UI
         /// <param name="isGamepad">Whether the button is associated with the gamepad or keyboard</param>
         public void OnSetControl(GenericControl control, bool isGamepad)
         {
-            
+            canvasRebindWindow.SetActive(true);
+            string indicator = control.ToString().Replace("Camera_", "").Replace("Gameplay_", "");
+            canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
+
+            string pathStart = "Keyboard";
+            if (isGamepad)
+                pathStart = "Gamepad";
+
+            InputAction action = ControlBinding_Generic.ControlToAction(control, pathStart, out int index);
         }
 
         /// <summary>
@@ -577,7 +586,13 @@ namespace SFBuilder.UI
         /// <param name="control">The control associated with the button</param>
         public void OnSetControl(OtherControl control)
         {
+            canvasRebindWindow.SetActive(true);
+            string indicator = control.ToString().Replace("Mouse_", "").Replace("Gamepad_", "");
+            canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
 
+            string pathStart = control.ToString().Split('_')[0];
+
+            InputAction action = ControlBinding_Other.ControlToAction(control, pathStart, out int index);
         }
 
         /// <summary>

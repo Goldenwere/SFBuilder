@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SFBuilder
 {
@@ -11,10 +12,16 @@ namespace SFBuilder
     public class GameSettings : MonoBehaviour
     {
         #region Fields
-        private SettingsData    settings;
+        [SerializeField] private InputActionMap     defaultActionMap;
+        /**************/ private SettingsData       settings;
         #endregion
 
         #region Properties
+        /// <summary>
+        /// The default action map for use in determining bindings
+        /// </summary>
+        public InputActionMap       DefaultActionMap { get { return defaultActionMap; } }
+
         /// <summary>
         /// Singleton instance of GameSettings in the base scene
         /// </summary>
@@ -202,12 +209,110 @@ namespace SFBuilder
     }
 
     /// <summary>
+    /// Contains utility functions for use in control bindings
+    /// </summary>
+    public static class ControlBinding
+    {
+        /// <summary>
+        /// Gets the index of a composite action
+        /// </summary>
+        /// <param name="map">The action map being searched</param>
+        /// <param name="action">The action being found</param>
+        /// <param name="pathStart">String indicating whether to use keyboard/mouse set of bindings (0) or gamepad (1)</param>
+        /// <param name="compositeName">The specific part of the composite (e.g. Vector2 --> up, down, left, right)</param>
+        /// <returns>The index of a specific binding of a composite</returns>
+        public static int GetIndex(InputActionMap map, string action, string pathStart, string compositeName)
+        {
+            return map.FindAction(action).bindings.IndexOf(b => b.isPartOfComposite && b.name == compositeName && b.path.Contains(pathStart));
+        }
+
+        /// <summary>
+        /// Gets the path of a button action
+        /// </summary>
+        /// <param name="map">The action map being searched</param>
+        /// <param name="action">The action being found</param>
+        /// <param name="pathStart">Index indicating whether to use keyboard/mouse set of bindings (0) or gamepad (1)</param>
+        /// <returns>The full input path of a binding</returns>
+        public static string GetPath(InputActionMap map, string action, int pathStart)
+        {
+            return map.FindAction(action).bindings[pathStart].path;
+        }
+
+        /// <summary>
+        /// Gets the path of a composite action
+        /// </summary>
+        /// <param name="map">The action map being searched</param>
+        /// <param name="action">The action being found</param>
+        /// <param name="pathStart">String indicating whether to use keyboard/mouse set of bindings (0) or gamepad (1)</param>
+        /// <param name="compositeName">The specific part of the composite (e.g. Vector2 --> up, down, left, right)</param>
+        /// <returns>The full input path of a binding</returns>
+        public static string GetPath(InputActionMap map, string action, string pathStart, string compositeName)
+        {
+            int i = map.FindAction(action).bindings.IndexOf(b => b.isPartOfComposite && b.name == compositeName && b.path.Contains(pathStart));
+            return map.FindAction(action).bindings[i].path;
+        }
+    }
+
+    /// <summary>
     /// Data structure for associating GenericControl to a path
     /// </summary>
     public struct ControlBinding_Generic
     {
         public GenericControl   control;
         public string           path;
+
+        /// <summary>
+        /// Converts a control to InputAction
+        /// </summary>
+        /// <param name="control">The control being converted</param>
+        /// <param name="pathStart">Index indicating whether to use keyboard/mouse set of bindings (0) or gamepad (1)</param>
+        /// <param name="index">Composite actions have an associated index for a specific part of the composite; this is otherwise -1 for non-composites</param>
+        public static InputAction ControlToAction(GenericControl control, string pathStart, out int index)
+        {
+            switch (control)
+            {
+                case GenericControl.Camera_MoveBackward:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "down");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
+                case GenericControl.Camera_MoveForward:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "up");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
+                case GenericControl.Camera_MoveLeft:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "left");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
+                case GenericControl.Camera_MoveRight:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "right");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
+                case GenericControl.Camera_RotateLeft:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "left");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
+                case GenericControl.Camera_RotateRight:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "right");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
+                case GenericControl.Camera_TiltDown:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "down");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
+                case GenericControl.Camera_TiltUp:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "up");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
+                case GenericControl.Camera_ZoomIn:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "positive");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionZoom");
+                case GenericControl.Camera_ZoomOut:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "negative");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("ActionZoom");
+                case GenericControl.Gameplay_CancelAndMenu:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("Menu");
+                case GenericControl.Gameplay_Placement:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("Placement");
+                case GenericControl.Gameplay_Undo:
+                default:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("Undo");
+            }
+        }
     }
 
     /// <summary>
@@ -217,5 +322,43 @@ namespace SFBuilder
     {
         public OtherControl     control;
         public string           path;
+
+        /// <summary>
+        /// Converts a control to InputAction
+        /// </summary>
+        /// <param name="control">The control being converted</param>
+        /// <param name="pathStart">Index indicating whether to use keyboard/mouse set of bindings (0) or gamepad (1)</param>
+        /// <param name="index">Composite actions have an associated index for a specific part of the composite; this is otherwise -1 for non-composites</param>
+        public static InputAction ControlToAction(OtherControl control, string pathStart, out int index)
+        {
+            switch (control)
+            {
+                case OtherControl.Gamepad_CursorDown:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "down");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
+                case OtherControl.Gamepad_CursorLeft:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "left");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
+                case OtherControl.Gamepad_CursorRight:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "right");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
+                case OtherControl.Gamepad_CursorUp:
+                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "up");
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
+                case OtherControl.Gamepad_ZoomToggle:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("GamepadToggleZoom");
+                case OtherControl.Mouse_ToggleMovement:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MouseToggleMovement");
+                case OtherControl.Mouse_ToggleRotation:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MouseToggleRotation");
+                case OtherControl.Mouse_ToggleZoom:
+                default:
+                    index = -1;
+                    return GameSettings.Instance.DefaultActionMap.FindAction("MouseToggleZoom");
+            }
+        }
     }
 }
