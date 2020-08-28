@@ -336,6 +336,47 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Performs rebinding from OnSetControl
+        /// </summary>
+        /// <param name="action">The action being rebound</param>
+        /// <param name="index">Index for composite actions (-1 if non-composite)</param>
+        /// <param name="isGamepad">Whether the action is being bound to the gamepad or not</param>
+        private void PerformRebinding(InputAction action, int index, bool isGamepad)
+        {
+            InputActionRebindingExtensions.RebindingOperation rebindOp = action
+                .PerformInteractiveRebinding()
+                .WithControlsExcluding("Mouse/delta")
+                .WithExpectedControlType("Button")
+                .OnMatchWaitForAnother(0.1f);
+            if (index > -1)
+                rebindOp.WithTargetBinding(index);
+
+            if (isGamepad)
+            {
+                rebindOp.WithControlsExcluding("Keyboard");
+                rebindOp.WithControlsExcluding("Mouse");
+                rebindOp.WithCancelingThrough("Keyboard/escape");
+            }
+
+            else
+            {
+                rebindOp.WithControlsExcluding("Gamepad");
+                rebindOp.WithControlsExcluding("Joystick");
+            }
+
+            rebindOp.Start()
+                .OnCancel(callback =>
+                {
+                    canvasRebindWindow.SetActive(false);
+                    rebindOp?.Dispose();
+                })
+                .OnComplete(callback =>
+                {
+
+                });
+        }
+
+        /// <summary>
         /// Sets the displayed value of a button on the controls menu
         /// </summary>
         /// <param name="element">The button being updated</param>
@@ -577,39 +618,7 @@ namespace SFBuilder.UI
             if (isGamepad)
                 pathStart = "Gamepad";
 
-            InputAction action = ControlBinding_Generic.ControlToAction(control, pathStart, out int index);
-
-            InputActionRebindingExtensions.RebindingOperation rebindOp = action
-                .PerformInteractiveRebinding()
-                .WithControlsExcluding("Mouse/delta")
-                .WithExpectedControlType("Button")
-                .OnMatchWaitForAnother(0.1f);
-            if (index > -1)
-                rebindOp.WithTargetBinding(index);
-
-            if (isGamepad)
-            {
-                rebindOp.WithControlsExcluding("Keyboard");
-                rebindOp.WithControlsExcluding("Mouse");
-                rebindOp.WithCancelingThrough("Keyboard/escape");
-            }
-
-            else
-            {
-                rebindOp.WithControlsExcluding("Gamepad");
-                rebindOp.WithControlsExcluding("Joystick");
-            }
-
-            rebindOp.Start()
-                .OnCancel(callback =>
-                {
-                    canvasRebindWindow.SetActive(false);
-                    rebindOp?.Dispose();
-                })
-                .OnComplete(callback =>
-                {
-
-                });
+            PerformRebinding(ControlBinding_Generic.ControlToAction(control, pathStart, out int index), index, isGamepad);
         }
 
         /// <summary>
@@ -624,38 +633,7 @@ namespace SFBuilder.UI
 
             string pathStart = control.ToString().Split('_')[0];
 
-            InputAction action = ControlBinding_Other.ControlToAction(control, pathStart, out int index);
-            InputActionRebindingExtensions.RebindingOperation rebindOp = action
-                .PerformInteractiveRebinding()
-                .WithControlsExcluding("Mouse/delta")
-                .WithExpectedControlType("Button")
-                .OnMatchWaitForAnother(0.1f);
-            if (index > -1)
-                rebindOp.WithTargetBinding(index);
-
-            if (control.ToString().Contains("Gamepad"))
-            {
-                rebindOp.WithControlsExcluding("Keyboard");
-                rebindOp.WithControlsExcluding("Mouse");
-                rebindOp.WithCancelingThrough("Keyboard/escape");
-            }
-
-            else
-            {
-                rebindOp.WithControlsExcluding("Gamepad");
-                rebindOp.WithControlsExcluding("Joystick");
-            }
-
-            rebindOp.Start()
-                .OnCancel(callback =>
-                {
-                    canvasRebindWindow.SetActive(false);
-                    rebindOp?.Dispose();
-                })
-                .OnComplete(callback =>
-                {
-
-                });
+            PerformRebinding(ControlBinding_Other.ControlToAction(control, pathStart, out int index), index, control.ToString().Contains("Gamepad"));
         }
 
         /// <summary>
