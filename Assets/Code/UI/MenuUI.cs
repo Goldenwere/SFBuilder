@@ -529,21 +529,21 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// When the save button is pressed on the settings menu, save settings
-        /// </summary>
-        public void OnSettingsSavePressed()
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            GameSettings.Instance.Settings = workingSettings;
-        }
-
-        /// <summary>
         /// When the revert button is pressed on the settings menu, revert all pending changes
         /// </summary>
         public void OnSettingsRevertPressed()
         {
             workingSettings = GameSettings.Instance.Settings;
             LoadSettings();
+        }
+
+        /// <summary>
+        /// When the save button is pressed on the settings menu, save settings
+        /// </summary>
+        public void OnSettingsSavePressed()
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            GameSettings.Instance.Settings = workingSettings;
         }
 
         /// <summary>
