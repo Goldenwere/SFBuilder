@@ -136,8 +136,21 @@ namespace SFBuilder.UI
             // Clear elements that were initially added that are now disabled
             UITransitionSystem.Instance.ClearElements();
 
+            // Initialize the controls menu buttons
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
+            {
                 cb.onClick.AddListener(() => OnSetControl(cb));
+                if ((byte)cb.AssociatedControl < 13)
+                {
+                    if (cb.ExpectedInput[0] == InputType.Gamepad)
+                        SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.control == cb.AssociatedControl).path);
+                    else
+                        SetControlDisplay(cb, workingSettings.controlBindings_Keyboard.First(b => b.control == cb.AssociatedControl).path);
+                }
+                else
+                    SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.control == cb.AssociatedControl).path);
+            }
+
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
         }
@@ -245,7 +258,7 @@ namespace SFBuilder.UI
         /// </summary>
         /// <param name="element">The button being updated</param>
         /// <param name="path">The current control's full path</param>
-        private void SetControl(Button element, string path)
+        private void SetControlDisplay(Button element, string path)
         {
             string[] pathSplit = path.Split('/');
             TMP_Text text = element.gameObject.FindChild("Text").GetComponent<TMP_Text>();
@@ -538,13 +551,13 @@ namespace SFBuilder.UI
                                 {
                                     workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
                                         action.actionMap.bindings[index].overridePath;
-                                    SetControl(sender, action.actionMap.bindings[index].overridePath);
+                                    SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
                                 }
                                 else
                                 {
                                     workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
                                         action.bindings[1].overridePath;
-                                    SetControl(sender, action.bindings[1].overridePath);
+                                    SetControlDisplay(sender, action.bindings[1].overridePath);
                                 }
                             }
                             else
@@ -554,13 +567,13 @@ namespace SFBuilder.UI
                                 {
                                     workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
                                         action.actionMap.bindings[index].overridePath;
-                                    SetControl(sender, action.actionMap.bindings[index].overridePath);
+                                    SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
                                 }
                                 else
                                 {
                                     workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
                                         action.bindings[0].overridePath;
-                                    SetControl(sender, action.bindings[0].overridePath);
+                                    SetControlDisplay(sender, action.bindings[0].overridePath);
                                 }
                             }
                             break;
@@ -578,14 +591,14 @@ namespace SFBuilder.UI
                             {
                                 workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
                                     action.actionMap.bindings[index].overridePath;
-                                SetControl(sender, action.actionMap.bindings[index].overridePath);
+                                SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
                             }
                             // since these are not multi-bound, assume index 0
                             else
                             {
                                 workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
                                     action.bindings[0].overridePath;
-                                SetControl(sender, action.bindings[0].overridePath);
+                                SetControlDisplay(sender, action.bindings[0].overridePath);
                             }
                             break;
                     }
