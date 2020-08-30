@@ -211,7 +211,7 @@ namespace SFBuilder
                 }
                 else
                 {
-                    InputBinding binding = action.bindings[1];
+                    InputBinding binding = action.bindings[0];
                     binding.overridePath = cb.path;
                     DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
                 }

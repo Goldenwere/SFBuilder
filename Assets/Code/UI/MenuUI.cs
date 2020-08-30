@@ -126,6 +126,7 @@ namespace SFBuilder.UI
             workingSettings = GameSettings.Instance.Settings;
 
             canvas.gameObject.SetActive(false);
+            canvasRebindWindow.SetActive(false);
 
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
@@ -237,9 +238,9 @@ namespace SFBuilder.UI
         {
             UITransitionSystem.Instance.ClearElements();
 
-            if (currState == GameState.MainMenus)
+            if (currState == GameState.MainMenus && prevState != GameState.MainMenus)
                 StartCoroutine(SetActive(true));
-            else
+            else if (currState != GameState.MainMenus && prevState == GameState.MainMenus)
                 StartCoroutine(SetActive(false));
         }
 

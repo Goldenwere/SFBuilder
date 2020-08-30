@@ -2066,7 +2066,6 @@ GameObject:
   m_Component:
   - component: {fileID: 193004300}
   - component: {fileID: 193004302}
-  - component: {fileID: 193004301}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -2092,83 +2091,8 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 30, y: 8}
+  m_SizeDelta: {x: 16, y: 8}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &193004301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193004299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anchorMode: 0
-  anchorPosition: 8
-  arrowDefaultPositionAtMiddle: 0
-  cameraThatRendersCanvas: {fileID: 325333594}
-  cameraThatRendersCanvasName: 
-  canvasToBeAttachedTo: {fileID: 2131888649}
-  tooltipDelay: 0.5
-  tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
-  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
-    type: 3}
-  tooltipText: Post-processing effect which adds subtle shadows between objects
-  tooltipValues: []
-  transitionDuration: 0.5
-  transitionCurveIn:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionCurveOut:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionMode: 1
 --- !u!114 &193004302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10957,7 +10881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 722444999}
   - component: {fileID: 722445001}
-  - component: {fileID: 722445000}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -10983,83 +10906,8 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 30, y: 8}
+  m_SizeDelta: {x: 16, y: 8}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &722445000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722444998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anchorMode: 0
-  anchorPosition: 8
-  arrowDefaultPositionAtMiddle: 0
-  cameraThatRendersCanvas: {fileID: 325333594}
-  cameraThatRendersCanvasName: 
-  canvasToBeAttachedTo: {fileID: 2131888649}
-  tooltipDelay: 0.5
-  tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
-  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
-    type: 3}
-  tooltipText: Post-processing effect which adds subtle shadows between objects
-  tooltipValues: []
-  transitionDuration: 0.5
-  transitionCurveIn:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionCurveOut:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionMode: 1
 --- !u!114 &722445001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12451,7 +12299,6 @@ GameObject:
   m_Component:
   - component: {fileID: 844201911}
   - component: {fileID: 844201913}
-  - component: {fileID: 844201912}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -12477,83 +12324,8 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 30, y: 8}
+  m_SizeDelta: {x: 16, y: 8}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &844201912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844201910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anchorMode: 0
-  anchorPosition: 8
-  arrowDefaultPositionAtMiddle: 0
-  cameraThatRendersCanvas: {fileID: 325333594}
-  cameraThatRendersCanvasName: 
-  canvasToBeAttachedTo: {fileID: 2131888649}
-  tooltipDelay: 0.5
-  tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
-  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
-    type: 3}
-  tooltipText: Post-processing effect which adds subtle shadows between objects
-  tooltipValues: []
-  transitionDuration: 0.5
-  transitionCurveIn:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionCurveOut:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionMode: 1
 --- !u!114 &844201913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15834,7 +15606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mouse Rotation Toggle
+  m_text: Mouse Zoom Toggle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}
@@ -15903,7 +15675,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1083739580}
-    characterCount: 21
+    characterCount: 17
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -21411,7 +21183,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   associatedControl: 10
-  expectedInput: 00
+  expectedInput: 02
 --- !u!114 &1355615563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21865,7 +21637,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1376649711}
   - component: {fileID: 1376649713}
-  - component: {fileID: 1376649712}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -21891,83 +21662,8 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 30, y: 8}
+  m_SizeDelta: {x: 16, y: 8}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &1376649712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376649710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00edc13ca4a8ac24b87b2d4138aae013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anchorMode: 0
-  anchorPosition: 8
-  arrowDefaultPositionAtMiddle: 0
-  cameraThatRendersCanvas: {fileID: 325333594}
-  cameraThatRendersCanvasName: 
-  canvasToBeAttachedTo: {fileID: 2131888649}
-  tooltipDelay: 0.5
-  tooltipHorizontalFactor: 1
-  tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
-  tooltipPrefab: {fileID: 2644378345820482497, guid: f52cc89d28af60347bd954a70d962c00,
-    type: 3}
-  tooltipText: Post-processing effect which adds subtle shadows between objects
-  tooltipValues: []
-  transitionDuration: 0.5
-  transitionCurveIn:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionCurveOut:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionMode: 1
 --- !u!114 &1376649713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26905,7 +26601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0.0000076293945}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0.0000038146973}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833

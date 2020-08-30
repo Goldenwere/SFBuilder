@@ -105,7 +105,7 @@
         /// </summary>
         /// <param name="name">Identifier used in InputSystem</param>
         /// <returns>A symbol or shorthand identifier for the key provided</returns>
-        public static string InputNameToChar(string name)
+        public static string    InputNameToChar(string name)
         {
             switch (name)
             {
