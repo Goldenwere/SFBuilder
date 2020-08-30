@@ -4281,26 +4281,40 @@ MonoBehaviour:
     mouse_right: {fileID: 21300000, guid: 316bb8b2066021a49af9faeddc7ef446, type: 3}
   settingsMenuElements:
     controlButtons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 1365915524}
+    - {fileID: 1250886786}
+    - {fileID: 1354927132}
+    - {fileID: 621561073}
+    - {fileID: 213996519}
+    - {fileID: 1189948066}
+    - {fileID: 1532583620}
+    - {fileID: 1336204177}
+    - {fileID: 567298051}
+    - {fileID: 1461564169}
+    - {fileID: 1379206992}
+    - {fileID: 2071223282}
+    - {fileID: 1755615367}
+    - {fileID: 355843119}
+    - {fileID: 901863107}
+    - {fileID: 1060900433}
+    - {fileID: 494580880}
+    - {fileID: 2135303704}
+    - {fileID: 823200505}
+    - {fileID: 1465252430}
+    - {fileID: 201694240}
+    - {fileID: 2139930140}
+    - {fileID: 1352616688}
+    - {fileID: 1573279762}
+    - {fileID: 326615376}
+    - {fileID: 1355615562}
+    - {fileID: 1951702504}
+    - {fileID: 1703877375}
+    - {fileID: 890256646}
+    - {fileID: 1058667145}
+    - {fileID: 1475266035}
+    - {fileID: 651005090}
+    - {fileID: 1852363367}
+    - {fileID: 540088420}
     postprocAO: {fileID: 1491764320}
     postprocBloom: {fileID: 1499005382}
     postprocSSR: {fileID: 702898267}
