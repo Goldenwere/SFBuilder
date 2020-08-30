@@ -475,6 +475,11 @@ namespace SFBuilder.UI
             Application.Quit();
         }
 
+        /// <summary>
+        /// Handler for control buttons to set controls
+        /// </summary>
+        /// <param name="control">The button's associated control to manipulate</param>
+        /// <param name="expectedTypes">The type of input expected by the control</param>
         public void OnSetControl(GameControl control, InputType[] expectedTypes)
         {
             canvasRebindWindow.SetActive(true);
@@ -482,7 +487,8 @@ namespace SFBuilder.UI
             canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
 
             // Expected types is an array for use in excluding controls
-            // pathStart is only necessary for multi-bound actions (primarily composites), which never have more than one expected type
+            // pathStart is only necessary for actions with multiple bindings (i.e. those with bindings for both keyboard and gamepad),
+            // which never have more than one expected type
             // Therefore, it is fine to assume expectedTypes[0].ToString() in all cases, because for any other action, it goes unused
             InputAction action = ControlBinding.ControlToAction(control, expectedTypes[0].ToString(), out int index);
 

@@ -12,7 +12,10 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [Tooltip                                ("Associate a control with this button")]
         [SerializeField] private GameControl    associatedControl;
-        [Tooltip                                ("Define what input is expected")]
+        [Tooltip                                ("Define what input is expected.\n" +
+                                                "Note that there can be multiple expected types for singular controls." +
+                                                "There can only be a single type for actions with multiple bindings." +
+                                                "This cannot be left empty")]
         [SerializeField] private InputType[]    expectedInput;
 #pragma warning restore 0649
 
