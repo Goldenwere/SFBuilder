@@ -139,18 +139,7 @@ namespace SFBuilder.UI
 
             // Initialize the controls menu buttons
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
-            {
                 cb.onClick.AddListener(() => OnSetControl(cb));
-                if ((byte)cb.AssociatedControl < 13)
-                {
-                    if (cb.ExpectedInput[0] == InputType.Gamepad)
-                        SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.control == cb.AssociatedControl).path);
-                    else
-                        SetControlDisplay(cb, workingSettings.controlBindings_Keyboard.First(b => b.control == cb.AssociatedControl).path);
-                }
-                else
-                    SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.control == cb.AssociatedControl).path);
-            }
 
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
@@ -186,6 +175,19 @@ namespace SFBuilder.UI
             settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", workingSettings.volEffects));
             settingsMenuElements.volMusic.AssociatedSlider.SetValueWithoutNotify(workingSettings.volMusic);
             settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", workingSettings.volMusic));
+
+            foreach (ControlButton cb in settingsMenuElements.controlButtons)
+            {
+                if ((byte)cb.AssociatedControl < 13)
+                {
+                    if (cb.ExpectedInput[0] == InputType.Gamepad)
+                        SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.control == cb.AssociatedControl).path);
+                    else
+                        SetControlDisplay(cb, workingSettings.controlBindings_Keyboard.First(b => b.control == cb.AssociatedControl).path);
+                }
+                else
+                    SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.control == cb.AssociatedControl).path);
+            }
         }
 
         /// <summary>
@@ -496,6 +498,7 @@ namespace SFBuilder.UI
             // which never have more than one expected type
             // Therefore, it is fine to assume expectedTypes[0].ToString() in all cases, because for any other action, it goes unused
             InputAction action = ControlBinding.ControlToAction(sender.AssociatedControl, sender.ExpectedInput[0].ToString(), out int index);
+            action.Disable();
 
             InputActionRebindingExtensions.RebindingOperation rebindOp = action
                 .PerformInteractiveRebinding()
@@ -604,6 +607,7 @@ namespace SFBuilder.UI
                             break;
                     }
                     canvasRebindWindow.SetActive(false);
+                    action.Enable();
                     rebindOp?.Dispose();
                 });
         }
