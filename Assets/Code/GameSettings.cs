@@ -133,12 +133,27 @@ namespace SFBuilder
             return false;
         }
 
+        /// <summary>
+        /// Used for updating the settings file when it is out of date
+        /// </summary>
+        /// <param name="loadedData">The originally loaded file data</param>
+        /// <returns>The updated file data</returns>
         private SettingsData UpdateFile(SettingsData loadedData)
         {
             // Before v0.19, there were no controls and no form of save-file versioning
             if (loadedData.saveVersion < 0.01)
             {
-
+                SettingsData _default = SettingsData.Default;
+                loadedData.controlBindings_Gamepad = _default.controlBindings_Gamepad;
+                loadedData.controlBindings_Keyboard = _default.controlBindings_Keyboard;
+                loadedData.controlBindings_Other = _default.controlBindings_Other;
+                loadedData.controlSetting_HoldModifiers = _default.controlSetting_HoldModifiers;
+                loadedData.controlSetting_InvertHorizontal = _default.controlSetting_InvertHorizontal;
+                loadedData.controlSetting_InvertScroll = _default.controlSetting_InvertScroll;
+                loadedData.controlSetting_InvertVertical = _default.controlSetting_InvertVertical;
+                loadedData.controlSetting_SensitivityMovement = _default.controlSetting_SensitivityMovement;
+                loadedData.controlSetting_SensitivityRotation = _default.controlSetting_SensitivityRotation;
+                loadedData.controlSetting_SensitivityZoom = _default.controlSetting_SensitivityZoom;
             }
 
             loadedData.saveVersion = GameConstants.__GAME_VERSION;
