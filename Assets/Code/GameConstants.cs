@@ -6,6 +6,11 @@
     public struct GameConstants
     {
         /// <summary>
+        /// The current game version
+        /// </summary>
+        public const double __GAME_VERSION = 0.19;
+
+        /// <summary>
         /// Name of effects group volume in GameAudioMixer
         /// </summary>
         public const string AudioParamEffects = "VolEffects";
