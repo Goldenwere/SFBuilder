@@ -93,46 +93,46 @@ namespace SFBuilder
                 {
                     controlBindings_Gamepad = new ControlBinding[]
                     {
-                        new ControlBinding { control = GameControl.Camera_MoveBackward,      path = "<Gamepad>/leftStick/down" },
-                        new ControlBinding { control = GameControl.Camera_MoveForward,       path = "<Gamepad>/leftStick/up" },
-                        new ControlBinding { control = GameControl.Camera_MoveLeft,          path = "<Gamepad>/leftStick/left" },
-                        new ControlBinding { control = GameControl.Camera_MoveRight,         path = "<Gamepad>/leftStick/right" },
-                        new ControlBinding { control = GameControl.Camera_RotateLeft,        path = "<Gamepad>/leftTrigger" },
-                        new ControlBinding { control = GameControl.Camera_RotateRight,       path = "<Gamepad>/rightTrigger" },
-                        new ControlBinding { control = GameControl.Camera_TiltDown,          path = "<Gamepad>/rightShoulder" },
-                        new ControlBinding { control = GameControl.Camera_TiltUp,            path = "<Gamepad>/leftShoulder" },
-                        new ControlBinding { control = GameControl.Camera_ZoomIn,            path = "<Gamepad>/leftStick/up" },
-                        new ControlBinding { control = GameControl.Camera_ZoomOut,           path = "<Gamepad>/leftStick/down" },
-                        new ControlBinding { control = GameControl.Gameplay_CancelAndMenu,   path = "<Gamepad>/start" },
-                        new ControlBinding { control = GameControl.Gameplay_Placement,       path = "<Gamepad>/buttonSouth" },
-                        new ControlBinding { control = GameControl.Gameplay_Undo,            path = "<Gamepad>/buttonWest" },
+                        new ControlBinding { control = GameControl.Camera_MoveBackward,     path = "<Gamepad>/leftStick/down" },
+                        new ControlBinding { control = GameControl.Camera_MoveForward,      path = "<Gamepad>/leftStick/up" },
+                        new ControlBinding { control = GameControl.Camera_MoveLeft,         path = "<Gamepad>/leftStick/left" },
+                        new ControlBinding { control = GameControl.Camera_MoveRight,        path = "<Gamepad>/leftStick/right" },
+                        new ControlBinding { control = GameControl.Camera_RotateLeft,       path = "<Gamepad>/leftTrigger" },
+                        new ControlBinding { control = GameControl.Camera_RotateRight,      path = "<Gamepad>/rightTrigger" },
+                        new ControlBinding { control = GameControl.Camera_TiltDown,         path = "<Gamepad>/rightShoulder" },
+                        new ControlBinding { control = GameControl.Camera_TiltUp,           path = "<Gamepad>/leftShoulder" },
+                        new ControlBinding { control = GameControl.Camera_ZoomIn,           path = "<Gamepad>/leftStick/up" },
+                        new ControlBinding { control = GameControl.Camera_ZoomOut,          path = "<Gamepad>/leftStick/down" },
+                        new ControlBinding { control = GameControl.Gameplay_CancelAndMenu,  path = "<Gamepad>/start" },
+                        new ControlBinding { control = GameControl.Gameplay_Placement,      path = "<Gamepad>/buttonSouth" },
+                        new ControlBinding { control = GameControl.Gameplay_Undo,           path = "<Gamepad>/buttonWest" },
                     },
                     controlBindings_Keyboard = new ControlBinding[]
                     {
-                        new ControlBinding { control = GameControl.Camera_MoveBackward,      path = "<Keyboard>/s" },
-                        new ControlBinding { control = GameControl.Camera_MoveForward,       path = "<Keyboard>/w" },
-                        new ControlBinding { control = GameControl.Camera_MoveLeft,          path = "<Keyboard>/a" },
-                        new ControlBinding { control = GameControl.Camera_MoveRight,         path = "<Keyboard>/d" },
-                        new ControlBinding { control = GameControl.Camera_RotateLeft,        path = "<Keyboard>/q" },
-                        new ControlBinding { control = GameControl.Camera_RotateRight,       path = "<Keyboard>/e" },
-                        new ControlBinding { control = GameControl.Camera_TiltDown,          path = "<Keyboard>/f" },
-                        new ControlBinding { control = GameControl.Camera_TiltUp,            path = "<Keyboard>/r" },
-                        new ControlBinding { control = GameControl.Camera_ZoomIn,            path = "<Keyboard>/g" },
-                        new ControlBinding { control = GameControl.Camera_ZoomOut,           path = "<Keyboard>/t" },
-                        new ControlBinding { control = GameControl.Gameplay_CancelAndMenu,   path = "<Keyboard>/escape" },
-                        new ControlBinding { control = GameControl.Gameplay_Placement,       path = "<Keyboard>/enter" },
-                        new ControlBinding { control = GameControl.Gameplay_Undo,            path = "<Keyboard>/backspace" },
+                        new ControlBinding { control = GameControl.Camera_MoveBackward,     path = "<Keyboard>/s" },
+                        new ControlBinding { control = GameControl.Camera_MoveForward,      path = "<Keyboard>/w" },
+                        new ControlBinding { control = GameControl.Camera_MoveLeft,         path = "<Keyboard>/a" },
+                        new ControlBinding { control = GameControl.Camera_MoveRight,        path = "<Keyboard>/d" },
+                        new ControlBinding { control = GameControl.Camera_RotateLeft,       path = "<Keyboard>/q" },
+                        new ControlBinding { control = GameControl.Camera_RotateRight,      path = "<Keyboard>/e" },
+                        new ControlBinding { control = GameControl.Camera_TiltDown,         path = "<Keyboard>/f" },
+                        new ControlBinding { control = GameControl.Camera_TiltUp,           path = "<Keyboard>/r" },
+                        new ControlBinding { control = GameControl.Camera_ZoomIn,           path = "<Keyboard>/g" },
+                        new ControlBinding { control = GameControl.Camera_ZoomOut,          path = "<Keyboard>/t" },
+                        new ControlBinding { control = GameControl.Gameplay_CancelAndMenu,  path = "<Keyboard>/escape" },
+                        new ControlBinding { control = GameControl.Gameplay_Placement,      path = "<Keyboard>/enter" },
+                        new ControlBinding { control = GameControl.Gameplay_Undo,           path = "<Keyboard>/backspace" },
                     },
                     controlBindings_Other = new ControlBinding[]
                     {
-                        new ControlBinding { control = GameControl.Gamepad_CursorDown,           path = "<Gamepad>/rightStick/down" },
-                        new ControlBinding { control = GameControl.Gamepad_CursorLeft,           path = "<Gamepad>/rightStick/left" },
-                        new ControlBinding { control = GameControl.Gamepad_CursorRight,          path = "<Gamepad>/rightStick/right" },
-                        new ControlBinding { control = GameControl.Gamepad_CursorUp,             path = "<Gamepad>/rightStick/up" },
-                        new ControlBinding { control = GameControl.Gamepad_ZoomToggle,           path = "<Gamepad>/leftStickPress" },
-                        new ControlBinding { control = GameControl.Mouse_ToggleMovement,         path = "<Mouse>/leftButton" },
-                        new ControlBinding { control = GameControl.Mouse_ToggleRotation,         path = "<Mouse>/rightButton" },
-                        new ControlBinding { control = GameControl.Mouse_ToggleZoom,             path = "<Keyboard>/ctrl" },
+                        new ControlBinding { control = GameControl.Gamepad_CursorDown,      path = "<Gamepad>/rightStick/down" },
+                        new ControlBinding { control = GameControl.Gamepad_CursorLeft,      path = "<Gamepad>/rightStick/left" },
+                        new ControlBinding { control = GameControl.Gamepad_CursorRight,     path = "<Gamepad>/rightStick/right" },
+                        new ControlBinding { control = GameControl.Gamepad_CursorUp,        path = "<Gamepad>/rightStick/up" },
+                        new ControlBinding { control = GameControl.Gamepad_ZoomToggle,      path = "<Gamepad>/leftStickPress" },
+                        new ControlBinding { control = GameControl.Mouse_ToggleMovement,    path = "<Mouse>/leftButton" },
+                        new ControlBinding { control = GameControl.Mouse_ToggleRotation,    path = "<Mouse>/rightButton" },
+                        new ControlBinding { control = GameControl.Mouse_ToggleZoom,        path = "<Keyboard>/ctrl" },
                     },
                     controlSetting_HoldModifiers = false,
                     controlSetting_InvertHorizontal = false,
@@ -330,8 +330,7 @@ namespace SFBuilder
         /// <returns>The full input path of a binding</returns>
         public static string GetPath(InputActionMap map, string action, string pathStart, string compositeName)
         {
-            int i = map.FindAction(action).bindings.IndexOf(b => b.isPartOfComposite && b.name == compositeName && b.path.Contains(pathStart));
-            return map.FindAction(action).bindings[i].path;
+            return map.FindAction(action).bindings[GetIndex(map, action, pathStart, compositeName)].path;
         }
     }
 }
