@@ -628,6 +628,7 @@ namespace SFBuilder.UI
         {
             workingSettings = GameSettings.Instance.Settings;
             LoadSettings();
+            GameSettings.Instance.SetInputOverrides();
         }
 
         /// <summary>

@@ -40,6 +40,7 @@ namespace SFBuilder
                 settings = value;
                 GameEventSystem.Instance.NotifySettingsChanged();
                 SaveSettings();
+                SetInputOverrides();
             }
         }
         #endregion
@@ -56,6 +57,7 @@ namespace SFBuilder
                 Instance = this;
 
             LoadSettings();
+            SetInputOverrides();
         }
 
         /// <summary>
@@ -181,6 +183,64 @@ namespace SFBuilder
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Use to set input overrides; this is done with Saving, but exposed in case of Reverting
+        /// </summary>
+        public void SetInputOverrides()
+        {
+            foreach(ControlBinding cb in settings.controlBindings_Gamepad)
+            {
+                InputAction action = ControlBinding.ControlToAction(cb.control, "Gamepad", out int i);
+                if (i > -1)
+                {
+                    InputBinding binding = action.actionMap.bindings[i];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                }
+                else
+                {
+                    InputBinding binding = action.bindings[1];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                }
+            }
+
+            foreach (ControlBinding cb in settings.controlBindings_Keyboard)
+            {
+                InputAction action = ControlBinding.ControlToAction(cb.control, "Keyboard", out int i);
+                if (i > -1)
+                {
+                    InputBinding binding = action.actionMap.bindings[i];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                }
+                else
+                {
+                    InputBinding binding = action.bindings[1];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                }
+            }
+
+            foreach (ControlBinding cb in settings.controlBindings_Other)
+            {
+                // It is fine to assume gamepad, as that is the only composite (and is always gamepad) and thus the only one requiring pathStart
+                InputAction action = ControlBinding.ControlToAction(cb.control, "Gamepad", out int i);
+                if (i > -1)
+                {
+                    InputBinding binding = action.actionMap.bindings[i];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                }
+                else
+                {
+                    InputBinding binding = action.bindings[1];
+                    binding.overridePath = cb.path;
+                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                }
+            }
         }
         #endregion
     }
