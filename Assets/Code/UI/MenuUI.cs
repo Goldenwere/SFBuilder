@@ -136,7 +136,8 @@ namespace SFBuilder.UI
             // Clear elements that were initially added that are now disabled
             UITransitionSystem.Instance.ClearElements();
 
-            InitializeButtons();
+            foreach (ControlButton cb in settingsMenuElements.controlButtons)
+                cb.onClick.AddListener(() => OnSetControl(cb.AssociatedControl, cb.ExpectedInput));
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
         }
@@ -157,15 +158,6 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.LevelTransitioned -= OnLevelTransitioned;
-        }
-
-        /// <summary>
-        /// Attaches handlers to buttons
-        /// </summary>
-        private void InitializeButtons()
-        {
-            foreach (ControlButton cb in settingsMenuElements.controlButtons)
-                cb.onClick.AddListener(() => OnSetControl(cb.AssociatedControl, cb.ExpectedInput));
         }
 
         /// <summary>
