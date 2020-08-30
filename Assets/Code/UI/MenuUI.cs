@@ -137,7 +137,7 @@ namespace SFBuilder.UI
             UITransitionSystem.Instance.ClearElements();
 
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
-                cb.onClick.AddListener(() => OnSetControl(cb.AssociatedControl, cb.ExpectedInput));
+                cb.onClick.AddListener(() => OnSetControl(cb));
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
         }
@@ -470,19 +470,18 @@ namespace SFBuilder.UI
         /// <summary>
         /// Handler for control buttons to set controls
         /// </summary>
-        /// <param name="control">The button's associated control to manipulate</param>
-        /// <param name="expectedTypes">The type of input expected by the control</param>
-        public void OnSetControl(GameControl control, InputType[] expectedTypes)
+        /// <param name="sender">The button sending the event</param>
+        public void OnSetControl(ControlButton sender)
         {
             canvasRebindWindow.SetActive(true);
-            string indicator = control.ToString().Replace("Camera_", "").Replace("Gameplay_", "").Replace("Mouse_", "").Replace("Gamepad_", "");
+            string indicator = sender.AssociatedControl.ToString().Replace("Camera_", "").Replace("Gameplay_", "").Replace("Mouse_", "").Replace("Gamepad_", "");
             canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
 
             // Expected types is an array for use in excluding controls
             // pathStart is only necessary for actions with multiple bindings (i.e. those with bindings for both keyboard and gamepad),
             // which never have more than one expected type
             // Therefore, it is fine to assume expectedTypes[0].ToString() in all cases, because for any other action, it goes unused
-            InputAction action = ControlBinding.ControlToAction(control, expectedTypes[0].ToString(), out int index);
+            InputAction action = ControlBinding.ControlToAction(sender.AssociatedControl, sender.ExpectedInput[0].ToString(), out int index);
 
             InputActionRebindingExtensions.RebindingOperation rebindOp = action
                 .PerformInteractiveRebinding()
@@ -492,7 +491,7 @@ namespace SFBuilder.UI
             if (index > -1)
                 rebindOp.WithTargetBinding(index);
 
-            if (!expectedTypes.Contains(InputType.Gamepad))
+            if (!sender.ExpectedInput.Contains(InputType.Gamepad))
             {
                 rebindOp.WithControlsExcluding("Gamepad");
                 rebindOp.WithControlsExcluding("Joystick");
@@ -501,10 +500,10 @@ namespace SFBuilder.UI
             else
                 rebindOp.WithCancelingThrough("Keyboard/escape");
 
-            if (!expectedTypes.Contains(InputType.Keyboard))
+            if (!sender.ExpectedInput.Contains(InputType.Keyboard))
                 rebindOp.WithControlsExcluding("Keyboard");
 
-            if (!expectedTypes.Contains(InputType.Mouse))
+            if (!sender.ExpectedInput.Contains(InputType.Mouse))
                 rebindOp.WithControlsExcluding("Mouse");
 
             rebindOp.Start()
@@ -516,7 +515,7 @@ namespace SFBuilder.UI
                 .OnComplete(callback =>
                 {
                     ControlBinding cb;
-                    switch(control)
+                    switch(sender.AssociatedControl)
                     {
                         case GameControl.Camera_MoveBackward:
                         case GameControl.Camera_MoveForward:
@@ -532,21 +531,37 @@ namespace SFBuilder.UI
                         case GameControl.Gameplay_Placement:
                         case GameControl.Gameplay_Undo:
                             // For multi-bound bindings, index 0 is keyboard, index 1 is gamepad; for placement, index 2 is present but not rebindable
-                            if (expectedTypes[0] == InputType.Gamepad)
+                            if (sender.ExpectedInput[0] == InputType.Gamepad)
                             {
-                                cb = workingSettings.controlBindings_Gamepad.First(b => b.control == control);
+                                cb = workingSettings.controlBindings_Gamepad.First(b => b.control == sender.AssociatedControl);
                                 if (index > -1)
-                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path = action.actionMap.bindings[index].overridePath;
+                                {
+                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
+                                        action.actionMap.bindings[index].overridePath;
+                                    SetControl(sender, action.actionMap.bindings[index].overridePath);
+                                }
                                 else
-                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path = action.bindings[0].overridePath;
+                                {
+                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
+                                        action.bindings[1].overridePath;
+                                    SetControl(sender, action.bindings[1].overridePath);
+                                }
                             }
                             else
                             {
-                                cb = workingSettings.controlBindings_Keyboard.First(b => b.control == control);
+                                cb = workingSettings.controlBindings_Keyboard.First(b => b.control == sender.AssociatedControl);
                                 if (index > -1)
-                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path = action.actionMap.bindings[index].overridePath;
+                                {
+                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
+                                        action.actionMap.bindings[index].overridePath;
+                                    SetControl(sender, action.actionMap.bindings[index].overridePath);
+                                }
                                 else
-                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path = action.bindings[0].overridePath;
+                                {
+                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
+                                        action.bindings[0].overridePath;
+                                    SetControl(sender, action.bindings[0].overridePath);
+                                }
                             }
                             break;
                         case GameControl.Gamepad_CursorDown:
@@ -558,12 +573,20 @@ namespace SFBuilder.UI
                         case GameControl.Mouse_ToggleRotation:
                         case GameControl.Mouse_ToggleZoom:
                         default:
-                            cb = workingSettings.controlBindings_Other.First(b => b.control == control);
+                            cb = workingSettings.controlBindings_Other.First(b => b.control == sender.AssociatedControl);
                             if (index > -1)
-                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path = action.actionMap.bindings[index].overridePath;
+                            {
+                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
+                                    action.actionMap.bindings[index].overridePath;
+                                SetControl(sender, action.actionMap.bindings[index].overridePath);
+                            }
                             // since these are not multi-bound, assume index 0
                             else
-                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path = action.bindings[0].overridePath;
+                            {
+                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
+                                    action.bindings[0].overridePath;
+                                SetControl(sender, action.bindings[0].overridePath);
+                            }
                             break;
                     }
                     canvasRebindWindow.SetActive(false);
