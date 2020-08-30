@@ -229,16 +229,16 @@ namespace SFBuilder
             switch (control)
             {
                 case GameControl.Gamepad_CursorDown:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "down");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "down");
                     return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
                 case GameControl.Gamepad_CursorLeft:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "left");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "left");
                     return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
                 case GameControl.Gamepad_CursorRight:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "right");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "right");
                     return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
                 case GameControl.Gamepad_CursorUp:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "up");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "up");
                     return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
                 case GameControl.Gamepad_ZoomToggle:
                     index = -1;
@@ -253,34 +253,34 @@ namespace SFBuilder
                     index = -1;
                     return GameSettings.Instance.DefaultActionMap.FindAction("MouseToggleZoom");
                 case GameControl.Camera_MoveBackward:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "down");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "down");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
                 case GameControl.Camera_MoveForward:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "up");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "up");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
                 case GameControl.Camera_MoveLeft:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "left");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "left");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
                 case GameControl.Camera_MoveRight:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "right");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionMovement", pathStart, "right");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionMovement");
                 case GameControl.Camera_RotateLeft:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "left");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "left");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
                 case GameControl.Camera_RotateRight:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "right");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "right");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
                 case GameControl.Camera_TiltDown:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "down");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "down");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
                 case GameControl.Camera_TiltUp:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "up");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionRotation", pathStart, "up");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionRotation");
                 case GameControl.Camera_ZoomIn:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "positive");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "positive");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionZoom");
                 case GameControl.Camera_ZoomOut:
-                    index = ControlBinding.GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "negative");
+                    index = GetIndex(GameSettings.Instance.DefaultActionMap, "ActionZoom", pathStart, "negative");
                     return GameSettings.Instance.DefaultActionMap.FindAction("ActionZoom");
                 case GameControl.Gameplay_CancelAndMenu:
                     index = -1;

@@ -550,8 +550,8 @@
                 },
                 {
                     "name": "",
-                    "id": "2afec7cc-3274-4c44-923f-9e06e4369e7e",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "6829164e-e5b0-4851-b3e0-b87be9c56131",
+                    "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -561,8 +561,8 @@
                 },
                 {
                     "name": "",
-                    "id": "6829164e-e5b0-4851-b3e0-b87be9c56131",
-                    "path": "<Keyboard>/backspace",
+                    "id": "2afec7cc-3274-4c44-923f-9e06e4369e7e",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -594,8 +594,8 @@
                 },
                 {
                     "name": "",
-                    "id": "8f0da6b9-0ba6-44be-8ca7-7e10f3a78739",
-                    "path": "<Mouse>/leftButton",
+                    "id": "74936498-45a0-44d8-9e6b-9f230aeab512",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -616,8 +616,8 @@
                 },
                 {
                     "name": "",
-                    "id": "74936498-45a0-44d8-9e6b-9f230aeab512",
-                    "path": "<Keyboard>/enter",
+                    "id": "8f0da6b9-0ba6-44be-8ca7-7e10f3a78739",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

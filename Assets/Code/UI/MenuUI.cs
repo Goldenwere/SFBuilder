@@ -515,7 +515,59 @@ namespace SFBuilder.UI
                 })
                 .OnComplete(callback =>
                 {
-
+                    ControlBinding cb;
+                    switch(control)
+                    {
+                        case GameControl.Camera_MoveBackward:
+                        case GameControl.Camera_MoveForward:
+                        case GameControl.Camera_MoveLeft:
+                        case GameControl.Camera_MoveRight:
+                        case GameControl.Camera_RotateLeft:
+                        case GameControl.Camera_RotateRight:
+                        case GameControl.Camera_TiltDown:
+                        case GameControl.Camera_TiltUp:
+                        case GameControl.Camera_ZoomIn:
+                        case GameControl.Camera_ZoomOut:
+                        case GameControl.Gameplay_CancelAndMenu:
+                        case GameControl.Gameplay_Placement:
+                        case GameControl.Gameplay_Undo:
+                            // For multi-bound bindings, index 0 is keyboard, index 1 is gamepad; for placement, index 2 is present but not rebindable
+                            if (expectedTypes[0] == InputType.Gamepad)
+                            {
+                                cb = workingSettings.controlBindings_Gamepad.First(b => b.control == control);
+                                if (index > -1)
+                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path = action.actionMap.bindings[index].overridePath;
+                                else
+                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path = action.bindings[0].overridePath;
+                            }
+                            else
+                            {
+                                cb = workingSettings.controlBindings_Keyboard.First(b => b.control == control);
+                                if (index > -1)
+                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path = action.actionMap.bindings[index].overridePath;
+                                else
+                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path = action.bindings[0].overridePath;
+                            }
+                            break;
+                        case GameControl.Gamepad_CursorDown:
+                        case GameControl.Gamepad_CursorLeft:
+                        case GameControl.Gamepad_CursorRight:
+                        case GameControl.Gamepad_CursorUp:
+                        case GameControl.Gamepad_ZoomToggle:
+                        case GameControl.Mouse_ToggleMovement:
+                        case GameControl.Mouse_ToggleRotation:
+                        case GameControl.Mouse_ToggleZoom:
+                        default:
+                            cb = workingSettings.controlBindings_Other.First(b => b.control == control);
+                            if (index > -1)
+                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path = action.actionMap.bindings[index].overridePath;
+                            // since these are not multi-bound, assume index 0
+                            else
+                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path = action.bindings[0].overridePath;
+                            break;
+                    }
+                    canvasRebindWindow.SetActive(false);
+                    rebindOp?.Dispose();
                 });
         }
 
