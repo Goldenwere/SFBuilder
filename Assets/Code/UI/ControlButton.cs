@@ -10,7 +10,9 @@ namespace SFBuilder.UI
     {
         [Header("Controls")]
 #pragma warning disable 0649
+        [Tooltip                                ("Associate a control with this button")]
         [SerializeField] private GameControl    associatedControl;
+        [Tooltip                                ("Define what input is expected")]
         [SerializeField] private InputType[]    expectedInput;
 #pragma warning restore 0649
 

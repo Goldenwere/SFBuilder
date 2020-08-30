@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
+using System.Linq;
 using System.Collections;
 using Goldenwere.Unity.UI;
 using Goldenwere.Unity;
@@ -100,66 +101,12 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// Collection of elements related to generic controls menu elements (there are two sets of these - one for keyboard, one for gamepad)
-        /// </summary>
-        [Serializable]
-        protected class GenericControlsMenuElements
-        {
-            public Button   cameraMovementBackward;
-            public Button   cameraMovementForward;
-            public Button   cameraMovementLeft;
-            public Button   cameraMovementRight;
-
-            public Button   cameraRotateLeft;
-            public Button   cameraRotateRight;
-            public Button   cameraTiltUp;
-            public Button   cameraTiltDown;
-
-            public Button   cameraZoomIn;
-            public Button   cameraZoomOut;
-
-            public Button   gameplayCancelAndMenu;
-            public Button   gameplayPlacement;
-            public Button   gameplayUndo;
-        }
-
-        /// <summary>
-        /// Collection of remaining controls menu elements (which are single-set)
-        /// </summary>
-        [Serializable]
-        protected class OtherControlsMenuElements
-        {
-            public Button                   gamepadCursorDown;
-            public Button                   gamepadCursorLeft;
-            public Button                   gamepadCursorRight;
-            public Button                   gamepadCursorUp;
-
-            public Button                   gamepadToggleZoom;
-
-            public Toggle                   modifiersHeld;
-
-            public Toggle                   mouseInvertDeltaHoriztonal;
-            public Toggle                   mouseInvertDeltaVertical;
-            public Toggle                   mouseInvertZoom;
-
-            public Button                   mouseToggleMovement;
-            public Button                   mouseToggleRotation;
-            public Button                   mouseToggleZoom;
-
-            public SliderTextLoadExtension  sensitivityMovement;
-            public SliderTextLoadExtension  sensitivityRotation;
-            public SliderTextLoadExtension  sensitivityZoom;
-        }
-
-        /// <summary>
         /// Collection of elements on the settings menu, whose values are set every time the menu loads
         /// </summary>
         [Serializable]
         protected class SettingsMenuElements
         {
-            public GenericControlsMenuElements  generalKeyboardControls;
-            public GenericControlsMenuElements  generalGamepadControls;
-            public OtherControlsMenuElements    otherControls;
+            public ControlButton[]              controlButtons;
             public Toggle                       postprocAO;
             public Toggle                       postprocBloom;
             public Toggle                       postprocSSR;
@@ -217,42 +164,8 @@ namespace SFBuilder.UI
         /// </summary>
         private void InitializeButtons()
         {
-            settingsMenuElements.generalGamepadControls.cameraMovementBackward.onClick.AddListener( () => OnSetControl(GenericControl.Camera_MoveBackward,    true));
-            settingsMenuElements.generalGamepadControls.cameraMovementForward.onClick.AddListener(  () => OnSetControl(GenericControl.Camera_MoveForward,     true));
-            settingsMenuElements.generalGamepadControls.cameraMovementLeft.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_MoveLeft,        true));
-            settingsMenuElements.generalGamepadControls.cameraMovementRight.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveRight,       true));
-            settingsMenuElements.generalGamepadControls.cameraRotateLeft.onClick.AddListener(       () => OnSetControl(GenericControl.Camera_RotateLeft,      true));
-            settingsMenuElements.generalGamepadControls.cameraRotateRight.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_RotateRight,     true));
-            settingsMenuElements.generalGamepadControls.cameraTiltDown.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_TiltDown,        true));
-            settingsMenuElements.generalGamepadControls.cameraTiltUp.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_TiltUp,          true));
-            settingsMenuElements.generalGamepadControls.cameraZoomIn.onClick.AddListener(           () => OnSetControl(GenericControl.Camera_ZoomIn,          true));
-            settingsMenuElements.generalGamepadControls.cameraZoomOut.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_ZoomOut,         true));
-            settingsMenuElements.generalGamepadControls.gameplayCancelAndMenu.onClick.AddListener(  () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, true));
-            settingsMenuElements.generalGamepadControls.gameplayPlacement.onClick.AddListener(      () => OnSetControl(GenericControl.Gameplay_Placement,     true));
-            settingsMenuElements.generalGamepadControls.gameplayUndo.onClick.AddListener(           () => OnSetControl(GenericControl.Gameplay_Undo,          true));
-
-            settingsMenuElements.generalKeyboardControls.cameraMovementBackward.onClick.AddListener(() => OnSetControl(GenericControl.Camera_MoveBackward,    false));
-            settingsMenuElements.generalKeyboardControls.cameraMovementForward.onClick.AddListener( () => OnSetControl(GenericControl.Camera_MoveForward,     false));
-            settingsMenuElements.generalKeyboardControls.cameraMovementLeft.onClick.AddListener(    () => OnSetControl(GenericControl.Camera_MoveLeft,        false));
-            settingsMenuElements.generalKeyboardControls.cameraMovementRight.onClick.AddListener(   () => OnSetControl(GenericControl.Camera_MoveRight,       false));
-            settingsMenuElements.generalKeyboardControls.cameraRotateLeft.onClick.AddListener(      () => OnSetControl(GenericControl.Camera_RotateLeft,      false));
-            settingsMenuElements.generalKeyboardControls.cameraRotateRight.onClick.AddListener(     () => OnSetControl(GenericControl.Camera_RotateRight,     false));
-            settingsMenuElements.generalKeyboardControls.cameraTiltDown.onClick.AddListener(        () => OnSetControl(GenericControl.Camera_TiltDown,        false));
-            settingsMenuElements.generalKeyboardControls.cameraTiltUp.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_TiltUp,          false));
-            settingsMenuElements.generalKeyboardControls.cameraZoomIn.onClick.AddListener(          () => OnSetControl(GenericControl.Camera_ZoomIn,          false));
-            settingsMenuElements.generalKeyboardControls.cameraZoomOut.onClick.AddListener(         () => OnSetControl(GenericControl.Camera_ZoomOut,         false));
-            settingsMenuElements.generalKeyboardControls.gameplayCancelAndMenu.onClick.AddListener( () => OnSetControl(GenericControl.Gameplay_CancelAndMenu, false));
-            settingsMenuElements.generalKeyboardControls.gameplayPlacement.onClick.AddListener(     () => OnSetControl(GenericControl.Gameplay_Placement,     false));
-            settingsMenuElements.generalKeyboardControls.gameplayUndo.onClick.AddListener(          () => OnSetControl(GenericControl.Gameplay_Undo,          false));
-
-            settingsMenuElements.otherControls.gamepadCursorDown.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_CursorDown));
-            settingsMenuElements.otherControls.gamepadCursorLeft.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_CursorLeft));
-            settingsMenuElements.otherControls.gamepadCursorRight.onClick.AddListener(  () => OnSetControl(OtherControl.Gamepad_CursorRight));
-            settingsMenuElements.otherControls.gamepadCursorUp.onClick.AddListener(     () => OnSetControl(OtherControl.Gamepad_CursorUp));
-            settingsMenuElements.otherControls.gamepadToggleZoom.onClick.AddListener(   () => OnSetControl(OtherControl.Gamepad_ZoomToggle));
-            settingsMenuElements.otherControls.mouseToggleMovement.onClick.AddListener( () => OnSetControl(OtherControl.Mouse_ToggleMovement));
-            settingsMenuElements.otherControls.mouseToggleRotation.onClick.AddListener( () => OnSetControl(OtherControl.Mouse_ToggleRotation));
-            settingsMenuElements.otherControls.mouseToggleZoom.onClick.AddListener(     () => OnSetControl(OtherControl.Mouse_ToggleZoom));
+            foreach (ControlButton cb in settingsMenuElements.controlButtons)
+                cb.onClick.AddListener(() => OnSetControl(cb.AssociatedControl, cb.ExpectedInput));
         }
 
         /// <summary>
@@ -333,47 +246,6 @@ namespace SFBuilder.UI
         {
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 StartCoroutine(AnimateTransition(isStart));
-        }
-
-        /// <summary>
-        /// Performs rebinding from OnSetControl
-        /// </summary>
-        /// <param name="action">The action being rebound</param>
-        /// <param name="index">Index for composite actions (-1 if non-composite)</param>
-        /// <param name="isGamepad">Whether the action is being bound to the gamepad or not</param>
-        private void PerformRebinding(InputAction action, int index, bool isGamepad)
-        {
-            InputActionRebindingExtensions.RebindingOperation rebindOp = action
-                .PerformInteractiveRebinding()
-                .WithControlsExcluding("Mouse/delta")
-                .WithExpectedControlType("Button")
-                .OnMatchWaitForAnother(0.1f);
-            if (index > -1)
-                rebindOp.WithTargetBinding(index);
-
-            if (isGamepad)
-            {
-                rebindOp.WithControlsExcluding("Keyboard");
-                rebindOp.WithControlsExcluding("Mouse");
-                rebindOp.WithCancelingThrough("Keyboard/escape");
-            }
-
-            else
-            {
-                rebindOp.WithControlsExcluding("Gamepad");
-                rebindOp.WithControlsExcluding("Joystick");
-            }
-
-            rebindOp.Start()
-                .OnCancel(callback =>
-                {
-                    canvasRebindWindow.SetActive(false);
-                    rebindOp?.Dispose();
-                })
-                .OnComplete(callback =>
-                {
-
-                });
         }
 
         /// <summary>
@@ -603,37 +475,50 @@ namespace SFBuilder.UI
             Application.Quit();
         }
 
-        /// <summary>
-        /// Update a control when a control button is pressed
-        /// </summary>
-        /// <param name="control">The control associated with the button</param>
-        /// <param name="isGamepad">Whether the button is associated with the gamepad or keyboard</param>
-        public void OnSetControl(GenericControl control, bool isGamepad)
+        public void OnSetControl(GameControl control, InputType[] expectedTypes)
         {
             canvasRebindWindow.SetActive(true);
-            string indicator = control.ToString().Replace("Camera_", "").Replace("Gameplay_", "");
+            string indicator = control.ToString().Replace("Camera_", "").Replace("Gameplay_", "").Replace("Mouse_", "").Replace("Gamepad_", "");
             canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
 
-            string pathStart = "Keyboard";
-            if (isGamepad)
-                pathStart = "Gamepad";
+            // Expected types is an array for use in excluding controls
+            // pathStart is only necessary for multi-bound actions (primarily composites), which never have more than one expected type
+            // Therefore, it is fine to assume expectedTypes[0].ToString() in all cases, because for any other action, it goes unused
+            InputAction action = ControlBinding.ControlToAction(control, expectedTypes[0].ToString(), out int index);
 
-            PerformRebinding(ControlBinding_Generic.ControlToAction(control, pathStart, out int index), index, isGamepad);
-        }
+            InputActionRebindingExtensions.RebindingOperation rebindOp = action
+                .PerformInteractiveRebinding()
+                .WithControlsExcluding("Mouse/delta")
+                .WithExpectedControlType("Button")
+                .OnMatchWaitForAnother(0.1f);
+            if (index > -1)
+                rebindOp.WithTargetBinding(index);
 
-        /// <summary>
-        /// Update a control when a control button is pressed
-        /// </summary>
-        /// <param name="control">The control associated with the button</param>
-        public void OnSetControl(OtherControl control)
-        {
-            canvasRebindWindow.SetActive(true);
-            string indicator = control.ToString().Replace("Mouse_", "").Replace("Gamepad_", "");
-            canvasRebindWindowTextIndicator.text = System.Text.RegularExpressions.Regex.Replace(indicator, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
+            if (!expectedTypes.Contains(InputType.Gamepad))
+            {
+                rebindOp.WithControlsExcluding("Gamepad");
+                rebindOp.WithControlsExcluding("Joystick");
+            }
 
-            string pathStart = control.ToString().Split('_')[0];
+            else
+                rebindOp.WithCancelingThrough("Keyboard/escape");
 
-            PerformRebinding(ControlBinding_Other.ControlToAction(control, pathStart, out int index), index, control.ToString().Contains("Gamepad"));
+            if (!expectedTypes.Contains(InputType.Keyboard))
+                rebindOp.WithControlsExcluding("Keyboard");
+
+            if (!expectedTypes.Contains(InputType.Mouse))
+                rebindOp.WithControlsExcluding("Mouse");
+
+            rebindOp.Start()
+                .OnCancel(callback =>
+                {
+                    canvasRebindWindow.SetActive(false);
+                    rebindOp?.Dispose();
+                })
+                .OnComplete(callback =>
+                {
+
+                });
         }
 
         /// <summary>
