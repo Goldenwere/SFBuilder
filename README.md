@@ -10,7 +10,7 @@ This is the repository for the Moon Settler demo. Moon Settler (codenamed SFBuil
 
 ### Inspirations
 
-Moon Settler is largely inspired by the game ISLANDERS, another puzzle city-building hybrid. ISLANDERS has a singular scoring system dependant on building placement and buildings in range. Moon Settler's stats are inspired by more 'traditional' (non-puzzle-like) builder games such as MyColony and Cities: Skylines. The way bonuses/penalties encourage placing certain buildings in close proximity while others far away is partly inspired by Aven Colony.
+Moon Settler is largely inspired by the game [ISLANDERS](https://en.wikipedia.org/wiki/Islanders_(video_game)), another puzzle city-building hybrid. ISLANDERS has a singular scoring system dependant on building placement and buildings in range. Moon Settler's stats are inspired by more 'traditional' (non-puzzle-like) builder games such as [MyColony](https://www.apewebapps.com/my-colony/) and [Cities: Skylines](https://en.wikipedia.org/wiki/Cities:_Skylines). The way bonuses/penalties encourage placing certain buildings in close proximity while others far away is partly inspired by [Aven Colony](http://avencolony.com/).
 
 ### Repo
 
