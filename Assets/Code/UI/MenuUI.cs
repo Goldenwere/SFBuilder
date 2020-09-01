@@ -562,8 +562,10 @@ namespace SFBuilder.UI
                 .OnComplete(callback =>
                 {
                     pendingChangesExist = true;
-                    ControlBinding cb;
-                    switch(sender.AssociatedControl)
+                    ControlBinding cb;              // reference to previous binding
+                    ControlBinding newBinding;      // newly created binding after rebindOp
+                    int i;                          // index of previous binding
+                    switch (sender.AssociatedControl)
                     {
                         case GameControl.Camera_MoveBackward:
                         case GameControl.Camera_MoveForward:
@@ -582,38 +584,38 @@ namespace SFBuilder.UI
                             if (sender.ExpectedInput[0] == InputType.Gamepad)
                             {
                                 cb = workingSettings.controlBindings_Gamepad.First(b => b.control == sender.AssociatedControl);
+                                i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
                                 if (index > -1)
                                 {
-                                    int i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
-                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control, 
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control, 
                                         action.actionMap.bindings[index].overridePath);
                                     SetControlDisplay(sender, newBinding.path);
                                 }
                                 else
                                 {
-                                    int i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
-                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control,
                                         action.bindings[1].overridePath);
                                     SetControlDisplay(sender, newBinding.path);
                                 }
+                                workingSettings.controlBindings_Gamepad[i] = newBinding;
                             }
                             else
                             {
                                 cb = workingSettings.controlBindings_Keyboard.First(b => b.control == sender.AssociatedControl);
+                                i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
                                 if (index > -1)
                                 {
-                                    int i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
-                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
                                         action.actionMap.bindings[index].overridePath);
                                     SetControlDisplay(sender, newBinding.path);
                                 }
                                 else
                                 {
-                                    int i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
-                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
                                         action.bindings[0].overridePath);
                                     SetControlDisplay(sender, newBinding.path);
                                 }
+                                workingSettings.controlBindings_Gamepad[i] = newBinding;
                             }
                             break;
                         case GameControl.Gamepad_CursorDown:
@@ -626,21 +628,21 @@ namespace SFBuilder.UI
                         case GameControl.Mouse_ToggleZoom:
                         default:
                             cb = workingSettings.controlBindings_Other.First(b => b.control == sender.AssociatedControl);
+                            i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
                             if (index > -1)
                             {
-                                int i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
-                                ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
                                     action.actionMap.bindings[index].overridePath);
                                 SetControlDisplay(sender, newBinding.path);
                             }
                             // since these are not multi-bound, assume index 0
                             else
                             {
-                                int i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
-                                ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
                                     action.bindings[0].overridePath);
                                 SetControlDisplay(sender, newBinding.path);
                             }
+                            workingSettings.controlBindings_Other[i] = newBinding;
                             break;
                     }
                     canvasRebindWindow.SetActive(false);
