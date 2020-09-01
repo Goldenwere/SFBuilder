@@ -587,7 +587,7 @@ namespace SFBuilder.UI
                                 i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
                                 if (index > -1)
                                 {
-                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].Control, 
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].Control,
                                         action.actionMap.bindings[index].overridePath);
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
@@ -615,7 +615,7 @@ namespace SFBuilder.UI
                                         action.bindings[0].overridePath);
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
-                                workingSettings.controlBindings_Gamepad[i] = newBinding;
+                                workingSettings.controlBindings_Keyboard[i] = newBinding;
                             }
                             break;
                         case GameControl.Gamepad_CursorDown:
