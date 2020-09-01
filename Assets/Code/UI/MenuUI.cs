@@ -132,7 +132,7 @@ namespace SFBuilder.UI
         {
             Material copy = new Material(transitionImage.material);
             transitionImage.material = copy;
-            workingSettings = GameSettings.Instance.Settings;
+            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
 
             canvas.gameObject.SetActive(false);
             canvasRebindWindow.SetActive(false);
@@ -616,6 +616,7 @@ namespace SFBuilder.UI
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
                                 workingSettings.controlBindings_Keyboard[i] = newBinding;
+                                print(GameSettings.Instance.Settings.controlBindings_Keyboard[i].Path);
                             }
                             break;
                         case GameControl.Gamepad_CursorDown:
@@ -656,7 +657,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnSettingsPressed()
         {
-            workingSettings = GameSettings.Instance.Settings;
+            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
             LoadSettings();
             foreach (GameObject g in canvasMainElements)
                 g.SetActive(false);
@@ -672,7 +673,7 @@ namespace SFBuilder.UI
         {
             pendingChangesExist = false;
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings = GameSettings.Instance.Settings;
+            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
             LoadSettings();
             GameSettings.Instance.SetInputOverrides();
         }
@@ -684,7 +685,7 @@ namespace SFBuilder.UI
         {
             pendingChangesExist = false;
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            GameSettings.Instance.Settings = workingSettings;
+            GameSettings.Instance.Settings = SettingsData.Copy(workingSettings);
         }
 
         /// <summary>

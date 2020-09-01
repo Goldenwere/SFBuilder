@@ -248,6 +248,9 @@ namespace SFBuilder
         public float            volEffects;
         public float            volMusic;
 
+        /// <summary>
+        /// Defines what the default settings are for new players
+        /// </summary>
         public static SettingsData Default => new SettingsData
         {
             controlBindings_Gamepad = new ControlBinding[]
@@ -306,6 +309,27 @@ namespace SFBuilder
             volEffects = 1.0f,
             volMusic = 1.0f
         };
+
+        /// <summary>
+        /// Creates a deep copy of SettingsData
+        /// </summary>
+        /// <param name="other">The existing SettingsData being copied</param>
+        /// <returns>The copied SettingsData</returns>
+        public static SettingsData Copy(SettingsData other)
+        {
+            SettingsData newData = (SettingsData)other.MemberwiseClone();
+
+            newData.controlBindings_Gamepad = new ControlBinding[other.controlBindings_Gamepad.Length];
+            newData.controlBindings_Keyboard = new ControlBinding[other.controlBindings_Keyboard.Length];
+            newData.controlBindings_Other = new ControlBinding[other.controlBindings_Other.Length];
+            for (int i = 0; i < newData.controlBindings_Gamepad.Length; i++)
+                newData.controlBindings_Gamepad[i] = ControlBinding.Copy(other.controlBindings_Gamepad[i]);
+            for (int i = 0; i < newData.controlBindings_Keyboard.Length; i++)
+                newData.controlBindings_Keyboard[i] = ControlBinding.Copy(other.controlBindings_Keyboard[i]);
+            for (int i = 0; i < newData.controlBindings_Other.Length; i++)
+                newData.controlBindings_Other[i] = ControlBinding.Copy(other.controlBindings_Other[i]);
+            return newData;
+        }
     }
 
     /// <summary>
@@ -325,6 +349,16 @@ namespace SFBuilder
         {
             Control = _control;
             Path = _path;
+        }
+
+        /// <summary>
+        /// Create deep copy of an existing ControlBinding
+        /// </summary>
+        /// <param name="other">The original ControlBinding</param>
+        /// <returns>The copied ControlBinding</returns>
+        public static ControlBinding Copy(ControlBinding other)
+        {
+            return new ControlBinding(other.Control, string.Copy(other.Path));
         }
 
         /// <summary>
