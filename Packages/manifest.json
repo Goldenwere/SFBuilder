@@ -2,12 +2,12 @@
   "dependencies": {
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
     "com.unity.2d.sprite": "1.0.0",
-    "com.unity.ide.vscode": "1.2.0",
+    "com.unity.ide.vscode": "1.2.1",
     "com.unity.inputsystem": "1.0.0",
     "com.unity.polybrush": "1.0.1",
     "com.unity.postprocessing": "2.3.0",
     "com.unity.probuilder": "4.2.3",
-    "com.unity.test-framework": "1.1.14",
+    "com.unity.test-framework": "1.1.16",
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
@@ -41,11 +41,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "com.coffee.ui-effect": {
-      "revision": "HEAD",
-      "hash": "b43e40508b167d143330d8b9eff0d5c9965cdf3c"
-    }
   }
 }
