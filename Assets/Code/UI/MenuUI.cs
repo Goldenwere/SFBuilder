@@ -112,6 +112,10 @@ namespace SFBuilder.UI
             public Toggle                       postprocAO;
             public Toggle                       postprocBloom;
             public Toggle                       postprocSSR;
+            public Toggle                       invertHorizontal;
+            public Toggle                       invertScroll;
+            public Toggle                       invertVertical;
+            public Toggle                       modifiersHeld;
             public SliderTextLoadExtension      sensitivityMovement;
             public SliderTextLoadExtension      sensitivityRotation;
             public SliderTextLoadExtension      sensitivityZoom;
@@ -760,6 +764,46 @@ namespace SFBuilder.UI
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             workingSettings.postprocSSR = val;
+        }
+
+        /// <summary>
+        /// Update the inversion setting for horizontal on toggle change
+        /// </summary>
+        /// <param name="val">The new inversion setting</param>
+        public void OnValueChanged_InvertHorizontal(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.controlSetting_InvertHorizontal = val;
+        }
+
+        /// <summary>
+        /// Update the inversion setting for scroll on toggle change
+        /// </summary>
+        /// <param name="val">The new inversion setting</param>
+        public void OnValueChanged_InvertScroll(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.controlSetting_InvertScroll = val;
+        }
+
+        /// <summary>
+        /// Update the inversion setting for vertical on toggle change
+        /// </summary>
+        /// <param name="val">The new inversion setting</param>
+        public void OnValueChanged_InvertVertical(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.controlSetting_InvertVertical = val;
+        }
+
+        /// <summary>
+        /// Update the held modifiers setting on toggle change
+        /// </summary>
+        /// <param name="val">The new modifiers are held setting</param>
+        public void OnValueChanged_ModifiersHeld(bool val)
+        {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings.controlSetting_HoldModifiers = val;
         }
 
         /// <summary>

@@ -2151,12 +2151,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325333592}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnValueChanged_InvertHorizontal
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4315,9 +4315,13 @@ MonoBehaviour:
     postprocAO: {fileID: 1491764320}
     postprocBloom: {fileID: 1499005382}
     postprocSSR: {fileID: 702898267}
-    sensitivityMovement: {fileID: 0}
-    sensitivityRotation: {fileID: 0}
-    sensitivityZoom: {fileID: 0}
+    invertHorizontal: {fileID: 193004302}
+    invertScroll: {fileID: 722445001}
+    invertVertical: {fileID: 1376649713}
+    modifiersHeld: {fileID: 844201913}
+    sensitivityMovement: {fileID: 1170611974}
+    sensitivityRotation: {fileID: 1107603329}
+    sensitivityZoom: {fileID: 2037338224}
     volMusic: {fileID: 91400047}
     volEffects: {fileID: 1861769900}
   startupFadeImage: {fileID: 17871758}
@@ -11374,12 +11378,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325333592}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnValueChanged_InvertScroll
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13301,12 +13305,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325333592}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnValueChanged_ModifiersHeld
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -22706,12 +22710,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325333592}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnValueChanged_InvertVertical
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
