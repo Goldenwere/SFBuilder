@@ -35,6 +35,7 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject[]                   canvasSettingsSubmenuActiveBackgrounds;
         [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
         [SerializeField] private GameObject[]                   canvasSettingsSubmenuElements;
+        [SerializeField] private GameObject                     canvasWarningWindow;
         [SerializeField] private ControlsMenuImages             controlsMenuImages;
         [SerializeField] private SettingsMenuElements           settingsMenuElements;
         [SerializeField] private Image                          startupFadeImage;
@@ -43,6 +44,7 @@ namespace SFBuilder.UI
         [SerializeField] private AnimationCurve                 transitionStartupToWhite;
         [SerializeField] private Image                          transitionImage;
 #pragma warning restore 0649
+        /**************/ private bool                           pendingChangesExist;
         /**************/ private SettingsData                   workingSettings;
         /**************/ private SettingsSubmenu                workingSettingsSubmenuState;
         #endregion
@@ -127,6 +129,7 @@ namespace SFBuilder.UI
 
             canvas.gameObject.SetActive(false);
             canvasRebindWindow.SetActive(false);
+            canvasWarningWindow.SetActive(false);
 
             foreach (GameObject g in canvasSettingsElements)
                 g.SetActive(false);
@@ -457,11 +460,18 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnMainMenuPressed()
         {
-            foreach (GameObject g in canvasMainElements)
-                g.SetActive(true);
-            foreach (GameObject g in canvasSettingsElements)
-                g.SetActive(false);
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            if (pendingChangesExist)
+                canvasWarningWindow.SetActive(true);
+
+            else
+            {
+                foreach (GameObject g in canvasMainElements)
+                    g.SetActive(true);
+                foreach (GameObject g in canvasSettingsElements)
+                    g.SetActive(false);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                canvasWarningWindow.SetActive(false);
+            }
         }
 
         /// <summary>
@@ -531,6 +541,7 @@ namespace SFBuilder.UI
                 })
                 .OnComplete(callback =>
                 {
+                    pendingChangesExist = true;
                     ControlBinding cb;
                     switch(sender.AssociatedControl)
                     {
@@ -637,6 +648,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnSettingsRevertPressed()
         {
+            pendingChangesExist = false;
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             workingSettings = GameSettings.Instance.Settings;
             LoadSettings();
@@ -648,6 +660,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnSettingsSavePressed()
         {
+            pendingChangesExist = false;
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             GameSettings.Instance.Settings = workingSettings;
         }
@@ -686,6 +699,14 @@ namespace SFBuilder.UI
                 LoadSubmenu(SettingsSubmenu.graphics);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             }
+        }
+
+        /// <summary>
+        /// Universal method to note that pending changes exist
+        /// </summary>
+        public void OnValueChanged()
+        {
+            pendingChangesExist = true;
         }
 
         /// <summary>
