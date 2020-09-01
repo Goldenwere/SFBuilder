@@ -17,9 +17,11 @@
         /// <returns>The newly copied GoalContainer</returns>
         public static GoalContainer Copy(GoalContainer other)
         {
-            GoalContainer copy = new GoalContainer();
-            copy.goalExtras = new GoalItem[other.goalExtras.Length];
-            copy.goalRequirements = new GoalItem[other.goalRequirements.Length];
+            GoalContainer copy = new GoalContainer
+            {
+                goalExtras = new GoalItem[other.goalExtras.Length],
+                goalRequirements = new GoalItem[other.goalRequirements.Length]
+            };
             for (int i = 0; i < copy.goalExtras.Length; i++)
                 copy.goalExtras[i] = new GoalItem { goalStructureCount = other.goalExtras[i].goalStructureCount, goalStructureID = other.goalExtras[i].goalStructureID };
             for (int i = 0; i < copy.goalRequirements.Length; i++)
@@ -36,9 +38,11 @@
         /// <returns>The newly copied GoalContainer</returns>
         public static GoalContainer Copy(GoalContainer other, int viability)
         {
-            GoalContainer copy = new GoalContainer();
-            copy.goalExtras = new GoalItem[other.goalExtras.Length];
-            copy.goalRequirements = new GoalItem[other.goalRequirements.Length];
+            GoalContainer copy = new GoalContainer
+            {
+                goalExtras = new GoalItem[other.goalExtras.Length],
+                goalRequirements = new GoalItem[other.goalRequirements.Length]
+            };
             for (int i = 0; i < copy.goalExtras.Length; i++)
                 copy.goalExtras[i] = new GoalItem { goalStructureCount = other.goalExtras[i].goalStructureCount, goalStructureID = other.goalExtras[i].goalStructureID };
             for (int i = 0; i < copy.goalRequirements.Length; i++)
