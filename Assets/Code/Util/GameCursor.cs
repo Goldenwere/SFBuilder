@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using Goldenwere.Unity.Controller;
 
 namespace SFBuilder.Util
@@ -27,6 +28,19 @@ namespace SFBuilder.Util
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
             drawCursor = true;
+        }
+
+        /// <summary>
+        /// Determines if cursor is over an interactable and toggles mouse controls accordingly for cameras
+        /// </summary>
+        private void Update()
+        {
+            if (EventSystem.current.IsPointerOverGameObject() && cameras[0].controlMouseEnabled)
+                foreach (ManagementCamera cam in cameras)
+                    cam.controlMouseEnabled = false;
+            else if (!EventSystem.current.IsPointerOverGameObject() && !cameras[0].controlMouseEnabled)
+                foreach (ManagementCamera cam in cameras)
+                    cam.controlMouseEnabled = true;
         }
 
         /// <summary>
@@ -84,7 +98,7 @@ namespace SFBuilder.Util
         /// </summary>
         private void OnSettingsUpdated()
         {
-            
+
         }
         #endregion
     }
