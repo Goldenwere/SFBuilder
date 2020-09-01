@@ -112,6 +112,9 @@ namespace SFBuilder.UI
             public Toggle                       postprocAO;
             public Toggle                       postprocBloom;
             public Toggle                       postprocSSR;
+            public SliderTextLoadExtension      sensitivityMovement;
+            public SliderTextLoadExtension      sensitivityRotation;
+            public SliderTextLoadExtension      sensitivityZoom;
             public SliderTextLoadExtension      volMusic;
             public SliderTextLoadExtension      volEffects;
         }
@@ -757,6 +760,36 @@ namespace SFBuilder.UI
         {
             GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             workingSettings.postprocSSR = val;
+        }
+
+        /// <summary>
+        /// Update movement sensitivity on slider change
+        /// </summary>
+        /// <param name="val">New sensitivity value</param>
+        public void OnValueChanged_SensitivityMovement(float val)
+        {
+            workingSettings.controlSetting_SensitivityMovement = val;
+            settingsMenuElements.sensitivityMovement.UpdateText(string.Format("{0:0.##}", val));
+        }
+
+        /// <summary>
+        /// Update rotation sensitivity on slider change
+        /// </summary>
+        /// <param name="val">New sensitivity value</param>
+        public void OnValueChanged_SensitivityRotation(float val)
+        {
+            workingSettings.controlSetting_SensitivityRotation = val;
+            settingsMenuElements.sensitivityRotation.UpdateText(string.Format("{0:0.##}", val));
+        }
+
+        /// <summary>
+        /// Update zoom sensitivity on slider change
+        /// </summary>
+        /// <param name="val">New sensitivity value</param>
+        public void OnValueChanged_SensitivityZoom(float val)
+        {
+            workingSettings.controlSetting_SensitivityZoom = val;
+            settingsMenuElements.sensitivityZoom.UpdateText(string.Format("{0:0.##}", val));
         }
 
         /// <summary>
