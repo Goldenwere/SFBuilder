@@ -181,6 +181,7 @@ namespace SFBuilder.UI
             settingsMenuElements.postprocAO.SetIsOnWithoutNotify(workingSettings.postprocAO);
             settingsMenuElements.postprocBloom.SetIsOnWithoutNotify(workingSettings.postprocBloom);
             settingsMenuElements.postprocSSR.SetIsOnWithoutNotify(workingSettings.postprocSSR);
+
             settingsMenuElements.volEffects.AssociatedSlider.SetValueWithoutNotify(workingSettings.volEffects);
             settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", workingSettings.volEffects));
             settingsMenuElements.volMusic.AssociatedSlider.SetValueWithoutNotify(workingSettings.volMusic);
@@ -198,6 +199,18 @@ namespace SFBuilder.UI
                 else
                     SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.control == cb.AssociatedControl).path);
             }
+
+            settingsMenuElements.sensitivityMovement.AssociatedSlider.SetValueWithoutNotify(workingSettings.controlSetting_SensitivityMovement);
+            settingsMenuElements.sensitivityMovement.UpdateText(string.Format("{0:0.##}", workingSettings.controlSetting_SensitivityMovement));
+            settingsMenuElements.sensitivityRotation.AssociatedSlider.SetValueWithoutNotify(workingSettings.controlSetting_SensitivityRotation);
+            settingsMenuElements.sensitivityRotation.UpdateText(string.Format("{0:0.##}", workingSettings.controlSetting_SensitivityRotation));
+            settingsMenuElements.sensitivityZoom.AssociatedSlider.SetValueWithoutNotify(workingSettings.controlSetting_SensitivityZoom);
+            settingsMenuElements.sensitivityZoom.UpdateText(string.Format("{0:0.##}", workingSettings.controlSetting_SensitivityZoom));
+
+            settingsMenuElements.modifiersHeld.SetIsOnWithoutNotify(workingSettings.controlSetting_HoldModifiers);
+            settingsMenuElements.invertHorizontal.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertHorizontal);
+            settingsMenuElements.invertScroll.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertScroll);
+            settingsMenuElements.invertVertical.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertVertical);
         }
 
         /// <summary>
