@@ -553,15 +553,17 @@ namespace SFBuilder.UI
                                 cb = workingSettings.controlBindings_Gamepad.First(b => b.control == sender.AssociatedControl);
                                 if (index > -1)
                                 {
-                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
-                                        action.actionMap.bindings[index].overridePath;
-                                    SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
+                                    int i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
+                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control, 
+                                        action.actionMap.bindings[index].overridePath);
+                                    SetControlDisplay(sender, newBinding.path);
                                 }
                                 else
                                 {
-                                    workingSettings.controlBindings_Gamepad[Array.IndexOf(workingSettings.controlBindings_Gamepad, cb)].path =
-                                        action.bindings[1].overridePath;
-                                    SetControlDisplay(sender, action.bindings[1].overridePath);
+                                    int i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
+                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control,
+                                        action.bindings[1].overridePath);
+                                    SetControlDisplay(sender, newBinding.path);
                                 }
                             }
                             else
@@ -569,15 +571,17 @@ namespace SFBuilder.UI
                                 cb = workingSettings.controlBindings_Keyboard.First(b => b.control == sender.AssociatedControl);
                                 if (index > -1)
                                 {
-                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
-                                        action.actionMap.bindings[index].overridePath;
-                                    SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
+                                    int i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
+                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                        action.actionMap.bindings[index].overridePath);
+                                    SetControlDisplay(sender, newBinding.path);
                                 }
                                 else
                                 {
-                                    workingSettings.controlBindings_Keyboard[Array.IndexOf(workingSettings.controlBindings_Keyboard, cb)].path =
-                                        action.bindings[0].overridePath;
-                                    SetControlDisplay(sender, action.bindings[0].overridePath);
+                                    int i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
+                                    ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                        action.bindings[0].overridePath);
+                                    SetControlDisplay(sender, newBinding.path);
                                 }
                             }
                             break;
@@ -593,16 +597,18 @@ namespace SFBuilder.UI
                             cb = workingSettings.controlBindings_Other.First(b => b.control == sender.AssociatedControl);
                             if (index > -1)
                             {
-                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
-                                    action.actionMap.bindings[index].overridePath;
-                                SetControlDisplay(sender, action.actionMap.bindings[index].overridePath);
+                                int i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
+                                ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                    action.actionMap.bindings[index].overridePath);
+                                SetControlDisplay(sender, newBinding.path);
                             }
                             // since these are not multi-bound, assume index 0
                             else
                             {
-                                workingSettings.controlBindings_Other[Array.IndexOf(workingSettings.controlBindings_Other, cb)].path =
-                                    action.bindings[0].overridePath;
-                                SetControlDisplay(sender, action.bindings[0].overridePath);
+                                int i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
+                                ControlBinding newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                    action.bindings[0].overridePath);
+                                SetControlDisplay(sender, newBinding.path);
                             }
                             break;
                     }
