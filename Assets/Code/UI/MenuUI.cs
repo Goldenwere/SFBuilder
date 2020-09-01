@@ -631,6 +631,7 @@ namespace SFBuilder.UI
         /// </summary>
         public void OnSettingsRevertPressed()
         {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             workingSettings = GameSettings.Instance.Settings;
             LoadSettings();
             GameSettings.Instance.SetInputOverrides();
