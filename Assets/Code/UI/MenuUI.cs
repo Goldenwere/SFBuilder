@@ -616,7 +616,6 @@ namespace SFBuilder.UI
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
                                 workingSettings.controlBindings_Keyboard[i] = newBinding;
-                                print(GameSettings.Instance.Settings.controlBindings_Keyboard[i].Path);
                             }
                             break;
                         case GameControl.Gamepad_CursorDown:
