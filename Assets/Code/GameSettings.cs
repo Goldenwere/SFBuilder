@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -167,34 +169,34 @@ namespace SFBuilder
         {
             foreach(ControlBinding cb in settings.controlBindings_Gamepad)
             {
-                InputAction action = ControlBinding.ControlToAction(cb.control, "Gamepad", out int i);
+                InputAction action = ControlBinding.ControlToAction(cb.Control, "Gamepad", out int i);
                 if (i > -1)
                 {
                     InputBinding binding = action.actionMap.bindings[i];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[1];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
                 }
             }
 
             foreach (ControlBinding cb in settings.controlBindings_Keyboard)
             {
-                InputAction action = ControlBinding.ControlToAction(cb.control, "Keyboard", out int i);
+                InputAction action = ControlBinding.ControlToAction(cb.Control, "Keyboard", out int i);
                 if (i > -1)
                 {
                     InputBinding binding = action.actionMap.bindings[i];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[1];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
                 }
             }
@@ -202,17 +204,17 @@ namespace SFBuilder
             foreach (ControlBinding cb in settings.controlBindings_Other)
             {
                 // It is fine to assume gamepad, as that is the only composite (and is always gamepad) and thus the only one requiring pathStart
-                InputAction action = ControlBinding.ControlToAction(cb.control, "Gamepad", out int i);
+                InputAction action = ControlBinding.ControlToAction(cb.Control, "Gamepad", out int i);
                 if (i > -1)
                 {
                     InputBinding binding = action.actionMap.bindings[i];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[0];
-                    binding.overridePath = cb.path;
+                    binding.overridePath = cb.Path;
                     DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
                 }
             }
@@ -309,10 +311,10 @@ namespace SFBuilder
     /// <summary>
     /// Structure and functions for game control bindings
     /// </summary>
-    public readonly struct ControlBinding
+    public struct ControlBinding : IXmlSerializable
     {
-        public readonly GameControl control;
-        public readonly string      path;
+        public GameControl Control { get; private set; }
+        public string      Path { get; private set; }
 
         /// <summary>
         /// Create new control binding
@@ -321,8 +323,8 @@ namespace SFBuilder
         /// <param name="_path">The path which InputSystem uses for input from the control</param>
         public ControlBinding(GameControl _control, string _path)
         {
-            control = _control;
-            path = _path;
+            Control = _control;
+            Path = _path;
         }
 
         /// <summary>
@@ -438,6 +440,37 @@ namespace SFBuilder
         public static string GetPath(InputActionMap map, string action, string pathStart, string compositeName)
         {
             return map.FindAction(action).bindings[GetIndex(map, action, pathStart, compositeName)].path;
+        }
+
+        /// <summary>
+        /// Implementation of GetScheme
+        /// </summary>
+        /// <returns>null</returns>
+        XmlSchema IXmlSerializable.GetSchema()
+        {
+            return (null);
+        }
+
+        /// <summary>
+        /// Implementation of ReadXml
+        /// </summary>
+        /// <param name="reader">The reader for the file</param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            reader.MoveToContent();
+            if (Enum.TryParse(reader.GetAttribute("control"), out GameControl _control))
+                Control = _control;
+            Path = reader.GetAttribute("control");
+        }
+
+        /// <summary>
+        /// Implementation of WriteXml
+        /// </summary>
+        /// <param name="writer">The writer for the file</param>
+        void IXmlSerializable.WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("control", Control.ToString());
+            writer.WriteAttributeString("path", Path);
         }
     }
 }

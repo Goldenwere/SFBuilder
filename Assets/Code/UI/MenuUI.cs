@@ -192,12 +192,12 @@ namespace SFBuilder.UI
                 if ((byte)cb.AssociatedControl < 13)
                 {
                     if (cb.ExpectedInput[0] == InputType.Gamepad)
-                        SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.control == cb.AssociatedControl).path);
+                        SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.Control == cb.AssociatedControl).Path);
                     else
-                        SetControlDisplay(cb, workingSettings.controlBindings_Keyboard.First(b => b.control == cb.AssociatedControl).path);
+                        SetControlDisplay(cb, workingSettings.controlBindings_Keyboard.First(b => b.Control == cb.AssociatedControl).Path);
                 }
                 else
-                    SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.control == cb.AssociatedControl).path);
+                    SetControlDisplay(cb, workingSettings.controlBindings_Other.First(b => b.Control == cb.AssociatedControl).Path);
             }
 
             settingsMenuElements.sensitivityMovement.AssociatedSlider.SetValueWithoutNotify(workingSettings.controlSetting_SensitivityMovement);
@@ -583,37 +583,37 @@ namespace SFBuilder.UI
                             // For multi-bound bindings, index 0 is keyboard, index 1 is gamepad; for placement, index 2 is present but not rebindable
                             if (sender.ExpectedInput[0] == InputType.Gamepad)
                             {
-                                cb = workingSettings.controlBindings_Gamepad.First(b => b.control == sender.AssociatedControl);
+                                cb = workingSettings.controlBindings_Gamepad.First(b => b.Control == sender.AssociatedControl);
                                 i = Array.IndexOf(workingSettings.controlBindings_Gamepad, cb);
                                 if (index > -1)
                                 {
-                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control, 
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].Control, 
                                         action.actionMap.bindings[index].overridePath);
-                                    SetControlDisplay(sender, newBinding.path);
+                                    SetControlDisplay(sender, newBinding.Path);
                                 }
                                 else
                                 {
-                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].Control,
                                         action.bindings[1].overridePath);
-                                    SetControlDisplay(sender, newBinding.path);
+                                    SetControlDisplay(sender, newBinding.Path);
                                 }
                                 workingSettings.controlBindings_Gamepad[i] = newBinding;
                             }
                             else
                             {
-                                cb = workingSettings.controlBindings_Keyboard.First(b => b.control == sender.AssociatedControl);
+                                cb = workingSettings.controlBindings_Keyboard.First(b => b.Control == sender.AssociatedControl);
                                 i = Array.IndexOf(workingSettings.controlBindings_Keyboard, cb);
                                 if (index > -1)
                                 {
-                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].Control,
                                         action.actionMap.bindings[index].overridePath);
-                                    SetControlDisplay(sender, newBinding.path);
+                                    SetControlDisplay(sender, newBinding.Path);
                                 }
                                 else
                                 {
-                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].control,
+                                    newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].Control,
                                         action.bindings[0].overridePath);
-                                    SetControlDisplay(sender, newBinding.path);
+                                    SetControlDisplay(sender, newBinding.Path);
                                 }
                                 workingSettings.controlBindings_Gamepad[i] = newBinding;
                             }
@@ -627,20 +627,20 @@ namespace SFBuilder.UI
                         case GameControl.Mouse_ToggleRotation:
                         case GameControl.Mouse_ToggleZoom:
                         default:
-                            cb = workingSettings.controlBindings_Other.First(b => b.control == sender.AssociatedControl);
+                            cb = workingSettings.controlBindings_Other.First(b => b.Control == sender.AssociatedControl);
                             i = Array.IndexOf(workingSettings.controlBindings_Other, cb);
                             if (index > -1)
                             {
-                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].Control,
                                     action.actionMap.bindings[index].overridePath);
-                                SetControlDisplay(sender, newBinding.path);
+                                SetControlDisplay(sender, newBinding.Path);
                             }
                             // since these are not multi-bound, assume index 0
                             else
                             {
-                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].control,
+                                newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].Control,
                                     action.bindings[0].overridePath);
-                                SetControlDisplay(sender, newBinding.path);
+                                SetControlDisplay(sender, newBinding.Path);
                             }
                             workingSettings.controlBindings_Other[i] = newBinding;
                             break;
