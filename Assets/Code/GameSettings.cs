@@ -494,7 +494,8 @@ namespace SFBuilder
             reader.MoveToContent();
             if (Enum.TryParse(reader.GetAttribute("control"), out GameControl _control))
                 Control = _control;
-            Path = reader.GetAttribute("control");
+            Path = reader.GetAttribute("path");
+            reader.Skip();
         }
 
         /// <summary>
