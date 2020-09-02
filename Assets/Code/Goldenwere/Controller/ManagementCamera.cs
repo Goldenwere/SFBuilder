@@ -30,6 +30,7 @@ namespace Goldenwere.Unity.Controller
         /**************/ public bool            controlMouseEnabled;
 
         [Header("UX Settings")]                 // expose these via a settings/controls menu if possible rather than set them in Inspector
+        /**************/ public InputInversion  settingInputInversion;
         /**************/ public bool            settingMouseMotionIsToggled;
         [Range(0.01f,5)] public float           settingMovementSensitivity = 1f;
         [Range(0.01f,5)] public float           settingRotationSensitivity = 1f;
@@ -114,15 +115,36 @@ namespace Goldenwere.Unity.Controller
                 if (workingInputActionMovement)
                 {
                     if (!workingInputGamepadToggleZoom)
-                        PerformMovement(attachedInput.actions["ActionMovement"].ReadValue<Vector2>().normalized * sensitivityScaleMovement * cameraMotionSpeed);
+                    {
+                        Vector2 val = attachedInput.actions["ActionMovement"].ReadValue<Vector2>().normalized;
+                        if (settingInputInversion.other.movementHorizontal)
+                            val.x *= -1;
+                        if (settingInputInversion.other.movementVertical)
+                            val.y *= -1;
+                        PerformMovement(val * sensitivityScaleMovement * cameraMotionSpeed);
+                    }
                 }
 
                 if (workingInputActionRotation)
-                    PerformRotation(attachedInput.actions["ActionRotation"].ReadValue<Vector2>().normalized * sensitivityScaleRotation * cameraMotionSpeed);
+                {
+                    Vector2 val = attachedInput.actions["ActionRotation"].ReadValue<Vector2>().normalized;
+                    if (settingInputInversion.other.rotationHorizontal)
+                        val.x *= -1;
+                    if (settingInputInversion.other.rotationVertical)
+                        val.y *= -1;
+                    PerformRotation(val * sensitivityScaleRotation * cameraMotionSpeed);
+                }
 
                 if (workingInputActionZoom)
+                {
                     if (attachedInput.actions["ActionZoom"].activeControl.path.Contains("Keyboard") || workingInputGamepadToggleZoom)
-                        PerformZoom(attachedInput.actions["ActionZoom"].ReadValue<float>() * sensitivityScaleZoom * cameraMotionSpeed);
+                    {
+                        float val = attachedInput.actions["ActionZoom"].ReadValue<float>();
+                        if (settingInputInversion.other.zoom)
+                            val *= -1;
+                        PerformZoom(val * sensitivityScaleZoom * cameraMotionSpeed);
+                    }
+                }
 
                 if (useCameraSmoothing)
                 {
@@ -191,9 +213,23 @@ namespace Goldenwere.Unity.Controller
             if (controlMotionEnabled)
             {
                 if (workingInputMouseToggleMovement)
-                    PerformMovement(workingInputMouseDelta * sensitivityScaleMovementMouse * cameraMotionSpeed);
+                {
+                    Vector2 movement = new Vector2(workingInputMouseDelta.x, workingInputMouseDelta.y);
+                    if (settingInputInversion.mouse.movementHorizontal)
+                        movement.x *= -1;
+                    if (settingInputInversion.mouse.movementVertical)
+                        movement.y *= -1;
+                    PerformMovement(movement * sensitivityScaleMovementMouse * cameraMotionSpeed);
+                }
                 if (workingInputMouseToggleRotation)
-                    PerformRotation(workingInputMouseDelta * sensitivityScaleRotationMouse * cameraMotionSpeed);
+                {
+                    Vector2 rotation = new Vector2(workingInputMouseDelta.x, workingInputMouseDelta.y);
+                    if (settingInputInversion.mouse.rotationHorizontal)
+                        rotation.x *= -1;
+                    if (settingInputInversion.mouse.rotationVertical)
+                        rotation.y *= -1;
+                    PerformRotation(rotation * sensitivityScaleRotationMouse * cameraMotionSpeed);
+                }
             }
         }
 
@@ -208,7 +244,12 @@ namespace Goldenwere.Unity.Controller
             if (controlMotionEnabled)
             {
                 if (workingInputMouseToggleZoom)
-                    PerformZoom(workingInputMouseZoom * sensitivityScaleZoomMouse * cameraMotionSpeed);
+                {
+                    if (settingInputInversion.mouse.zoom)
+                        PerformZoom(-workingInputMouseZoom * sensitivityScaleZoomMouse * cameraMotionSpeed);
+                    else
+                        PerformZoom(workingInputMouseZoom * sensitivityScaleZoomMouse * cameraMotionSpeed);
+                }
             }
         }
 
@@ -360,5 +401,30 @@ namespace Goldenwere.Unity.Controller
             return willCollide;
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Defines inversions for specific directions, where true for a setting means that direction is inverted
+    /// </summary>
+    /// <remarks>Provides an alternative way for controls settings if exposing controls is not desired (typically mouse control falls under this)</remarks>
+    [System.Serializable]
+    public struct InversionModes
+    {
+        public bool             movementHorizontal;
+        public bool             movementVertical;
+        public bool             rotationHorizontal;
+        public bool             rotationVertical;
+        public bool             zoom;
+    }
+
+    /// <summary>
+    /// Defines inversion definitions for mouse and other inputs
+    /// </summary>
+    /// <remarks>Other inputs consist of those that call OnInput_Action(X), where mouse consist of those that call OnInput_Mouse(X)</remarks>
+    [System.Serializable]
+    public struct InputInversion
+    {
+        public InversionModes   mouse;
+        public InversionModes   other;
     }
 }
