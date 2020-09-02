@@ -270,7 +270,7 @@ namespace SFBuilder.UI
 
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
             {
-                if ((byte)cb.AssociatedControl < 13)
+                if ((byte)cb.AssociatedControl < 13 || (byte)cb.AssociatedControl > 20)
                 {
                     if (cb.ExpectedInput[0] == InputType.Gamepad)
                         SetControlDisplay(cb, workingSettings.controlBindings_Gamepad.First(b => b.Control == cb.AssociatedControl).Path);

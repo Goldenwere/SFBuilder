@@ -48,9 +48,9 @@ namespace SFBuilder
         }
 
         /// <summary>
-        /// The UI action map for use in UI bindings (returns index 1 of action asset, as index 0 is defaulted to Player and 1 is UI)
+        /// The UI action map for use in UI bindings
         /// </summary>
-        public InputActionMap       UIActionMap { get { return uiActionMap.actionMaps[1]; } }
+        public InputActionMap       UIActionMap { get { return uiActionMap.actionMaps[0]; } }
         #endregion
 
         #region Methods
@@ -278,7 +278,7 @@ namespace SFBuilder
                 new ControlBinding(GameControl.UI_NavDown,              "<Gamepad>/leftStick/down"),
                 new ControlBinding(GameControl.UI_NavLeft,              "<Gamepad>/leftStick/left"),
                 new ControlBinding(GameControl.UI_NavRight,             "<Gamepad>/leftStick/right"),
-                new ControlBinding(GameControl.UI_NavUp,                "<Gamepad>/leftStick/up"),
+                new ControlBinding(GameControl.UI_NavUp,                "<Gamepad>/leftStick/up")
             },
             controlBindings_Keyboard = new ControlBinding[]
             {
@@ -299,7 +299,7 @@ namespace SFBuilder
                 new ControlBinding(GameControl.UI_NavDown,              "<Keyboard>/s"),
                 new ControlBinding(GameControl.UI_NavLeft,              "<Keyboard>/a"),
                 new ControlBinding(GameControl.UI_NavRight,             "<Keyboard>/d"),
-                new ControlBinding(GameControl.UI_NavUp,                "<Keyboard>/w"),
+                new ControlBinding(GameControl.UI_NavUp,                "<Keyboard>/w")
             },
             controlBindings_Other = new ControlBinding[]
             {
@@ -310,7 +310,7 @@ namespace SFBuilder
                 new ControlBinding(GameControl.Gamepad_ZoomToggle,      "<Gamepad>/leftStickPress"),
                 new ControlBinding(GameControl.Mouse_ToggleMovement,    "<Mouse>/leftButton"),
                 new ControlBinding(GameControl.Mouse_ToggleRotation,    "<Mouse>/rightButton"),
-                new ControlBinding(GameControl.Mouse_ToggleZoom,        "<Keyboard>/ctrl"),
+                new ControlBinding(GameControl.Mouse_ToggleZoom,        "<Keyboard>/ctrl")
             },
             controlSetting_HoldModifiers = true,
             controlSetting_InvertHorizontal = false,
@@ -353,8 +353,8 @@ namespace SFBuilder
     /// </summary>
     public struct ControlBinding : IXmlSerializable
     {
-        public GameControl Control { get; private set; }
-        public string      Path { get; private set; }
+        public GameControl Control  { get; private set; }
+        public string      Path     { get; private set; }
 
         /// <summary>
         /// Create new control binding
