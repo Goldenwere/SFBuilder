@@ -648,6 +648,11 @@ namespace SFBuilder.UI
                     int i;                          // index of previous binding
                     switch (sender.AssociatedControl)
                     {
+                        case GameControl.UI_Click:
+                        case GameControl.UI_NavDown:
+                        case GameControl.UI_NavLeft:
+                        case GameControl.UI_NavRight:
+                        case GameControl.UI_NavUp:
                         case GameControl.Camera_MoveBackward:
                         case GameControl.Camera_MoveForward:
                         case GameControl.Camera_MoveLeft:

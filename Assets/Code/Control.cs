@@ -31,7 +31,13 @@
 
         Mouse_ToggleMovement = 18,
         Mouse_ToggleRotation = 19,
-        Mouse_ToggleZoom = 20
+        Mouse_ToggleZoom = 20,
+
+        UI_NavDown = 21,
+        UI_NavLeft = 22,
+        UI_NavRight = 23,
+        UI_NavUp = 24,
+        UI_Click = 25
     }
 
     /// <summary>

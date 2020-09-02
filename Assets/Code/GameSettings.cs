@@ -16,6 +16,7 @@ namespace SFBuilder
         #region Fields
 #pragma warning disable 0649
         [SerializeField] private InputActionAsset   defaultActionMap;
+        [SerializeField] private InputActionAsset   uiActionMap;
 #pragma warning restore 0649
         /**************/ private SettingsData       settings;
         #endregion
@@ -45,6 +46,11 @@ namespace SFBuilder
                 SetInputOverrides();
             }
         }
+
+        /// <summary>
+        /// The UI action map for use in UI bindings (returns index 1 of action asset, as index 0 is defaulted to Player and 1 is UI)
+        /// </summary>
+        public InputActionMap       UIActionMap { get { return uiActionMap.actionMaps[1]; } }
         #endregion
 
         #region Methods
@@ -268,6 +274,11 @@ namespace SFBuilder
                 new ControlBinding(GameControl.Gameplay_CancelAndMenu,  "<Gamepad>/start"),
                 new ControlBinding(GameControl.Gameplay_Placement,      "<Gamepad>/buttonSouth"),
                 new ControlBinding(GameControl.Gameplay_Undo,           "<Gamepad>/buttonWest"),
+                new ControlBinding(GameControl.UI_Click,                "<Gamepad>/buttonSouth"),
+                new ControlBinding(GameControl.UI_NavDown,              "<Gamepad>/leftStick/down"),
+                new ControlBinding(GameControl.UI_NavLeft,              "<Gamepad>/leftStick/left"),
+                new ControlBinding(GameControl.UI_NavRight,             "<Gamepad>/leftStick/right"),
+                new ControlBinding(GameControl.UI_NavUp,                "<Gamepad>/leftStick/up"),
             },
             controlBindings_Keyboard = new ControlBinding[]
             {
@@ -284,6 +295,11 @@ namespace SFBuilder
                 new ControlBinding(GameControl.Gameplay_CancelAndMenu,  "<Keyboard>/escape"),
                 new ControlBinding(GameControl.Gameplay_Placement,      "<Keyboard>/enter"),
                 new ControlBinding(GameControl.Gameplay_Undo,           "<Keyboard>/backspace"),
+                new ControlBinding(GameControl.UI_Click,                "<Keyboard>/enter"),
+                new ControlBinding(GameControl.UI_NavDown,              "<Keyboard>/s"),
+                new ControlBinding(GameControl.UI_NavLeft,              "<Keyboard>/a"),
+                new ControlBinding(GameControl.UI_NavRight,             "<Keyboard>/d"),
+                new ControlBinding(GameControl.UI_NavUp,                "<Keyboard>/w"),
             },
             controlBindings_Other = new ControlBinding[]
             {
@@ -371,6 +387,21 @@ namespace SFBuilder
         {
             switch (control)
             {
+                case GameControl.UI_NavDown:
+                    index = GetIndex(GameSettings.Instance.UIActionMap, "Navigate", pathStart, "down");
+                    return GameSettings.Instance.UIActionMap.FindAction("Navigate");
+                case GameControl.UI_NavLeft:
+                    index = GetIndex(GameSettings.Instance.UIActionMap, "Navigate", pathStart, "left");
+                    return GameSettings.Instance.UIActionMap.FindAction("Navigate");
+                case GameControl.UI_NavRight:
+                    index = GetIndex(GameSettings.Instance.UIActionMap, "Navigate", pathStart, "right");
+                    return GameSettings.Instance.UIActionMap.FindAction("Navigate");
+                case GameControl.UI_NavUp:
+                    index = GetIndex(GameSettings.Instance.UIActionMap, "Navigate", pathStart, "up");
+                    return GameSettings.Instance.UIActionMap.FindAction("Navigate");
+                case GameControl.UI_Click:
+                    index = -1;
+                    return GameSettings.Instance.UIActionMap.FindAction("Click");
                 case GameControl.Gamepad_CursorDown:
                     index = GetIndex(GameSettings.Instance.DefaultActionMap, "MoveCursor", pathStart, "down");
                     return GameSettings.Instance.DefaultActionMap.FindAction("MoveCursor");
