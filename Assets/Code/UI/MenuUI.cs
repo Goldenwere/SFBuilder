@@ -147,9 +147,7 @@ namespace SFBuilder.UI
             // Clear elements that were initially added that are now disabled
             UITransitionSystem.Instance.ClearElements();
 
-            // Initialize the controls menu buttons
-            foreach (ControlButton cb in settingsMenuElements.controlButtons)
-                cb.onClick.AddListener(() => OnSetControl(cb));
+            InitializeUIElements();
 
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
@@ -171,6 +169,89 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.LevelTransitioned -= OnLevelTransitioned;
+        }
+
+        /// <summary>
+        /// Adds event listeners to the settings menu options
+        /// </summary>
+        private void InitializeUIElements()
+        {
+            // Initialize the controls menu buttons
+            foreach (ControlButton cb in settingsMenuElements.controlButtons)
+                cb.onClick.AddListener(() => OnSetControl(cb));
+
+            // Initialize the remaining settings menu buttons
+            settingsMenuElements.postprocAO.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.postprocAO = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.postprocBloom.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.postprocBloom = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.postprocSSR.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.postprocSSR = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.volEffects.AssociatedSlider.onValueChanged.AddListener(val => {
+                workingSettings.volEffects = val;
+                settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", val));
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.volMusic.AssociatedSlider.onValueChanged.AddListener(val => {
+                workingSettings.volMusic = val;
+                settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", val));
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.sensitivityMovement.AssociatedSlider.onValueChanged.AddListener(val => {
+                workingSettings.controlSetting_SensitivityMovement = val;
+                settingsMenuElements.sensitivityMovement.UpdateText(string.Format("{0:0.##}", val));
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.sensitivityRotation.AssociatedSlider.onValueChanged.AddListener(val => {
+                workingSettings.controlSetting_SensitivityRotation = val;
+                settingsMenuElements.sensitivityRotation.UpdateText(string.Format("{0:0.##}", val));
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.sensitivityZoom.AssociatedSlider.onValueChanged.AddListener(val => {
+                workingSettings.controlSetting_SensitivityZoom = val;
+                settingsMenuElements.sensitivityZoom.UpdateText(string.Format("{0:0.##}", val));
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.modifiersHeld.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.controlSetting_HoldModifiers = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.invertHorizontal.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.controlSetting_InvertHorizontal = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.invertVertical.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.controlSetting_InvertVertical = val;
+                pendingChangesExist = true;
+            });
+
+            settingsMenuElements.invertScroll.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                workingSettings.controlSetting_InvertScroll = val;
+                pendingChangesExist = true;
+            });
         }
 
         /// <summary>
@@ -389,7 +470,7 @@ namespace SFBuilder.UI
                     else
                     {
                         // Image-based keys
-                        switch(pathSplit[1])
+                        switch (pathSplit[1])
                         {
                             case "leftShift":
                                 textObj.SetActive(false);
@@ -721,134 +802,6 @@ namespace SFBuilder.UI
                 LoadSubmenu(SettingsSubmenu.graphics);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
             }
-        }
-
-        /// <summary>
-        /// Universal method to note that pending changes exist
-        /// </summary>
-        public void OnValueChanged()
-        {
-            pendingChangesExist = true;
-        }
-
-        /// <summary>
-        /// Update effects vol on slider change
-        /// </summary>
-        /// <param name="val">New volume setting</param>
-        public void OnValueChanged_Audio_Effects(float val)
-        {
-            workingSettings.volEffects = val;
-            settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", val));
-        }
-
-        /// <summary>
-        /// Update music vol on slider change
-        /// </summary>
-        /// <param name="val">New volume setting</param>
-        public void OnValueChanged_Audio_Music(float val)
-        {
-            workingSettings.volMusic = val;
-            settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", val));
-        }
-
-        /// <summary>
-        /// Update AO on toggle change
-        /// </summary>
-        /// <param name="val">New toggle setting</param>
-        public void OnValueChanged_Graphics_AO(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.postprocAO = val;
-        }
-
-        /// <summary>
-        /// Update bloom on toggle change
-        /// </summary>
-        /// <param name="val">New toggle setting</param>
-        public void OnValueChanged_Graphics_Bloom(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.postprocBloom = val;
-        }
-
-        /// <summary>
-        /// Update SSR on toggle change
-        /// </summary>
-        /// <param name="val">New toggle setting</param>
-        public void OnValueChanged_Graphics_SSR(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.postprocSSR = val;
-        }
-
-        /// <summary>
-        /// Update the inversion setting for horizontal on toggle change
-        /// </summary>
-        /// <param name="val">The new inversion setting</param>
-        public void OnValueChanged_InvertHorizontal(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.controlSetting_InvertHorizontal = val;
-        }
-
-        /// <summary>
-        /// Update the inversion setting for scroll on toggle change
-        /// </summary>
-        /// <param name="val">The new inversion setting</param>
-        public void OnValueChanged_InvertScroll(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.controlSetting_InvertScroll = val;
-        }
-
-        /// <summary>
-        /// Update the inversion setting for vertical on toggle change
-        /// </summary>
-        /// <param name="val">The new inversion setting</param>
-        public void OnValueChanged_InvertVertical(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.controlSetting_InvertVertical = val;
-        }
-
-        /// <summary>
-        /// Update the held modifiers setting on toggle change
-        /// </summary>
-        /// <param name="val">The new modifiers are held setting</param>
-        public void OnValueChanged_ModifiersHeld(bool val)
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings.controlSetting_HoldModifiers = val;
-        }
-
-        /// <summary>
-        /// Update movement sensitivity on slider change
-        /// </summary>
-        /// <param name="val">New sensitivity value</param>
-        public void OnValueChanged_SensitivityMovement(float val)
-        {
-            workingSettings.controlSetting_SensitivityMovement = val;
-            settingsMenuElements.sensitivityMovement.UpdateText(string.Format("{0:0.##}", val));
-        }
-
-        /// <summary>
-        /// Update rotation sensitivity on slider change
-        /// </summary>
-        /// <param name="val">New sensitivity value</param>
-        public void OnValueChanged_SensitivityRotation(float val)
-        {
-            workingSettings.controlSetting_SensitivityRotation = val;
-            settingsMenuElements.sensitivityRotation.UpdateText(string.Format("{0:0.##}", val));
-        }
-
-        /// <summary>
-        /// Update zoom sensitivity on slider change
-        /// </summary>
-        /// <param name="val">New sensitivity value</param>
-        public void OnValueChanged_SensitivityZoom(float val)
-        {
-            workingSettings.controlSetting_SensitivityZoom = val;
-            settingsMenuElements.sensitivityZoom.UpdateText(string.Format("{0:0.##}", val));
         }
 
         /// <summary>
