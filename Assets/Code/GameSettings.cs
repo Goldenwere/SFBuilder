@@ -296,7 +296,7 @@ namespace SFBuilder
                 new ControlBinding(GameControl.Mouse_ToggleRotation,    "<Mouse>/rightButton"),
                 new ControlBinding(GameControl.Mouse_ToggleZoom,        "<Keyboard>/ctrl"),
             },
-            controlSetting_HoldModifiers = false,
+            controlSetting_HoldModifiers = true,
             controlSetting_InvertHorizontal = false,
             controlSetting_InvertScroll = false,
             controlSetting_InvertVertical = false,
