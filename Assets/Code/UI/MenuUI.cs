@@ -588,7 +588,7 @@ namespace SFBuilder.UI
                                 if (index > -1)
                                 {
                                     newBinding = new ControlBinding(workingSettings.controlBindings_Gamepad[i].Control,
-                                        action.actionMap.bindings[index].overridePath);
+                                        action.bindings[index].overridePath);
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
                                 else
@@ -606,7 +606,7 @@ namespace SFBuilder.UI
                                 if (index > -1)
                                 {
                                     newBinding = new ControlBinding(workingSettings.controlBindings_Keyboard[i].Control,
-                                        action.actionMap.bindings[index].overridePath);
+                                        action.bindings[index].overridePath);
                                     SetControlDisplay(sender, newBinding.Path);
                                 }
                                 else
@@ -632,7 +632,7 @@ namespace SFBuilder.UI
                             if (index > -1)
                             {
                                 newBinding = new ControlBinding(workingSettings.controlBindings_Other[i].Control,
-                                    action.actionMap.bindings[index].overridePath);
+                                    action.bindings[index].overridePath);
                                 SetControlDisplay(sender, newBinding.Path);
                             }
                             // since these are not multi-bound, assume index 0
