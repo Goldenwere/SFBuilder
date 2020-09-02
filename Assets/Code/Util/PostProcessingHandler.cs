@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace SFBuilder.UI
+namespace SFBuilder.Util
 {
     /// <summary>
     /// Handler for post processing settings per volume/scene
