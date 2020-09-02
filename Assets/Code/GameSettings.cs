@@ -174,13 +174,13 @@ namespace SFBuilder
                 {
                     InputBinding binding = action.actionMap.bindings[i];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                    action.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[1];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                    action.ApplyBindingOverride(binding);
                 }
             }
 
@@ -191,13 +191,13 @@ namespace SFBuilder
                 {
                     InputBinding binding = action.actionMap.bindings[i];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                    action.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[1];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                    action.ApplyBindingOverride(binding);
                 }
             }
 
@@ -209,13 +209,13 @@ namespace SFBuilder
                 {
                     InputBinding binding = action.actionMap.bindings[i];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(i, binding);
+                    action.ApplyBindingOverride(i, binding);
                 }
                 else
                 {
                     InputBinding binding = action.bindings[0];
                     binding.overridePath = cb.Path;
-                    DefaultActionMap.ApplyBindingOverride(DefaultActionMap.bindings.IndexOf(b => b.action == action.name), binding);
+                    action.ApplyBindingOverride(binding);
                 }
             }
         }
