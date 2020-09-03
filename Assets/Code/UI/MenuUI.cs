@@ -111,6 +111,7 @@ namespace SFBuilder.UI
             public Button       mainMenuOptionPlay;
             public Button       mainMenuOptionQuit;
             public Button       mainMenuOptionSettings;
+            public ScrollRect   scrollRectSettingsMenu;
             public Button       settingsMenuOptionMenu;
             public Button       settingsMenuOptionRevert;
             public Button       settingsMenuOptionSave;
@@ -481,7 +482,18 @@ namespace SFBuilder.UI
 
         private void OnSelectedGameObjectChanged(GameObject prev, GameObject curr)
         {
-            print(curr.name);
+            if (curr != null && curr.CompareTag("scrollable"))
+            {
+                Canvas.ForceUpdateCanvases();
+                RectTransform rt = otherElements.submenuControls.transform.parent.GetComponent<RectTransform>();
+                Vector2 newPos = rt.anchoredPosition;
+                Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(rt.position)
+                    - (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(curr.transform.position);
+                newPos.y = sub.y - 50;
+                if (newPos.y < 0)
+                    newPos.y = 0;
+                rt.anchoredPosition = newPos;
+            }
         }
 
         /// <summary>
