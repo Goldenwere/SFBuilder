@@ -188,6 +188,7 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged += OnGameStateChanged;
             GameEventSystem.LevelTransitioned += OnLevelTransitioned;
+            UnityEventSystemExtension.SelectedGameObjectChanged += OnSelectedGameObjectChanged;
         }
 
         /// <summary>
@@ -197,6 +198,7 @@ namespace SFBuilder.UI
         {
             GameEventSystem.GameStateChanged -= OnGameStateChanged;
             GameEventSystem.LevelTransitioned -= OnLevelTransitioned;
+            UnityEventSystemExtension.SelectedGameObjectChanged -= OnSelectedGameObjectChanged;
         }
 
         /// <summary>
@@ -475,6 +477,11 @@ namespace SFBuilder.UI
         {
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
                 StartCoroutine(AnimateTransition(isStart));
+        }
+
+        private void OnSelectedGameObjectChanged(GameObject prev, GameObject curr)
+        {
+            print(curr.name);
         }
 
         /// <summary>
