@@ -203,6 +203,15 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// If one hits enter on a slider, it looses focus, because Unity(TM)
+        /// </summary>
+        private void Update()
+        {
+            if (EventSystem.current.currentSelectedGameObject == null && GameEventSystem.Instance.CurrentGameState == GameState.MainMenus)
+                StartCoroutine(WaitUntilSelectableIsActive(otherElements.settingsMenuOptionMenu));
+        }
+
+        /// <summary>
         /// Adds event listeners to the settings menu options
         /// </summary>
         private void InitializeUIElements()
@@ -216,18 +225,21 @@ namespace SFBuilder.UI
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.postprocAO = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocAO));
             });
 
             settingsMenuElements.postprocBloom.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.postprocBloom = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocBloom));
             });
 
             settingsMenuElements.postprocSSR.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.postprocSSR = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocSSR));
             });
 
             settingsMenuElements.volEffects.AssociatedSlider.onValueChanged.AddListener(val => {
@@ -264,24 +276,28 @@ namespace SFBuilder.UI
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.controlSetting_HoldModifiers = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.modifiersHeld));
             });
 
             settingsMenuElements.invertHorizontal.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.controlSetting_InvertHorizontal = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.invertHorizontal));
             });
 
             settingsMenuElements.invertVertical.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.controlSetting_InvertVertical = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.invertVertical));
             });
 
             settingsMenuElements.invertScroll.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.controlSetting_InvertScroll = val;
                 pendingChangesExist = true;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.invertScroll));
             });
             #endregion
 
@@ -480,6 +496,11 @@ namespace SFBuilder.UI
                 StartCoroutine(AnimateTransition(isStart));
         }
 
+        /// <summary>
+        /// Handler for changed selected game object in EventSystem for use in autoscrolling controls menu
+        /// </summary>
+        /// <param name="prev">The previously selected gameobject</param>
+        /// <param name="curr">The currently selected gameobject</param>
         private void OnSelectedGameObjectChanged(GameObject prev, GameObject curr)
         {
             if (curr != null && curr.CompareTag("scrollable"))
