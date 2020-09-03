@@ -178,7 +178,7 @@ namespace SFBuilder.UI
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
 
-            EventSystem.current.SetSelectedGameObject(otherElements.mainMenuOptionPlay.gameObject);
+            StartCoroutine(WaitUntilSelectableIsActive(otherElements.mainMenuOptionPlay));
         }
 
         /// <summary>
@@ -297,6 +297,7 @@ namespace SFBuilder.UI
                 foreach (GameObject g in canvasSettingsElements)
                     g.SetActive(true);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                StartCoroutine(WaitUntilSelectableIsActive(otherElements.settingsMenuOptionMenu));
             });
 
             otherElements.mainMenuOptionQuit.onClick.AddListener(() => {
@@ -316,6 +317,7 @@ namespace SFBuilder.UI
                     LoadSubmenu(SettingsSubmenu.audio);
                     GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 }
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.volMusic.AssociatedSlider));
             });
 
             otherElements.settingsSubOptionControls.onClick.AddListener(() => {
@@ -324,6 +326,7 @@ namespace SFBuilder.UI
                     LoadSubmenu(SettingsSubmenu.controls);
                     GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 }
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.controlButtons[0]));
             });
 
             otherElements.settingsSubOptionGraphics.onClick.AddListener(() => {
@@ -332,6 +335,7 @@ namespace SFBuilder.UI
                     LoadSubmenu(SettingsSubmenu.graphics);
                     GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 }
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocAO));
             });
 
             otherElements.windowSettingsBack.onClick.AddListener(() => {
@@ -706,6 +710,7 @@ namespace SFBuilder.UI
                     g.SetActive(false);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 canvasWarningWindow.SetActive(false);
+                StartCoroutine(WaitUntilSelectableIsActive(otherElements.mainMenuOptionPlay));
             }
         }
 
@@ -948,6 +953,20 @@ namespace SFBuilder.UI
             }
 
             StartCoroutine(SetActive(true));
+        }
+
+        /// <summary>
+        /// Due to canvas animations, selectable may not be active for a brief period; wait until active to select it
+        /// </summary>
+        /// <param name="selectable">The selectable to select for UI navigation purposes</param>
+        private IEnumerator WaitUntilSelectableIsActive(Selectable selectable)
+        {
+            yield return new WaitForEndOfFrame();
+            while (!selectable.isActiveAndEnabled)
+                yield return null;
+
+            selectable.Select();
+            selectable.OnSelect(null);
         }
         #endregion
     }
