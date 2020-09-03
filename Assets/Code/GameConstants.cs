@@ -8,7 +8,7 @@
         /// <summary>
         /// The current game version
         /// </summary>
-        public const double __GAME_VERSION = 0.19;
+        public const double __GAME_VERSION = 0.20;
 
         /// <summary>
         /// Name of effects group volume in GameAudioMixer
