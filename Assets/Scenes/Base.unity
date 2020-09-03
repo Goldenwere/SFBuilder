@@ -1314,18 +1314,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 92745472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnPlayPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &92745472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,11 +2431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 312050635}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 702880276}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2472,18 +2461,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179722656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSubmenuGraphicsPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &179722656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4304,11 +4282,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnDown: {fileID: 179722655}
+    m_SelectOnLeft: {fileID: 803671048}
+    m_SelectOnRight: {fileID: 2061757766}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4334,18 +4312,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 312050636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSavePressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &312050636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,15 +4710,7 @@ MonoBehaviour:
   - {fileID: 2061757762}
   - {fileID: 1920825964}
   - {fileID: 1278803182}
-  canvasSettingsSubmenuActiveBackgrounds:
-  - {fileID: 1320408861}
-  - {fileID: 1647605930}
-  - {fileID: 1961333086}
   canvasSettingsSubmenuContainer: {fileID: 1650678066}
-  canvasSettingsSubmenuElements:
-  - {fileID: 1006357840}
-  - {fileID: 626241710}
-  - {fileID: 1227832113}
   canvasWarningWindow: {fileID: 1938730428}
   controlsMenuImages:
     gamepad_button_east: {fileID: 21300000, guid: e38eb80feb7a1ee47b71d77b437c822b,
@@ -4818,6 +4777,25 @@ MonoBehaviour:
     mouse_left: {fileID: 21300000, guid: 06c143e6eab72e54e918268a7be0c927, type: 3}
     mouse_middle: {fileID: 21300000, guid: ca1e55195a4980f42971ebbf244cb7fa, type: 3}
     mouse_right: {fileID: 21300000, guid: 316bb8b2066021a49af9faeddc7ef446, type: 3}
+  otherElements:
+    mainMenuOptionPlay: {fileID: 92745471}
+    mainMenuOptionQuit: {fileID: 2003936562}
+    mainMenuOptionSettings: {fileID: 1392665729}
+    settingsMenuOptionMenu: {fileID: 803671048}
+    settingsMenuOptionRevert: {fileID: 2061757766}
+    settingsMenuOptionSave: {fileID: 312050635}
+    settingsSubOptionAudio: {fileID: 702880276}
+    settingsSubOptionControls: {fileID: 475038139}
+    settingsSubOptionGraphics: {fileID: 179722655}
+    submenuAudio: {fileID: 626241710}
+    submenuAudioButtonBackground: {fileID: 1647605930}
+    submenuControls: {fileID: 1227832113}
+    submenuControlsButtonBackground: {fileID: 1961333086}
+    submenuGraphics: {fileID: 1006357840}
+    submenuGraphicsButtonBackground: {fileID: 1320408861}
+    windowSettingsBack: {fileID: 1531353097}
+    windowSettingsSave: {fileID: 402230483}
+    windowSettingsRevert: {fileID: 794546392}
   settingsMenuElements:
     controlButtons:
     - {fileID: 1365915524}
@@ -7053,17 +7031,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSavePressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 325333596}
         m_MethodName: OnMainMenuPressed
         m_Mode: 1
         m_Arguments:
@@ -8189,10 +8156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 312050635}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 702880276}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
@@ -8219,18 +8186,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 475038140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSubmenuControlsPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &475038140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12100,11 +12056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 312050635}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 179722655}
+    m_SelectOnRight: {fileID: 475038139}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12130,18 +12086,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 702880277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsSubmenuAudioPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &702880277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13707,17 +13652,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsRevertPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 325333596}
         m_MethodName: OnMainMenuPressed
         m_Mode: 1
         m_Arguments:
@@ -13926,11 +13860,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 179722655}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 312050635}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13956,18 +13890,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 803671049}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnMainMenuPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &803671049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24522,7 +24445,7 @@ GameObject:
   - component: {fileID: 1320408864}
   - component: {fileID: 1320408863}
   m_Layer: 5
-  m_Name: Graphics
+  m_Name: SelectedBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26280,18 +26203,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1392665730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1392665730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30332,12 +30244,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325333592}
-        m_MethodName: 
+      - m_Target: {fileID: 325333596}
+        m_MethodName: OnMainMenuPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -31863,7 +31775,7 @@ GameObject:
   - component: {fileID: 1647605933}
   - component: {fileID: 1647605932}
   m_Layer: 5
-  m_Name: Audio
+  m_Name: SelectedBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31960,7 +31872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: -0.0000038146973}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0.0000038146973}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -32636,7 +32548,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.03125
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -36306,7 +36218,7 @@ GameObject:
   - component: {fileID: 1961333089}
   - component: {fileID: 1961333088}
   m_Layer: 5
-  m_Name: Controls
+  m_Name: SelectedBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37154,18 +37066,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2003936563}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnQuitPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2003936563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38156,10 +38057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 179722655}
+    m_SelectOnLeft: {fileID: 312050635}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
@@ -38186,18 +38087,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2061757767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325333596}
-        m_MethodName: OnSettingsRevertPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2061757767
 MonoBehaviour:
   m_ObjectHideFlags: 0

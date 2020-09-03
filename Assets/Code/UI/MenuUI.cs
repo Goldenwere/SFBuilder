@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using System;
 using System.Linq;
 using System.Collections;
@@ -32,11 +33,10 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject                     canvasRebindWindow;
         [SerializeField] private TMP_Text                       canvasRebindWindowTextIndicator;
         [SerializeField] private GameObject[]                   canvasSettingsElements;
-        [SerializeField] private GameObject[]                   canvasSettingsSubmenuActiveBackgrounds;
         [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
-        [SerializeField] private GameObject[]                   canvasSettingsSubmenuElements;
         [SerializeField] private GameObject                     canvasWarningWindow;
         [SerializeField] private ControlsMenuImages             controlsMenuImages;
+        [SerializeField] private OtherElements                  otherElements;
         [SerializeField] private SettingsMenuElements           settingsMenuElements;
         [SerializeField] private Image                          startupFadeImage;
         [SerializeField] private AnimationCurve                 transitionCurve;
@@ -103,6 +103,32 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Collection of misc elements (some need manual navigation updated or need to be set as the selected element when menu state changes)
+        /// </summary>
+        [Serializable]
+        protected class OtherElements
+        {
+            public Button       mainMenuOptionPlay;
+            public Button       mainMenuOptionQuit;
+            public Button       mainMenuOptionSettings;
+            public Button       settingsMenuOptionMenu;
+            public Button       settingsMenuOptionRevert;
+            public Button       settingsMenuOptionSave;
+            public Button       settingsSubOptionAudio;
+            public Button       settingsSubOptionControls;
+            public Button       settingsSubOptionGraphics;
+            public GameObject   submenuAudio;
+            public GameObject   submenuAudioButtonBackground;
+            public GameObject   submenuControls;
+            public GameObject   submenuControlsButtonBackground;
+            public GameObject   submenuGraphics;
+            public GameObject   submenuGraphicsButtonBackground;
+            public Button       windowSettingsBack;
+            public Button       windowSettingsSave;
+            public Button       windowSettingsRevert;
+        }
+
+        /// <summary>
         /// Collection of elements on the settings menu, whose values are set every time the menu loads
         /// </summary>
         [Serializable]
@@ -151,6 +177,8 @@ namespace SFBuilder.UI
 
             StartCoroutine(StartupAnimation());
             LoadSubmenu(SettingsSubmenu.graphics);
+
+            EventSystem.current.SetSelectedGameObject(otherElements.mainMenuOptionPlay.gameObject);
         }
 
         /// <summary>
@@ -180,7 +208,7 @@ namespace SFBuilder.UI
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
                 cb.onClick.AddListener(() => OnSetControl(cb));
 
-            // Initialize the remaining settings menu buttons
+            #region Initialize the remaining settings menu buttons
             settingsMenuElements.postprocAO.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 workingSettings.postprocAO = val;
@@ -252,6 +280,74 @@ namespace SFBuilder.UI
                 workingSettings.controlSetting_InvertScroll = val;
                 pendingChangesExist = true;
             });
+            #endregion
+
+            #region Initialize main menu buttons
+            otherElements.mainMenuOptionPlay.onClick.AddListener(() => {
+                StartCoroutine(SetActive(false));
+                GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
+            });
+
+            otherElements.mainMenuOptionSettings.onClick.AddListener(() => {
+                workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
+                LoadSettings();
+                foreach (GameObject g in canvasMainElements)
+                    g.SetActive(false);
+                foreach (GameObject g in canvasSettingsElements)
+                    g.SetActive(true);
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            });
+
+            otherElements.mainMenuOptionQuit.onClick.AddListener(() => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                Application.Quit();
+            });
+            #endregion
+
+            #region Initialize settings menu/submenu/window buttons
+            otherElements.settingsMenuOptionMenu.onClick.AddListener(() => SettingsToMain());
+            otherElements.settingsMenuOptionSave.onClick.AddListener(() => SettingsSave());
+            otherElements.settingsMenuOptionRevert.onClick.AddListener(() => SettingsRevert());
+
+            otherElements.settingsSubOptionAudio.onClick.AddListener(() => {
+                if (workingSettingsSubmenuState != SettingsSubmenu.audio)
+                {
+                    LoadSubmenu(SettingsSubmenu.audio);
+                    GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                }
+            });
+
+            otherElements.settingsSubOptionControls.onClick.AddListener(() => {
+                if (workingSettingsSubmenuState != SettingsSubmenu.controls)
+                {
+                    LoadSubmenu(SettingsSubmenu.controls);
+                    GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                }
+            });
+
+            otherElements.settingsSubOptionGraphics.onClick.AddListener(() => {
+                if (workingSettingsSubmenuState != SettingsSubmenu.graphics)
+                {
+                    LoadSubmenu(SettingsSubmenu.graphics);
+                    GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                }
+            });
+
+            otherElements.windowSettingsBack.onClick.AddListener(() => {
+                canvasWarningWindow.SetActive(false);
+            });
+
+            otherElements.windowSettingsSave.onClick.AddListener(() => {
+                SettingsSave();
+                SettingsToMain();
+            });
+
+            otherElements.windowSettingsRevert.onClick.AddListener(() => {
+                SettingsRevert();
+                SettingsToMain();
+            });
+            #endregion
         }
 
         /// <summary>
@@ -300,39 +396,55 @@ namespace SFBuilder.UI
         /// <param name="newState">The submenu to load</param>
         private void LoadSubmenu(SettingsSubmenu newState)
         {
-            string name;
+            Navigation audioNav = otherElements.settingsSubOptionAudio.navigation;
+            Navigation controlsNav = otherElements.settingsSubOptionControls.navigation;
+            Navigation graphicsNav = otherElements.settingsSubOptionGraphics.navigation;
+            GameObject active;
             switch (newState)
             {
                 case SettingsSubmenu.audio:
-                    name = "Audio";
+                    otherElements.submenuAudio.SetActive(true);
+                    otherElements.submenuControls.SetActive(false);
+                    otherElements.submenuGraphics.SetActive(false);
+                    otherElements.submenuAudioButtonBackground.SetActive(true);
+                    otherElements.submenuControlsButtonBackground.SetActive(false);
+                    otherElements.submenuGraphicsButtonBackground.SetActive(false);
+                    active = otherElements.submenuAudio;
+                    audioNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
+                    controlsNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
+                    graphicsNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
                     break;
                 case SettingsSubmenu.controls:
-                    name = "Controls";
+                    otherElements.submenuAudio.SetActive(false);
+                    otherElements.submenuControls.SetActive(true);
+                    otherElements.submenuGraphics.SetActive(false);
+                    otherElements.submenuAudioButtonBackground.SetActive(false);
+                    otherElements.submenuControlsButtonBackground.SetActive(true);
+                    otherElements.submenuGraphicsButtonBackground.SetActive(false);
+                    active = otherElements.submenuControls;
+                    audioNav.selectOnDown = settingsMenuElements.controlButtons[0];
+                    controlsNav.selectOnDown = settingsMenuElements.controlButtons[0];
+                    graphicsNav.selectOnDown = settingsMenuElements.controlButtons[0];
                     break;
                 case SettingsSubmenu.graphics:
                 default:
-                    name = "Graphics";
+                    otherElements.submenuAudio.SetActive(false);
+                    otherElements.submenuControls.SetActive(false);
+                    otherElements.submenuGraphics.SetActive(true);
+                    otherElements.submenuAudioButtonBackground.SetActive(false);
+                    otherElements.submenuControlsButtonBackground.SetActive(false);
+                    otherElements.submenuGraphicsButtonBackground.SetActive(true);
+                    active = otherElements.submenuGraphics;
+                    audioNav.selectOnDown = settingsMenuElements.postprocAO;
+                    controlsNav.selectOnDown = settingsMenuElements.postprocAO;
+                    graphicsNav.selectOnDown = settingsMenuElements.postprocAO;
                     break;
             }
-
-            foreach (GameObject go in canvasSettingsSubmenuElements)
-            {
-                if (go.name == name)
-                {
-                    go.SetActive(true);
-                    canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, go.GetComponent<RectTransform>().sizeDelta.y);
-                }
-                else
-                    go.SetActive(false);
-            }
-            foreach (GameObject go in canvasSettingsSubmenuActiveBackgrounds)
-            {
-                if (go.name == name)
-                    go.SetActive(true);
-                else
-                    go.SetActive(false);
-            }
+            canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, active.GetComponent<RectTransform>().sizeDelta.y);
             workingSettingsSubmenuState = newState;
+            otherElements.settingsSubOptionAudio.navigation = audioNav;
+            otherElements.settingsSubOptionControls.navigation = controlsNav;
+            otherElements.settingsSubOptionGraphics.navigation = graphicsNav;
         }
 
         /// <summary>
@@ -557,9 +669,31 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// When the main menu button is pressed, load the main menu
+        /// Reverts pending changes in settings menu to saved GameSettings
         /// </summary>
-        public void OnMainMenuPressed()
+        private void SettingsRevert()
+        {
+            pendingChangesExist = false;
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
+            LoadSettings();
+            GameSettings.Instance.SetInputOverrides();
+        }
+
+        /// <summary>
+        /// Saves pending settings changes to GameSettings
+        /// </summary>
+        private void SettingsSave()
+        {
+            pendingChangesExist = false;
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+            GameSettings.Instance.Settings = SettingsData.Copy(workingSettings);
+        }
+
+        /// <summary>
+        /// Goes back to the main menu from settings (unless there are pending changes, in which a warning pops up)
+        /// </summary>
+        private void SettingsToMain()
         {
             if (pendingChangesExist)
                 canvasWarningWindow.SetActive(true);
@@ -573,25 +707,6 @@ namespace SFBuilder.UI
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 canvasWarningWindow.SetActive(false);
             }
-        }
-
-        /// <summary>
-        /// When the play button is pressed, load the game
-        /// </summary>
-        public void OnPlayPressed()
-        {
-            StartCoroutine(SetActive(false));
-            GameEventSystem.Instance.UpdateGameState(GameState.Gameplay);
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Goal);
-        }
-
-        /// <summary>
-        /// When the quit button is pressed, quit the game
-        /// </summary>
-        public void OnQuitPressed()
-        {
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            Application.Quit();
         }
 
         /// <summary>
@@ -735,78 +850,6 @@ namespace SFBuilder.UI
                     action.Enable();
                     rebindOp?.Dispose();
                 });
-        }
-
-        /// <summary>
-        /// When the settings menu button is pressed, load the settings menu
-        /// </summary>
-        public void OnSettingsPressed()
-        {
-            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
-            LoadSettings();
-            foreach (GameObject g in canvasMainElements)
-                g.SetActive(false);
-            foreach (GameObject g in canvasSettingsElements)
-                g.SetActive(true);
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-        }
-
-        /// <summary>
-        /// When the revert button is pressed on the settings menu, revert all pending changes
-        /// </summary>
-        public void OnSettingsRevertPressed()
-        {
-            pendingChangesExist = false;
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
-            LoadSettings();
-            GameSettings.Instance.SetInputOverrides();
-        }
-
-        /// <summary>
-        /// When the save button is pressed on the settings menu, save settings
-        /// </summary>
-        public void OnSettingsSavePressed()
-        {
-            pendingChangesExist = false;
-            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            GameSettings.Instance.Settings = SettingsData.Copy(workingSettings);
-        }
-
-        /// <summary>
-        /// When the audio button is pressed, switch to that submenu
-        /// </summary>
-        public void OnSettingsSubmenuAudioPressed()
-        {
-            if (workingSettingsSubmenuState != SettingsSubmenu.audio)
-            {
-                LoadSubmenu(SettingsSubmenu.audio);
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            }
-        }
-
-        /// <summary>
-        /// When the controls button is pressed, switch to that submenu
-        /// </summary>
-        public void OnSettingsSubmenuControlsPressed()
-        {
-            if (workingSettingsSubmenuState != SettingsSubmenu.controls)
-            {
-                LoadSubmenu(SettingsSubmenu.controls);
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            }
-        }
-
-        /// <summary>
-        /// When the graphics button is pressed, switch to that submenu
-        /// </summary>
-        public void OnSettingsSubmenuGraphicsPressed()
-        {
-            if (workingSettingsSubmenuState != SettingsSubmenu.graphics)
-            {
-                LoadSubmenu(SettingsSubmenu.graphics);
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-            }
         }
 
         /// <summary>
