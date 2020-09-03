@@ -340,6 +340,7 @@ namespace SFBuilder.UI
 
             otherElements.windowSettingsBack.onClick.AddListener(() => {
                 canvasWarningWindow.SetActive(false);
+                StartCoroutine(WaitUntilSelectableIsActive(otherElements.settingsMenuOptionMenu));
             });
 
             otherElements.windowSettingsSave.onClick.AddListener(() => {
@@ -700,7 +701,10 @@ namespace SFBuilder.UI
         private void SettingsToMain()
         {
             if (pendingChangesExist)
+            {
                 canvasWarningWindow.SetActive(true);
+                StartCoroutine(WaitUntilSelectableIsActive(otherElements.windowSettingsBack));
+            }
 
             else
             {
@@ -853,6 +857,7 @@ namespace SFBuilder.UI
                     }
                     canvasRebindWindow.SetActive(false);
                     action.Enable();
+                    StartCoroutine(WaitUntilSelectableIsActive(sender));
                     rebindOp?.Dispose();
                 });
         }
