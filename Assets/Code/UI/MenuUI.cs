@@ -571,6 +571,10 @@ namespace SFBuilder.UI
                     int i;                          // index of previous binding
                     switch (sender.AssociatedControl)
                     {
+                        case GameControl.Gamepad_CursorDown:
+                        case GameControl.Gamepad_CursorLeft:
+                        case GameControl.Gamepad_CursorRight:
+                        case GameControl.Gamepad_CursorUp:
                         case GameControl.UI_Click:
                         case GameControl.UI_NavDown:
                         case GameControl.UI_NavLeft:
@@ -627,10 +631,6 @@ namespace SFBuilder.UI
                                 workingSettings.controlBindings_Keyboard[i] = newBinding;
                             }
                             break;
-                        case GameControl.Gamepad_CursorDown:
-                        case GameControl.Gamepad_CursorLeft:
-                        case GameControl.Gamepad_CursorRight:
-                        case GameControl.Gamepad_CursorUp:
                         case GameControl.Gamepad_ZoomToggle:
                         case GameControl.Mouse_ToggleMovement:
                         case GameControl.Mouse_ToggleRotation:

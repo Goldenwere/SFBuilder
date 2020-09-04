@@ -224,20 +224,12 @@ namespace SFBuilder
 
             foreach (ControlBinding cb in settings.controlBindings_Other)
             {
-                // It is fine to assume gamepad, as that is the only composite (and is always gamepad) and thus the only one requiring pathStart
-                InputAction action = ControlBinding.ControlToAction(cb.Control, "Gamepad", out int i);
-                if (i > -1)
-                {
-                    InputBinding binding = action.actionMap.bindings[i];
-                    binding.overridePath = cb.Path;
-                    action.ApplyBindingOverride(i, binding);
-                }
-                else
-                {
-                    InputBinding binding = action.bindings[0];
-                    binding.overridePath = cb.Path;
-                    action.ApplyBindingOverride(binding);
-                }
+                // None of the '_Other' bindings are composite, so pathStart can be left blank
+                InputAction action = ControlBinding.ControlToAction(cb.Control, "", out int i);
+
+                InputBinding binding = action.bindings[0];
+                binding.overridePath = cb.Path;
+                action.ApplyBindingOverride(binding);
             }
         }
         #endregion
