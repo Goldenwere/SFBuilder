@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
 using System;
 using System.Linq;
@@ -45,6 +46,7 @@ namespace SFBuilder.UI
         [SerializeField] private Image                          transitionImage;
 #pragma warning restore 0649
         /**************/ private bool                           pendingChangesExist;
+        /**************/ private GameObject                     previouslySelectedElement;
         /**************/ private SettingsData                   workingSettings;
         /**************/ private SettingsSubmenu                workingSettingsSubmenuState;
         #endregion
@@ -180,6 +182,7 @@ namespace SFBuilder.UI
             LoadSubmenu(SettingsSubmenu.graphics);
 
             StartCoroutine(WaitUntilSelectableIsActive(otherElements.mainMenuOptionPlay));
+            previouslySelectedElement = otherElements.mainMenuOptionPlay.gameObject;
         }
 
         /// <summary>
@@ -207,8 +210,13 @@ namespace SFBuilder.UI
         /// </summary>
         private void Update()
         {
-            if (EventSystem.current.currentSelectedGameObject == null && GameEventSystem.Instance.CurrentGameState == GameState.MainMenus)
-                StartCoroutine(WaitUntilSelectableIsActive(otherElements.settingsMenuOptionMenu));
+            if (EventSystem.current.currentSelectedGameObject == null &&
+                GameEventSystem.Instance.CurrentGameState == GameState.MainMenus &&
+                !Mouse.current.leftButton.isPressed)
+            {
+                if (previouslySelectedElement.TryGetComponent(out Selectable s))
+                    StartCoroutine(WaitUntilSelectableIsActive(s));
+            }
         }
 
         /// <summary>
@@ -503,17 +511,22 @@ namespace SFBuilder.UI
         /// <param name="curr">The currently selected gameobject</param>
         private void OnSelectedGameObjectChanged(GameObject prev, GameObject curr)
         {
-            if (curr != null && curr.CompareTag("scrollable"))
+            if (curr != null)
             {
-                Canvas.ForceUpdateCanvases();
-                RectTransform rt = otherElements.submenuControls.transform.parent.GetComponent<RectTransform>();
-                Vector2 newPos = rt.anchoredPosition;
-                Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(rt.position)
-                    - (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(curr.transform.position);
-                newPos.y = sub.y - 50;
-                if (newPos.y < 0)
-                    newPos.y = 0;
-                rt.anchoredPosition = newPos;
+                previouslySelectedElement = curr;
+
+                if (curr.CompareTag("scrollable"))
+                {
+                    Canvas.ForceUpdateCanvases();
+                    RectTransform rt = otherElements.submenuControls.transform.parent.GetComponent<RectTransform>();
+                    Vector2 newPos = rt.anchoredPosition;
+                    Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(rt.position)
+                        - (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(curr.transform.position);
+                    newPos.y = sub.y - 50;
+                    if (newPos.y < 0)
+                        newPos.y = 0;
+                    rt.anchoredPosition = newPos;
+                }
             }
         }
 
@@ -884,6 +897,8 @@ namespace SFBuilder.UI
         /// </summary>
         private void SettingsToMain()
         {
+            GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+
             if (pendingChangesExist)
             {
                 canvasWarningWindow.SetActive(true);
@@ -896,7 +911,6 @@ namespace SFBuilder.UI
                     g.SetActive(true);
                 foreach (GameObject g in canvasSettingsElements)
                     g.SetActive(false);
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 canvasWarningWindow.SetActive(false);
                 StartCoroutine(WaitUntilSelectableIsActive(otherElements.mainMenuOptionPlay));
             }
