@@ -233,26 +233,40 @@ namespace SFBuilder
     /// </summary>
     public struct SettingsData
     {
-        public ControlBinding[] controlBindings_Gamepad;
-        public ControlBinding[] controlBindings_Keyboard;
-        public ControlBinding[] controlBindings_Other;
+        public bool                 accessibility_CameraShake;
+        public bool                 accessibility_CameraSmoothing;
+        public FontSize             accessibility_FontSize;
+        public FontStyle            accessibility_FontStyle;
 
-        public bool             controlSetting_HoldModifiers;
-        public bool             controlSetting_InvertHorizontal;
-        public bool             controlSetting_InvertScroll;
-        public bool             controlSetting_InvertVertical;
-        public float            controlSetting_SensitivityMovement;
-        public float            controlSetting_SensitivityRotation;
-        public float            controlSetting_SensitivityZoom;
+        public ControlBinding[]     controlBindings_Gamepad;
+        public ControlBinding[]     controlBindings_Keyboard;
+        public ControlBinding[]     controlBindings_Other;
 
-        public bool             postprocAO;
-        public bool             postprocBloom;
-        public bool             postprocSSR;
+        public bool                 controlSetting_HoldModifiers;
+        public bool                 controlSetting_InvertHorizontal;
+        public bool                 controlSetting_InvertScroll;
+        public bool                 controlSetting_InvertVertical;
+        public float                controlSetting_SensitivityMovement;
+        public float                controlSetting_SensitivityRotation;
+        public float                controlSetting_SensitivityZoom;
 
-        public double           saveVersion;
+        public CursorSize           display_Cursor;
+        public int                  display_FOV;
+        public int                  display_Framerate;
+        public ResolutionSetting    display_Resolution;
+        public bool                 display_Vsync;
+        public WindowMode           display_Window;
 
-        public float            volEffects;
-        public float            volMusic;
+        public bool                 other_ObjectAnimations;
+
+        public bool                 postprocAO;
+        public bool                 postprocBloom;
+        public bool                 postprocSSR;
+
+        public double               saveVersion;
+
+        public float                volEffects;
+        public float                volMusic;
 
         /// <summary>
         /// Defines what the default settings are for new players
