@@ -17,6 +17,7 @@ namespace SFBuilder.Util
         [SerializeField] private ManagementCamera[] cameras;
 #pragma warning restore 0649
         /**************/ private bool               drawCursor;
+        /**************/ private CursorLockMode     defaultLockMode;
         #endregion
 
         #region Methods
@@ -25,8 +26,13 @@ namespace SFBuilder.Util
         /// </summary>
         private void Start()
         {
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.LinuxPlayer)
+                defaultLockMode = CursorLockMode.Confined;
+            else
+                defaultLockMode = CursorLockMode.None;
+
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = defaultLockMode;
             drawCursor = true;
         }
 
@@ -88,7 +94,7 @@ namespace SFBuilder.Util
                 drawCursor = !isMouseBeingUsed;
 
             if (drawCursor)
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = defaultLockMode;
             else
                 Cursor.lockState = CursorLockMode.Locked;
         }
