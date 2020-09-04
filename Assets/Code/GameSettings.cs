@@ -273,6 +273,13 @@ namespace SFBuilder
         /// </summary>
         public static SettingsData Default => new SettingsData
         {
+            saveVersion = GameConstants.__GAME_VERSION,
+
+            accessibility_CameraShake = true,
+            accessibility_CameraSmoothing = true,
+            accessibility_FontSize = FontSize.Medium,
+            accessibility_FontStyle = FontStyle.Righteous,
+
             controlBindings_Gamepad = new ControlBinding[]
             {
                 new ControlBinding(GameControl.Camera_MoveBackward,     "<Gamepad>/leftStick/down"),
@@ -326,6 +333,7 @@ namespace SFBuilder
                 new ControlBinding(GameControl.Mouse_ToggleRotation,    "<Mouse>/rightButton"),
                 new ControlBinding(GameControl.Mouse_ToggleZoom,        "<Keyboard>/ctrl")
             },
+
             controlSetting_HoldModifiers = true,
             controlSetting_InvertHorizontal = false,
             controlSetting_InvertScroll = false,
@@ -333,9 +341,20 @@ namespace SFBuilder
             controlSetting_SensitivityMovement = 1,
             controlSetting_SensitivityRotation = 1,
             controlSetting_SensitivityZoom = 1,
+
+            display_Cursor = CursorSize.Medium,
+            display_FOV = 60,
+            display_Framerate = 60,
+            display_Resolution = ResolutionSetting._native,
+            display_Vsync = true,
+            display_Window = WindowMode.Fullscreen,
+
+            other_ObjectAnimations = true,
+
             postprocAO = false,
             postprocBloom = false,
             postprocSSR = false,
+
             volEffects = 1.0f,
             volMusic = 1.0f
         };
