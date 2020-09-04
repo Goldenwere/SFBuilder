@@ -17,6 +17,7 @@ namespace SFBuilder.Util
         [SerializeField] private ManagementCamera[] cameras;
 #pragma warning restore 0649
         /**************/ private bool               drawCursor;
+        /**************/ private bool               hardwareCursor;
         /**************/ private CursorLockMode     defaultLockMode;
         #endregion
 
@@ -34,6 +35,7 @@ namespace SFBuilder.Util
             Cursor.visible = false;
             Cursor.lockState = defaultLockMode;
             drawCursor = true;
+            OnSettingsUpdated();
         }
 
         /// <summary>
@@ -76,7 +78,7 @@ namespace SFBuilder.Util
         /// </summary>
         private void OnGUI()
         {
-            if (drawCursor)
+            if (drawCursor && !hardwareCursor)
             {
                 Vector2 pos = Mouse.current.position.ReadValue();
                 pos.y = Screen.height - pos.y;
@@ -104,7 +106,14 @@ namespace SFBuilder.Util
         /// </summary>
         private void OnSettingsUpdated()
         {
-
+            if (GameSettings.Instance.Settings.display_Cursor == CursorSize.Hardware)
+                hardwareCursor = true;
+            else
+            {
+                hardwareCursor = false;
+                cursorSize = new Vector2(Screen.width / (int)GameSettings.Instance.Settings.display_Cursor * 4,
+                    Screen.width / (int)GameSettings.Instance.Settings.display_Cursor * 4);
+            }
         }
         #endregion
     }
