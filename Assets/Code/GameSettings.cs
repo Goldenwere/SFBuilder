@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -148,7 +149,9 @@ namespace SFBuilder
         /// <returns>The updated file data</returns>
         private SettingsData UpdateFile(SettingsData loadedData)
         {
-            // Before v0.19, there were no controls and no form of save-file versioning
+            // Before 0.19, there were no controls and no form of save-file versioning
+            // Because 0.19 was not released with an actual build, upgrading from 0.19 to 0.20 (gamepad cursor in different spot) will not take place
+            // Instead, it will assume 0.17 -> 0.20 (gamepad cursor will be properly here anyways; just do not use 0.19 settings files with 0.20)
             if (loadedData.saveVersion < 0.01)
             {
                 SettingsData _default = SettingsData.Default;
@@ -162,6 +165,18 @@ namespace SFBuilder
                 loadedData.controlSetting_SensitivityMovement = _default.controlSetting_SensitivityMovement;
                 loadedData.controlSetting_SensitivityRotation = _default.controlSetting_SensitivityRotation;
                 loadedData.controlSetting_SensitivityZoom = _default.controlSetting_SensitivityZoom;
+
+                loadedData.other_ObjectAnimations = _default.other_ObjectAnimations;
+                loadedData.accessibility_CameraShake = _default.accessibility_CameraShake;
+                loadedData.accessibility_CameraSmoothing = _default.accessibility_CameraSmoothing;
+                loadedData.accessibility_FontSize = _default.accessibility_FontSize;
+                loadedData.accessibility_FontStyle = _default.accessibility_FontStyle;
+                loadedData.display_Cursor = _default.display_Cursor;
+                loadedData.display_FOV = _default.display_FOV;
+                loadedData.display_Framerate = _default.display_Framerate;
+                loadedData.display_Resolution = _default.display_Resolution;
+                loadedData.display_Vsync = _default.display_Vsync;
+                loadedData.display_Window = _default.display_Window;
             }
 
             loadedData.saveVersion = GameConstants.__GAME_VERSION;
@@ -282,6 +297,10 @@ namespace SFBuilder
 
             controlBindings_Gamepad = new ControlBinding[]
             {
+                new ControlBinding(GameControl.Gamepad_CursorDown,      "<Gamepad>/rightStick/down"),
+                new ControlBinding(GameControl.Gamepad_CursorLeft,      "<Gamepad>/rightStick/left"),
+                new ControlBinding(GameControl.Gamepad_CursorRight,     "<Gamepad>/rightStick/right"),
+                new ControlBinding(GameControl.Gamepad_CursorUp,        "<Gamepad>/rightStick/up"),
                 new ControlBinding(GameControl.Camera_MoveBackward,     "<Gamepad>/leftStick/down"),
                 new ControlBinding(GameControl.Camera_MoveForward,      "<Gamepad>/leftStick/up"),
                 new ControlBinding(GameControl.Camera_MoveLeft,         "<Gamepad>/leftStick/left"),
@@ -303,6 +322,10 @@ namespace SFBuilder
             },
             controlBindings_Keyboard = new ControlBinding[]
             {
+                new ControlBinding(GameControl.Gamepad_CursorDown,      "<Keyboard>/downArrow"),
+                new ControlBinding(GameControl.Gamepad_CursorLeft,      "<Keyboard>/leftArrow"),
+                new ControlBinding(GameControl.Gamepad_CursorRight,     "<Keyboard>/rightArrow"),
+                new ControlBinding(GameControl.Gamepad_CursorUp,        "<Keyboard>/upArrow"),
                 new ControlBinding(GameControl.Camera_MoveBackward,     "<Keyboard>/s"),
                 new ControlBinding(GameControl.Camera_MoveForward,      "<Keyboard>/w"),
                 new ControlBinding(GameControl.Camera_MoveLeft,         "<Keyboard>/a"),
@@ -324,10 +347,6 @@ namespace SFBuilder
             },
             controlBindings_Other = new ControlBinding[]
             {
-                new ControlBinding(GameControl.Gamepad_CursorDown,      "<Gamepad>/rightStick/down"),
-                new ControlBinding(GameControl.Gamepad_CursorLeft,      "<Gamepad>/rightStick/left"),
-                new ControlBinding(GameControl.Gamepad_CursorRight,     "<Gamepad>/rightStick/right"),
-                new ControlBinding(GameControl.Gamepad_CursorUp,        "<Gamepad>/rightStick/up"),
                 new ControlBinding(GameControl.Gamepad_ZoomToggle,      "<Gamepad>/leftStickPress"),
                 new ControlBinding(GameControl.Mouse_ToggleMovement,    "<Mouse>/leftButton"),
                 new ControlBinding(GameControl.Mouse_ToggleRotation,    "<Mouse>/rightButton"),
