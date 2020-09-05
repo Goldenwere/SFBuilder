@@ -138,9 +138,21 @@ namespace SFBuilder.UI
         protected class SettingsMenuElements
         {
             public ControlButton[]              controlButtons;
+            [Space]
+            [Header("Display")]
+            public Toggle                       displayAnim;
+            public TMP_Dropdown                 displayCursor;
+            public SliderTextLoadExtension      displayFOV;
+            public SliderTextLoadExtension      displayFramerate;
+            public TMP_Dropdown                 displayRatio;
+            public TMP_Dropdown                 displayResolution;
+            public Toggle                       displayVsync;
+            public TMP_Dropdown                 displayWindow;
+            [Header("Post Processing")]
             public Toggle                       postprocAO;
             public Toggle                       postprocBloom;
             public Toggle                       postprocSSR;
+            [Header("Other Controls")]
             public Toggle                       invertHorizontal;
             public Toggle                       invertScroll;
             public Toggle                       invertVertical;
@@ -148,6 +160,7 @@ namespace SFBuilder.UI
             public SliderTextLoadExtension      sensitivityMovement;
             public SliderTextLoadExtension      sensitivityRotation;
             public SliderTextLoadExtension      sensitivityZoom;
+            [Header("Audio")]
             public SliderTextLoadExtension      volMusic;
             public SliderTextLoadExtension      volEffects;
         }
