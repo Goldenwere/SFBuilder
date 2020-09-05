@@ -6197,6 +6197,14 @@ MonoBehaviour:
     - {fileID: 1542683039}
     - {fileID: 1850323582}
     - {fileID: 1590880984}
+    displayAnim: {fileID: 330603965}
+    displayCursor: {fileID: 2063242674}
+    displayFOV: {fileID: 1728554368}
+    displayFramerate: {fileID: 1410602749}
+    displayRatio: {fileID: 1958143547}
+    displayResolution: {fileID: 1765328692}
+    displayVsync: {fileID: 1966703692}
+    displayWindow: {fileID: 485634289}
     postprocAO: {fileID: 1491764320}
     postprocBloom: {fileID: 1499005382}
     postprocSSR: {fileID: 702898267}
@@ -43185,7 +43193,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9544271
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
