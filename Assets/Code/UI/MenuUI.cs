@@ -467,6 +467,15 @@ namespace SFBuilder.UI
             otherElements.settingsMenuOptionSave.onClick.AddListener(() => SettingsSave());
             otherElements.settingsMenuOptionRevert.onClick.AddListener(() => SettingsRevert());
 
+            otherElements.settingsSubOptionAccessibility.onClick.AddListener(() => {
+                if (workingSettingsSubmenuState != SettingsSubmenu.accessibility)
+                {
+                    LoadSubmenu(SettingsSubmenu.accessibility);
+                    GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                }
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.accessibilityCameraShake));
+            });
+
             otherElements.settingsSubOptionAudio.onClick.AddListener(() => {
                 if (workingSettingsSubmenuState != SettingsSubmenu.audio)
                 {
