@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
 using System;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using Goldenwere.Unity.UI;
 using Goldenwere.Unity;
 
@@ -233,6 +233,81 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
+        /// Sets up resolution/ratio dropdowns based on underlying settings
+        /// </summary>
+        private void HandleResolutionElements()
+        {
+            if ((byte)workingSettings.display_Resolution == 255)
+            {
+                settingsMenuElements.displayRatio.interactable = false;
+                // Default to 16:9 for the other options in the list
+                List<string> resOptions = GameConstants.ResolutionEnumToString(0, 32);
+                settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
+                for (int i = 0; i < resOptions.Count; i++)
+                    settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
+
+                settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
+                settingsMenuElements.displayResolution.SetValueWithoutNotify(settingsMenuElements.displayResolution.options.Count - 1);
+            }
+
+            else
+            {
+                settingsMenuElements.displayRatio.interactable = true;
+                List<string> resOptions;
+                int startRange;
+
+                if ((byte)workingSettings.display_Resolution < 32)
+                {
+                    startRange = 0;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(0);
+                }
+
+                else if ((byte)workingSettings.display_Resolution < 64)
+                {
+                    startRange = 32;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(1);
+                }
+
+                else if ((byte)workingSettings.display_Resolution < 96)
+                {
+                    startRange = 64;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(2);
+                }
+
+                else if ((byte)workingSettings.display_Resolution < 128)
+                {
+                    startRange = 96;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(3);
+                }
+
+                else if ((byte)workingSettings.display_Resolution < 160)
+                {
+                    startRange = 128;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(4);
+                }
+
+                else if ((byte)workingSettings.display_Resolution < 192)
+                {
+                    startRange = 160;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(5);
+                }
+
+                else
+                {
+                    startRange = 192;
+                    settingsMenuElements.displayRatio.SetValueWithoutNotify(6);
+                }
+
+                resOptions = GameConstants.ResolutionEnumToString(startRange, 32);
+                settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
+                for (int i = 0; i < resOptions.Count; i++)
+                    settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
+                settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
+                settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - startRange);
+            }
+        }
+
+        /// <summary>
         /// Adds event listeners to the settings menu options
         /// </summary>
         private void InitializeUIElements()
@@ -433,6 +508,16 @@ namespace SFBuilder.UI
             settingsMenuElements.invertHorizontal.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertHorizontal);
             settingsMenuElements.invertScroll.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertScroll);
             settingsMenuElements.invertVertical.SetIsOnWithoutNotify(workingSettings.controlSetting_InvertVertical);
+
+            HandleResolutionElements();
+            settingsMenuElements.displayAnim.SetIsOnWithoutNotify(workingSettings.other_ObjectAnimations);
+            settingsMenuElements.displayCursor.SetValueWithoutNotify((int)workingSettings.display_Cursor);
+            settingsMenuElements.displayFOV.AssociatedSlider.SetValueWithoutNotify(workingSettings.display_FOV);
+            settingsMenuElements.displayFOV.UpdateText(workingSettings.display_FOV);
+            settingsMenuElements.displayFramerate.AssociatedSlider.SetValueWithoutNotify(workingSettings.display_Framerate);
+            settingsMenuElements.displayFramerate.UpdateText(workingSettings.display_Framerate);
+            settingsMenuElements.displayVsync.SetIsOnWithoutNotify(workingSettings.display_Vsync);
+            settingsMenuElements.displayWindow.SetValueWithoutNotify((int)workingSettings.display_Window);
         }
 
         /// <summary>

@@ -1,4 +1,7 @@
-﻿namespace SFBuilder
+﻿using System.Linq;
+using System.Collections.Generic;
+
+namespace SFBuilder
 {
     /// <summary>
     /// Keep all hardcoded values here that are settings or related to files outside of code
@@ -105,7 +108,7 @@
         /// </summary>
         /// <param name="name">Identifier used in InputSystem</param>
         /// <returns>A symbol or shorthand identifier for the key provided</returns>
-        public static string    InputNameToChar(string name)
+        public static string        InputNameToChar(string name)
         {
             switch (name)
             {
@@ -158,11 +161,25 @@
         }
 
         /// <summary>
+        /// Converts the ResolutionSetting enum to an array of strings
+        /// </summary>
+        /// <param name="rangeStart">The range to start from in the enum</param>
+        /// <param name="rangeCount">The count after start to end at in enum</param>
+        /// <returns>The converted list containing the values specified by range</returns>
+        public static List<string>  ResolutionEnumToString(int rangeStart = 0, int rangeCount = 255)
+        {
+            return System.Enum.GetValues(typeof(ResolutionSetting))
+                .Cast<int>()
+                .Select(x => x.ToString())
+                .ToList().GetRange(rangeStart, rangeCount);
+        }
+
+        /// <summary>
         /// Adds color tags (HTML, treated as a GameConstant) to a number depending on if it's positive or negative
         /// </summary>
         /// <param name="num">The number being converted</param>
         /// <returns>Number as string surrounded by tags usable by TMPro</returns>
-        public static string    UITooltipColorTag(double num)
+        public static string        UITooltipColorTag(double num)
         {
             if (num > 0)
                 return "<color=#00ffff>+" + num.ToString() + "</color>";
