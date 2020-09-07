@@ -255,11 +255,9 @@ namespace SFBuilder.UI
                 settingsMenuElements.displayRatio.interactable = false;
                 // Default to 16:9 for the other options in the list
                 List<string> resOptions = GameConstants.ResolutionEnumToString(0, 32);
-                settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
-                for (int i = 0; i < resOptions.Count; i++)
-                    settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
-
-                settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
+                List<TMP_Dropdown.OptionData> newOptions = resOptions.Select(x => new TMP_Dropdown.OptionData(x.Replace("_", ""))).ToList();
+                newOptions.Add(new TMP_Dropdown.OptionData("Native"));
+                settingsMenuElements.displayResolution.options = newOptions;
                 settingsMenuElements.displayResolution.SetValueWithoutNotify(settingsMenuElements.displayResolution.options.Count - 1);
             }
 
@@ -280,10 +278,9 @@ namespace SFBuilder.UI
             List<string> resOptions = GameConstants.ResolutionEnumToString(startRange, 32);
             settingsMenuElements.displayRatio.SetValueWithoutNotify(selectedRatio);
 
-            settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
-            for (int i = 0; i < resOptions.Count; i++)
-                settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
-            settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
+            List<TMP_Dropdown.OptionData> newOptions = resOptions.Select(x => new TMP_Dropdown.OptionData(x.Replace("_", ""))).ToList();
+            newOptions.Add(new TMP_Dropdown.OptionData("Native"));
+            settingsMenuElements.displayResolution.options = newOptions;
             settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - startRange);
         }
 
