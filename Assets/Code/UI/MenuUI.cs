@@ -341,6 +341,36 @@ namespace SFBuilder.UI
             });
             #endregion
 
+            #region Initialize accessibility elements
+            settingsMenuElements.accessibilityCameraShake.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.accessibility_CameraShake = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.accessibilityCameraShake));
+            });
+
+            settingsMenuElements.accessibilityCameraSmoothing.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.accessibility_CameraSmoothing = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.accessibilityCameraSmoothing));
+            });
+
+            settingsMenuElements.accessibilityFontSize.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.accessibility_FontSize = (FontSize)val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.accessibilityFontSize));
+            });
+
+            settingsMenuElements.accessibilityFontStyle.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.accessibility_FontStyle = (FontStyle)val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.accessibilityFontStyle));
+            });
+            #endregion
+
             #region Initialize display elements
             settingsMenuElements.displayAnim.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
