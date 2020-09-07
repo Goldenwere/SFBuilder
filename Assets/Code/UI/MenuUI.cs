@@ -263,58 +263,25 @@ namespace SFBuilder.UI
             else
             {
                 settingsMenuElements.displayRatio.interactable = true;
-                List<string> resOptions;
-                int startRange;
-
-                if ((byte)workingSettings.display_Resolution < 32)
-                {
-                    startRange = 0;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(0);
-                }
-
-                else if ((byte)workingSettings.display_Resolution < 64)
-                {
-                    startRange = 32;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(1);
-                }
-
-                else if ((byte)workingSettings.display_Resolution < 96)
-                {
-                    startRange = 64;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(2);
-                }
-
-                else if ((byte)workingSettings.display_Resolution < 128)
-                {
-                    startRange = 96;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(3);
-                }
-
-                else if ((byte)workingSettings.display_Resolution < 160)
-                {
-                    startRange = 128;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(4);
-                }
-
-                else if ((byte)workingSettings.display_Resolution < 192)
-                {
-                    startRange = 160;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(5);
-                }
-
-                else
-                {
-                    startRange = 192;
-                    settingsMenuElements.displayRatio.SetValueWithoutNotify(6);
-                }
-
-                resOptions = GameConstants.ResolutionEnumToString(startRange, 32);
-                settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
-                for (int i = 0; i < resOptions.Count; i++)
-                    settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
-                settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
-                settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - startRange);
+                HandleResolutionElements((byte)workingSettings.display_Resolution / 32);
             }
+        }
+
+        /// <summary>
+        /// Sets up resolution/ratio dropdowns based on selected ratio
+        /// </summary>
+        /// <param name="selectedRatio">The ratio setting</param>
+        private void HandleResolutionElements(int selectedRatio)
+        {
+            int startRange = 32 * selectedRatio;
+            List<string> resOptions = GameConstants.ResolutionEnumToString(startRange, 32);
+            settingsMenuElements.displayRatio.SetValueWithoutNotify(selectedRatio);
+
+            settingsMenuElements.displayResolution.options = new List<TMP_Dropdown.OptionData>(resOptions.Count);
+            for (int i = 0; i < resOptions.Count; i++)
+                settingsMenuElements.displayResolution.options[i] = new TMP_Dropdown.OptionData(resOptions[i].Replace("_", ""));
+            settingsMenuElements.displayResolution.options.Add(new TMP_Dropdown.OptionData("Native"));
+            settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - startRange);
         }
 
         /// <summary>
@@ -406,13 +373,22 @@ namespace SFBuilder.UI
             settingsMenuElements.displayRatio.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 pendingChangesExist = true;
-
+                HandleResolutionElements(val);
                 StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayRatio));
             });
 
             settingsMenuElements.displayResolution.onValueChanged.AddListener(val => {
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 pendingChangesExist = true;
+
+                if (val == settingsMenuElements.displayResolution.options.Count - 1)
+                {
+                    workingSettings.display_Resolution = ResolutionSetting._native;
+                    HandleResolutionElements();
+                }
+
+                else
+                    workingSettings.display_Resolution = (ResolutionSetting)(settingsMenuElements.displayRatio.value * val);
 
                 StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayResolution));
             });
