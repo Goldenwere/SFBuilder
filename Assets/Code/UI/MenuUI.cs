@@ -374,10 +374,8 @@ namespace SFBuilder.UI
 
             settingsMenuElements.displayFramerate.AssociatedSlider.onValueChanged.AddListener(val => {
                 OnValueChanged(false);
-                val -= val % 10;
-                workingSettings.display_Framerate = (int)val;
-                settingsMenuElements.displayFramerate.AssociatedSlider.SetValueWithoutNotify(val);
-                settingsMenuElements.displayFramerate.UpdateText(string.Format("{0:###}", val));
+                workingSettings.display_Framerate = (int)val * 10;
+                settingsMenuElements.displayFramerate.UpdateText(string.Format("{0:###}", val * 10));
             });
 
             settingsMenuElements.displayRatio.onValueChanged.AddListener(val => {
@@ -564,7 +562,7 @@ namespace SFBuilder.UI
             settingsMenuElements.displayCursor.SetValueWithoutNotify((int)workingSettings.display_Cursor);
             settingsMenuElements.displayFOV.AssociatedSlider.SetValueWithoutNotify(workingSettings.display_FOV);
             settingsMenuElements.displayFOV.UpdateText(workingSettings.display_FOV);
-            settingsMenuElements.displayFramerate.AssociatedSlider.SetValueWithoutNotify(workingSettings.display_Framerate);
+            settingsMenuElements.displayFramerate.AssociatedSlider.SetValueWithoutNotify(workingSettings.display_Framerate / 10);
             settingsMenuElements.displayFramerate.UpdateText(workingSettings.display_Framerate);
             settingsMenuElements.displayVsync.SetIsOnWithoutNotify(workingSettings.display_Vsync);
             settingsMenuElements.displayWindow.SetValueWithoutNotify((int)workingSettings.display_Window);
