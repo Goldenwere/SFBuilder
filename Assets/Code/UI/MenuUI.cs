@@ -599,10 +599,10 @@ namespace SFBuilder.UI
                     otherElements.submenuControlsButtonBackground.SetActive(false);
                     otherElements.submenuGraphicsButtonBackground.SetActive(true);
                     active = otherElements.submenuGraphics;
-                    accessNav.selectOnDown = settingsMenuElements.postprocAO;
-                    audioNav.selectOnDown = settingsMenuElements.postprocAO;
-                    controlsNav.selectOnDown = settingsMenuElements.postprocAO;
-                    graphicsNav.selectOnDown = settingsMenuElements.postprocAO;
+                    accessNav.selectOnDown = settingsMenuElements.displayCursor;
+                    audioNav.selectOnDown = settingsMenuElements.displayCursor;
+                    controlsNav.selectOnDown = settingsMenuElements.displayCursor;
+                    graphicsNav.selectOnDown = settingsMenuElements.displayCursor;
                     break;
             }
             canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, active.GetComponent<RectTransform>().sizeDelta.y);
