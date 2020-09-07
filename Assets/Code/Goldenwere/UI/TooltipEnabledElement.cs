@@ -6,7 +6,7 @@
 *** File Info:
 ***     Description - Contains the TooltipEnabledElement class and associated structures AnchorMode, AnchorPosition, MiddlePosition, and TransitionMode
 ***     Pkg Name    - TooltipSystem
-***     Pkg Ver     - 1.0.1
+***     Pkg Ver     - 1.1.0
 ***     Pkg Req     - CoreAPI
 **/
 
@@ -108,11 +108,15 @@ namespace Goldenwere.Unity.UI
         [Range(0.01f,1)] [Tooltip               ("Multiplier that determines how much the tooltip anchors to the left/right when AnchorPosition is one of the " +
                                                 "left/right settings (has no effect on Middle settings)")]
         [SerializeField] private float          tooltipHorizontalFactor = 1;
+        [Tooltip                                ("Whether the tooltip closes on click/submit")]
+        [SerializeField] private bool           tooltipCloseOnSubmit = true;
         [Tooltip                                ("Padding between the edges of the tooltip and text element, done in traditional CSS order: Top, Right, Bottom, Left")]
         [SerializeField] private Vector4        tooltipPadding;
         [Tooltip                                ("Prefab which contains a TooltipPrefab class. Only the width of the prefab and text size are a concern;\n" +
                                                 "text padding is defined in TooltipEnabledElement, and height is determined dynamically based on text contents.")]
         [SerializeField] private GameObject     tooltipPrefab;
+        [Range(0,10)] [Tooltip                  ("Adds a delay between closing and re-opening")]
+        [SerializeField] private float          tooltipDelayReopening;
         [Tooltip                                ("The text to display in the tooltip")]
         [SerializeField] private string         tooltipText;
         [Tooltip                                ("Values used if defining a string that needs formatting. Leave blank if no formatting is done inside tooltipText")]
@@ -129,6 +133,7 @@ namespace Goldenwere.Unity.UI
         [SerializeField] private TransitionMode transitionMode;
 #pragma warning restore 0649
         /**************/ private bool           isActive;
+        /**************/ private bool           isDelayedForReopening;
         /**************/ private bool           isInitialized;
         /**************/ private bool           isTransitioning;
         /**************/ private TooltipPrefab  tooltipInstance;
@@ -245,6 +250,8 @@ namespace Goldenwere.Unity.UI
             }
             StopAllCoroutines();
             SetActive(false);
+            if (tooltipDelayReopening > 0)
+                StartCoroutine(DelayReOpening());
         }
 
         /// <summary>
@@ -252,18 +259,23 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerClick(PointerEventData data)
         {
-            if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
+            if (tooltipCloseOnSubmit)
             {
-                if (isTransitioning)
+                if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
                 {
-                    Transform parent = tooltipInstance.transform.parent;
-                    tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
-                    Destroy(parent.gameObject);
-                    tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                    if (isTransitioning)
+                    {
+                        Transform parent = tooltipInstance.transform.parent;
+                        tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
+                        Destroy(parent.gameObject);
+                        tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                    }
                 }
+                StopAllCoroutines();
+                SetActive(false);
+                if (tooltipDelayReopening > 0)
+                    StartCoroutine(DelayReOpening());
             }
-            StopAllCoroutines();
-            SetActive(false);
         }
 
         /// <summary>
@@ -271,11 +283,14 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnPointerEnter(PointerEventData data)
         {
-            StopAllCoroutines();
-            if (tooltipDelay > 0)
-                StartCoroutine(DelayOpening());
-            else
-                SetActive(true);
+            if (!isDelayedForReopening)
+            {
+                StopAllCoroutines();
+                if (tooltipDelay > 0)
+                    StartCoroutine(DelayOpening());
+                else
+                    SetActive(true);
+            }
         }
 
         /// <summary>
@@ -295,6 +310,8 @@ namespace Goldenwere.Unity.UI
             }
             StopAllCoroutines();
             SetActive(false);
+            if (tooltipDelayReopening > 0)
+                StartCoroutine(DelayReOpening());
         }
 
         /// <summary>
@@ -302,11 +319,14 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnSelect(BaseEventData data)
         {
-            StopAllCoroutines();
-            if (tooltipDelay > 0)
-                StartCoroutine(DelayOpening());
-            else
-                SetActive(true);
+            if (!isDelayedForReopening)
+            {
+                StopAllCoroutines();
+                if (tooltipDelay > 0)
+                    StartCoroutine(DelayOpening());
+                else
+                    SetActive(true);
+            }
         }
 
         /// <summary>
@@ -314,18 +334,23 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void OnSubmit(BaseEventData data)
         {
-            if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
+            if (tooltipCloseOnSubmit)
             {
-                if (isTransitioning)
+                if (transitionMode == TransitionMode.ShiftDown || transitionMode == TransitionMode.ShiftUp)
                 {
-                    Transform parent = tooltipInstance.transform.parent;
-                    tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
-                    Destroy(parent.gameObject);
-                    tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                    if (isTransitioning)
+                    {
+                        Transform parent = tooltipInstance.transform.parent;
+                        tooltipInstance.transform.SetParent(tooltipInstanceParent, true);
+                        Destroy(parent.gameObject);
+                        tooltipInstance.RTransform.anchoredPosition = tooltipInstancePosition;
+                    }
                 }
+                StopAllCoroutines();
+                SetActive(false);
+                if (tooltipDelayReopening > 0)
+                    StartCoroutine(DelayReOpening());
             }
-            StopAllCoroutines();
-            SetActive(false);
         }
         #endregion
 
@@ -738,6 +763,16 @@ namespace Goldenwere.Unity.UI
         {
             yield return new WaitForSeconds(tooltipDelay);
             SetActive(true);
+        }
+
+        /// <summary>
+        /// Adds a slight delay between re-opening tooltip (useful in case UI navigation reselects after click/submit)
+        /// </summary>
+        private IEnumerator DelayReOpening()
+        {
+            isDelayedForReopening = true;
+            yield return new WaitForSecondsRealtime(tooltipDelayReopening);
+            isDelayedForReopening = false;
         }
         #endregion
 

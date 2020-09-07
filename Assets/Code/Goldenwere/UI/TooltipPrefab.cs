@@ -6,7 +6,7 @@
 *** File Info:
 ***     Description - Contains the TooltipPrefab class
 ***     Pkg Name    - TooltipSystem
-***     Pkg Ver     - 1.0.1
+***     Pkg Ver     - 1.1.0
 ***     Pkg Req     - CoreAPI
 **/
 
