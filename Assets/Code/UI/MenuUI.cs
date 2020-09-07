@@ -17,6 +17,7 @@ namespace SFBuilder.UI
     /// </summary>
     public enum SettingsSubmenu
     {
+        accessibility,
         audio,
         controls,
         graphics
@@ -117,9 +118,12 @@ namespace SFBuilder.UI
             public Button       settingsMenuOptionMenu;
             public Button       settingsMenuOptionRevert;
             public Button       settingsMenuOptionSave;
+            public Button       settingsSubOptionAccessibility;
             public Button       settingsSubOptionAudio;
             public Button       settingsSubOptionControls;
             public Button       settingsSubOptionGraphics;
+            public GameObject   submenuAccessibility;
+            public GameObject   submenuAccessibilityButtonBackground;
             public GameObject   submenuAudio;
             public GameObject   submenuAudioButtonBackground;
             public GameObject   submenuControls;
@@ -138,10 +142,10 @@ namespace SFBuilder.UI
         protected class SettingsMenuElements
         {
             [Header("Accessibility")]
-            public Toggle                       cameraShake;
-            public Toggle                       cameraSmoothing;
-            public TMP_Dropdown                 fontSize;
-            public TMP_Dropdown                 fontStyle;
+            public Toggle                       accessibilityCameraShake;
+            public Toggle                       accessibilityCameraSmoothing;
+            public TMP_Dropdown                 accessibilityFontSize;
+            public TMP_Dropdown                 accessibilityFontStyle;
             [Space]
             public ControlButton[]              controlButtons;
             [Space]
@@ -532,45 +536,70 @@ namespace SFBuilder.UI
         /// <param name="newState">The submenu to load</param>
         private void LoadSubmenu(SettingsSubmenu newState)
         {
+            Navigation accessNav = otherElements.settingsSubOptionAccessibility.navigation;
             Navigation audioNav = otherElements.settingsSubOptionAudio.navigation;
             Navigation controlsNav = otherElements.settingsSubOptionControls.navigation;
             Navigation graphicsNav = otherElements.settingsSubOptionGraphics.navigation;
             GameObject active;
             switch (newState)
             {
+                case SettingsSubmenu.accessibility:
+                    otherElements.submenuAccessibility.SetActive(true);
+                    otherElements.submenuAudio.SetActive(false);
+                    otherElements.submenuControls.SetActive(false);
+                    otherElements.submenuGraphics.SetActive(false);
+                    otherElements.submenuAccessibilityButtonBackground.SetActive(true);
+                    otherElements.submenuAudioButtonBackground.SetActive(false);
+                    otherElements.submenuControlsButtonBackground.SetActive(false);
+                    otherElements.submenuGraphicsButtonBackground.SetActive(true);
+                    active = otherElements.submenuAccessibility;
+                    accessNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
+                    audioNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
+                    controlsNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
+                    graphicsNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
+                    break;
                 case SettingsSubmenu.audio:
+                    otherElements.submenuAccessibility.SetActive(false);
                     otherElements.submenuAudio.SetActive(true);
                     otherElements.submenuControls.SetActive(false);
                     otherElements.submenuGraphics.SetActive(false);
+                    otherElements.submenuAccessibilityButtonBackground.SetActive(false);
                     otherElements.submenuAudioButtonBackground.SetActive(true);
                     otherElements.submenuControlsButtonBackground.SetActive(false);
                     otherElements.submenuGraphicsButtonBackground.SetActive(false);
                     active = otherElements.submenuAudio;
+                    accessNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
                     audioNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
                     controlsNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
                     graphicsNav.selectOnDown = settingsMenuElements.volMusic.AssociatedSlider;
                     break;
                 case SettingsSubmenu.controls:
+                    otherElements.submenuAccessibility.SetActive(false);
                     otherElements.submenuAudio.SetActive(false);
                     otherElements.submenuControls.SetActive(true);
                     otherElements.submenuGraphics.SetActive(false);
+                    otherElements.submenuAccessibilityButtonBackground.SetActive(false);
                     otherElements.submenuAudioButtonBackground.SetActive(false);
                     otherElements.submenuControlsButtonBackground.SetActive(true);
                     otherElements.submenuGraphicsButtonBackground.SetActive(false);
                     active = otherElements.submenuControls;
+                    accessNav.selectOnDown = settingsMenuElements.controlButtons[0];
                     audioNav.selectOnDown = settingsMenuElements.controlButtons[0];
                     controlsNav.selectOnDown = settingsMenuElements.controlButtons[0];
                     graphicsNav.selectOnDown = settingsMenuElements.controlButtons[0];
                     break;
                 case SettingsSubmenu.graphics:
                 default:
+                    otherElements.submenuAccessibility.SetActive(false);
                     otherElements.submenuAudio.SetActive(false);
                     otherElements.submenuControls.SetActive(false);
                     otherElements.submenuGraphics.SetActive(true);
+                    otherElements.submenuAccessibilityButtonBackground.SetActive(false);
                     otherElements.submenuAudioButtonBackground.SetActive(false);
                     otherElements.submenuControlsButtonBackground.SetActive(false);
                     otherElements.submenuGraphicsButtonBackground.SetActive(true);
                     active = otherElements.submenuGraphics;
+                    accessNav.selectOnDown = settingsMenuElements.postprocAO;
                     audioNav.selectOnDown = settingsMenuElements.postprocAO;
                     controlsNav.selectOnDown = settingsMenuElements.postprocAO;
                     graphicsNav.selectOnDown = settingsMenuElements.postprocAO;
@@ -578,6 +607,7 @@ namespace SFBuilder.UI
             }
             canvasSettingsSubmenuContainer.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, active.GetComponent<RectTransform>().sizeDelta.y);
             workingSettingsSubmenuState = newState;
+            otherElements.settingsSubOptionAccessibility.navigation = accessNav;
             otherElements.settingsSubOptionAudio.navigation = audioNav;
             otherElements.settingsSubOptionControls.navigation = controlsNav;
             otherElements.settingsSubOptionGraphics.navigation = graphicsNav;
