@@ -326,40 +326,7 @@ namespace SFBuilder.UI
             foreach (ControlButton cb in settingsMenuElements.controlButtons)
                 cb.onClick.AddListener(() => OnSetControl(cb));
 
-            #region Initialize the remaining settings menu buttons
-            settingsMenuElements.postprocAO.onValueChanged.AddListener(val => {
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-                workingSettings.postprocAO = val;
-                pendingChangesExist = true;
-                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocAO));
-            });
-
-            settingsMenuElements.postprocBloom.onValueChanged.AddListener(val => {
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-                workingSettings.postprocBloom = val;
-                pendingChangesExist = true;
-                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocBloom));
-            });
-
-            settingsMenuElements.postprocSSR.onValueChanged.AddListener(val => {
-                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
-                workingSettings.postprocSSR = val;
-                pendingChangesExist = true;
-                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocSSR));
-            });
-
-            settingsMenuElements.volEffects.AssociatedSlider.onValueChanged.AddListener(val => {
-                workingSettings.volEffects = val;
-                settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", val));
-                pendingChangesExist = true;
-            });
-
-            settingsMenuElements.volMusic.AssociatedSlider.onValueChanged.AddListener(val => {
-                workingSettings.volMusic = val;
-                settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", val));
-                pendingChangesExist = true;
-            });
-
+            #region Initialize remaining controls elements
             settingsMenuElements.sensitivityMovement.AssociatedSlider.onValueChanged.AddListener(val => {
                 workingSettings.controlSetting_SensitivityMovement = val;
                 settingsMenuElements.sensitivityMovement.UpdateText(string.Format("{0:0.##}", val));
@@ -404,6 +371,99 @@ namespace SFBuilder.UI
                 workingSettings.controlSetting_InvertScroll = val;
                 pendingChangesExist = true;
                 StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.invertScroll));
+            });
+            #endregion
+
+            #region Initialize display elements
+            settingsMenuElements.displayAnim.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.other_ObjectAnimations = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayAnim));
+            });
+
+            settingsMenuElements.displayCursor.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.display_Cursor = (CursorSize)val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayCursor));
+            });
+
+            settingsMenuElements.displayFOV.AssociatedSlider.onValueChanged.AddListener(val => {
+                pendingChangesExist = true;
+                workingSettings.display_FOV = (int)val;
+                settingsMenuElements.displayFOV.UpdateText(string.Format("{0:###}", val));
+            });
+
+            settingsMenuElements.displayFramerate.AssociatedSlider.onValueChanged.AddListener(val => {
+                pendingChangesExist = true;
+                val -= val % 10;
+                workingSettings.display_Framerate = (int)val;
+                settingsMenuElements.displayFramerate.AssociatedSlider.SetValueWithoutNotify(val);
+                settingsMenuElements.displayFramerate.UpdateText(string.Format("{0:###}", val));
+            });
+
+            settingsMenuElements.displayRatio.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayRatio));
+            });
+
+            settingsMenuElements.displayResolution.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayResolution));
+            });
+
+            settingsMenuElements.displayVsync.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.display_Vsync = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayVsync));
+            });
+
+            settingsMenuElements.displayWindow.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.display_Window = (WindowMode)val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayWindow));
+            });
+
+            settingsMenuElements.postprocAO.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.postprocAO = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocAO));
+            });
+
+            settingsMenuElements.postprocBloom.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.postprocBloom = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocBloom));
+            });
+
+            settingsMenuElements.postprocSSR.onValueChanged.AddListener(val => {
+                GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
+                pendingChangesExist = true;
+                workingSettings.postprocSSR = val;
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocSSR));
+            });
+            #endregion
+
+            #region Initilize audio elements
+            settingsMenuElements.volEffects.AssociatedSlider.onValueChanged.AddListener(val => {
+                pendingChangesExist = true;
+                workingSettings.volEffects = val;
+                settingsMenuElements.volEffects.UpdateText(string.Format("{0:P0}", val));
+            });
+
+            settingsMenuElements.volMusic.AssociatedSlider.onValueChanged.AddListener(val => {
+                pendingChangesExist = true;
+                workingSettings.volMusic = val;
+                settingsMenuElements.volMusic.UpdateText(string.Format("{0:P0}", val));
             });
             #endregion
 
