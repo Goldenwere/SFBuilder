@@ -528,6 +528,10 @@ namespace SFBuilder.UI
             settingsMenuElements.displayFramerate.UpdateText(workingSettings.display_Framerate);
             settingsMenuElements.displayVsync.SetIsOnWithoutNotify(workingSettings.display_Vsync);
             settingsMenuElements.displayWindow.SetValueWithoutNotify((int)workingSettings.display_Window);
+            settingsMenuElements.accessibilityCameraShake.SetIsOnWithoutNotify(workingSettings.accessibility_CameraShake);
+            settingsMenuElements.accessibilityCameraSmoothing.SetIsOnWithoutNotify(workingSettings.accessibility_CameraSmoothing);
+            settingsMenuElements.accessibilityFontSize.SetValueWithoutNotify((int)workingSettings.accessibility_FontSize);
+            settingsMenuElements.accessibilityFontStyle.SetValueWithoutNotify((int)workingSettings.accessibility_FontStyle);
         }
 
         /// <summary>
