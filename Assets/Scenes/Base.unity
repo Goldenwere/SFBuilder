@@ -1417,9 +1417,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.2
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Accessibility
   tooltipValues: []
   transitionDuration: 0.5
@@ -3040,9 +3042,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.2
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Graphics
   tooltipValues: []
   transitionDuration: 0.5
@@ -9432,7 +9436,7 @@ MonoBehaviour:
     spaceCount: 17
     wordCount: 18
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -10311,9 +10315,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.2
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Controls
   tooltipValues: []
   transitionDuration: 0.5
@@ -15842,9 +15848,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.2
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Audio
   tooltipValues: []
   transitionDuration: 0.5
@@ -16003,9 +16011,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 0
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0.25
   tooltipText: Adds reflections between certain objects
   tooltipValues: []
   transitionDuration: 0.5
@@ -22966,7 +22976,7 @@ MonoBehaviour:
     spaceCount: 3
     wordCount: 4
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -23254,9 +23264,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Adds a subtle glow to bright areas
   tooltipValues: []
   transitionDuration: 0.5
@@ -26344,9 +26356,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Post-processing effect which adds subtle shadows between objects
   tooltipValues: []
   transitionDuration: 0.5
@@ -37789,9 +37803,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 0
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0.25
   tooltipText: Post-processing effect which adds subtle shadows between objects
   tooltipValues: []
   transitionDuration: 0.5
@@ -38062,9 +38078,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 0
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0.25
   tooltipText: Adds a subtle glow to bright areas
   tooltipValues: []
   transitionDuration: 0.5
@@ -41845,7 +41863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -47397,7 +47415,7 @@ MonoBehaviour:
     spaceCount: 4
     wordCount: 5
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -49293,9 +49311,11 @@ MonoBehaviour:
   canvasToBeAttachedTo: {fileID: 2131888649}
   tooltipDelay: 0.5
   tooltipHorizontalFactor: 1
+  tooltipCloseOnSubmit: 1
   tooltipPadding: {x: 2, y: 2, z: 2, w: 2}
   tooltipPrefab: {fileID: 2644378345820482497, guid: 2a055d46c62373649bf562590a3da29d,
     type: 3}
+  tooltipDelayReopening: 0
   tooltipText: Adds reflections between certain objects
   tooltipValues: []
   transitionDuration: 0.5
