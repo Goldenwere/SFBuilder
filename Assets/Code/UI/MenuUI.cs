@@ -137,6 +137,12 @@ namespace SFBuilder.UI
         [Serializable]
         protected class SettingsMenuElements
         {
+            [Header("Accessibility")]
+            public Toggle                       cameraShake;
+            public Toggle                       cameraSmoothing;
+            public TMP_Dropdown                 fontSize;
+            public TMP_Dropdown                 fontStyle;
+            [Space]
             public ControlButton[]              controlButtons;
             [Space]
             [Header("Display")]
