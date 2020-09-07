@@ -177,6 +177,7 @@ namespace SFBuilder.UI
         #endregion
 
         #region Methods
+        #region Unity methods
         /// <summary>
         /// Copy the material for transitions since it messes with asset file
         /// </summary>
@@ -241,7 +242,9 @@ namespace SFBuilder.UI
                     StartCoroutine(WaitUntilSelectableIsActive(s));
             }
         }
+        #endregion
 
+        #region Settings menu related methods
         /// <summary>
         /// Sets up resolution/ratio dropdowns based on underlying settings
         /// </summary>
@@ -670,7 +673,9 @@ namespace SFBuilder.UI
             if (selectable != null)
                 StartCoroutine(WaitUntilSelectableIsActive(selectable));
         }
+        #endregion
 
+        #region GameEventSystem handlers
         /// <summary>
         /// On the GameStateChanged event, toggle the menu canvas
         /// </summary>
@@ -721,7 +726,9 @@ namespace SFBuilder.UI
                 }
             }
         }
+        #endregion
 
+        #region Controls-related methods
         /// <summary>
         /// Handler for control buttons to set controls
         /// </summary>
@@ -1061,7 +1068,9 @@ namespace SFBuilder.UI
                     #endregion
             }
         }
+        #endregion
 
+        #region Main settings buttons
         /// <summary>
         /// Reverts pending changes in settings menu to saved GameSettings
         /// </summary>
@@ -1107,7 +1116,9 @@ namespace SFBuilder.UI
                 StartCoroutine(WaitUntilSelectableIsActive(otherElements.mainMenuOptionPlay));
             }
         }
+        #endregion
 
+        #region Coroutines
         /// <summary>
         /// Coroutine for animating transition Image
         /// </summary>
@@ -1219,6 +1230,7 @@ namespace SFBuilder.UI
             selectable.Select();
             selectable.OnSelect(null);
         }
+        #endregion
         #endregion
     }
 }
