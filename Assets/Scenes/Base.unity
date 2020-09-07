@@ -6676,9 +6676,12 @@ MonoBehaviour:
     settingsMenuOptionMenu: {fileID: 803671048}
     settingsMenuOptionRevert: {fileID: 2061757766}
     settingsMenuOptionSave: {fileID: 312050635}
+    settingsSubOptionAccessibility: {fileID: 0}
     settingsSubOptionAudio: {fileID: 702880276}
     settingsSubOptionControls: {fileID: 475038139}
     settingsSubOptionGraphics: {fileID: 179722655}
+    submenuAccessibility: {fileID: 0}
+    submenuAccessibilityButtonBackground: {fileID: 0}
     submenuAudio: {fileID: 626241710}
     submenuAudioButtonBackground: {fileID: 1647605930}
     submenuControls: {fileID: 1227832113}
@@ -6689,10 +6692,10 @@ MonoBehaviour:
     windowSettingsSave: {fileID: 402230483}
     windowSettingsRevert: {fileID: 794546392}
   settingsMenuElements:
-    cameraShake: {fileID: 1090781857}
-    cameraSmoothing: {fileID: 966779779}
-    fontSize: {fileID: 1413485805}
-    fontStyle: {fileID: 619074796}
+    accessibilityCameraShake: {fileID: 1090781857}
+    accessibilityCameraSmoothing: {fileID: 966779779}
+    accessibilityFontSize: {fileID: 1413485805}
+    accessibilityFontStyle: {fileID: 619074796}
     controlButtons:
     - {fileID: 1365915524}
     - {fileID: 1250886786}
