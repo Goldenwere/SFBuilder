@@ -35346,11 +35346,27 @@ MonoBehaviour:
     - type: 3
       material: {fileID: 2100000, guid: be7625dc087a8ef4baca9a857692825f, type: 2}
   - style: 1
-    font: {fileID: 0}
-    presets: []
+    font: {fileID: 11400000, guid: 2e2ada38cada22b458356e02ce83d99d, type: 2}
+    presets:
+    - type: 0
+      material: {fileID: 2100000, guid: 1dc04da6a1d9fea4b983c2b67b645144, type: 2}
+    - type: 1
+      material: {fileID: 2100000, guid: aef77cae57f6e2b41821dce644864956, type: 2}
+    - type: 2
+      material: {fileID: 2100000, guid: 6857c1c9b13311c4a9d7dcec5525d3be, type: 2}
+    - type: 3
+      material: {fileID: 2100000, guid: a5b48cfb8799c2d44a0b293d3a606fa7, type: 2}
   - style: 2
-    font: {fileID: 0}
-    presets: []
+    font: {fileID: 11400000, guid: 75cb09499502e584981b9bd59420ec5b, type: 2}
+    presets:
+    - type: 0
+      material: {fileID: 2100000, guid: 95b6180bd10b65447943133f91cc0ddd, type: 2}
+    - type: 1
+      material: {fileID: 2100000, guid: 85e9a4e373779f74b8652fadc33df3d7, type: 2}
+    - type: 2
+      material: {fileID: 2100000, guid: fdfdbf9a57ad2fe4d99dc46e1fa6054a, type: 2}
+    - type: 3
+      material: {fileID: 2100000, guid: 9fed0f1861369f14684fb7ec0e11fd55, type: 2}
 --- !u!1 &1449686844
 GameObject:
   m_ObjectHideFlags: 0
