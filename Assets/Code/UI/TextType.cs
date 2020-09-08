@@ -7,6 +7,7 @@
     {
         normal,
         shadow,
-        title
+        title,
+        outline
     }
 }
