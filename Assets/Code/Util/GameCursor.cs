@@ -111,8 +111,8 @@ namespace SFBuilder.Util
             else
             {
                 hardwareCursor = false;
-                cursorSize = new Vector2(Screen.width / (((int)CursorSize.VeryLarge - (int)GameSettings.Instance.Settings.display_Cursor) * 16),
-                    Screen.width / (((int)CursorSize.VeryLarge - (int)GameSettings.Instance.Settings.display_Cursor) * 16));
+                cursorSize = new Vector2(Screen.width / (((int)CursorSize.VeryLarge + 1 - (int)GameSettings.Instance.Settings.display_Cursor) * 16),
+                    Screen.width / (((int)CursorSize.VeryLarge + 1 - (int)GameSettings.Instance.Settings.display_Cursor) * 16));
             }
         }
         #endregion
