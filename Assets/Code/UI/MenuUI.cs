@@ -670,7 +670,7 @@ namespace SFBuilder.UI
         }
         #endregion
 
-        #region GameEventSystem handlers
+        #region Event handlers
         /// <summary>
         /// On the GameStateChanged event, toggle the menu canvas
         /// </summary>
@@ -703,7 +703,7 @@ namespace SFBuilder.UI
         /// <param name="curr">The currently selected gameobject</param>
         private void OnSelectedGameObjectChanged(GameObject prev, GameObject curr)
         {
-            if (curr != null)
+            if (curr != null && !curr.CompareTag("ignoreSelectable"))
             {
                 previouslySelectedElement = curr;
 

@@ -7,6 +7,7 @@ TagManager:
   - Terrain
   - GroundTile
   - scrollable
+  - ignoreSelectable
   layers:
   - Default
   - TransparentFX

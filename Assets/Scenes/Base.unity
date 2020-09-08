@@ -8153,7 +8153,7 @@ GameObject:
   - component: {fileID: 389565228}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14088,7 +14088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_SelectOnUp: {fileID: 1413485805}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -14826,7 +14826,7 @@ GameObject:
   - component: {fileID: 645036431}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16822,7 +16822,7 @@ GameObject:
   - component: {fileID: 728515128}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24494,7 +24494,7 @@ GameObject:
   - component: {fileID: 1057614273}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25746,7 +25746,7 @@ GameObject:
   - component: {fileID: 1088626558}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34787,7 +34787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_SelectOnUp: {fileID: 966779779}
     m_SelectOnDown: {fileID: 619074796}
     m_SelectOnLeft: {fileID: 0}
@@ -41154,7 +41154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000071525574, y: -0.0000038146973}
+  m_AnchoredPosition: {x: -0.0000071525574, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -41825,7 +41825,7 @@ GameObject:
   - component: {fileID: 1678444062}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ignoreSelectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42387,7 +42387,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.03125
+  m_Size: 0.03125024
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
