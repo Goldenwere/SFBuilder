@@ -35,7 +35,7 @@
         Tooltip = 5,            // normal 2.5, use for tooltips and version number
         GameWindow = 6,         // normal 5.5, use for text info in game window popups
         GameWindowSubText = 7,  // normal 3.0, use for lower text in game window popups
-        HUDIndicators = 8,      // normal 3.0, use for indicators
+        HUDIndicators = 8,      // normal 3.0, use for indicators (stats, building count)
     }
 
     /// <summary>
