@@ -47,6 +47,7 @@ namespace SFBuilder.UI
         [SerializeField] private Image                          transitionImage;
 #pragma warning restore 0649
         /**************/ private bool                           pendingChangesExist;
+        /**************/ private bool                           previouslySelectedDontScroll;
         /**************/ private GameObject                     previouslySelectedElement;
         /**************/ private SettingsData                   workingSettings;
         /**************/ private SettingsSubmenu                workingSettingsSubmenuState;
@@ -235,9 +236,9 @@ namespace SFBuilder.UI
         private void Update()
         {
             if (EventSystem.current.currentSelectedGameObject == null &&
-                GameEventSystem.Instance.CurrentGameState == GameState.MainMenus &&
-                !Mouse.current.leftButton.isPressed)
+                GameEventSystem.Instance.CurrentGameState == GameState.MainMenus)
             {
+                previouslySelectedDontScroll = Mouse.current.leftButton.isPressed;
                 if (previouslySelectedElement.TryGetComponent(out Selectable s))
                     StartCoroutine(WaitUntilSelectableIsActive(s));
             }
@@ -703,7 +704,7 @@ namespace SFBuilder.UI
             {
                 previouslySelectedElement = curr;
 
-                if (curr.CompareTag("scrollable"))
+                if (curr.CompareTag("scrollable") && !Mouse.current.leftButton.isPressed && !previouslySelectedDontScroll)
                 {
                     Canvas.ForceUpdateCanvases();
                     RectTransform rt = otherElements.submenuControls.transform.parent.GetComponent<RectTransform>();
@@ -715,6 +716,8 @@ namespace SFBuilder.UI
                         newPos.y = 0;
                     rt.anchoredPosition = newPos;
                 }
+
+                previouslySelectedDontScroll = false;
             }
         }
         #endregion
