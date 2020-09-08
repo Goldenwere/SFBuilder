@@ -230,6 +230,8 @@ namespace Goldenwere.Unity.UI
                 tooltipInstance.Arrow.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
                 tooltipInstance.Arrow.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             }
+
+            tooltipInstance.Initialize(this);
         }
 
         #region Handlers
@@ -373,6 +375,14 @@ namespace Goldenwere.Unity.UI
                 else
                     graphic.color = background;
             }
+        }
+
+        /// <summary>
+        /// Used to update the instance of the tooltip in case text elements have been changed
+        /// </summary>
+        public void UpdateInstance()
+        {
+            SetText();
         }
 
         /// <summary>
