@@ -37,7 +37,6 @@ namespace SFBuilder.UI
         [SerializeField] private GameObject[]                   canvasSettingsElements;
         [SerializeField] private RectTransform                  canvasSettingsSubmenuContainer;
         [SerializeField] private GameObject                     canvasWarningWindow;
-        [SerializeField] private ControlsMenuImages             controlsMenuImages;
         [SerializeField] private OtherElements                  otherElements;
         [SerializeField] private SettingsMenuElements           settingsMenuElements;
         [SerializeField] private Image                          startupFadeImage;
@@ -54,58 +53,6 @@ namespace SFBuilder.UI
         #endregion
 
         #region Inline Classes
-        /// <summary>
-        /// Collection of images used for the controls menu
-        /// </summary>
-        [Serializable]
-        protected class ControlsMenuImages
-        {
-            public Sprite   gamepad_button_east;
-            public Sprite   gamepad_button_north;
-            public Sprite   gamepad_button_select;
-            public Sprite   gamepad_button_south;
-            public Sprite   gamepad_button_start;
-            public Sprite   gamepad_button_west;
-            public Sprite   gamepad_dpad_down;
-            public Sprite   gamepad_dpad_left;
-            public Sprite   gamepad_dpad_right;
-            public Sprite   gamepad_dpad_up;
-            public Sprite   gamepad_lthumbstick_down;
-            public Sprite   gamepad_lthumbstick_left;
-            public Sprite   gamepad_lthumbstick_press;
-            public Sprite   gamepad_lthumbstick_right;
-            public Sprite   gamepad_lthumbstick_up;
-            public Sprite   gamepad_lshoulder;
-            public Sprite   gamepad_ltrigger;
-            public Sprite   gamepad_rthumbstick_down;
-            public Sprite   gamepad_rthumbstick_left;
-            public Sprite   gamepad_rthumbstick_press;
-            public Sprite   gamepad_rthumbstick_right;
-            public Sprite   gamepad_rthumbstick_up;
-            public Sprite   gamepad_rshoulder;
-            public Sprite   gamepad_rtrigger;
-
-            public Sprite   keyboard_backspace;
-            public Sprite   keyboard_caps;
-            public Sprite   keyboard_down;
-            public Sprite   keyboard_enter;
-            public Sprite   keyboard_left;
-            public Sprite   keyboard_lshift;
-            public Sprite   keyboard_num;
-            public Sprite   keyboard_right;
-            public Sprite   keyboard_rshift;
-            public Sprite   keyboard_scr;
-            public Sprite   keyboard_space;
-            public Sprite   keyboard_tab;
-            public Sprite   keyboard_up;
-
-            public Sprite   mouse_back;
-            public Sprite   mouse_forward;
-            public Sprite   mouse_left;
-            public Sprite   mouse_middle;
-            public Sprite   mouse_right;
-        }
-
         /// <summary>
         /// Collection of misc elements (some need manual navigation updated or need to be set as the selected element when menu state changes)
         /// </summary>
@@ -887,48 +834,48 @@ namespace SFBuilder.UI
                     imageObj.SetActive(true);
                     switch (pathSplit[1])
                     {
-                        case "buttonNorth":         image.sprite = controlsMenuImages.gamepad_button_north; break;
-                        case "buttonSouth":         image.sprite = controlsMenuImages.gamepad_button_south; break;
-                        case "buttonEast":          image.sprite = controlsMenuImages.gamepad_button_east; break;
-                        case "buttonWest":          image.sprite = controlsMenuImages.gamepad_button_west; break;
-                        case "select":              image.sprite = controlsMenuImages.gamepad_button_select; break;
+                        case "buttonNorth":         image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_north; break;
+                        case "buttonSouth":         image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_south; break;
+                        case "buttonEast":          image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_east; break;
+                        case "buttonWest":          image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_west; break;
+                        case "select":              image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_select; break;
                         case "start":
-                        case "systemButton":        image.sprite = controlsMenuImages.gamepad_button_start; break;
+                        case "systemButton":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_button_start; break;
                         case "leftStick":
                             switch (pathSplit[2])
                             {
-                                case "up":          image.sprite = controlsMenuImages.gamepad_lthumbstick_up; break;
-                                case "down":        image.sprite = controlsMenuImages.gamepad_lthumbstick_down; break;
-                                case "left":        image.sprite = controlsMenuImages.gamepad_lthumbstick_left; break;
-                                case "right":       image.sprite = controlsMenuImages.gamepad_lthumbstick_right; break;
+                                case "up":          image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lthumbstick_up; break;
+                                case "down":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lthumbstick_down; break;
+                                case "left":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lthumbstick_left; break;
+                                case "right":       image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lthumbstick_right; break;
                             }
                             break;
                         case "rightStick":
                             switch (pathSplit[2])
                             {
-                                case "up":          image.sprite = controlsMenuImages.gamepad_rthumbstick_up; break;
-                                case "down":        image.sprite = controlsMenuImages.gamepad_rthumbstick_down; break;
-                                case "left":        image.sprite = controlsMenuImages.gamepad_rthumbstick_left; break;
-                                case "right":       image.sprite = controlsMenuImages.gamepad_rthumbstick_right; break;
+                                case "up":          image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rthumbstick_up; break;
+                                case "down":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rthumbstick_down; break;
+                                case "left":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rthumbstick_left; break;
+                                case "right":       image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rthumbstick_right; break;
                             }
                             break;
                         case "dpad":
                             switch (pathSplit[2])
                             {
-                                case "up":          image.sprite = controlsMenuImages.gamepad_dpad_up; break;
-                                case "down":        image.sprite = controlsMenuImages.gamepad_dpad_down; break;
-                                case "left":        image.sprite = controlsMenuImages.gamepad_dpad_left; break;
-                                case "right":       image.sprite = controlsMenuImages.gamepad_dpad_right; break;
+                                case "up":          image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_dpad_up; break;
+                                case "down":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_dpad_down; break;
+                                case "left":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_dpad_left; break;
+                                case "right":       image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_dpad_right; break;
                             }
                             break;
-                        case "leftShoulder":        image.sprite = controlsMenuImages.gamepad_lshoulder; break;
-                        case "rightShoulder":       image.sprite = controlsMenuImages.gamepad_rshoulder; break;
+                        case "leftShoulder":        image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lshoulder; break;
+                        case "rightShoulder":       image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rshoulder; break;
                         case "leftTrigger":
-                        case "leftTriggerButton":   image.sprite = controlsMenuImages.gamepad_ltrigger; break;
+                        case "leftTriggerButton":   image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_ltrigger; break;
                         case "rightTrigger":
-                        case "rightTriggerButton":  image.sprite = controlsMenuImages.gamepad_rtrigger; break;
-                        case "leftStickPress":      image.sprite = controlsMenuImages.gamepad_lthumbstick_press; break;
-                        case "rightStickPress":     image.sprite = controlsMenuImages.gamepad_rthumbstick_press; break;
+                        case "rightTriggerButton":  image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rtrigger; break;
+                        case "leftStickPress":      image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_lthumbstick_press; break;
+                        case "rightStickPress":     image.sprite = UIAssets.Instance.ControlIconRefs.gamepad_rthumbstick_press; break;
                         default:
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
@@ -947,11 +894,11 @@ namespace SFBuilder.UI
                     imageObj.SetActive(true);
                     switch (pathSplit[1])
                     {
-                        case "leftButton":      image.sprite = controlsMenuImages.mouse_left; break;
-                        case "middleButton":    image.sprite = controlsMenuImages.mouse_middle; break;
-                        case "rightButton":     image.sprite = controlsMenuImages.mouse_right; break;
-                        case "forward":         image.sprite = controlsMenuImages.mouse_forward; break;
-                        case "back":            image.sprite = controlsMenuImages.mouse_back; break;
+                        case "leftButton":      image.sprite = UIAssets.Instance.ControlIconRefs.mouse_left; break;
+                        case "middleButton":    image.sprite = UIAssets.Instance.ControlIconRefs.mouse_middle; break;
+                        case "rightButton":     image.sprite = UIAssets.Instance.ControlIconRefs.mouse_right; break;
+                        case "forward":         image.sprite = UIAssets.Instance.ControlIconRefs.mouse_forward; break;
+                        case "back":            image.sprite = UIAssets.Instance.ControlIconRefs.mouse_back; break;
                         default:
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
@@ -982,67 +929,67 @@ namespace SFBuilder.UI
                             case "leftShift":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_lshift;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_lshift;
                                 break;
                             case "rightShift":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_rshift;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_rshift;
                                 break;
                             case "space":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_space;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_space;
                                 break;
                             case "backspace":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_backspace;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_backspace;
                                 break;
                             case "enter":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_enter;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_enter;
                                 break;
                             case "tab":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_tab;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_tab;
                                 break;
                             case "capsLock":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_caps;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_caps;
                                 break;
                             case "numLock":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_num;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_num;
                                 break;
                             case "scrollLock":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_scr;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_scr;
                                 break;
                             case "downArrow":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_down;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_down;
                                 break;
                             case "leftArrow":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_left;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_left;
                                 break;
                             case "rightArrow":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_right;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_right;
                                 break;
                             case "upArrow":
                                 textObj.SetActive(false);
                                 imageObj.SetActive(true);
-                                image.sprite = controlsMenuImages.keyboard_up;
+                                image.sprite = UIAssets.Instance.ControlIconRefs.keyboard_up;
                                 break;
                             default:
                                 string converted = GameConstants.InputNameToChar(pathSplit[1]);
