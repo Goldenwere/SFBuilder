@@ -175,6 +175,27 @@ namespace SFBuilder
         }
 
         /// <summary>
+        /// Accounts for available resolutions in ResolutionSetting for use in ResolutionEnumToString
+        /// </summary>
+        /// <param name="selected">The selected aspect ratio</param>
+        /// <param name="start">The place to start in the EnumToString list</param>
+        /// <param name="count">The count to end after in the EnumToString list</param>
+        public static void          ResolutionRatioToRange(int selected, out int start, out int count)
+        {
+            switch (selected)
+            {
+                case 6:  start = 55; count = 11; break;
+                case 5:  start = 40; count = 15; break;
+                case 4:  start = 33; count = 07; break;
+                case 3:  start = 28; count = 05; break;
+                case 2:  start = 23; count = 05; break;
+                case 1:  start = 17; count = 06; break;
+                case 0:
+                default: start = 00; count = 17; break;
+            }
+        }
+
+        /// <summary>
         /// Adds color tags (HTML, treated as a GameConstant) to a number depending on if it's positive or negative
         /// </summary>
         /// <param name="num">The number being converted</param>

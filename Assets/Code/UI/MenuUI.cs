@@ -253,7 +253,7 @@ namespace SFBuilder.UI
             if ((byte)workingSettings.display_Resolution == 255)
             {
                 // Default to 16:9 for the other options in the list
-                List<string> resOptions = GameConstants.ResolutionEnumToString(0, 32);
+                List<string> resOptions = GameConstants.ResolutionEnumToString(0, 17);
                 List<TMP_Dropdown.OptionData> newOptions = resOptions.Select(x => new TMP_Dropdown.OptionData(x.Replace("_", ""))).ToList();
                 newOptions.Add(new TMP_Dropdown.OptionData("Native"));
                 settingsMenuElements.displayResolution.options = newOptions;
@@ -270,14 +270,14 @@ namespace SFBuilder.UI
         /// <param name="selectedRatio">The ratio setting</param>
         private void HandleResolutionElements(int selectedRatio)
         {
-            int startRange = 32 * selectedRatio;
-            List<string> resOptions = GameConstants.ResolutionEnumToString(startRange, 32);
+            GameConstants.ResolutionRatioToRange(selectedRatio, out int start, out int count);
+            List<string> resOptions = GameConstants.ResolutionEnumToString(start, count);
             settingsMenuElements.displayRatio.SetValueWithoutNotify(selectedRatio);
 
             List<TMP_Dropdown.OptionData> newOptions = resOptions.Select(x => new TMP_Dropdown.OptionData(x.Replace("_", ""))).ToList();
             newOptions.Add(new TMP_Dropdown.OptionData("Native"));
             settingsMenuElements.displayResolution.options = newOptions;
-            settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - startRange);
+            settingsMenuElements.displayResolution.SetValueWithoutNotify((byte)workingSettings.display_Resolution - start);
         }
 
         /// <summary>
