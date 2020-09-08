@@ -169,7 +169,7 @@ namespace SFBuilder
         public static List<string>  ResolutionEnumToString(int rangeStart = 0, int rangeCount = 255)
         {
             return System.Enum.GetValues(typeof(ResolutionSetting))
-                .Cast<byte>()
+                .Cast<ResolutionSetting>()
                 .Select(x => x.ToString())
                 .ToList().GetRange(rangeStart, rangeCount);
         }
