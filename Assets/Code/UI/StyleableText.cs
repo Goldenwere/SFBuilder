@@ -11,6 +11,7 @@ namespace SFBuilder.UI
     public class StyleableText : MonoBehaviour
     {
 #pragma warning disable 0649
+        [SerializeField] private FontFormat format;
         [SerializeField] private TextType   type;
 #pragma warning restore 0649
         /**************/ private TMP_Text   text;
@@ -38,6 +39,7 @@ namespace SFBuilder.UI
             text.fontSharedMaterial = UIAssets.Instance
                 .fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle)
                 .presets.First(m => m.type == type).material;
+            text.fontSize = GameConstants.FontSizeToFloat(GameSettings.Instance.Settings.accessibility_FontSize, format);
         }
     }
 }

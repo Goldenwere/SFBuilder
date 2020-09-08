@@ -104,6 +104,68 @@ namespace SFBuilder
         public const float  UITransitionDelay = 0.25f;
 
         /// <summary>
+        /// Translates the global FontSize to an actual value based on a StyleableText's FontFormat
+        /// </summary>
+        /// <param name="setting">The FontSize setting</param>
+        /// <param name="format">The FontFormat of the text element</param>
+        /// <returns>Float for use in TMP_Text.fontSize</returns>
+        public static float         FontSizeToFloat(FontSize setting, FontFormat format)
+        {
+            switch (setting)
+            {
+                case FontSize.Large:
+                    {
+                        switch (format)
+                        {
+                            case FontFormat.Title:              return 15.0f;
+                            case FontFormat.Heading:            return 12.5f;
+                            case FontFormat.Subheading:         return 7.50f;
+                            case FontFormat.Label:              return 6.50f;
+                            case FontFormat.InnerLabel:         return 4.38f;
+                            case FontFormat.Tooltip:            return 3.13f;
+                            case FontFormat.GameWindow:         return 6.88f;
+                            case FontFormat.GameWindowSubText:  return 3.75f;
+                            case FontFormat.HUDIndicators:
+                            default:                            return 3.75f;
+                        }
+                    }
+                case FontSize.Small:
+                    {
+                        switch (format)
+                        {
+                            case FontFormat.Title:              return 9.00f;
+                            case FontFormat.Heading:            return 7.50f;
+                            case FontFormat.Subheading:         return 4.50f;
+                            case FontFormat.Label:              return 3.75f;
+                            case FontFormat.InnerLabel:         return 2.63f;
+                            case FontFormat.Tooltip:            return 1.88f;
+                            case FontFormat.GameWindow:         return 4.13f;
+                            case FontFormat.GameWindowSubText:  return 2.25f;
+                            case FontFormat.HUDIndicators:
+                            default:                            return 2.25f;
+                        }
+                    }
+                case FontSize.Medium:
+                default:
+                    {
+                        switch (format)
+                        {
+                            case FontFormat.Title:              return 12.0f;
+                            case FontFormat.Heading:            return 10.0f;
+                            case FontFormat.Subheading:         return 6.00f;
+                            case FontFormat.Label:              return 5.00f;
+                            case FontFormat.InnerLabel:         return 3.50f;
+                            case FontFormat.Tooltip:            return 2.50f;
+                            case FontFormat.GameWindow:         return 5.50f;
+                            case FontFormat.GameWindowSubText:  return 3.00f;
+                            case FontFormat.HUDIndicators:
+                            default:                            return 3.00f;
+                        }
+                    }
+            }
+        }
+
+        /// <summary>
         /// Converts a keyboard key from InputSystem to the symbol it represents
         /// </summary>
         /// <param name="name">Identifier used in InputSystem</param>
