@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using System.Linq;
+using Goldenwere.Unity.UI;
 
 namespace SFBuilder.UI
 {
@@ -52,6 +53,9 @@ namespace SFBuilder.UI
                 .fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle)
                 .presets.First(m => m.type == type).material;
             text.fontSize = GameConstants.FontSizeToFloat(GameSettings.Instance.Settings.accessibility_FontSize, format);
+
+            if (format == FontFormat.Tooltip)
+                GetComponentInParent<TooltipPrefab>().ApplyTextSettings();
         }
     }
 }
