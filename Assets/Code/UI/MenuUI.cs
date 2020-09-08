@@ -252,7 +252,6 @@ namespace SFBuilder.UI
         {
             if ((byte)workingSettings.display_Resolution == 255)
             {
-                settingsMenuElements.displayRatio.interactable = false;
                 // Default to 16:9 for the other options in the list
                 List<string> resOptions = GameConstants.ResolutionEnumToString(0, 32);
                 List<TMP_Dropdown.OptionData> newOptions = resOptions.Select(x => new TMP_Dropdown.OptionData(x.Replace("_", ""))).ToList();
@@ -262,10 +261,7 @@ namespace SFBuilder.UI
             }
 
             else
-            {
-                settingsMenuElements.displayRatio.interactable = true;
                 HandleResolutionElements((byte)workingSettings.display_Resolution / 32);
-            }
         }
 
         /// <summary>
