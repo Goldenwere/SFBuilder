@@ -498,7 +498,7 @@ namespace SFBuilder.UI
                     LoadSubmenu(SettingsSubmenu.graphics);
                     GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 }
-                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.postprocAO));
+                StartCoroutine(WaitUntilSelectableIsActive(settingsMenuElements.displayCursor));
             });
 
             otherElements.windowSettingsBack.onClick.AddListener(() => {
