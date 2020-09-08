@@ -1600,7 +1600,7 @@ GameObject:
   - component: {fileID: 91400047}
   m_Layer: 5
   m_Name: Slider_Music
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1621,7 +1621,7 @@ RectTransform:
   - {fileID: 1836115550}
   - {fileID: 1841190057}
   m_Father: {fileID: 1091079888}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -6867,7 +6867,7 @@ GameObject:
   - component: {fileID: 330603965}
   m_Layer: 5
   m_Name: Toggle_Anim
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6906,10 +6906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 179722655}
+    m_SelectOnUp: {fileID: 702898267}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1723245759}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10567,7 +10567,7 @@ GameObject:
   - component: {fileID: 485634289}
   m_Layer: 5
   m_Name: Dropdown_Window
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14048,7 +14048,7 @@ GameObject:
   - component: {fileID: 619074796}
   m_Layer: 5
   m_Name: Dropdown_FontStyle
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14088,11 +14088,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 1413485805}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1723245759}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -16038,7 +16038,7 @@ GameObject:
   - component: {fileID: 702898268}
   m_Layer: 5
   m_Name: Toggle_SSR
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16076,7 +16076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 1499005382}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -21797,7 +21797,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557267265}
   m_HandleRect: {fileID: 557267264}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -22821,7 +22821,7 @@ GameObject:
   - component: {fileID: 966779779}
   m_Layer: 5
   m_Name: Toggle_CamSmooth
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22841,9 +22841,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 1090781857}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1413485805}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1723245759}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -22923,8 +22923,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1861769898}
   - {fileID: 1516821253}
+  - {fileID: 1861769898}
   m_Father: {fileID: 626241711}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25924,7 +25924,7 @@ GameObject:
   - component: {fileID: 1090781857}
   m_Layer: 5
   m_Name: Toggle_CamShake
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25943,10 +25943,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 179722655}
+    m_SelectOnUp: {fileID: 84389573}
     m_SelectOnDown: {fileID: 966779779}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1723245759}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26026,8 +26026,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 91400045}
   - {fileID: 2048923471}
+  - {fileID: 91400045}
   m_Father: {fileID: 626241711}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34747,7 +34747,7 @@ GameObject:
   - component: {fileID: 1413485805}
   m_Layer: 5
   m_Name: Dropdown_FontSize
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34787,11 +34787,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 966779779}
+    m_SelectOnDown: {fileID: 619074796}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1723245759}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -37023,7 +37023,7 @@ GameObject:
   - component: {fileID: 1491764321}
   m_Layer: 5
   m_Name: Toggle_AO
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37061,7 +37061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 179722655}
     m_SelectOnDown: {fileID: 1499005382}
     m_SelectOnLeft: {fileID: 0}
@@ -37298,7 +37298,7 @@ GameObject:
   - component: {fileID: 1499005383}
   m_Layer: 5
   m_Name: Toggle_Bloom
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37336,7 +37336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 1491764320}
     m_SelectOnDown: {fileID: 702898267}
     m_SelectOnLeft: {fileID: 0}
@@ -37846,7 +37846,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967784028}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -41154,7 +41154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000071525574, y: 0}
+  m_AnchoredPosition: {x: -0.0000071525574, y: -0.0000038146973}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -42387,7 +42387,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.030361712
+  m_Size: 0.03125
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -42896,7 +42896,7 @@ GameObject:
   - component: {fileID: 1765328692}
   m_Layer: 5
   m_Name: Dropdown_Resolution
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45035,7 +45035,7 @@ GameObject:
   - component: {fileID: 1861769900}
   m_Layer: 5
   m_Name: Slider_Effects
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45056,7 +45056,7 @@ RectTransform:
   - {fileID: 219495409}
   - {fileID: 1793391723}
   m_Father: {fileID: 967784028}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -46629,7 +46629,7 @@ GameObject:
   - component: {fileID: 1958143547}
   m_Layer: 5
   m_Name: Dropdown_Ratio
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46943,7 +46943,7 @@ GameObject:
   - component: {fileID: 1966703692}
   m_Layer: 5
   m_Name: Toggle_VSync
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46981,7 +46981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 179722655}
     m_SelectOnDown: {fileID: 1499005382}
     m_SelectOnLeft: {fileID: 0}
@@ -49045,7 +49045,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1091079888}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -49522,7 +49522,7 @@ GameObject:
   - component: {fileID: 2063242674}
   m_Layer: 5
   m_Name: Dropdown_Cursor
-  m_TagString: Untagged
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
