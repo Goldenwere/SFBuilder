@@ -48,9 +48,9 @@ namespace SFBuilder.UI
         private void OnSettingsUpdated()
         {
             text.font = UIAssets.Instance
-                .fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle).font;
+                .Fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle).font;
             text.fontSharedMaterial = UIAssets.Instance
-                .fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle)
+                .Fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle)
                 .presets.First(m => m.type == type).material;
             text.fontSize = GameConstants.FontSizeToFloat(GameSettings.Instance.Settings.accessibility_FontSize, format);
 
