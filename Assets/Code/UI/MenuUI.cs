@@ -390,7 +390,7 @@ namespace SFBuilder.UI
                 }
 
                 else
-                    workingSettings.display_Resolution = (ResolutionSetting)(settingsMenuElements.displayRatio.value * val);
+                    workingSettings.display_Resolution = (ResolutionSetting)((settingsMenuElements.displayRatio.value * 32) + val);
             });
 
             settingsMenuElements.displayVsync.onValueChanged.AddListener(val => {
