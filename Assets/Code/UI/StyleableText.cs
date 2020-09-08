@@ -16,22 +16,34 @@ namespace SFBuilder.UI
 #pragma warning restore 0649
         /**************/ private TMP_Text   text;
 
+        /// <summary>
+        /// Initialize text on Start
+        /// </summary>
         private void Start()
         {
             text = GetComponent<TMP_Text>();
             OnSettingsUpdated();
         }
 
+        /// <summary>
+        /// Subscribe to events OnEnable
+        /// </summary>
         private void OnEnable()
         {
             GameEventSystem.SettingsUpdated += OnSettingsUpdated;
         }
 
+        /// <summary>
+        /// Unsubscribe from events OnDisable
+        /// </summary>
         private void OnDisable()
         {
             GameEventSystem.SettingsUpdated -= OnSettingsUpdated;
         }
 
+        /// <summary>
+        /// Handle GameEventSystem.SettingsUpdated by applying font settings
+        /// </summary>
         private void OnSettingsUpdated()
         {
             text.font = UIAssets.Instance
