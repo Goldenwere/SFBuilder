@@ -593,7 +593,7 @@ namespace SFBuilder.UI
                     otherElements.submenuAccessibilityButtonBackground.SetActive(true);
                     otherElements.submenuAudioButtonBackground.SetActive(false);
                     otherElements.submenuControlsButtonBackground.SetActive(false);
-                    otherElements.submenuGraphicsButtonBackground.SetActive(true);
+                    otherElements.submenuGraphicsButtonBackground.SetActive(false);
                     active = otherElements.submenuAccessibility;
                     accessNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
                     audioNav.selectOnDown = settingsMenuElements.accessibilityCameraShake;
