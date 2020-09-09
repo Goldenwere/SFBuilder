@@ -160,7 +160,7 @@ namespace SFBuilder
                             case FontFormat.Tooltip:            return 2.50f;
                             case FontFormat.GameWindow:         return 5.50f;
                             case FontFormat.GameWindowSubText:  return 3.00f;
-                            case FontFormat.HUDIndicators:      return 3.5f;
+                            case FontFormat.HUDIndicators:      return 3.50f;
                             case FontFormat.MainButtons:
                             default:                            return 8.00f;
                         }
