@@ -36,6 +36,7 @@
         GameWindow = 6,         // normal 5.5, use for text info in game window popups
         GameWindowSubText = 7,  // normal 3.0, use for lower text in game window popups
         HUDIndicators = 8,      // normal 3.0, use for indicators (stats, building count)
+        MainButtons = 9         // normal 8.0, use for main menu buttons
     }
 
     /// <summary>
