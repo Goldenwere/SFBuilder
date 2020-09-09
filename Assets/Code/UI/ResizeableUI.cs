@@ -11,8 +11,7 @@ namespace SFBuilder.UI
 #pragma warning disable 0649
         [SerializeField] private ResizeSettings resizeSettings;
 #pragma warning restore 0649
-        /**************/
-        private RectTransform rectToApplyTo;
+        /**************/ private RectTransform  rectToApplyTo;
 
         /// <summary>
         /// Subscribe to events OnEnable

@@ -748,9 +748,9 @@ RectTransform:
   m_Father: {fileID: 1728554367}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46512283
@@ -1476,6 +1476,7 @@ GameObject:
   - component: {fileID: 84389574}
   - component: {fileID: 84389573}
   - component: {fileID: 84389572}
+  - component: {fileID: 84389576}
   m_Layer: 5
   m_Name: Button_Accessibility
   m_TagString: Untagged
@@ -1662,6 +1663,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84389570}
   m_CullTransparentMesh: 0
+--- !u!114 &84389576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84389570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 18, y: 7}
+    medium: {x: 28, y: 8}
+    large: {x: 28, y: 8}
 --- !u!1 &91400044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,6 +1690,7 @@ GameObject:
   - component: {fileID: 91400045}
   - component: {fileID: 91400046}
   - component: {fileID: 91400047}
+  - component: {fileID: 91400048}
   m_Layer: 5
   m_Name: Slider_Music
   m_TagString: scrollable
@@ -1768,6 +1786,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSlider: {fileID: 91400046}
   associatedTextElement: {fileID: 2109093459}
+--- !u!114 &91400048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91400044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &92745469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,6 +3429,7 @@ GameObject:
   - component: {fileID: 179722656}
   - component: {fileID: 179722655}
   - component: {fileID: 179722658}
+  - component: {fileID: 179722659}
   m_Layer: 5
   m_Name: Button_Graphics
   m_TagString: Untagged
@@ -3581,6 +3616,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   transitionMode: 0
+--- !u!114 &179722659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179722653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 18, y: 7}
+    medium: {x: 28, y: 8}
+    large: {x: 28, y: 8}
 --- !u!1 &185021568
 GameObject:
   m_ObjectHideFlags: 0
@@ -10501,6 +10552,7 @@ GameObject:
   - component: {fileID: 475038140}
   - component: {fileID: 475038139}
   - component: {fileID: 475038142}
+  - component: {fileID: 475038143}
   m_Layer: 5
   m_Name: Button_Controls
   m_TagString: Untagged
@@ -10687,6 +10739,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   transitionMode: 0
+--- !u!114 &475038143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475038137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 18, y: 7}
+    medium: {x: 28, y: 8}
+    large: {x: 28, y: 8}
 --- !u!1 &483819894
 GameObject:
   m_ObjectHideFlags: 0
@@ -10971,6 +11039,7 @@ GameObject:
   - component: {fileID: 485634291}
   - component: {fileID: 485634290}
   - component: {fileID: 485634289}
+  - component: {fileID: 485634292}
   m_Layer: 5
   m_Name: Dropdown_Window
   m_TagString: scrollable
@@ -10998,7 +11067,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &485634289
 MonoBehaviour:
@@ -11095,6 +11164,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485634287}
   m_CullTransparentMesh: 0
+--- !u!114 &485634292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485634287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &490748820
 GameObject:
   m_ObjectHideFlags: 0
@@ -13951,9 +14036,9 @@ RectTransform:
   m_Father: {fileID: 1170611972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571382816
@@ -14632,6 +14717,7 @@ GameObject:
   - component: {fileID: 619074798}
   - component: {fileID: 619074797}
   - component: {fileID: 619074796}
+  - component: {fileID: 619074799}
   m_Layer: 5
   m_Name: Dropdown_FontStyle
   m_TagString: scrollable
@@ -14659,7 +14745,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &619074796
 MonoBehaviour:
@@ -14758,6 +14844,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619074794}
   m_CullTransparentMesh: 0
+--- !u!114 &619074799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619074794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &621561071
 GameObject:
   m_ObjectHideFlags: 0
@@ -16485,6 +16587,7 @@ GameObject:
   - component: {fileID: 702880277}
   - component: {fileID: 702880276}
   - component: {fileID: 702880279}
+  - component: {fileID: 702880280}
   m_Layer: 5
   m_Name: Button_Audio
   m_TagString: Untagged
@@ -16671,6 +16774,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   transitionMode: 0
+--- !u!114 &702880280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702880274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 18, y: 7}
+    medium: {x: 28, y: 8}
+    large: {x: 28, y: 8}
 --- !u!1 &702898265
 GameObject:
   m_ObjectHideFlags: 0
@@ -19639,9 +19758,9 @@ RectTransform:
   m_Father: {fileID: 1107603327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814005838
@@ -26550,9 +26669,9 @@ RectTransform:
   m_Father: {fileID: 1861769898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084467282
@@ -27574,6 +27693,7 @@ GameObject:
   - component: {fileID: 1107603327}
   - component: {fileID: 1107603328}
   - component: {fileID: 1107603329}
+  - component: {fileID: 1107603330}
   m_Layer: 5
   m_Name: Slider_RotationSens
   m_TagString: scrollable
@@ -27669,6 +27789,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSlider: {fileID: 1107603328}
   associatedTextElement: {fileID: 814005838}
+--- !u!114 &1107603330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107603326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &1109806857
 GameObject:
   m_ObjectHideFlags: 0
@@ -29725,6 +29861,7 @@ GameObject:
   - component: {fileID: 1170611972}
   - component: {fileID: 1170611973}
   - component: {fileID: 1170611974}
+  - component: {fileID: 1170611975}
   m_Layer: 5
   m_Name: Slider_MovementSens
   m_TagString: scrollable
@@ -29820,6 +29957,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSlider: {fileID: 1170611973}
   associatedTextElement: {fileID: 571382816}
+--- !u!114 &1170611975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170611971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &1180588147
 GameObject:
   m_ObjectHideFlags: 0
@@ -33357,9 +33510,9 @@ RectTransform:
   m_Father: {fileID: 2037338222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323762317
@@ -36027,6 +36180,7 @@ GameObject:
   - component: {fileID: 1410602748}
   - component: {fileID: 1410602750}
   - component: {fileID: 1410602749}
+  - component: {fileID: 1410602751}
   m_Layer: 5
   m_Name: Slider_Framerate
   m_TagString: scrollable
@@ -36122,6 +36276,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1410602751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410602747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &1412559862
 GameObject:
   m_ObjectHideFlags: 0
@@ -36282,6 +36452,7 @@ GameObject:
   - component: {fileID: 1413485807}
   - component: {fileID: 1413485806}
   - component: {fileID: 1413485805}
+  - component: {fileID: 1413485808}
   m_Layer: 5
   m_Name: Dropdown_FontSize
   m_TagString: scrollable
@@ -36309,7 +36480,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1413485805
 MonoBehaviour:
@@ -36408,6 +36579,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413485803}
   m_CullTransparentMesh: 0
+--- !u!114 &1413485808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413485803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &1416885949
 GameObject:
   m_ObjectHideFlags: 0
@@ -44141,9 +44328,9 @@ RectTransform:
   m_Father: {fileID: 1410602748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1705213864
@@ -44342,6 +44529,7 @@ GameObject:
   - component: {fileID: 1723245761}
   - component: {fileID: 1723245760}
   - component: {fileID: 1723245759}
+  - component: {fileID: 1723245762}
   m_Layer: 5
   m_Name: Scrollbar Vertical
   m_TagString: Untagged
@@ -44455,6 +44643,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723245757}
   m_CullTransparentMesh: 0
+--- !u!114 &1723245762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723245757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 4, y: 0}
+    medium: {x: 5, y: 0}
+    large: {x: 6, y: 0}
 --- !u!1 &1727273743
 GameObject:
   m_ObjectHideFlags: 0
@@ -44502,6 +44706,7 @@ GameObject:
   - component: {fileID: 1728554367}
   - component: {fileID: 1728554369}
   - component: {fileID: 1728554368}
+  - component: {fileID: 1728554370}
   m_Layer: 5
   m_Name: Slider_FOV
   m_TagString: scrollable
@@ -44597,6 +44802,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1728554370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728554366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &1733688468
 GameObject:
   m_ObjectHideFlags: 0
@@ -44920,6 +45141,7 @@ GameObject:
   - component: {fileID: 1765328694}
   - component: {fileID: 1765328693}
   - component: {fileID: 1765328692}
+  - component: {fileID: 1765328695}
   m_Layer: 5
   m_Name: Dropdown_Resolution
   m_TagString: scrollable
@@ -44947,7 +45169,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1765328692
 MonoBehaviour:
@@ -45042,6 +45264,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765328690}
   m_CullTransparentMesh: 0
+--- !u!114 &1765328695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765328690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &1769059459
 GameObject:
   m_ObjectHideFlags: 0
@@ -47164,6 +47402,7 @@ GameObject:
   - component: {fileID: 1861769898}
   - component: {fileID: 1861769899}
   - component: {fileID: 1861769900}
+  - component: {fileID: 1861769901}
   m_Layer: 5
   m_Name: Slider_Effects
   m_TagString: scrollable
@@ -47259,6 +47498,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSlider: {fileID: 1861769899}
   associatedTextElement: {fileID: 1084467282}
+--- !u!114 &1861769901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861769897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &1879155151
 GameObject:
   m_ObjectHideFlags: 0
@@ -48834,6 +49089,7 @@ GameObject:
   - component: {fileID: 1958143548}
   - component: {fileID: 1958143547}
   - component: {fileID: 1958143550}
+  - component: {fileID: 1958143551}
   m_Layer: 5
   m_Name: Dropdown_Ratio
   m_TagString: scrollable
@@ -48861,7 +49117,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1958143547
 MonoBehaviour:
@@ -49046,6 +49302,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   transitionMode: 1
+--- !u!114 &1958143551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958143545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &1961333086
 GameObject:
   m_ObjectHideFlags: 0
@@ -51138,6 +51410,7 @@ GameObject:
   - component: {fileID: 2037338222}
   - component: {fileID: 2037338223}
   - component: {fileID: 2037338224}
+  - component: {fileID: 2037338225}
   m_Layer: 5
   m_Name: Slider_ZoomSens
   m_TagString: scrollable
@@ -51233,6 +51506,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSlider: {fileID: 2037338223}
   associatedTextElement: {fileID: 1323762317}
+--- !u!114 &2037338225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037338221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 8.5}
+    medium: {x: 45, y: 10}
+    large: {x: 60, y: 11.5}
 --- !u!1 &2038049008
 GameObject:
   m_ObjectHideFlags: 0
@@ -51974,6 +52263,7 @@ GameObject:
   - component: {fileID: 2063242676}
   - component: {fileID: 2063242675}
   - component: {fileID: 2063242674}
+  - component: {fileID: 2063242677}
   m_Layer: 5
   m_Name: Dropdown_Cursor
   m_TagString: scrollable
@@ -52001,7 +52291,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 45, y: 8}
+  m_SizeDelta: {x: 45, y: 9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2063242674
 MonoBehaviour:
@@ -52106,6 +52396,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063242672}
   m_CullTransparentMesh: 0
+--- !u!114 &2063242677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063242672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf719cc4522e3ee438e1f9cc96e2dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resizeSettings:
+    small: {x: 40, y: 7}
+    medium: {x: 45, y: 8}
+    large: {x: 60, y: 9}
 --- !u!1 &2063545622
 GameObject:
   m_ObjectHideFlags: 0
@@ -52875,9 +53181,9 @@ RectTransform:
   m_Father: {fileID: 91400045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -2.9999924, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109093459
