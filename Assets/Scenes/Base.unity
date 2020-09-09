@@ -1937,10 +1937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 1
+  partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: -8, z: 0, w: 8}
-  valueStop: {x: -24, y: -8, z: 24, w: 8}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &92745475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   resizeSettings:
     small: {x: 40, y: 12}
     medium: {x: 48, y: 16}
-    large: {x: 64, y: 20}
+    large: {x: 72, y: 20}
 --- !u!1 &103075318
 GameObject:
   m_ObjectHideFlags: 0
@@ -6027,7 +6027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &312050635
 MonoBehaviour:
@@ -6319,7 +6319,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -9247,7 +9247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &402230482
 MonoBehaviour:
@@ -17658,7 +17658,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -18645,7 +18645,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -19191,7 +19191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &794546391
 MonoBehaviour:
@@ -19528,7 +19528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &803671048
 MonoBehaviour:
@@ -20751,7 +20751,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -28929,7 +28929,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -32610,10 +32610,10 @@ RectTransform:
   m_Father: {fileID: 1282232102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -1.5}
-  m_SizeDelta: {x: 54, y: 12}
+  m_SizeDelta: {x: 0, y: 12}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1254947471
 MonoBehaviour:
@@ -35581,7 +35581,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -36152,10 +36152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 1
+  partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: -26, z: 0, w: -10}
-  valueStop: {x: -24, y: -26, z: 24, w: -10}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &1392665733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36186,7 +36186,7 @@ MonoBehaviour:
   resizeSettings:
     small: {x: 40, y: 12}
     medium: {x: 48, y: 16}
-    large: {x: 64, y: 20}
+    large: {x: 72, y: 20}
 --- !u!1 &1402232962
 GameObject:
   m_ObjectHideFlags: 0
@@ -38737,10 +38737,10 @@ RectTransform:
   m_Father: {fileID: 353239228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -16}
-  m_SizeDelta: {x: 128, y: 16}
+  m_SizeDelta: {x: 0, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474874195
 MonoBehaviour:
@@ -41275,7 +41275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &1531353096
 MonoBehaviour:
@@ -44125,7 +44125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000071525574, y: -0.0000038146973}
+  m_AnchoredPosition: {x: -0.0000071525574, y: 0.0000038146973}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -47807,7 +47807,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -48517,7 +48517,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -51765,10 +51765,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 1
+  partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: -44, z: 0, w: -28}
-  valueStop: {x: -24, y: -44, z: 24, w: -28}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &2003936566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51799,7 +51799,7 @@ MonoBehaviour:
   resizeSettings:
     small: {x: 40, y: 12}
     medium: {x: 48, y: 16}
-    large: {x: 64, y: 20}
+    large: {x: 72, y: 20}
 --- !u!1 &2005141382
 GameObject:
   m_ObjectHideFlags: 0
@@ -53072,7 +53072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 0, y: 0, z: 1, w: 0}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
   valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &2061757765
 MonoBehaviour:
@@ -53729,7 +53729,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1

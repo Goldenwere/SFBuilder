@@ -3244,10 +3244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 1
+  partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 90, y: 0, z: -90, w: -90}
-  valueStop: {x: 10, y: 0, z: -10, w: -90}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!1 &5264296986759185324
 GameObject:
   m_ObjectHideFlags: 0
@@ -6785,10 +6785,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c283a008b2264a805284a9a47e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToAnimate: 1
+  partToAnimate: 0
   playSoundDuringAnimation: 0
-  valueStart: {x: 90, y: 0, z: -90, w: -90}
-  valueStop: {x: 10, y: 0, z: -10, w: -90}
+  valueStart: {x: 0, y: 1, z: 1, w: 0}
+  valueStop: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &3783601607780773629
 MonoBehaviour:
   m_ObjectHideFlags: 0
