@@ -18950,7 +18950,7 @@ GameObject:
   - component: {fileID: 811167297}
   - component: {fileID: 811167296}
   m_Layer: 5
-  m_Name: Category_Movement
+  m_Name: Category_MovementSens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29416,7 +29416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &1186283244
 GameObject:
@@ -35121,7 +35121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &1408491500
 GameObject:
@@ -36586,7 +36586,7 @@ GameObject:
   - component: {fileID: 1459061047}
   - component: {fileID: 1459061046}
   m_Layer: 5
-  m_Name: Category_Rotation
+  m_Name: Category_RotationSens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38135,7 +38135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &1491764318
 GameObject:
@@ -39385,7 +39385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &1528632775
 GameObject:
@@ -45460,7 +45460,7 @@ GameObject:
   - component: {fileID: 1824362065}
   - component: {fileID: 1824362064}
   m_Layer: 5
-  m_Name: Category_Zoom
+  m_Name: Category_ZoomSens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47250,7 +47250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &1913745239
 GameObject:
@@ -49913,7 +49913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 2
+  format: 3
   type: 3
 --- !u!1 &2011821435
 GameObject:
