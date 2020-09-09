@@ -822,10 +822,10 @@ namespace SFBuilder.UI
         private void SetControlDisplay(Button element, string path)
         {
             string[] pathSplit = path.Split('/');
-            TMP_Text text = element.gameObject.FindChild("Text").GetComponent<TMP_Text>();
-            Image image = element.gameObject.FindChild("Image").GetComponent<Image>();
-            GameObject textObj = element.gameObject.FindChild("Text");
-            GameObject imageObj = element.gameObject.FindChild("Image");
+            GameObject textObj = element.gameObject.FindChild("ControlText");
+            GameObject imageObj = element.gameObject.FindChild("ControlImage");
+            TMP_Text text = textObj.GetComponent<TMP_Text>();
+            Image image = imageObj.GetComponent<Image>();
             switch (pathSplit[0])
             {
                 #region Gamepad

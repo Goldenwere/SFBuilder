@@ -18,20 +18,12 @@ namespace SFBuilder.UI
         /**************/ private TMP_Text   text;
 
         /// <summary>
-        /// Initialize text on Start
-        /// </summary>
-        private void Start()
-        {
-            text = GetComponent<TMP_Text>();
-            OnSettingsUpdated();
-        }
-
-        /// <summary>
         /// Subscribe to events OnEnable
         /// </summary>
         private void OnEnable()
         {
             GameEventSystem.SettingsUpdated += OnSettingsUpdated;
+            OnSettingsUpdated();
         }
 
         /// <summary>
@@ -47,6 +39,9 @@ namespace SFBuilder.UI
         /// </summary>
         private void OnSettingsUpdated()
         {
+            if (text == null)
+                text = GetComponent<TMP_Text>();
+
             text.font = UIAssets.Instance
                 .Fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle).font;
             text.fontSharedMaterial = UIAssets.Instance
@@ -55,7 +50,11 @@ namespace SFBuilder.UI
             text.fontSize = GameConstants.FontSizeToFloat(GameSettings.Instance.Settings.accessibility_FontSize, format);
 
             if (format == FontFormat.Tooltip)
-                GetComponentInParent<TooltipPrefab>().ApplyTextSettings();
+            {
+                TooltipPrefab tooltip = GetComponentInParent<TooltipPrefab>();
+                if (tooltip != null)
+                    tooltip.ApplyTextSettings();
+            }
         }
     }
 }

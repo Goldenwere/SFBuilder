@@ -61,7 +61,8 @@ namespace Goldenwere.Unity.UI
         /// </summary>
         public void ApplyTextSettings()
         {
-            parent.UpdateInstance();
+            if(initialized)
+                parent.UpdateInstance();
         }
     }
 }

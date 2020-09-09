@@ -1324,7 +1324,7 @@ GameObject:
   - component: {fileID: 77095386}
   - component: {fileID: 77095385}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3144,7 +3144,7 @@ GameObject:
   - component: {fileID: 156936613}
   - component: {fileID: 156936612}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 241100894}
   - component: {fileID: 241100893}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 247063186}
   - component: {fileID: 247063185}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5773,7 +5773,7 @@ GameObject:
   - component: {fileID: 308807604}
   - component: {fileID: 308807603}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6000,7 +6000,7 @@ GameObject:
   - component: {fileID: 317533618}
   - component: {fileID: 317533617}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7216,7 +7216,7 @@ GameObject:
   - component: {fileID: 341358371}
   - component: {fileID: 341358370}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7438,7 +7438,7 @@ GameObject:
   - component: {fileID: 348644288}
   - component: {fileID: 348644287}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8033,7 +8033,7 @@ GameObject:
   - component: {fileID: 370729416}
   - component: {fileID: 370729415}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9299,7 +9299,7 @@ GameObject:
   - component: {fileID: 406708176}
   - component: {fileID: 406708175}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10375,7 +10375,7 @@ GameObject:
   - component: {fileID: 467485704}
   - component: {fileID: 467485703}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11352,7 +11352,7 @@ GameObject:
   - component: {fileID: 491803496}
   - component: {fileID: 491803495}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14179,7 +14179,7 @@ GameObject:
   - component: {fileID: 587768502}
   - component: {fileID: 587768501}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15119,7 +15119,7 @@ GameObject:
   - component: {fileID: 642710006}
   - component: {fileID: 642710005}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ButtonImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19161,7 +19161,7 @@ GameObject:
   - component: {fileID: 805284005}
   - component: {fileID: 805284004}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19459,7 +19459,7 @@ GameObject:
   - component: {fileID: 813081594}
   - component: {fileID: 813081593}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20041,7 +20041,7 @@ GameObject:
   - component: {fileID: 828356358}
   - component: {fileID: 828356357}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20299,7 +20299,7 @@ GameObject:
   - component: {fileID: 840923658}
   - component: {fileID: 840923657}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20581,7 +20581,7 @@ GameObject:
   - component: {fileID: 850810644}
   - component: {fileID: 850810643}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21075,7 +21075,7 @@ GameObject:
   - component: {fileID: 861829433}
   - component: {fileID: 861829432}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21149,7 +21149,7 @@ GameObject:
   - component: {fileID: 871069123}
   - component: {fileID: 871069122}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21656,7 +21656,7 @@ GameObject:
   - component: {fileID: 901015680}
   - component: {fileID: 901015679}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21853,7 +21853,7 @@ GameObject:
   - component: {fileID: 919769842}
   - component: {fileID: 919769841}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22075,7 +22075,7 @@ GameObject:
   - component: {fileID: 923959277}
   - component: {fileID: 923959276}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22702,7 +22702,7 @@ GameObject:
   - component: {fileID: 935224407}
   - component: {fileID: 935224406}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26681,7 +26681,7 @@ GameObject:
   - component: {fileID: 1085682376}
   - component: {fileID: 1085682375}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ButtonImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27416,7 +27416,7 @@ GameObject:
   - component: {fileID: 1102881307}
   - component: {fileID: 1102881306}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27834,7 +27834,7 @@ GameObject:
   - component: {fileID: 1112033313}
   - component: {fileID: 1112033312}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28273,7 +28273,7 @@ GameObject:
   - component: {fileID: 1131554264}
   - component: {fileID: 1131554263}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28347,7 +28347,7 @@ GameObject:
   - component: {fileID: 1132878739}
   - component: {fileID: 1132878738}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28511,7 +28511,7 @@ GameObject:
   - component: {fileID: 1137317095}
   - component: {fileID: 1137317094}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28585,7 +28585,7 @@ GameObject:
   - component: {fileID: 1139660867}
   - component: {fileID: 1139660866}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29328,7 +29328,7 @@ GameObject:
   - component: {fileID: 1160633922}
   - component: {fileID: 1160633921}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31478,7 +31478,7 @@ GameObject:
   - component: {fileID: 1237697129}
   - component: {fileID: 1237697128}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32135,7 +32135,7 @@ GameObject:
   - component: {fileID: 1263066427}
   - component: {fileID: 1263066426}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32617,7 +32617,7 @@ GameObject:
   - component: {fileID: 1279180209}
   - component: {fileID: 1279180208}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33399,7 +33399,7 @@ GameObject:
   - component: {fileID: 1332117552}
   - component: {fileID: 1332117551}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33839,7 +33839,7 @@ GameObject:
   - component: {fileID: 1349341517}
   - component: {fileID: 1349341516}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ButtonImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35281,7 +35281,7 @@ GameObject:
   - component: {fileID: 1402232965}
   - component: {fileID: 1402232964}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37310,7 +37310,7 @@ GameObject:
   - component: {fileID: 1465117585}
   - component: {fileID: 1465117584}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37655,7 +37655,7 @@ GameObject:
   - component: {fileID: 1469616473}
   - component: {fileID: 1469616472}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38452,7 +38452,7 @@ GameObject:
   - component: {fileID: 1487233189}
   - component: {fileID: 1487233188}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40601,7 +40601,7 @@ GameObject:
   - component: {fileID: 1537418641}
   - component: {fileID: 1537418640}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41074,7 +41074,7 @@ GameObject:
   - component: {fileID: 1550002318}
   - component: {fileID: 1550002317}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41258,7 +41258,7 @@ GameObject:
   - component: {fileID: 1564064427}
   - component: {fileID: 1564064426}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41604,7 +41604,7 @@ GameObject:
   - component: {fileID: 1581616821}
   - component: {fileID: 1581616820}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ButtonImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42986,7 +42986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000071525574, y: -0.0000038146973}
+  m_AnchoredPosition: {x: -0.0000071525574, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1656553833
@@ -44294,7 +44294,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 404455904}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.03125024
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -44490,7 +44490,7 @@ GameObject:
   - component: {fileID: 1733688471}
   - component: {fileID: 1733688470}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47448,7 +47448,7 @@ GameObject:
   - component: {fileID: 1884373617}
   - component: {fileID: 1884373616}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49035,7 +49035,7 @@ GameObject:
   - component: {fileID: 1965751770}
   - component: {fileID: 1965751769}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50617,7 +50617,7 @@ GameObject:
   - component: {fileID: 2011821438}
   - component: {fileID: 2011821437}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51446,7 +51446,7 @@ GameObject:
   - component: {fileID: 2049121595}
   - component: {fileID: 2049121594}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53547,7 +53547,7 @@ GameObject:
   - component: {fileID: 2126068838}
   - component: {fileID: 2126068837}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54229,7 +54229,7 @@ GameObject:
   - component: {fileID: 2146600560}
   - component: {fileID: 2146600559}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ControlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

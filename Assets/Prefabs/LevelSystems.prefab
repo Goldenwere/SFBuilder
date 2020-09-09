@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 5936505980351585956}
   - component: {fileID: 1740815939537192428}
   - component: {fileID: 1668254404095367131}
+  - component: {fileID: 1516296993612362615}
   m_Layer: 5
   m_Name: Viability_Container
   m_TagString: Untagged
@@ -395,6 +396,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedType: 7
   associatedTextElement: {fileID: 8856071186708854138}
+--- !u!114 &1516296993612362615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215607479907431442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaBackground: 1
+  alphaForeground: 1
+  backgroundElements:
+  - {fileID: 4074568301345155652}
+  foregroundElements:
+  - {fileID: 8856071186708854138}
+  type: 1
 --- !u!1 &483610755140263502
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +694,7 @@ GameObject:
   - component: {fileID: 7414836609439725588}
   - component: {fileID: 2645933855901509089}
   - component: {fileID: 3962266847416922610}
+  - component: {fileID: 1713359450976108985}
   m_Layer: 5
   m_Name: Sustenance_Container
   m_TagString: Untagged
@@ -724,6 +745,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedType: 6
   associatedTextElement: {fileID: 1527124157509900811}
+--- !u!114 &1713359450976108985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192377099689068411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaBackground: 1
+  alphaForeground: 1
+  backgroundElements:
+  - {fileID: 1630470044820614985}
+  foregroundElements:
+  - {fileID: 1527124157509900811}
+  type: 1
 --- !u!1 &2286587753980324441
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +776,6 @@ GameObject:
   - component: {fileID: 9085256030946491904}
   - component: {fileID: 3433820302087931325}
   - component: {fileID: 8410979262011688954}
-  - component: {fileID: 4709491495531517995}
   - component: {fileID: 1552221873164534093}
   m_Layer: 5
   m_Name: Goal_Icon
@@ -816,25 +855,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &4709491495531517995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2286587753980324441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 3433820302087931325}
-  foregroundElements:
-  - {fileID: 0}
-  type: 1
 --- !u!114 &1552221873164534093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1465,7 @@ GameObject:
   - component: {fileID: 4349522568922066662}
   - component: {fileID: 4300318014186734959}
   - component: {fileID: 7228887973379278259}
+  - component: {fileID: 1981488484976550621}
   m_Layer: 5
   m_Name: Goal_Container
   m_TagString: Untagged
@@ -1496,6 +1517,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedType: 8
   associatedTextElement: {fileID: 7011045048226450407}
+--- !u!114 &1981488484976550621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713480294971123849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaBackground: 1
+  alphaForeground: 1
+  backgroundElements:
+  - {fileID: 3433820302087931325}
+  foregroundElements:
+  - {fileID: 7011045048226450407}
+  type: 1
 --- !u!1 &3762693284440449700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1548,6 @@ GameObject:
   - component: {fileID: 6045771078309587737}
   - component: {fileID: 2270453197990026013}
   - component: {fileID: 1431546063854031327}
-  - component: {fileID: 5196368329989311518}
   - component: {fileID: 3358848033148612810}
   m_Layer: 5
   m_Name: MinViability_Icon
@@ -1588,25 +1627,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &5196368329989311518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3762693284440449700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 2270453197990026013}
-  foregroundElements:
-  - {fileID: 0}
-  type: 2
 --- !u!114 &3358848033148612810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3513,7 +3533,6 @@ GameObject:
   - component: {fileID: 3637239468008581887}
   - component: {fileID: 4081033305956134895}
   - component: {fileID: 325784238823358519}
-  - component: {fileID: 2991082250633463165}
   - component: {fileID: 939342553899475965}
   m_Layer: 5
   m_Name: Happiness_Icon
@@ -3593,25 +3612,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &2991082250633463165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5433771149022192907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 4081033305956134895}
-  foregroundElements:
-  - {fileID: 0}
-  type: 1
 --- !u!114 &939342553899475965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5030,7 +5030,6 @@ GameObject:
   - component: {fileID: 5233285466786337441}
   - component: {fileID: 2658579232028659607}
   - component: {fileID: 454221568679060718}
-  - component: {fileID: 4601264819692304802}
   - component: {fileID: 8945342990573088176}
   m_Layer: 5
   m_Name: Power_Icon
@@ -5110,25 +5109,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &4601264819692304802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6126543281748262231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 2658579232028659607}
-  foregroundElements:
-  - {fileID: 0}
-  type: 1
 --- !u!114 &8945342990573088176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5544,7 +5524,6 @@ GameObject:
   - component: {fileID: 554448756396072572}
   - component: {fileID: 1630470044820614985}
   - component: {fileID: 8586971268778437304}
-  - component: {fileID: 2164642192493750005}
   - component: {fileID: 6488281283333301088}
   m_Layer: 5
   m_Name: Sustenance_Icon
@@ -5624,25 +5603,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &2164642192493750005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619885854243549740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 1630470044820614985}
-  foregroundElements:
-  - {fileID: 0}
-  type: 1
 --- !u!114 &6488281283333301088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5666,6 +5626,7 @@ GameObject:
   - component: {fileID: 7568644032305398362}
   - component: {fileID: 4642879592425812607}
   - component: {fileID: 2984189736605931832}
+  - component: {fileID: 7833814909377630605}
   m_Layer: 5
   m_Name: Power_Container
   m_TagString: Untagged
@@ -5716,6 +5677,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedType: 5
   associatedTextElement: {fileID: 7789343189324420096}
+--- !u!114 &7833814909377630605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820661074150585357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaBackground: 1
+  alphaForeground: 1
+  backgroundElements:
+  - {fileID: 2658579232028659607}
+  foregroundElements:
+  - {fileID: 7789343189324420096}
+  type: 1
 --- !u!1 &6899669606089572777
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,7 +5708,6 @@ GameObject:
   - component: {fileID: 4323903991308293093}
   - component: {fileID: 4074568301345155652}
   - component: {fileID: 446327959016561649}
-  - component: {fileID: 2080376535808843322}
   - component: {fileID: 6065284137282318574}
   m_Layer: 5
   m_Name: Viability_Icon
@@ -5808,25 +5787,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &2080376535808843322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6899669606089572777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaBackground: 1
-  alphaForeground: 1
-  backgroundElements:
-  - {fileID: 4074568301345155652}
-  foregroundElements:
-  - {fileID: 0}
-  type: 1
 --- !u!114 &6065284137282318574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,6 +5810,7 @@ GameObject:
   - component: {fileID: 4743750508451361553}
   - component: {fileID: 4643538012175946317}
   - component: {fileID: 6550654042350747606}
+  - component: {fileID: 1770557220094728876}
   m_Layer: 5
   m_Name: Happiness_Container
   m_TagString: Untagged
@@ -5900,6 +5861,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedType: 4
   associatedTextElement: {fileID: 30525020628279241}
+--- !u!114 &1770557220094728876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337015577952580552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad92097849a80429728093e503bac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaBackground: 1
+  alphaForeground: 1
+  backgroundElements:
+  - {fileID: 4081033305956134895}
+  foregroundElements:
+  - {fileID: 30525020628279241}
+  type: 1
 --- !u!114 &2224159869812939923
 MonoBehaviour:
   m_ObjectHideFlags: 0
