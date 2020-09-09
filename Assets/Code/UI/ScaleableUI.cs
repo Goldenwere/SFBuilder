@@ -12,20 +12,12 @@ namespace SFBuilder.UI
         /**************/ private Graphic    graphic;
 
         /// <summary>
-        /// Initialize text on Start
-        /// </summary>
-        private void Start()
-        {
-            graphic = GetComponent<Graphic>();
-            OnSettingsUpdated();
-        }
-
-        /// <summary>
         /// Subscribe to events OnEnable
         /// </summary>
         private void OnEnable()
         {
             GameEventSystem.SettingsUpdated += OnSettingsUpdated;
+            OnSettingsUpdated();
         }
 
         /// <summary>
@@ -37,11 +29,14 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// Handle GameEventSystem.SettingsUpdated by applying font settings
+        /// Handle GameEventSystem.SettingsUpdated by applying UI settings
         /// </summary>
         private void OnSettingsUpdated()
         {
-            switch(GameSettings.Instance.Settings.accessibility_FontSize)
+            if (graphic == null)
+                graphic = GetComponent<Graphic>();
+
+            switch (GameSettings.Instance.Settings.accessibility_FontSize)
             {
                 case FontSize.Large:  graphic.rectTransform.localScale = new Vector3(1.25f, 1.25f, 1.25f); break;
                 case FontSize.Small:  graphic.rectTransform.localScale = new Vector3(0.75f, 0.75f, 0.75f); break;
