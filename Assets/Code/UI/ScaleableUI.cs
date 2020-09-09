@@ -6,10 +6,13 @@ namespace SFBuilder.UI
     /// <summary>
     /// Functions similarly to StyleableText, in that it applies updates to settings related to UI scaling
     /// </summary>
-    [RequireComponent(typeof(Graphic))]
+    [RequireComponent(typeof(RectTransform))]
     public class ScaleableUI : MonoBehaviour
     {
-        /**************/ private Graphic    graphic;
+#pragma warning disable 0649
+        [SerializeField] private ScaleSettings  scaleSettings;
+#pragma warning restore 0649
+        /**************/ private RectTransform  rect;
 
         /// <summary>
         /// Subscribe to events OnEnable
@@ -33,16 +36,27 @@ namespace SFBuilder.UI
         /// </summary>
         private void OnSettingsUpdated()
         {
-            if (graphic == null)
-                graphic = GetComponent<Graphic>();
+            if (rect == null)
+                rect = GetComponent<RectTransform>();
 
             switch (GameSettings.Instance.Settings.accessibility_FontSize)
             {
-                case FontSize.Large:  graphic.rectTransform.localScale = new Vector3(1.25f, 1.25f, 1.25f); break;
-                case FontSize.Small:  graphic.rectTransform.localScale = new Vector3(0.75f, 0.75f, 0.75f); break;
+                case FontSize.Large:  rect.localScale = scaleSettings.large; break;
+                case FontSize.Small:  rect.localScale = scaleSettings.small; break;
                 case FontSize.Medium:
-                default:              graphic.rectTransform.localScale = new Vector3(1.00f, 1.00f, 1.00f); break;
+                default:              rect.localScale = scaleSettings.medium; break;
             }
         }
+    }
+
+    /// <summary>
+    /// Defines scale settings depending on UI scale setting
+    /// </summary>
+    [System.Serializable]
+    public struct ScaleSettings
+    {
+        public Vector3  small;
+        public Vector3  medium;
+        public Vector3  large;
     }
 }
