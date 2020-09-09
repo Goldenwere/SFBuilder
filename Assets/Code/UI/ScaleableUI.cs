@@ -39,12 +39,12 @@ namespace SFBuilder.UI
             if (rect == null)
                 rect = GetComponent<RectTransform>();
 
-            switch (GameSettings.Instance.Settings.accessibility_FontSize)
+            switch (GameSettings.Instance.Settings.accessibility_UIScale)
             {
-                case FontSize.Large:  rect.localScale = scaleSettings.large; break;
-                case FontSize.Small:  rect.localScale = scaleSettings.small; break;
-                case FontSize.Medium:
-                default:              rect.localScale = scaleSettings.medium; break;
+                case UIScale.Large:  rect.localScale = scaleSettings.large; break;
+                case UIScale.Small:  rect.localScale = scaleSettings.small; break;
+                case UIScale.Medium:
+                default:             rect.localScale = scaleSettings.medium; break;
             }
         }
     }

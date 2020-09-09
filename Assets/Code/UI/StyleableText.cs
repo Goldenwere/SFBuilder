@@ -47,7 +47,7 @@ namespace SFBuilder.UI
             text.fontSharedMaterial = UIAssets.Instance
                 .Fonts.First(f => f.style == GameSettings.Instance.Settings.accessibility_FontStyle)
                 .presets.First(m => m.type == type).material;
-            text.fontSize = GameConstants.FontSizeToFloat(GameSettings.Instance.Settings.accessibility_FontSize, format);
+            text.fontSize = GameConstants.UIScaleToFloat(GameSettings.Instance.Settings.accessibility_UIScale, format);
 
             if (format == FontFormat.Tooltip)
             {

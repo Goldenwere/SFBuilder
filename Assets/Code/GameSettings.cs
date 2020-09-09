@@ -169,7 +169,7 @@ namespace SFBuilder
                 loadedData.other_ObjectAnimations = _default.other_ObjectAnimations;
                 loadedData.accessibility_CameraShake = _default.accessibility_CameraShake;
                 loadedData.accessibility_CameraSmoothing = _default.accessibility_CameraSmoothing;
-                loadedData.accessibility_FontSize = _default.accessibility_FontSize;
+                loadedData.accessibility_UIScale = _default.accessibility_UIScale;
                 loadedData.accessibility_FontStyle = _default.accessibility_FontStyle;
                 loadedData.display_Cursor = _default.display_Cursor;
                 loadedData.display_FOV = _default.display_FOV;
@@ -242,7 +242,7 @@ namespace SFBuilder
     {
         public bool                 accessibility_CameraShake;
         public bool                 accessibility_CameraSmoothing;
-        public FontSize             accessibility_FontSize;
+        public UIScale              accessibility_UIScale;
         public FontStyle            accessibility_FontStyle;
 
         public ControlBinding[]     controlBindings_Gamepad;
@@ -284,7 +284,7 @@ namespace SFBuilder
 
             accessibility_CameraShake = true,
             accessibility_CameraSmoothing = true,
-            accessibility_FontSize = FontSize.Medium,
+            accessibility_UIScale = UIScale.Medium,
             accessibility_FontStyle = FontStyle.Righteous,
 
             controlBindings_Gamepad = new ControlBinding[]

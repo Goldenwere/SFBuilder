@@ -38,12 +38,12 @@ namespace SFBuilder.UI
             if (rectToApplyTo == null)
                 rectToApplyTo = GetComponent<RectTransform>();
 
-            switch (GameSettings.Instance.Settings.accessibility_FontSize)
+            switch (GameSettings.Instance.Settings.accessibility_UIScale)
             {
-                case FontSize.Large:  rectToApplyTo.sizeDelta = resizeSettings.large; break;
-                case FontSize.Small:  rectToApplyTo.sizeDelta = resizeSettings.small; break;
-                case FontSize.Medium:
-                default:              rectToApplyTo.sizeDelta = resizeSettings.medium; break;
+                case UIScale.Large:  rectToApplyTo.sizeDelta = resizeSettings.large; break;
+                case UIScale.Small:  rectToApplyTo.sizeDelta = resizeSettings.small; break;
+                case UIScale.Medium:
+                default:             rectToApplyTo.sizeDelta = resizeSettings.medium; break;
             }
         }
     }

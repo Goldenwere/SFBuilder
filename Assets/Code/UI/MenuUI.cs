@@ -92,7 +92,7 @@ namespace SFBuilder.UI
             [Header("Accessibility")]
             public Toggle                       accessibilityCameraShake;
             public Toggle                       accessibilityCameraSmoothing;
-            public TMP_Dropdown                 accessibilityFontSize;
+            public TMP_Dropdown                 accessibilityUIScale;
             public TMP_Dropdown                 accessibilityFontStyle;
             [Space]
             public ControlButton[]              controlButtons;
@@ -288,9 +288,9 @@ namespace SFBuilder.UI
                 workingSettings.accessibility_CameraSmoothing = val;
             });
 
-            settingsMenuElements.accessibilityFontSize.onValueChanged.AddListener(val => {
-                OnValueChanged(settingsMenuElements.accessibilityFontSize);
-                workingSettings.accessibility_FontSize = (FontSize)val;
+            settingsMenuElements.accessibilityUIScale.onValueChanged.AddListener(val => {
+                OnValueChanged(settingsMenuElements.accessibilityUIScale);
+                workingSettings.accessibility_UIScale = (UIScale)val;
             });
 
             settingsMenuElements.accessibilityFontStyle.onValueChanged.AddListener(val => {
@@ -512,7 +512,7 @@ namespace SFBuilder.UI
             settingsMenuElements.displayWindow.SetValueWithoutNotify((int)workingSettings.display_Window);
             settingsMenuElements.accessibilityCameraShake.SetIsOnWithoutNotify(workingSettings.accessibility_CameraShake);
             settingsMenuElements.accessibilityCameraSmoothing.SetIsOnWithoutNotify(workingSettings.accessibility_CameraSmoothing);
-            settingsMenuElements.accessibilityFontSize.SetValueWithoutNotify((int)workingSettings.accessibility_FontSize);
+            settingsMenuElements.accessibilityUIScale.SetValueWithoutNotify((int)workingSettings.accessibility_UIScale);
             settingsMenuElements.accessibilityFontStyle.SetValueWithoutNotify((int)workingSettings.accessibility_FontStyle);
         }
 
@@ -880,7 +880,7 @@ namespace SFBuilder.UI
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
                             text.text = "";
-                            //text.fontSize = GameConstants.MenuControlsFontSizeWord;
+                            //text.UIScale = GameConstants.MenuControlsUIScaleWord;
                             for (int i = 1; i < pathSplit.Length; i++)
                                 text.text += pathSplit[i];
                             break;
@@ -902,7 +902,7 @@ namespace SFBuilder.UI
                         default:
                             textObj.SetActive(true);
                             imageObj.SetActive(false);
-                            //text.fontSize = GameConstants.MenuControlsFontSizeWord;
+                            //text.UIScale = GameConstants.MenuControlsUIScaleWord;
                             text.text = "Mouse" + pathSplit[1];
                             break;
                     }
@@ -917,7 +917,7 @@ namespace SFBuilder.UI
                     // Captures most keys (letters, numbers in number row, and special characters)
                     if (pathSplit[1].Length == 1)
                     {
-                        //text.fontSize = GameConstants.MenuControlsFontSizeChar;
+                        //text.UIScale = GameConstants.MenuControlsUIScaleChar;
                         text.text = pathSplit[1].ToUpper();
                     }
 
@@ -996,11 +996,11 @@ namespace SFBuilder.UI
                                 text.text = converted;
                                 /*
                                 if (converted.Length < 4)
-                                    text.fontSize = GameConstants.MenuControlsFontSizeChar;
+                                    text.UIScale = GameConstants.MenuControlsUIScaleChar;
                                 else if (converted.Length < 8)
-                                    text.fontSize = GameConstants.MenuControlsFontSizeMiniWord;
+                                    text.UIScale = GameConstants.MenuControlsUIScaleMiniWord;
                                 else
-                                    text.fontSize = GameConstants.MenuControlsFontSizeWord;
+                                    text.UIScale = GameConstants.MenuControlsUIScaleWord;
                                 */
                                 break;
                         }

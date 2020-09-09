@@ -6654,7 +6654,7 @@ MonoBehaviour:
   settingsMenuElements:
     accessibilityCameraShake: {fileID: 1090781857}
     accessibilityCameraSmoothing: {fileID: 966779779}
-    accessibilityFontSize: {fileID: 1413485805}
+    accessibilityUIScale: {fileID: 1413485805}
     accessibilityFontStyle: {fileID: 619074796}
     controlButtons:
     - {fileID: 1365915524}
@@ -26806,7 +26806,7 @@ GameObject:
   - component: {fileID: 1073856600}
   - component: {fileID: 1073856599}
   m_Layer: 5
-  m_Name: Category_FontSize
+  m_Name: Category_UIScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37117,7 +37117,7 @@ GameObject:
   - component: {fileID: 1413485805}
   - component: {fileID: 1413485808}
   m_Layer: 5
-  m_Name: Dropdown_FontSize
+  m_Name: Dropdown_UIScale
   m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50565,7 +50565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Font Size
+  m_text: UI Scale
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6acab427f429de44ea4dc6de8eb0b892, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: c4c4c30e96ad1194fa2cc3c8bfece43f, type: 2}

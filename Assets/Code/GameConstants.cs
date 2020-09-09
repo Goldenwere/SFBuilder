@@ -104,16 +104,16 @@ namespace SFBuilder
         public const float  UITransitionDelay = 0.25f;
 
         /// <summary>
-        /// Translates the global FontSize to an actual value based on a StyleableText's FontFormat
+        /// Translates the global UIScale to a fontSize based on a StyleableText's FontFormat
         /// </summary>
-        /// <param name="setting">The FontSize setting</param>
+        /// <param name="setting">The UIScale setting</param>
         /// <param name="format">The FontFormat of the text element</param>
         /// <returns>Float for use in TMP_Text.fontSize</returns>
-        public static float         FontSizeToFloat(FontSize setting, FontFormat format)
+        public static float         UIScaleToFloat(UIScale setting, FontFormat format)
         {
             switch (setting)
             {
-                case FontSize.Large:
+                case UIScale.Large:
                     {
                         switch (format)
                         {
@@ -130,7 +130,7 @@ namespace SFBuilder
                             default:                            return 10.0f;
                         }
                     }
-                case FontSize.Small:
+                case UIScale.Small:
                     {
                         switch (format)
                         {
@@ -147,7 +147,7 @@ namespace SFBuilder
                             default:                            return 6.00f;
                         }
                     }
-                case FontSize.Medium:
+                case UIScale.Medium:
                 default:
                     {
                         switch (format)

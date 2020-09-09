@@ -15,15 +15,15 @@
     /// Definitions of font size settings
     /// </summary>
     /// <remarks>Medium is the default font size</remarks>
-    public enum FontSize : byte
+    public enum UIScale : byte
     {
-        Small = 0,      // 075% normal size, also applies a scale of 0.75 to HUD icons
-        Medium = 1,     // 100% normal size, also applies a scale of 1.00 to HUD icons
-        Large = 2       // 125% normal size, also applies a scale of 1.25 to HUD icons
+        Small = 0,
+        Medium = 1,
+        Large = 2
     }
 
     /// <summary>
-    /// Definitions of font format styles for use in sizing text elements after applying a universal FontSize setting
+    /// Definitions of font format styles for use in sizing text elements after applying a universal UIScale setting
     /// </summary>
     public enum FontFormat : byte
     {
