@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Goldenwere.Unity.Controller;
+using System.Collections;
 
 namespace SFBuilder.Util
 {
@@ -106,6 +107,13 @@ namespace SFBuilder.Util
         /// </summary>
         private void OnSettingsUpdated()
         {
+            StartCoroutine(WaitToSetCursorSize());
+        }
+
+        private IEnumerator WaitToSetCursorSize()
+        {
+            yield return new WaitForFixedUpdate();
+
             if (GameSettings.Instance.Settings.display_Cursor == CursorSize.Hardware)
                 hardwareCursor = true;
             else

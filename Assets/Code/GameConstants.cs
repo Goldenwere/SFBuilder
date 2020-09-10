@@ -261,6 +261,17 @@ namespace SFBuilder
         }
 
         /// <summary>
+        /// Converts a resolution setting to an integer array
+        /// </summary>
+        /// <param name="selected">The selected setting to parse</param>
+        /// <returns>An integer array of size 2, with 0=width, 1=height</returns>
+        public static int[]         ResolutionToArray(ResolutionSetting selected)
+        {
+            string[] split = selected.ToString().Replace("_", "").Split('x');
+            return new int[] { int.Parse(split[0]), int.Parse(split[1]) };
+        }
+
+        /// <summary>
         /// Adds color tags (HTML, treated as a GameConstant) to a number depending on if it's positive or negative
         /// </summary>
         /// <param name="num">The number being converted</param>

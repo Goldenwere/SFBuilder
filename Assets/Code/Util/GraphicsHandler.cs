@@ -47,11 +47,11 @@ namespace SFBuilder.Util
             {
                 case WindowMode.Fullscreen: mode = FullScreenMode.FullScreenWindow; break;
                 case WindowMode.Windowed:
-                default:                    mode = FullScreenMode.MaximizedWindow; break;
+                default:                    mode = FullScreenMode.Windowed; break;
             }
 
             if (GameSettings.Instance.Settings.display_Resolution != ResolutionSetting._native)
-                resolution = GameSettings.Instance.Settings.display_Resolution.ToString().Replace("_", "").Split('x').Cast<int>().ToArray();
+                resolution = GameConstants.ResolutionToArray(GameSettings.Instance.Settings.display_Resolution);
 
             else
                 resolution = new int[2] { nativeResolution.width, nativeResolution.height };
