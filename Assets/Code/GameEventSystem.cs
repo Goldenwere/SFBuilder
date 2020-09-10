@@ -2,6 +2,7 @@
 
 namespace SFBuilder
 {
+    public delegate void DoubleBoolDelegate(bool valA, bool valB);
     public delegate void BoolDelegate(bool val);
     public delegate void GameStateChange(GameState prevState, GameState newState);
     public delegate void GenericDelegate();
@@ -29,67 +30,67 @@ namespace SFBuilder
         /// <summary>
         /// Used for handling gamestate changes
         /// </summary>
-        public static event GameStateChange GameStateChanged;
+        public static event GameStateChange     GameStateChanged;
 
         /// <summary>
         /// Used for advancing goals
         /// </summary>
-        public static event GenericDelegate GoalChanged;
+        public static event GenericDelegate     GoalChanged;
 
         /// <summary>
         /// Used for updating goals
         /// </summary>
-        public static event GoalChange      GoalInfoChanged;
+        public static event GoalChange          GoalInfoChanged;
 
         /// <summary>
         /// Used for allowing to move on to next goal
         /// </summary>
-        public static event BoolDelegate    GoalMet;
+        public static event BoolDelegate        GoalMet;
 
         /// <summary>
         /// Used for reseting a level back to its original state
         /// </summary>
-        public static event GenericDelegate LevelBanished;
+        public static event GenericDelegate     LevelBanished;
 
         /// <summary>
         /// Used for transitioning between scenes
         /// </summary>
-        public static event BoolDelegate    LevelTransitioned;
+        public static event BoolDelegate        LevelTransitioned;
 
         /// <summary>
         /// Used for updating whether the next level is ready or not
         /// </summary>
-        public static event BoolDelegate    NextLevelReadyStateChanged;
+        public static event BoolDelegate        NextLevelReadyStateChanged;
 
         /// <summary>
         /// Used for updating the placement panel UI
         /// </summary>
-        public static event BoolDelegate    PlacementPanelUpdateDesired;
+        public static event BoolDelegate        PlacementPanelUpdateDesired;
 
         /// <summary>
         /// Used for notifying placement state change
         /// </summary>
-        public static event BoolDelegate    PlacementStateChanged;
+        public static event DoubleBoolDelegate  PlacementStateChanged;
 
         /// <summary>
         /// Used for notifying that a scene was activated
         /// </summary>
-        public static event GenericDelegate SceneActivated;
+        public static event GenericDelegate     SceneActivated;
 
         /// <summary>
         /// Used for updating UI
         /// </summary>
-        public static event ScoreChange     ScoreWasChanged;
+        public static event ScoreChange         ScoreWasChanged;
 
         /// <summary>
         /// Used for updating score system
         /// </summary>
-        public static event ScoreChange     ScoreUpdateDesired;
+        public static event ScoreChange         ScoreUpdateDesired;
 
         /// <summary>
         /// Used for notifying of change in settings
         /// </summary>
-        public static event GenericDelegate SettingsUpdated;
+        public static event GenericDelegate     SettingsUpdated;
         #endregion
         #region Methods
         /// <summary>
@@ -191,9 +192,10 @@ namespace SFBuilder
         /// Notifies handlers that the placement state has changed
         /// </summary>
         /// <param name="isPlacing">Whether in the placing state or not</param>
-        public void UpdatePlacementState(bool isPlacing)
+        /// <param name="objectWasPlaced">Whether an object was placed</param>
+        public void UpdatePlacementState(bool isPlacing, bool objectWasPlacedOrUndone)
         {
-            PlacementStateChanged?.Invoke(isPlacing);
+            PlacementStateChanged?.Invoke(isPlacing, objectWasPlacedOrUndone);
         }
 
         /// <summary>

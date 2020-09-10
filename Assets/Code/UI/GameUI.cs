@@ -162,15 +162,16 @@ namespace SFBuilder.UI
         /// Handler for the PlacementStateChanged event
         /// </summary>
         /// <param name="isPlacing">Whether in the placing state or not</param>
-        private void OnPlacementStateChanged(bool isPlacing)
+        private void OnPlacementStateChanged(bool isPlacing, bool objectWasPlacedOrUndone)
         {
             if (workingPlacementState != isPlacing)
             {
                 StartCoroutine(TransitionPlacementUI(isPlacing));
-                if (!isPlacing && GameSettings.Instance.Settings.accessibility_CameraShake)
-                    StartCoroutine(ShakeCamera());
                 workingPlacementState = isPlacing;
             }
+
+            if (objectWasPlacedOrUndone && GameSettings.Instance.Settings.accessibility_CameraShake)
+                StartCoroutine(ShakeCamera());
         }
 
         /// <summary>

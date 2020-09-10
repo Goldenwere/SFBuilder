@@ -37,8 +37,6 @@ namespace SFBuilder.Obj
             get { return isPlacing; }
             set
             {
-                if (value != isPlacing)
-                    GameEventSystem.Instance.UpdatePlacementState(value);
                 isPlacing = value;
 
                 if (isPlacing)
@@ -180,7 +178,9 @@ namespace SFBuilder.Obj
                 if (isPlacing)
                 {
                     Destroy(prefabInstance.gameObject);
+
                     IsPlacing = false;
+                    GameEventSystem.Instance.UpdatePlacementState(false, false);
                 }
 
                 else
@@ -201,6 +201,7 @@ namespace SFBuilder.Obj
                 prefabInstance.transform.Rotate(Vector3.up, workingLastRotation);
                 prefabInstance.IsPlaced = false;
                 IsPlacing = true;
+                GameEventSystem.Instance.UpdatePlacementState(true, false);
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Button);
                 return prefabInstance;
             }
@@ -248,6 +249,7 @@ namespace SFBuilder.Obj
                 if (prefabsPlaced.Count > prefabUndoMaxCount)
                     prefabsPlaced.RemoveLast();
                 IsPlacing = false;
+                GameEventSystem.Instance.UpdatePlacementState(false, true);
                 GoalSystem.Instance.VerifyForNextGoal();
                 GameAudioSystem.Instance.PlaySound(AudioClipDefinition.Placement);
             }
@@ -278,6 +280,7 @@ namespace SFBuilder.Obj
                 if (isPlacing)
                     Destroy(prefabInstance.gameObject);
                 IsPlacing = true;
+                GameEventSystem.Instance.UpdatePlacementState(true, true);
                 prefabHadFirstHit = true;
                 prefabInstance = prefabsPlaced.First.Value;
                 prefabsPlaced.RemoveFirst();
