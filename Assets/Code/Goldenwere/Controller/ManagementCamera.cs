@@ -35,6 +35,7 @@ namespace Goldenwere.Unity.Controller
         [Range(0.01f,5)] public float           settingMovementSensitivity = 1f;
         [Range(0.01f,5)] public float           settingRotationSensitivity = 1f;
         [Range(0.01f,5)] public float           settingZoomSensitivity = 1f;
+        /**************/ public bool            useCameraSmoothing = true;
 
         [Header("Core Components")]
         [Tooltip                                ("The attached PlayerInput class")]
@@ -54,8 +55,6 @@ namespace Goldenwere.Unity.Controller
         [SerializeField] protected Transform    transformTilt;
         [Range(0.1f, 100)][Tooltip              ("How fast smooth motion takes place")]
         [SerializeField] protected float        smoothMotionSpeed = 10f;
-        [Tooltip                                ("Whether to use smooth motion (via Lerp/Slerp) or not")]
-        [SerializeField] protected bool         useCameraSmoothing = true;
         [Tooltip                                ("Sets the maximum angle at which the camera can rotate vertically (down and up respectively)")]
         [SerializeField] protected Vector2      verticalClamping = new Vector2(-50f, 50f);
 #pragma warning restore 0649
