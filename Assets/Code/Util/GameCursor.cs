@@ -33,7 +33,6 @@ namespace SFBuilder.Util
             else
                 defaultLockMode = CursorLockMode.None;
 
-            Cursor.visible = false;
             Cursor.lockState = defaultLockMode;
             drawCursor = true;
             OnSettingsUpdated();
@@ -115,10 +114,14 @@ namespace SFBuilder.Util
             yield return new WaitForFixedUpdate();
 
             if (GameSettings.Instance.Settings.display_Cursor == CursorSize.Hardware)
+            {
                 hardwareCursor = true;
+                Cursor.visible = true;
+            }
             else
             {
                 hardwareCursor = false;
+                Cursor.visible = false;
                 cursorSize = new Vector2(Screen.width / (((int)CursorSize.VeryLarge + 1 - (int)GameSettings.Instance.Settings.display_Cursor) * 16),
                     Screen.width / (((int)CursorSize.VeryLarge + 1 - (int)GameSettings.Instance.Settings.display_Cursor) * 16));
             }
