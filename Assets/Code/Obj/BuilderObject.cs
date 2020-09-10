@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Goldenwere.Unity;
 
 namespace SFBuilder.Obj
 {
@@ -55,7 +56,8 @@ namespace SFBuilder.Obj
                     if (!isPlacedAtStart)
                     {
                         StartCoroutine(ResizeAndDestroyParticles(Instantiate(placementParticlePrefab, transform)));
-                        StartCoroutine(PlaceStructureAnimation());
+                        if (GameSettings.Instance.Settings.other_ObjectAnimations)
+                            StartCoroutine(PlaceStructureAnimation());
                     }
                 }
                 else
@@ -110,22 +112,25 @@ namespace SFBuilder.Obj
             collidedObjects = new List<GameObject>(16);
             if (isPlacedAtStart)
                 IsPlaced = true;
+            OnSettingsUpdated();
         }
 
         /// <summary>
-        /// On Enable, subscribe to the LevelBanished event
+        /// On Enable, subscribe to events
         /// </summary>
         private void OnEnable()
         {
             GameEventSystem.LevelBanished += OnLevelBanished;
+            GameEventSystem.SettingsUpdated += OnSettingsUpdated;
         }
 
         /// <summary>
-        /// On Disable, unsubscribe from the LevelBanished event
+        /// On Disable, unsubscribe from events
         /// </summary>
         private void OnDisable()
         {
             GameEventSystem.LevelBanished -= OnLevelBanished;
+            GameEventSystem.SettingsUpdated -= OnSettingsUpdated;
         }
 
         /// <summary>
@@ -202,6 +207,15 @@ namespace SFBuilder.Obj
         {
             if (!isPlacedAtStart)
                 Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// On SettingsUpdated, toggle animations if applicable
+        /// </summary>
+        private void OnSettingsUpdated()
+        {
+            if (gameObject.FindChildRecursively("Model").TryGetComponent(out Animator anim))
+                anim.enabled = GameSettings.Instance.Settings.other_ObjectAnimations;
         }
 
         /// <summary>
