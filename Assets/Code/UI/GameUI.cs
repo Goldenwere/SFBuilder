@@ -18,6 +18,7 @@ namespace SFBuilder.UI
         [SerializeField] private Button         buttonBanishment;
         [SerializeField] private Button         buttonNextGoal;
         [SerializeField] private Button         buttonNextLevel;
+        [SerializeField] private Camera         gameCamera;
         [SerializeField] private TypeToIcon[]   icons;
         [SerializeField] private CanvasGroup    mainCanvasGroup;
         [SerializeField] private GameObject[]   mainCanvasTransitionedElements;
@@ -37,6 +38,7 @@ namespace SFBuilder.UI
         /**************/ private RectTransform  windowNextLevelRT;
         /**************/ private bool           windowOpenedBanishment;
         /**************/ private bool           windowOpenedNextLevel;
+        /**************/ private bool           workingPlacementState;
         #endregion
         #region Properties
         public static GameUI     Instance       { get; private set; }
@@ -162,7 +164,13 @@ namespace SFBuilder.UI
         /// <param name="isPlacing">Whether in the placing state or not</param>
         private void OnPlacementStateChanged(bool isPlacing)
         {
-            StartCoroutine(TransitionPlacementUI(isPlacing));
+            if (workingPlacementState != isPlacing)
+            {
+                StartCoroutine(TransitionPlacementUI(isPlacing));
+                if (!isPlacing && GameSettings.Instance.Settings.accessibility_CameraShake)
+                    StartCoroutine(ShakeCamera());
+                workingPlacementState = isPlacing;
+            }
         }
 
         /// <summary>
@@ -292,6 +300,35 @@ namespace SFBuilder.UI
         {
             GameEventSystem.Instance.CallToAdvanceGoal();
             buttonNextGoal.interactable = false;
+        }
+
+        /// <summary>
+        /// When an object is placed, shake the camera if the setting is enabled
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator ShakeCamera()
+        {
+            Vector3 initPos = gameCamera.transform.position;
+            float t = 0;
+
+            while (t <= GameConstants.UITransitionDuration / 2)
+            {
+                gameCamera.transform.position = new Vector3(
+                    gameCamera.transform.position.x + Random.Range(-0.050f, 0.050f),
+                    gameCamera.transform.position.y + Random.Range(-0.025f, 0.025f),
+                    gameCamera.transform.position.z + Random.Range(-0.050f, 0.050f));
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            Vector3 postShakePos = gameCamera.transform.position;
+            t = 0;
+            while (t <= GameConstants.UITransitionDuration / 2)
+            {
+                gameCamera.transform.position = Vector3.Lerp(postShakePos, initPos, animationCurveForTransitions.Evaluate(t / (GameConstants.UITransitionDuration / 2)));
+                t += Time.deltaTime;
+                yield return null;
+            }
         }
 
         /// <summary>

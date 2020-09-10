@@ -3528,6 +3528,7 @@ MonoBehaviour:
   buttonBanishment: {fileID: 2527506469567232772}
   buttonNextGoal: {fileID: 5264296986326935735}
   buttonNextLevel: {fileID: 4827994109575499295}
+  gameCamera: {fileID: 7376675319693708046}
   icons:
   - Icon: {fileID: 21300000, guid: 03f8604aa6781ae449bfd1b33fca29ab, type: 3}
     Type: 32
