@@ -49,7 +49,11 @@ namespace SFBuilder.Util
                 cam.settingMovementSensitivity = GameSettings.Instance.Settings.controlSetting_SensitivityMovement;
                 cam.settingRotationSensitivity = GameSettings.Instance.Settings.controlSetting_SensitivityRotation;
                 cam.settingZoomSensitivity = GameSettings.Instance.Settings.controlSetting_SensitivityZoom;
+                cam.useCameraSmoothing = GameSettings.Instance.Settings.accessibility_CameraSmoothing;
+                
             }
+
+            cameras[0].GetComponentInChildren<Camera>().fieldOfView = GameSettings.Instance.Settings.display_FOV;
         }
     }
 }
