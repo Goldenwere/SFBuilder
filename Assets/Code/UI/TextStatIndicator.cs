@@ -4,7 +4,10 @@ using SFBuilder.Gameplay;
 
 namespace SFBuilder.UI
 {
-    public class StatIndicator : MonoBehaviour
+    /// <summary>
+    /// Displays value for a stat in a text element
+    /// </summary>
+    public class TextStatIndicator : MonoBehaviour
     {
 #pragma warning disable 0649
         [SerializeField] private ScoreType  associatedType;
