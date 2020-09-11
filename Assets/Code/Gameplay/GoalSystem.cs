@@ -140,7 +140,10 @@ namespace SFBuilder.Gameplay
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
             if (newState == GameState.Gameplay && !uiWasSetUp)
+            {
                 GameEventSystem.Instance.UpdatePlacementPanel();
+                uiWasSetUp = true;
+            }
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using SFBuilder.Obj;
 using Goldenwere.Unity.UI;
+using System.Collections.Generic;
 
 namespace SFBuilder.UI
 {
@@ -23,8 +24,33 @@ namespace SFBuilder.UI
         /**************/ private int                    associatedID;
         /**************/ private bool                   initialized;
         /**************/ private bool                   isRequired;
+        /**************/ private List<BuilderObject>    spawnedObjects;
         #endregion
         #region Methods
+        /// <summary>
+        /// Subscribe to events On Enable
+        /// </summary>
+        private void OnEnable()
+        {
+            foreach(BuilderObject spawned in spawnedObjects)
+            {
+                spawned.objectPlaced += OnObjectPlaced;
+                spawned.objectRecalled += OnObjectRecalled;
+            }
+        }
+
+        /// <summary>
+        /// Unsubscribe from events On Disable
+        /// </summary>
+        private void OnDisable()
+        {
+            foreach (BuilderObject spawned in spawnedObjects)
+            {
+                spawned.objectPlaced -= OnObjectPlaced;
+                spawned.objectRecalled -= OnObjectRecalled;
+            }
+        }
+
         /// <summary>
         /// When the button is first being created, call this to associate it with a BuilderObject
         /// </summary>
@@ -51,6 +77,7 @@ namespace SFBuilder.UI
                 button.interactable = associatedCount > 0;
                 BuilderObject.DescriptionOfType((ObjectType)info.id, out string desc);
                 tooltipElement.UpdateText(desc);
+                spawnedObjects = new List<BuilderObject>(info.count);
                 initialized = true;
             }
         }
@@ -81,6 +108,7 @@ namespace SFBuilder.UI
                 {
                     spawned.objectPlaced += OnObjectPlaced;
                     spawned.objectRecalled += OnObjectRecalled;
+                    spawnedObjects.Add(spawned);
                 }
             }
         }
