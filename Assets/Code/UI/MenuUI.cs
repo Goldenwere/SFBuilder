@@ -135,6 +135,7 @@ namespace SFBuilder.UI
             Material copyTransition = new Material(transitionImage.material);
             transitionImage.material = copyTransition;
             Material copyBlur = new Material(uiBlur.material);
+            copyBlur.SetFloat("_Size", 0);
             uiBlur.material = copyBlur;
             workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
 
