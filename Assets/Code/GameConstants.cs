@@ -106,7 +106,7 @@ namespace SFBuilder
         /// <summary>
         /// How long UI button transitions last for radial elements
         /// </summary>
-        public const float UITransitionRadialDuration = 0.10f;
+        public const float  UITransitionRadialDuration = 0.10f;
 
         /// <summary>
         /// Translates the global UIScale to a fontSize based on a StyleableText's FontFormat
