@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SFBuilder.Gameplay;
+using System.Collections;
 
 namespace SFBuilder.UI
 {
@@ -61,14 +62,51 @@ namespace SFBuilder.UI
                     case ScoreType.PotentialViability:
                         if (val == 0)
                             associatedImageElement.fillAmount = 0;
+
                         else
-                            associatedImageElement.fillAmount = (float)(val + GameScoring.Instance.TotalViability) / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability;
+                        {
+                            if (associatedImageElement.fillAmount == 0)
+                            {
+                                StartCoroutine(TransitionFill(
+                                    GameScoring.Instance.TotalViability,
+                                    (float)(val + GameScoring.Instance.TotalViability) / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability
+                                ));
+                            }
+                            else
+                            {
+                                StartCoroutine(TransitionFill(
+                                    associatedImageElement.fillAmount,
+                                    (float)(val + GameScoring.Instance.TotalViability) / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability
+                                ));
+                            }
+                        }
                         break;
                     case ScoreType.TotalViability:
-                        associatedImageElement.fillAmount = (float)val / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability;
+                        StartCoroutine(TransitionFill(
+                            associatedImageElement.fillAmount, 
+                            (float)val / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability
+                        ));
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Coroutine for animating radial elements
+        /// </summary>
+        /// <param name="start">The starting value (usually current, unless specifically targetting Potential when its current is 0, in which it should start from Total)</param>
+        /// <param name="end">The ending value</param>
+        private IEnumerator TransitionFill(float start, float end)
+        {
+            float t = 0;
+            associatedImageElement.fillAmount = start;
+            while (t <= GameConstants.UITransitionRadialDuration)
+            {
+                associatedImageElement.fillAmount = AnimationCurve.EaseInOut(0, start, 1, end).Evaluate(t / GameConstants.UITransitionRadialDuration);
+                yield return null;
+                t += Time.deltaTime;
+            }
+            associatedImageElement.fillAmount = end;
         }
     }
 }
