@@ -55,7 +55,20 @@ namespace SFBuilder.UI
         private void OnScoreWasChanged(ScoreType type, int val)
         {
             if (type == associatedType)
-                associatedImageElement.fillAmount = val / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability;
+            {
+                switch (associatedType)
+                {
+                    case ScoreType.PotentialViability:
+                        if (val == 0)
+                            associatedImageElement.fillAmount = 0;
+                        else
+                            associatedImageElement.fillAmount = (float)(val + GameScoring.Instance.TotalViability) / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability;
+                        break;
+                    case ScoreType.TotalViability:
+                        associatedImageElement.fillAmount = (float)val / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability;
+                        break;
+                }
+            }
         }
     }
 }
