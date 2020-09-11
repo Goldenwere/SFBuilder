@@ -92,13 +92,13 @@ namespace SFBuilder.UI
                     if (val > 0)
                     {
                         associatedTextElement.color = Color.cyan;
-                        workingString[1] = "(+";
+                        workingString[1] = "\n(+";
                     }
 
                     else
                     {
                         associatedTextElement.color = Color.red;
-                        workingString[1] = "(";
+                        workingString[1] = "\n(";
                     }
 
                     workingString[1] += val.ToString() + ")";
