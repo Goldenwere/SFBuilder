@@ -44,6 +44,7 @@ namespace SFBuilder.UI
         [SerializeField] private AnimationCurve                 transitionStartupFade;
         [SerializeField] private AnimationCurve                 transitionStartupToWhite;
         [SerializeField] private Image                          transitionImage;
+        [SerializeField] private Image                          uiBlur;
 #pragma warning restore 0649
         /**************/ private bool                           pendingChangesExist;
         /**************/ private bool                           previouslySelectedDontScroll;
@@ -131,8 +132,10 @@ namespace SFBuilder.UI
         /// </summary>
         private void Start()
         {
-            Material copy = new Material(transitionImage.material);
-            transitionImage.material = copy;
+            Material copyTransition = new Material(transitionImage.material);
+            transitionImage.material = copyTransition;
+            Material copyBlur = new Material(uiBlur.material);
+            uiBlur.material = copyBlur;
             workingSettings = SettingsData.Copy(GameSettings.Instance.Settings);
 
             canvas.gameObject.SetActive(false);
@@ -1102,11 +1105,19 @@ namespace SFBuilder.UI
         private IEnumerator SetActive(bool active)
         {
             float t = 0;
+            float blurStart = 4;
+            float blurEnd = 0;
+            float multiStart = 0.8f;
+            float multiEnd = 1;
             if (active)
             {
                 canvas.gameObject.SetActive(true);
                 foreach (GameObject g in canvasMainElements)
                     g.SetActive(true);
+                blurStart = 0;
+                blurEnd = 4;
+                multiStart = 1;
+                multiEnd = 0.8f;
             }
 
             while (t <= GameConstants.UITransitionDuration)
@@ -1115,6 +1126,12 @@ namespace SFBuilder.UI
                     canvas.alpha = AnimationCurve.Linear(0, 0, 1, 1).Evaluate(t / GameConstants.UITransitionDuration);
                 else
                     canvas.alpha = AnimationCurve.Linear(0, 1, 1, 0).Evaluate(t / GameConstants.UITransitionDuration);
+                uiBlur.material.SetFloat("_Size", AnimationCurve.Linear(0, blurStart, 1, blurEnd).Evaluate(t / GameConstants.UITransitionDuration));
+                uiBlur.material.SetColor("_MultiplyColor", new Color(
+                    AnimationCurve.Linear(0, multiStart, 1, multiEnd).Evaluate(t / GameConstants.UITransitionDuration),
+                    AnimationCurve.Linear(0, multiStart, 1, multiEnd).Evaluate(t / GameConstants.UITransitionDuration),
+                    AnimationCurve.Linear(0, multiStart, 1, multiEnd).Evaluate(t / GameConstants.UITransitionDuration)
+                ));
                 yield return null;
                 t += Time.deltaTime;
             }
