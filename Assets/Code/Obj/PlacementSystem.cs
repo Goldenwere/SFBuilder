@@ -133,7 +133,7 @@ namespace SFBuilder.Obj
         /// <param name="newState">The new GameState</param>
         private void OnGameStateChanged(GameState prevState, GameState newState)
         {
-            if (newState != GameState.Gameplay) 
+            if (newState != GameState.Gameplay)
                 foreach (ManagementCamera gameCam in gameCams)
                     gameCam.controlMotionEnabled = false;
             else

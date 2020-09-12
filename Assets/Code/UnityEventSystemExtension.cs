@@ -13,7 +13,7 @@ namespace SFBuilder
     {
         private GameObject                              previousSelectedObject;
         public static event PreviousCurrentGameObject   SelectedGameObjectChanged;
-        
+
         /// <summary>
         /// Invokes the SelectedGameObjectChanged event when previous != current
         /// </summary>

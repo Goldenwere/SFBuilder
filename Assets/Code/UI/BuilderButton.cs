@@ -32,10 +32,13 @@ namespace SFBuilder.UI
         /// </summary>
         private void OnEnable()
         {
-            foreach(BuilderObject spawned in spawnedObjects)
+            if (spawnedObjects != null)
             {
-                spawned.objectPlaced += OnObjectPlaced;
-                spawned.objectRecalled += OnObjectRecalled;
+                foreach (BuilderObject spawned in spawnedObjects)
+                {
+                    spawned.objectPlaced += OnObjectPlaced;
+                    spawned.objectRecalled += OnObjectRecalled;
+                }
             }
         }
 
@@ -44,10 +47,13 @@ namespace SFBuilder.UI
         /// </summary>
         private void OnDisable()
         {
-            foreach (BuilderObject spawned in spawnedObjects)
+            if (spawnedObjects != null)
             {
-                spawned.objectPlaced -= OnObjectPlaced;
-                spawned.objectRecalled -= OnObjectRecalled;
+                foreach (BuilderObject spawned in spawnedObjects)
+                {
+                    spawned.objectPlaced -= OnObjectPlaced;
+                    spawned.objectRecalled -= OnObjectRecalled;
+                }
             }
         }
 

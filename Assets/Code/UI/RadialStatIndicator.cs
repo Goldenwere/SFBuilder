@@ -83,7 +83,7 @@ namespace SFBuilder.UI
                         break;
                     case ScoreType.TotalViability:
                         StartCoroutine(TransitionFill(
-                            associatedImageElement.fillAmount, 
+                            associatedImageElement.fillAmount,
                             (float)val / GoalSystem.Instance.CurrentGoalWorkingSet.goalViability
                         ));
                         break;

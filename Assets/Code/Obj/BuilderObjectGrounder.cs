@@ -57,7 +57,7 @@ namespace SFBuilder.Obj
         /// </summary>
         private void FixedUpdate()
         {
-            IsGrounded = 
+            IsGrounded =
                 Physics.Raycast(new Ray(currentFacePosition.CornerA, Vector3.down), rayLength) &&
                 Physics.Raycast(new Ray(currentFacePosition.CornerB, Vector3.down), rayLength) &&
                 Physics.Raycast(new Ray(currentFacePosition.CornerC, Vector3.down), rayLength) &&
