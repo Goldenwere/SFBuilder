@@ -21,6 +21,20 @@ namespace SFBuilder.Gameplay
         /**************/ private bool               uiWasSetUp;
         #endregion
         #region Properties
+        private int                 LoadedGoalViability
+        {
+            get
+            {
+                if (CurrentGoal < goals.Length)
+                    return goals[CurrentGoal].goalViability;
+                else if (CurrentGoal <= (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard))
+                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease);
+                else
+                    return goals[goals.Length - 1].goalViability
+                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease)
+                        + ((CurrentGoal - ((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1)) * GameConstants.InfiniPlayHardViabilityIncrease);
+            }
+        }
         /// <summary>
         /// The current goal level (represents index in Goals)
         /// </summary>
@@ -89,9 +103,9 @@ namespace SFBuilder.Gameplay
                 CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             else
                 if (CurrentGoal > (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard))
-                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsHard[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
+                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsHard[GameSave.Instance.currentGoalSetIndex], LoadedGoalViability);
                 else
-                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsEasy[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
+                    CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsEasy[GameSave.Instance.currentGoalSetIndex], LoadedGoalViability);
 
             if (!GameSave.Instance.workingBetweenTransition)
             {
@@ -303,9 +317,7 @@ namespace SFBuilder.Gameplay
                 saveGoalSet[i] = CurrentGoalWorkingSet.goalExtras[i - lengthOfReq].goalStructureCount;
             GameSave.Instance.currentGoalSetCount = saveGoalSet;
             GameSave.Instance.currentGoal = CurrentGoal;
-
             GameSave.Instance.currentGoalSetIndex = index;
-            GameSave.Instance.currentGoalSetViability = CurrentGoalWorkingSet.goalViability;
         }
         #endregion
     }

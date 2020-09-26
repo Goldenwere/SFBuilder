@@ -13,7 +13,6 @@ namespace SFBuilder
         public  int                             currentGoal;
         public  int[]                           currentGoalSetCount;
         public  int                             currentGoalSetIndex;
-        public  int                             currentGoalSetViability;
         public  int                             currentHappiness;
         public  int                             currentLevel;
         public  int                             currentPower;
@@ -129,7 +128,6 @@ namespace SFBuilder
                     currentGoal = dataToLoad.goal;
                     currentGoalSetCount = dataToLoad.goalSetCount;
                     currentGoalSetIndex = dataToLoad.goalSetIndex;
-                    currentGoalSetViability = dataToLoad.goalSetViability;
                     currentLevel = dataToLoad.level;
                     currentHappiness = dataToLoad.statHappiness;
                     currentPower = dataToLoad.statPower;
@@ -167,7 +165,6 @@ namespace SFBuilder
                     // this is currently based off of what is set in Level_01
                     goalSetCount = new int[] { 3, 8, 2 },
                     goalSetIndex = 0,
-                    goalSetViability = 0,
                     level = 1,
                     placedObjects = new PlacedBuilderObjectData[0],
                     statHappiness = 0,
@@ -180,7 +177,6 @@ namespace SFBuilder
                     goal = currentGoal,
                     goalSetCount = currentGoalSetCount,
                     goalSetIndex = currentGoalSetIndex,
-                    goalSetViability = currentGoalSetViability,
                     level = currentLevel,
                     placedObjects = CurrentlyPlacedObjects.ToArray(),
                     statHappiness = currentHappiness,
@@ -242,7 +238,6 @@ namespace SFBuilder
         public int                          goal;
         public int[]                        goalSetCount;
         public int                          goalSetIndex;
-        public int                          goalSetViability;
         public int                          level;
         public PlacedBuilderObjectData[]    placedObjects;
         public int                          statHappiness;
