@@ -40,6 +40,29 @@ namespace SFBuilder.Gameplay
         /// Singleton instance of GoalSystem in the game level scene
         /// </summary>
         public static GoalSystem    Instance { get; private set; }
+
+        /// <summary>
+        /// The previous goal's viability
+        /// </summary>
+        public float                PreviousGoalViability
+        {
+            get
+            {
+                // no previous viability
+                if (CurrentGoal == 0)
+                    return 0;
+                // From goal 1 to the first easy-infini, return saved goal viability
+                else if (CurrentGoal <= goals.Length)
+                    return goals[CurrentGoal - 1].goalViability;
+                // From 2nd easy-infini to first hard-infini, return last goal viability + easy-infini * amount
+                else if (CurrentGoal <= (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1)
+                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length - 1) * GameConstants.InfiniPlayEasyViabilityIncrease);
+                else
+                    return goals[goals.Length - 1].goalViability
+                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease)
+                        + ((CurrentGoal - ((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1) - 1) * GameConstants.InfiniPlayHardViabilityIncrease);
+            }
+        }
         #endregion
         #region Events
         public static GoalDelegate  newGoal;
@@ -65,7 +88,7 @@ namespace SFBuilder.Gameplay
             if (CurrentGoal < goals.Length)
                 CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             else
-                if (CurrentGoal > goals.Length * GameConstants.InfiniPlayFromEasyToHard)
+                if (CurrentGoal > (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard))
                     CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsHard[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
                 else
                     CurrentGoalWorkingSet = GoalContainer.Copy(goalPresetsEasy[GameSave.Instance.currentGoalSetIndex], GameSave.Instance.currentGoalSetViability);
@@ -167,7 +190,7 @@ namespace SFBuilder.Gameplay
                 else
                 {
                     int index;
-                    if (CurrentGoal > goals.Length * GameConstants.InfiniPlayFromEasyToHard)
+                    if (CurrentGoal > (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard))
                     {
                         index = Random.Range(0, goalPresetsHard.Length);
                         CurrentGoalWorkingSet = GoalContainer.Copy(
@@ -242,6 +265,7 @@ namespace SFBuilder.Gameplay
             CurrentGoalWorkingSet = GoalContainer.Copy(goals[CurrentGoal]);
             GameEventSystem.Instance.UpdatePlacementPanel();
             GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoal, CurrentGoal + 1);
+            GameEventSystem.Instance.UpdateScoreUI(ScoreType.CurrentGoalMinimumViability, CurrentGoalWorkingSet.goalViability);
             SetGameSaveOnNewGoal();
         }
 

@@ -15,7 +15,6 @@ namespace SFBuilder.UI
         [SerializeField] private ScoreType  associatedType;
         [SerializeField] private Image      associatedImageElement;
 #pragma warning restore 0649
-        /**************/ private float      previousViability;
 
         /// <summary>
         /// On Start, ensure the UI displays proper values by calling the OnScoreWasChanged handler
@@ -31,10 +30,6 @@ namespace SFBuilder.UI
                     OnScoreWasChanged(ScoreType.PotentialViability, 0);
                     break;
             }
-            if (GoalSystem.Instance.CurrentGoal > 0)
-                previousViability = GoalSystem.Instance.Goals[GoalSystem.Instance.CurrentGoal - 1].goalViability;
-            else
-                previousViability = 0;
         }
 
         /// <summary>
@@ -60,13 +55,8 @@ namespace SFBuilder.UI
         /// </summary>
         private void OnGoalChanged()
         {
-            if (GoalSystem.Instance.CurrentGoal > 0)
-                previousViability = GoalSystem.Instance.Goals[GoalSystem.Instance.CurrentGoal - 1].goalViability;
-            else
-                previousViability = 0;
-
             if (associatedType == ScoreType.TotalViability)
-                StartCoroutine(TransitionFill(associatedImageElement.fillAmount, 0));
+                OnScoreWasChanged(ScoreType.TotalViability, GameScoring.Instance.TotalViability);
             else if (associatedType == ScoreType.PotentialViability)
                 associatedImageElement.fillAmount = 0;
         }
@@ -92,14 +82,14 @@ namespace SFBuilder.UI
                             {
                                 StartCoroutine(TransitionFill(
                                     GameScoring.Instance.TotalViability,
-                                    (float)(val + GameScoring.Instance.TotalViability - previousViability) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - previousViability)
+                                    Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                                 ));
                             }
                             else
                             {
                                 StartCoroutine(TransitionFill(
                                     associatedImageElement.fillAmount,
-                                    (float)(val + GameScoring.Instance.TotalViability - previousViability) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - previousViability)
+                                    Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                                 ));
                             }
                         }
@@ -107,7 +97,7 @@ namespace SFBuilder.UI
                     case ScoreType.TotalViability:
                         StartCoroutine(TransitionFill(
                             associatedImageElement.fillAmount,
-                            (float)(val - previousViability) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - previousViability)
+                            Mathf.Clamp(val - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                         ));
                         break;
                 }

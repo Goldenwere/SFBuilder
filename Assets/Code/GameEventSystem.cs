@@ -122,6 +122,7 @@ namespace SFBuilder
             LevelBanished?.Invoke();
             NextLevelReadyStateChanged?.Invoke(false);
             GoalMet?.Invoke(false);
+            GoalChanged?.Invoke();
         }
 
         /// <summary>
