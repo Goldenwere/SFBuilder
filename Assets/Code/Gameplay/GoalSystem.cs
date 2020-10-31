@@ -28,7 +28,7 @@ namespace SFBuilder.Gameplay
                 if (CurrentGoal < goals.Length)
                     return goals[CurrentGoal].goalViability;
                 else if (CurrentGoal <= (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard))
-                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease);
+                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length + 1) * GameConstants.InfiniPlayEasyViabilityIncrease);
                 else
                     return goals[goals.Length - 1].goalViability
                         + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length + 1) * GameConstants.InfiniPlayEasyViabilityIncrease)
@@ -70,7 +70,7 @@ namespace SFBuilder.Gameplay
                     return goals[CurrentGoal - 1].goalViability;
                 // From 2nd easy-infini to first hard-infini, return last goal viability + easy-infini * amount
                 else if (CurrentGoal <= (int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1)
-                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length - 1) * GameConstants.InfiniPlayEasyViabilityIncrease);
+                    return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease);
                 else
                     return goals[goals.Length - 1].goalViability
                         + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length + 1) * GameConstants.InfiniPlayEasyViabilityIncrease)
