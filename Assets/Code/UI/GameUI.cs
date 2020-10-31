@@ -72,7 +72,7 @@ namespace SFBuilder.UI
             windowNextLevelRT = windowNextLevel.GetComponent<RectTransform>();
             windowNextLevelRT.anchoredPosition = new Vector2(0, -100);
             panelPlacementRT = panelPlacement.GetComponent<RectTransform>();
-            panelPlacementButtons = panelPlacement.transform.GetChild(0);
+            panelPlacementButtons = panelPlacement.transform.GetChild(1);
         }
 
         /// <summary>

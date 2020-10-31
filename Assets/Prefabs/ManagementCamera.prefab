@@ -326,6 +326,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 84dfc7e7-67f3-4608-8da4-0f86fd0670ee
     m_ActionName: ManagementCameraMap/SwapCamera[/Keyboard/tab,/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e53b8f7e-1b5a-4ad0-945a-1009a55433d4
+    m_ActionName: ManagementCameraMap/Undo[/Keyboard/backspace]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 89e511b6-5f9f-4736-9485-d37975d56bd5
+    m_ActionName: ManagementCameraMap/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87e887b9-2b19-4270-bd81-63ee4d29cafb
+    m_ActionName: ManagementCameraMap/Placement[/Keyboard/enter,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ManagementCameraMap
@@ -345,10 +357,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMotionEnabled: 0
   controlMouseEnabled: 0
+  settingInputInversion:
+    mouse:
+      movementHorizontal: 0
+      movementVertical: 0
+      rotationHorizontal: 0
+      rotationVertical: 0
+      zoom: 0
+    other:
+      movementHorizontal: 0
+      movementVertical: 0
+      rotationHorizontal: 0
+      rotationVertical: 0
+      zoom: 0
   settingMouseMotionIsToggled: 0
   settingMovementSensitivity: 1
   settingRotationSensitivity: 1
   settingZoomSensitivity: 1
+  useCameraSmoothing: 1
   attachedInput: {fileID: 5455443448607621999}
   cameraMotionSpeed: 1.5
   collisionPadding: 3
@@ -357,7 +383,6 @@ MonoBehaviour:
   transformPivot: {fileID: 5455443449026255704}
   transformTilt: {fileID: 5455443448654695347}
   smoothMotionSpeed: 15
-  useCameraSmoothing: 1
   verticalClamping: {x: -10, y: 40}
   defaultPointDistance: 100
   downcastEnabledForRotation: 1
@@ -376,10 +401,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMotionEnabled: 0
   controlMouseEnabled: 0
+  settingInputInversion:
+    mouse:
+      movementHorizontal: 0
+      movementVertical: 0
+      rotationHorizontal: 0
+      rotationVertical: 0
+      zoom: 0
+    other:
+      movementHorizontal: 0
+      movementVertical: 0
+      rotationHorizontal: 0
+      rotationVertical: 0
+      zoom: 0
   settingMouseMotionIsToggled: 0
   settingMovementSensitivity: 1
   settingRotationSensitivity: 1
   settingZoomSensitivity: 1
+  useCameraSmoothing: 1
   attachedInput: {fileID: 5455443448607621999}
   cameraMotionSpeed: 2
   collisionPadding: 3
@@ -388,7 +427,6 @@ MonoBehaviour:
   transformPivot: {fileID: 5455443449026255704}
   transformTilt: {fileID: 5455443448654695347}
   smoothMotionSpeed: 15
-  useCameraSmoothing: 1
   verticalClamping: {x: -10, y: 40}
 --- !u!114 &5455443448607622000
 MonoBehaviour:
@@ -473,7 +511,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.4
   far clip plane: 1000
   field of view: 60
   orthographic: 0
