@@ -31,8 +31,8 @@ namespace SFBuilder.Gameplay
                     return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease);
                 else
                     return goals[goals.Length - 1].goalViability
-                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease)
-                        + ((CurrentGoal - ((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1)) * GameConstants.InfiniPlayHardViabilityIncrease);
+                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length + 1) * GameConstants.InfiniPlayEasyViabilityIncrease)
+                        + ((CurrentGoal - ((int)((goals.Length - 1) * GameConstants.InfiniPlayFromEasyToHard) + 1)) * GameConstants.InfiniPlayHardViabilityIncrease);
             }
         }
         /// <summary>
@@ -73,8 +73,8 @@ namespace SFBuilder.Gameplay
                     return goals[goals.Length - 1].goalViability + ((CurrentGoal - goals.Length - 1) * GameConstants.InfiniPlayEasyViabilityIncrease);
                 else
                     return goals[goals.Length - 1].goalViability
-                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length) * GameConstants.InfiniPlayEasyViabilityIncrease)
-                        + ((CurrentGoal - ((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) + 1) - 1) * GameConstants.InfiniPlayHardViabilityIncrease);
+                        + (((int)(goals.Length * GameConstants.InfiniPlayFromEasyToHard) - goals.Length + 1) * GameConstants.InfiniPlayEasyViabilityIncrease)
+                        + ((CurrentGoal - ((int)((goals.Length - 1) * GameConstants.InfiniPlayFromEasyToHard) + 1) - 1) * GameConstants.InfiniPlayHardViabilityIncrease);
             }
         }
         #endregion
