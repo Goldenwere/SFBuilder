@@ -63,7 +63,6 @@ namespace SFBuilder.UI
             public Button           mainMenuOptionPlay;
             public Button           mainMenuOptionQuit;
             public Button           mainMenuOptionSettings;
-            public ScrollRect       scrollRectSettingsMenu;
             public Button           settingsMenuOptionMenu;
             public Button           settingsMenuOptionRevert;
             public Button           settingsMenuOptionSave;
@@ -79,7 +78,6 @@ namespace SFBuilder.UI
             public GameObject       submenuControlsButtonBackground;
             public GameObject       submenuGraphics;
             public GameObject       submenuGraphicsButtonBackground;
-            public RectTransform    submenuViewportContent;
             public Button           windowSettingsBack;
             public Button           windowSettingsSave;
             public Button           windowSettingsRevert;
@@ -659,13 +657,14 @@ namespace SFBuilder.UI
                 if (curr.CompareTag("scrollable") && !Mouse.current.leftButton.isPressed && !previouslySelectedDontScroll)
                 {
                     Canvas.ForceUpdateCanvases();
-                    Vector2 newPos = otherElements.submenuViewportContent.anchoredPosition;
-                    Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(otherElements.submenuViewportContent.position)
-                        - (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(curr.transform.position);
+                    RectTransform rt = curr.transform.FindParentRecursively("Content").GetComponent<RectTransform>();
+                    Vector2 newPos = rt.anchoredPosition;
+                    Vector2 sub = (Vector2)curr.transform.FindParentRecursively("Scroll View").InverseTransformPoint(rt.position)
+                        - (Vector2)curr.transform.FindParentRecursively("Scroll View").InverseTransformPoint(curr.transform.position);
                     newPos.y = sub.y - 50;
                     if (newPos.y < 0)
                         newPos.y = 0;
-                    otherElements.submenuViewportContent.anchoredPosition = newPos;
+                    rt.anchoredPosition = newPos;
                 }
 
                 previouslySelectedDontScroll = false;

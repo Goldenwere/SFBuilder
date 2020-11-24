@@ -6,7 +6,7 @@
 *** File Info:
 ***     Description - Contains API that can be used by other code within the Goldenwere Standard Unity project
 ***     Pkg Name    - CoreAPI
-***     Pkg Ver     - 1.0.0
+***     Pkg Ver     - 1.1.0
 ***     Pkg Req     - None
 **/
 
@@ -112,6 +112,50 @@ namespace Goldenwere.Unity
                     if (foundTest != null)
                         return foundTest;
                 }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Find the parent with the specific name of a Transform, recursively searching upwards
+        /// </summary>
+        /// <param name="transform">The transform to search from</param>
+        /// <param name="name">The name being searched for</param>
+        /// <returns>The parent if found; otherwise, null</returns>
+        public static Transform FindParentRecursively(this Transform transform, string name)
+        {
+            if (transform == null)
+                throw new System.ArgumentNullException();
+
+            while (transform.parent != null)
+            {
+                if (transform.parent.name == name)
+                    return transform.parent;
+                else
+                    return transform.parent.FindParentRecursively(name);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Find the parent with the specific tag of a Transform, recursively searching upwards
+        /// </summary>
+        /// <param name="transform">The transform to search from</param>
+        /// <param name="tag">The tag being searched for</param>
+        /// <returns>The parent if found; otherwise, null</returns>
+        public static Transform FindParentWithTagRecursively(this Transform transform, string tag)
+        {
+            if (transform == null)
+                throw new System.ArgumentNullException();
+
+            while (transform.parent != null)
+            {
+                if (transform.parent.CompareTag(tag))
+                    return transform.parent;
+                else
+                    return transform.parent.FindParentRecursively(tag);
             }
 
             return null;
