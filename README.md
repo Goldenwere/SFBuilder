@@ -38,27 +38,83 @@ Code is organized into the SFBuilder namespace.
 | Namespace | Description |
 | :--- | :--- |
 | SFBuilder | Core game code such as game data, events, constants, and miscellaneous code |
+| SFBuilder.Editor | Editor-related code |
 | SFBuilder.Gameplay | Code related to game-play systems, such as scoring, goals, and and leveling |
 | SFBuilder.Obj | Code related to objects in the game, such as the placement system and BuilderObject code |
-| SFBuilder.UI | Anything related to user interfaces, such as menus, HUD elements, etc |
+| SFBuilder.UI | Anything related to user interfaces, such as menus, HUD elements, etc. |
+| SFBuilder.Util | Miscellaneous utility classes/etc. |
 
 Code inside the Goldenwere folder and related namespaces come from the [Goldenwere Standard Unity repo](https://github.com/Goldenwere/GW-Standard-Unity). These are general-purposed and, while mostly originally made for Moon Settler, are unrelated to Moon Settler's code and are/will be made available in the standard repo.
 
 #### SFBuilder
 
-Because ObjectType is needed for multiple namespaces, it is contained in the SFBuilder namespace. This enum assigns a specific integer ID (to prevent them from changing when using serialized fields in Unity) to each type. Also in this namespace is the GameEventSystem, which namespaces use to communicate without creating inter-tangled depenedencies. While some events are mainly used to pass data from one class to another, some are used by many, such as for handling changes in the game's GameState. GameConstants contains any SFBuilder-related constants that could change multiple times over the course of development. Keeping them in one place makes them easier to find in order to change without figuring out which classes they are used in. The GameAudioSystem handles sound effect requests from various other classes as well as playing music. GameSettings saves/loads settings and allows for external manipulation of these settings. Stored in SettingsData are graphical and sound related settings. Most of these classes are singletons, as they handle passing data around.
+| File | Description |
+| :--- | :---------- |
+| AccessibilityDefines | Contains accessibility-related enums |
+| GameAudioSystem | Handles sound effect requests from various other classes as well as playing music |
+| GameConstants | Singular place to define constant hard-coded values; Some of these are methods which associate a value with another |
+| GameEventSystem | Used by other namespaces to communicate without creating inter-tangled dependencies; can be as simple as class-to-class or as large as class-reading-gamestate |
+| GameSave | Player save data related objects and manager |
+| GameSettings | Player settings data (display, audio, controls, accessibility) related objects and manager |
+| InputDefines | Contains input-related enums
+| ObjectType | Assigns specific int-based ID (to prevent breaking-changes when using serialized fields) to placed BuilderObjects; used across multiple namespaces, thus why in SFBuilder |
+| UnityEventSystemExtension | Extends the Unity EventSystem with `SelectedGameObjectChanged` event |
+| WindowResolution | Contains definitions of window resolutions |
+
+#### SFBuilder.Editor
+
+Contains editor scripts (currently just ControlButtonEditor, to ensure Button-extended variables show up in the editor).
 
 #### SFBuilder.Gameplay
 
-The LevelingSystem is a simple singleton which manages level transitions based on what level the player is on. The GoalSystem, another singleton, handles goals for the player, including transitioning, verifying, and loading from the saved state of the level. GoalContainer is a struct used to represent a goal (containing required/optional GoalItems and minimum viability), while GoalItem is another struct which assigns a count to an ObjectType. GameScoring, another singleton, handles the scoring related to object placement. Nothing really interesting happens here besides calling UI events related to score updates and the score updates (and saving said updates) themselves.
+| File | Description |
+| :--- | :---------- |
+| GameScoring | Singleton which handles the scoring related to object placement; bridges the gap between UI and object placement, actual score data is set in GameSave |
+| GoalContainer | Struct used to represent a goal (containing required/optional GoalItems and minimum viability) |
+| GoalItem | Struct which assigns a count to an ObjectType |
+| GoalSystem | Singleton which handles goals for the player, including transitioning, verifying, and loading from the saved state of the level |
+| LevelingSystem | Singleton which manages level transitions based on what level the player is on |
 
 #### SFBuilder.Obj
 
-Building placement rules can be found in the static methods of BuilderObject. Scores are found via the BuilderObjectRanger's collision trigger handlers. Valid placement is assisted by the BuilderObjectGrounder and collision code contained in BuilderObject. BuilderObjectTypeToPrefab is a small utility structure for assigning prefabs to types per level scene in Unity's inspector. The placement system uses Linq to search through a serialize array of said type when instantiating BuilderObject-based GameObjects. Only PlacementSystem is a singleton, other classes are treated as traditional objects in OOP.
+| File | Description |
+| :--- | :---------- |
+| BuilderObject | Contains placement rules in static methods as well as the code which maintains the placed structures that are core to the game |
+| BuilderObjectGrounder | Ensures that a BuilderObject is grounded before the player can place it |
+| BuilderObjectRanger | Tracks other BuilderObjects using trigger-based handlers for use in scoring |
+| BuilderObjectTypeToPrefab | Structure for placement system to associate types to prefabs in inspector (as prefabs are in sets which differ from level to level) |
+| PlacementSystem | Singleton which allows the player to place BuilderObjects and update related Gameplay systems as needed; uses Linq to traverse BuilderObjectTypeToPrefab |
 
 #### SFBuilder.UI
 
-There are a few often-used classes in this namespace. BuilderButton is for a prefab created upon loading a goal, which instantiates (spawns) buildings when the player clicks on them. ColorEnabledElement is a simple way of allowing UI elements to have colors applied via GameUI on GameUI's Awake() (which is called for each game level's Awake that isn't the base level). TransitionedUIElement works in a similar manner, where the UITransitionSystem handles enabling elements in a specific order so that UI elements animate as expected (for example, the main menu animates the title and buttons from the top down; BuilderButtons animate from left to right). StatIndicator is used for text elements which indicate stats. Only the Totals and CurrentGoal/CurrentGoalMinimumViability from ScoreType are used when assigning StatIndicator's types in inspector, but handle updates to potential as well as total. GameUI and MenuUI are singletons that handle their respective UI's. MenuUI exposes handlers for settings menu elements' OnValueChanged events and the menu buttons' OnPressed events. GameUI handles setting up the placement panel and various OnPressed events. Both handle their respective transitions/animations as well. The PostProcessingHandler does just that - handles post processing by loading post processing settings when they are updated and on Start().
+| File | Description |
+| :--- | :---------- |
+| BuilderButton | Upon loading a goal, prefabbed BuilderButtons are created which handle spawning buildings when the player clicks on them and indicating the number of buildings the player can place |
+| ColorEnabledElement | Holds references for applying colors based on a level's theme (has method called in GameUI to apply the colors) |
+| ControlButton | Extends the UnityEngine.UI.Button to allow for associating controls-related information to buttons |
+| GameUI | Handles the in-game UI |
+| KeyboardNavigableDropdown | Extends TMP_Dropdown to re-implement UI-navigation (present in regular TMP_Dropdown, but making the Unity UI more keyboard/gamepad friendly broke this functionality); Note that some steps must be taken in order to fully get this to work, see Before Running/Building |
+| MenuUI | Handles all of the main menu's selectables |
+| RadialStatIndicator | Associates a radial UI element with a stat to display (combines "potential" and "total," therefore cannot be used with all stats) |
+| ResizeableUI | A more controlled version of ScaleableUI (useful if a UI element already has StyleableText attached) |
+| ScaleableUI | Applies UI scaling settings to UI elements |
+| StyleableText | Applies font style settings to text elements |
+| TextStatIndicator | Associates UI elements with a stat to display. Like RadialStatIndicator, it combines "potential" and "total," but can be used with other stats as well (i.e. CurrentGoal/CurrentGoalMinimumViability) |
+| TextType | Enum which defines what type of material preset to use for text |
+| TransitionedUIElement | Allows for UI elements to be transitioned by the UITransitionSystem |
+| UIAssets | Singleton which holds references to numerous UI-related assets |
+| UITransitionSystem | Transitions TransitionedUIElements in order rather than instantly enabling all at once |
+
+GameUI and MenuUI are singletons that handle their respective UI's. MenuUI exposes handlers for settings menu elements' OnValueChanged events and the menu buttons' OnPressed events. GameUI handles setting up the placement panel and various OnPressed events. Both handle their respective transitions/animations as well. The PostProcessingHandler does just that - handles post processing by loading post processing settings when they are updated and on Start().
+
+#### SFBuilder.Util
+
+| File | Description |
+| :--- | :---------- |
+| ControllerSettings | Ensures camera controller settings are applied (attached to controller) |
+| GameCursor | Renders a custom cursor in place of the hardware cursor which can be resized from the settings menu; Also handles locking the cursor based on camera state |
+| GraphicsHandler | Ensures graphic settings are applied (attached to a global scene object) |
+| PostProcessingHandler | Ensures post-processing settings are applied (attached to post-processing volumes) |
 
 ### Before Running/Building
 
