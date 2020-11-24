@@ -11214,7 +11214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 485634287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe75c32936eadfd49be10a45139822b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -14977,7 +14977,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 619074794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe75c32936eadfd49be10a45139822b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -15767,7 +15767,7 @@ GameObject:
   - component: {fileID: 645036431}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17906,7 +17906,7 @@ GameObject:
   - component: {fileID: 728515128}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26138,7 +26138,7 @@ GameObject:
   - component: {fileID: 1057614273}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27469,7 +27469,7 @@ GameObject:
   - component: {fileID: 1088626558}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37154,7 +37154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413485803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe75c32936eadfd49be10a45139822b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -44868,7 +44868,7 @@ GameObject:
   - component: {fileID: 1678444062}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50154,7 +50154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958143545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe75c32936eadfd49be10a45139822b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -53345,7 +53345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063242672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: fe75c32936eadfd49be10a45139822b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:

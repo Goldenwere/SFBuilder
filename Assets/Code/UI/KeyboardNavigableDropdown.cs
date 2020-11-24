@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 /// Override dropdowns in order to make them keyboard navigable
 /// </summary>
 /// <remarks>Dropdowns are normally navigable, but in making other things navigable, it breaks this</remarks>
-public class DropdownWithEvents : TMP_Dropdown
+public class KeyboardNavigableDropdown : TMP_Dropdown
 {
     /// <summary>
     /// Override for CreateDropdownList in order to select the itme
