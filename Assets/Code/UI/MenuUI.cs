@@ -659,8 +659,10 @@ namespace SFBuilder.UI
                     Canvas.ForceUpdateCanvases();
                     RectTransform rt = curr.transform.FindParentRecursively("Content").GetComponent<RectTransform>();
                     Vector2 newPos = rt.anchoredPosition;
-                    Vector2 sub = (Vector2)curr.transform.FindParentRecursively("Scroll View").InverseTransformPoint(rt.position)
-                        - (Vector2)curr.transform.FindParentRecursively("Scroll View").InverseTransformPoint(curr.transform.position);
+                    Transform scrollView = curr.transform.FindParentRecursively("Scroll View");
+                    Vector2 sub = (Vector2)scrollView.InverseTransformPoint(rt.position)
+                        - (Vector2)scrollView.InverseTransformPoint(curr.transform.position)
+                        + curr.GetComponent<RectTransform>().sizeDelta;
                     newPos.y = sub.y - 50;
                     if (newPos.y < 0)
                         newPos.y = 0;

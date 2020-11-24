@@ -6632,7 +6632,6 @@ MonoBehaviour:
     mainMenuOptionPlay: {fileID: 92745471}
     mainMenuOptionQuit: {fileID: 2003936562}
     mainMenuOptionSettings: {fileID: 1392665729}
-    scrollRectSettingsMenu: {fileID: 1278803184}
     settingsMenuOptionMenu: {fileID: 803671048}
     settingsMenuOptionRevert: {fileID: 2061757766}
     settingsMenuOptionSave: {fileID: 312050635}
@@ -6648,7 +6647,6 @@ MonoBehaviour:
     submenuControlsButtonBackground: {fileID: 1961333086}
     submenuGraphics: {fileID: 1006357840}
     submenuGraphicsButtonBackground: {fileID: 1320408861}
-    submenuViewportContent: {fileID: 1650678066}
     windowSettingsBack: {fileID: 1531353097}
     windowSettingsSave: {fileID: 402230483}
     windowSettingsRevert: {fileID: 794546392}
@@ -8626,7 +8624,7 @@ GameObject:
   - component: {fileID: 389565228}
   m_Layer: 5
   m_Name: Item
-  m_TagString: ignoreSelectable
+  m_TagString: scrollable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
