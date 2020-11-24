@@ -60,28 +60,29 @@ namespace SFBuilder.UI
         [Serializable]
         protected class OtherElements
         {
-            public Button       mainMenuOptionPlay;
-            public Button       mainMenuOptionQuit;
-            public Button       mainMenuOptionSettings;
-            public ScrollRect   scrollRectSettingsMenu;
-            public Button       settingsMenuOptionMenu;
-            public Button       settingsMenuOptionRevert;
-            public Button       settingsMenuOptionSave;
-            public Button       settingsSubOptionAccessibility;
-            public Button       settingsSubOptionAudio;
-            public Button       settingsSubOptionControls;
-            public Button       settingsSubOptionGraphics;
-            public GameObject   submenuAccessibility;
-            public GameObject   submenuAccessibilityButtonBackground;
-            public GameObject   submenuAudio;
-            public GameObject   submenuAudioButtonBackground;
-            public GameObject   submenuControls;
-            public GameObject   submenuControlsButtonBackground;
-            public GameObject   submenuGraphics;
-            public GameObject   submenuGraphicsButtonBackground;
-            public Button       windowSettingsBack;
-            public Button       windowSettingsSave;
-            public Button       windowSettingsRevert;
+            public Button           mainMenuOptionPlay;
+            public Button           mainMenuOptionQuit;
+            public Button           mainMenuOptionSettings;
+            public ScrollRect       scrollRectSettingsMenu;
+            public Button           settingsMenuOptionMenu;
+            public Button           settingsMenuOptionRevert;
+            public Button           settingsMenuOptionSave;
+            public Button           settingsSubOptionAccessibility;
+            public Button           settingsSubOptionAudio;
+            public Button           settingsSubOptionControls;
+            public Button           settingsSubOptionGraphics;
+            public GameObject       submenuAccessibility;
+            public GameObject       submenuAccessibilityButtonBackground;
+            public GameObject       submenuAudio;
+            public GameObject       submenuAudioButtonBackground;
+            public GameObject       submenuControls;
+            public GameObject       submenuControlsButtonBackground;
+            public GameObject       submenuGraphics;
+            public GameObject       submenuGraphicsButtonBackground;
+            public RectTransform    submenuViewportContent;
+            public Button           windowSettingsBack;
+            public Button           windowSettingsSave;
+            public Button           windowSettingsRevert;
         }
 
         /// <summary>
@@ -645,7 +646,7 @@ namespace SFBuilder.UI
         }
 
         /// <summary>
-        /// Handler for changed selected game object in EventSystem for use in autoscrolling controls menu
+        /// Handler for changed selected game object in EventSystem for use in autoscrolling menus
         /// </summary>
         /// <param name="prev">The previously selected gameobject</param>
         /// <param name="curr">The currently selected gameobject</param>
@@ -658,14 +659,13 @@ namespace SFBuilder.UI
                 if (curr.CompareTag("scrollable") && !Mouse.current.leftButton.isPressed && !previouslySelectedDontScroll)
                 {
                     Canvas.ForceUpdateCanvases();
-                    RectTransform rt = otherElements.submenuControls.transform.parent.GetComponent<RectTransform>();
-                    Vector2 newPos = rt.anchoredPosition;
-                    Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(rt.position)
+                    Vector2 newPos = otherElements.submenuViewportContent.anchoredPosition;
+                    Vector2 sub = (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(otherElements.submenuViewportContent.position)
                         - (Vector2)otherElements.scrollRectSettingsMenu.transform.InverseTransformPoint(curr.transform.position);
                     newPos.y = sub.y - 50;
                     if (newPos.y < 0)
                         newPos.y = 0;
-                    rt.anchoredPosition = newPos;
+                    otherElements.submenuViewportContent.anchoredPosition = newPos;
                 }
 
                 previouslySelectedDontScroll = false;
