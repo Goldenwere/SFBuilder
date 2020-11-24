@@ -59,3 +59,20 @@ Building placement rules can be found in the static methods of BuilderObject. Sc
 #### SFBuilder.UI
 
 There are a few often-used classes in this namespace. BuilderButton is for a prefab created upon loading a goal, which instantiates (spawns) buildings when the player clicks on them. ColorEnabledElement is a simple way of allowing UI elements to have colors applied via GameUI on GameUI's Awake() (which is called for each game level's Awake that isn't the base level). TransitionedUIElement works in a similar manner, where the UITransitionSystem handles enabling elements in a specific order so that UI elements animate as expected (for example, the main menu animates the title and buttons from the top down; BuilderButtons animate from left to right). StatIndicator is used for text elements which indicate stats. Only the Totals and CurrentGoal/CurrentGoalMinimumViability from ScoreType are used when assigning StatIndicator's types in inspector, but handle updates to potential as well as total. GameUI and MenuUI are singletons that handle their respective UI's. MenuUI exposes handlers for settings menu elements' OnValueChanged events and the menu buttons' OnPressed events. GameUI handles setting up the placement panel and various OnPressed events. Both handle their respective transitions/animations as well. The PostProcessingHandler does just that - handles post processing by loading post processing settings when they are updated and on Start().
+
+### Before Running/Building
+
+Some packages need editing before building/testing the game due to decisions which interfere with the project.
+
+#### TMPro
+
+In `TMP_Dropdown.DropdownItem`, completely remove the following code:
+
+```
+public virtual void OnPointerEnter(PointerEventData eventData)
+{
+    EventSystem.current.SetSelectedGameObject(gameObject);
+}
+```
+
+This interferes with UI navigation. Be sure to also remove the IPointerEnterHandler from the class declaration.
