@@ -6710,7 +6710,7 @@ MonoBehaviour:
     displayFOV: {fileID: 1728554368}
     displayFramerate: {fileID: 1410602749}
     displayRatio: {fileID: 1958143547}
-    displayResolution: {fileID: 0}
+    displayResolution: {fileID: 1765328692}
     displayVsync: {fileID: 1966703692}
     displayWindow: {fileID: 485634289}
     postprocAO: {fileID: 1491764320}

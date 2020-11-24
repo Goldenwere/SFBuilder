@@ -4,24 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropdownWithEvents : TMP_Dropdown, IPointerClickHandler, ISubmitHandler
+public class DropdownWithEvents : TMP_Dropdown
 {
-    public override void OnPointerClick(PointerEventData eventData)
+    protected override GameObject CreateDropdownList(GameObject template)
     {
-        base.OnPointerClick(eventData);
-        StartCoroutine(WaitForOptionsEnabled());
+        GameObject created = base.CreateDropdownList(template);
+        StartCoroutine(WaitBeforeSelection());
+        return created;
     }
 
-    public override void OnSubmit(BaseEventData eventData)
+    private IEnumerator WaitBeforeSelection()
     {
-        base.OnSubmit(eventData);
-        StartCoroutine(WaitForOptionsEnabled());
-    }
-
-    private IEnumerator WaitForOptionsEnabled()
-    {
-        while (!template.gameObject.activeInHierarchy)
-            yield return new WaitForFixedUpdate();
-        EventSystem.current.SetSelectedGameObject(template.gameObject.FindChildRecursively("Content").transform.GetChild(0).gameObject);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(gameObject.FindChild("Dropdown List").FindChildRecursively("Content").transform.GetChild(1).gameObject);
     }
 }
