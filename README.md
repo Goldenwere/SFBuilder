@@ -105,8 +105,6 @@ Contains editor scripts (currently just ControlButtonEditor, to ensure Button-ex
 | UIAssets | Singleton which holds references to numerous UI-related assets |
 | UITransitionSystem | Transitions TransitionedUIElements in order rather than instantly enabling all at once |
 
-GameUI and MenuUI are singletons that handle their respective UI's. MenuUI exposes handlers for settings menu elements' OnValueChanged events and the menu buttons' OnPressed events. GameUI handles setting up the placement panel and various OnPressed events. Both handle their respective transitions/animations as well. The PostProcessingHandler does just that - handles post processing by loading post processing settings when they are updated and on Start().
-
 #### SFBuilder.Util
 
 | File | Description |
