@@ -63,13 +63,16 @@ namespace SFBuilder.UI
             public Button           mainMenuOptionPlay;
             public Button           mainMenuOptionQuit;
             public Button           mainMenuOptionSettings;
+            [Space]
             public Button           settingsMenuOptionMenu;
             public Button           settingsMenuOptionRevert;
             public Button           settingsMenuOptionSave;
+            [Space]
             public Button           settingsSubOptionAccessibility;
             public Button           settingsSubOptionAudio;
             public Button           settingsSubOptionControls;
             public Button           settingsSubOptionGraphics;
+            [Space]
             public GameObject       submenuAccessibility;
             public GameObject       submenuAccessibilityButtonBackground;
             public GameObject       submenuAudio;
@@ -78,6 +81,7 @@ namespace SFBuilder.UI
             public GameObject       submenuControlsButtonBackground;
             public GameObject       submenuGraphics;
             public GameObject       submenuGraphicsButtonBackground;
+            [Space]
             public Button           windowSettingsBack;
             public Button           windowSettingsSave;
             public Button           windowSettingsRevert;
