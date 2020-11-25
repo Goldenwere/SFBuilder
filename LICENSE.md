@@ -4,5 +4,6 @@
 
 \* The following files are Copyright (C) 2020 Goldenwere and can not be included outside official builds, repos, etc.:
 - [brand.png](Assets/Textures/Other/brand.png)
+- [brand_bkgd.png](Assets/Textures/Other/brand_bkgd.png)
 
 \* The remainder of the project is licensed under [GPLv3](GPLv3.md)
