@@ -119,57 +119,57 @@ namespace SFBuilder
             switch (setting)
             {
                 case UIScale.Large:
+                {
+                    switch (format)
                     {
-                        switch (format)
-                        {
-                            case FontFormat.Title:              return 15.0f;
-                            case FontFormat.Heading:            return 12.5f;
-                            case FontFormat.Subheading:         return 7.50f;
-                            case FontFormat.Label:              return 6.50f;
-                            case FontFormat.InnerLabel:         return 4.38f;
-                            case FontFormat.Tooltip:            return 3.13f;
-                            case FontFormat.GameWindow:         return 6.88f;
-                            case FontFormat.GameWindowSubText:  return 3.75f;
-                            case FontFormat.HUDIndicators:      return 4.00f;
-                            case FontFormat.MainButtons:
-                            default:                            return 10.0f;
-                        }
+                        case FontFormat.Title:              return 15.0f;
+                        case FontFormat.Heading:            return 12.5f;
+                        case FontFormat.Subheading:         return 7.50f;
+                        case FontFormat.Label:              return 6.50f;
+                        case FontFormat.InnerLabel:         return 4.38f;
+                        case FontFormat.Tooltip:            return 3.13f;
+                        case FontFormat.GameWindow:         return 6.88f;
+                        case FontFormat.GameWindowSubText:  return 3.75f;
+                        case FontFormat.HUDIndicators:      return 4.00f;
+                        case FontFormat.MainButtons:
+                        default:                            return 10.0f;
                     }
+                }
                 case UIScale.Small:
+                {
+                    switch (format)
                     {
-                        switch (format)
-                        {
-                            case FontFormat.Title:              return 9.00f;
-                            case FontFormat.Heading:            return 7.50f;
-                            case FontFormat.Subheading:         return 4.50f;
-                            case FontFormat.Label:              return 3.75f;
-                            case FontFormat.InnerLabel:         return 2.63f;
-                            case FontFormat.Tooltip:            return 1.88f;
-                            case FontFormat.GameWindow:         return 4.13f;
-                            case FontFormat.GameWindowSubText:  return 2.25f;
-                            case FontFormat.HUDIndicators:      return 3.00f;
-                            case FontFormat.MainButtons:
-                            default:                            return 6.00f;
-                        }
+                        case FontFormat.Title:              return 9.00f;
+                        case FontFormat.Heading:            return 7.50f;
+                        case FontFormat.Subheading:         return 4.50f;
+                        case FontFormat.Label:              return 3.75f;
+                        case FontFormat.InnerLabel:         return 2.63f;
+                        case FontFormat.Tooltip:            return 1.88f;
+                        case FontFormat.GameWindow:         return 4.13f;
+                        case FontFormat.GameWindowSubText:  return 2.25f;
+                        case FontFormat.HUDIndicators:      return 3.00f;
+                        case FontFormat.MainButtons:
+                        default:                            return 6.00f;
                     }
+                }
                 case UIScale.Medium:
                 default:
+                {
+                    switch (format)
                     {
-                        switch (format)
-                        {
-                            case FontFormat.Title:              return 12.0f;
-                            case FontFormat.Heading:            return 10.0f;
-                            case FontFormat.Subheading:         return 6.00f;
-                            case FontFormat.Label:              return 5.00f;
-                            case FontFormat.InnerLabel:         return 3.50f;
-                            case FontFormat.Tooltip:            return 2.50f;
-                            case FontFormat.GameWindow:         return 5.50f;
-                            case FontFormat.GameWindowSubText:  return 3.00f;
-                            case FontFormat.HUDIndicators:      return 3.50f;
-                            case FontFormat.MainButtons:
-                            default:                            return 8.00f;
-                        }
+                        case FontFormat.Title:              return 12.0f;
+                        case FontFormat.Heading:            return 10.0f;
+                        case FontFormat.Subheading:         return 6.00f;
+                        case FontFormat.Label:              return 5.00f;
+                        case FontFormat.InnerLabel:         return 3.50f;
+                        case FontFormat.Tooltip:            return 2.50f;
+                        case FontFormat.GameWindow:         return 5.50f;
+                        case FontFormat.GameWindowSubText:  return 3.00f;
+                        case FontFormat.HUDIndicators:      return 3.50f;
+                        case FontFormat.MainButtons:
+                        default:                            return 8.00f;
                     }
+                }
             }
         }
 
