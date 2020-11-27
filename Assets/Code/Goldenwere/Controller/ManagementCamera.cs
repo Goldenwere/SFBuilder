@@ -4,9 +4,9 @@
 *** The Goldenwere Standard Unity Repository is licensed under the MIT license
 ***
 *** File Info:
-***     Description - Contains the ManagementCamera class and associated delegate
+***     Description - Contains the ManagementCamera class and associated delegate + InversionModes, InputInversion structs + ZoomMode enum
 ***     Pkg Name    - ManagementCamera
-***     Pkg Ver     - 1.1.0
+***     Pkg Ver     - 1.2.0
 ***     Pkg Req     - CoreAPI
 **/
 
@@ -36,8 +36,11 @@ namespace Goldenwere.Unity.Controller
         [Range(0.01f,5)] public float           settingRotationSensitivity = 1f;
         [Range(0.01f,5)] public float           settingZoomSensitivity = 1f;
         /**************/ public bool            useCameraSmoothing = true;
+        /**************/ public ZoomMode        zoomMode = ZoomMode.Forward;
 
         [Header("Core Components")]
+        [Tooltip                                ("The attached camera (currently only needed for ZoomMode.ToCursor, otherwise can be left unassigned)")]
+        [SerializeField] protected Camera       attachedCamera;
         [Tooltip                                ("The attached PlayerInput class")]
         [SerializeField] protected PlayerInput  attachedInput;
         [Range(0.1f,5)][Tooltip                 ("How fast the camera's motion is, applied after scale constants and before sensitivity settings; " +
@@ -83,6 +86,10 @@ namespace Goldenwere.Unity.Controller
         #endregion
         #endregion
 
+        #region Properties
+        public Vector3  CurrentCameraVelocity   { get; private set; }
+        #endregion
+
         #region Events
         public event    CameraMouseState        CameraMouseStateChanged;
         #endregion
@@ -111,6 +118,8 @@ namespace Goldenwere.Unity.Controller
         {
             if (controlMotionEnabled)
             {
+                Vector3 oldPos = transform.position;
+
                 if (workingInputActionMovement)
                 {
                     if (!workingInputGamepadToggleZoom)
@@ -158,6 +167,8 @@ namespace Goldenwere.Unity.Controller
                     transformPivot.localRotation = workingDesiredRotationHorizontal;
                     transformTilt.localRotation = workingDesiredRotationVertical;
                 }
+
+                CurrentCameraVelocity = transform.position - oldPos;
             }
         }
 
@@ -363,7 +374,12 @@ namespace Goldenwere.Unity.Controller
         /// <param name="input">The current input (modified to account for device sensitivity scaling)</param>
         protected void PerformZoom(float input)
         {
-            Vector3 add = transformTilt.forward * input * settingZoomSensitivity;
+            Vector3 add;
+            if (zoomMode == ZoomMode.ToCursor)
+                add = attachedCamera.ScreenPointToRay(Mouse.current.position.ReadValue()).direction * input * settingZoomSensitivity;
+            else
+                add = transformTilt.forward * input * settingZoomSensitivity;
+
             if (!WillCollideAtNewPosition(workingDesiredPosition + add, add))
                 workingDesiredPosition += add;
 
@@ -388,7 +404,7 @@ namespace Goldenwere.Unity.Controller
             bool willCollide = false;
             foreach(Collider c in cols)
             {
-                if (!willCollide && c.gameObject.layer != 2)
+                if (c.gameObject.layer != 2)
                 {
                     Vector3 headingCurrent = c.transform.position - newPosition - direction;
                     float dotCurr = Vector3.Dot(headingCurrent, newPosition - direction);
@@ -396,6 +412,8 @@ namespace Goldenwere.Unity.Controller
                     float dotNew = Vector3.Dot(headingNew, newPosition);
                     willCollide = Mathf.Abs(dotNew) - Mathf.Abs(dotCurr) > 0;
                 }
+                if (willCollide)
+                    break;
             }
             return willCollide;
         }
@@ -425,5 +443,14 @@ namespace Goldenwere.Unity.Controller
     {
         public InversionModes   mouse;
         public InversionModes   other;
+    }
+
+    /// <summary>
+    /// Defines the mode of which the camera uses for zooming
+    /// </summary>
+    public enum ZoomMode
+    {
+        Forward,
+        ToCursor
     }
 }
