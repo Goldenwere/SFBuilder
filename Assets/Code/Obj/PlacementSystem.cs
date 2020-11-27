@@ -65,7 +65,6 @@ namespace SFBuilder.Obj
                 Destroy(gameObject);
             else
                 Instance = this;
-
         }
 
         /// <summary>

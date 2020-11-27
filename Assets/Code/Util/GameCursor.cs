@@ -14,12 +14,16 @@ namespace SFBuilder.Util
         #region Fields
         /**************/ public  Vector2            cursorSize;
 #pragma warning disable 0649
-        [SerializeField] private Sprite             cursor;
         [SerializeField] private ManagementCamera[] cameras;
+        [SerializeField] private Sprite             cursor;
+        [SerializeField] private float              cursorHideSqrVelocityThreshold = 1.0f;
+        [SerializeField] private bool               restoreCursorPositionAfterShown = true;
 #pragma warning restore 0649
+        /**************/ private CursorLockMode     defaultLockMode;
         /**************/ private bool               drawCursor;
         /**************/ private bool               hardwareCursor;
-        /**************/ private CursorLockMode     defaultLockMode;
+        /**************/ private bool               isMouseBeingUsed;
+        /**************/ private Vector2            prevMousePos;
         #endregion
 
         #region Methods
@@ -39,7 +43,7 @@ namespace SFBuilder.Util
         }
 
         /// <summary>
-        /// Determines if cursor is over an interactable and toggles mouse controls accordingly for cameras
+        /// Determines if cursor is over an interactable and toggles mouse controls accordingly for cameras; also, check to see if the cursor needs hidden
         /// </summary>
         private void Update()
         {
@@ -49,6 +53,19 @@ namespace SFBuilder.Util
             else if (!EventSystem.current.IsPointerOverGameObject() && !cameras[0].controlMouseEnabled)
                 foreach (ManagementCamera cam in cameras)
                     cam.controlMouseEnabled = true;
+
+            // First, check if the camera is using mouse and the cursor is still visible
+            if (isMouseBeingUsed && drawCursor)
+            {
+                // Second, only hide the cursor if the velocity is great enough
+                if (cameras[0].CurrentCameraVelocity.sqrMagnitude >= cursorHideSqrVelocityThreshold)
+                {
+                    Cursor.visible = false;
+                    drawCursor = false;
+                    prevMousePos = Mouse.current.position.ReadValue();
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+            }
         }
 
         /// <summary>
@@ -90,15 +107,21 @@ namespace SFBuilder.Util
         /// Handle cursor changes when controller uses mouse
         /// </summary>
         /// <param name="isMouseBeingUsed">Whether the mouse is currently being used (and thus whether the cursor should be hidden)</param>
-        private void OnCameraStateChanged(bool isMouseBeingUsed)
+        private void OnCameraStateChanged(bool _isMouseBeingUsed)
         {
             if (GameEventSystem.Instance.CurrentGameState == GameState.Gameplay)
-                drawCursor = !isMouseBeingUsed;
-
-            if (drawCursor)
-                Cursor.lockState = defaultLockMode;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
+            {
+                if (isMouseBeingUsed && !_isMouseBeingUsed)
+                {
+                    Cursor.lockState = defaultLockMode;
+                    if (restoreCursorPositionAfterShown && !drawCursor)
+                        StartCoroutine(WaitToRepositionCursor());
+                    if (hardwareCursor)
+                        Cursor.visible = true;
+                    drawCursor = true;
+                }
+                isMouseBeingUsed = _isMouseBeingUsed;
+            }
         }
 
         /// <summary>
@@ -109,6 +132,9 @@ namespace SFBuilder.Util
             StartCoroutine(WaitToSetCursorSize());
         }
 
+        /// <summary>
+        /// Wait for a fixed update before setting cursor size to prevent odd behaviour
+        /// </summary>
         private IEnumerator WaitToSetCursorSize()
         {
             yield return new WaitForFixedUpdate();
@@ -126,6 +152,21 @@ namespace SFBuilder.Util
                     Screen.width / (((int)CursorSize.VeryLarge + 1 - (int)GameSettings.Instance.Settings.display_Cursor) * 16));
             }
         }
-        #endregion
+
+        /// <summary>
+        /// Wait for a fixed update before setting cursor position
+        /// </summary>
+        private IEnumerator WaitToRepositionCursor()
+        {
+            yield return new WaitForFixedUpdate();
+            Vector2 flipped = prevMousePos;
+            flipped.y = Screen.height - prevMousePos.y;
+#if UNITY_EDITOR
+            flipped.y = prevMousePos.y;
+#endif
+            InputSystem.QueueDeltaStateEvent(Mouse.current.position, prevMousePos);
+            Mouse.current.WarpCursorPosition(flipped);
+        }
+#endregion
     }
 }
