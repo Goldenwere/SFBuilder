@@ -118,7 +118,8 @@ namespace SFBuilder.Util
                         StartCoroutine(WaitToRepositionCursor());
                     if (hardwareCursor)
                         Cursor.visible = true;
-                    drawCursor = true;
+                    if (!restoreCursorPositionAfterShown)
+                        drawCursor = true;
                 }
                 isMouseBeingUsed = _isMouseBeingUsed;
             }
@@ -166,6 +167,7 @@ namespace SFBuilder.Util
 #endif
             InputSystem.QueueDeltaStateEvent(Mouse.current.position, prevMousePos);
             Mouse.current.WarpCursorPosition(flipped);
+            drawCursor = true;
         }
 #endregion
     }
