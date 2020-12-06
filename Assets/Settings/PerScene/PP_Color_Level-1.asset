@@ -33,32 +33,32 @@ MonoBehaviour:
     value: 1
   gradingMode:
     overrideState: 1
-    value: 0
+    value: 1
   externalLut:
     overrideState: 0
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
     overrideState: 1
-    value: 0
+    value: 3
   toneCurveToeStrength:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.1
   toneCurveToeLength:
-    overrideState: 0
+    overrideState: 1
     value: 0.5
   toneCurveShoulderStrength:
-    overrideState: 0
+    overrideState: 1
     value: 0
   toneCurveShoulderLength:
-    overrideState: 0
-    value: 0.5
-  toneCurveShoulderAngle:
-    overrideState: 0
+    overrideState: 1
     value: 0
+  toneCurveShoulderAngle:
+    overrideState: 1
+    value: 0.5
   toneCurveGamma:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.8
   ldrLut:
     overrideState: 1
     value: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 10
+    value: 14
   tint:
     overrideState: 1
     value: -15
@@ -80,7 +80,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 25
+    value: 35
   brightness:
     overrideState: 1
     value: 25
@@ -89,7 +89,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 0
+    value: -10
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -119,13 +119,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.9472871, z: 0.9967581, w: 0}
+    value: {x: 1, y: 0.9192261, z: 0.97707546, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 0.8813006, y: 0.9565478, z: 1, w: 0}
+    value: {x: 0.8496184, y: 0.9569629, z: 1, w: 0}
   gain:
     overrideState: 1
-    value: {x: 0.91290295, y: 0.8977108, z: 1, w: 0}
+    value: {x: 0.7985266, y: 0.7182717, z: 1, w: 0}
   masterCurve:
     overrideState: 0
     value:
