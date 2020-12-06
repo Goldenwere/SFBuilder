@@ -96,10 +96,8 @@ namespace SFBuilder.UI
                         }
                         break;
                     case ScoreType.TotalViability:
-                        StartCoroutine(TransitionFill(
-                            associatedImageElement.fillAmount,
-                            Mathf.Clamp(val - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
-                        ));
+                        associatedImageElement.fillAmount = Mathf.Clamp(val - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue)
+                            / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability);
                         break;
                 }
             }
