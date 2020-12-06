@@ -76,8 +76,10 @@ namespace SFBuilder.UI
                         if (associatedImageElement.fillAmount == 0)
                         {
                             StartCoroutine(TransitionFill(
-                                GameScoring.Instance.TotalViability,
-                                Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
+                                (GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability)
+                                    / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability),
+                                Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue)
+                                    / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                             ));
                         }
                         else
@@ -86,7 +88,8 @@ namespace SFBuilder.UI
                             {
                                 StartCoroutine(TransitionFill(
                                     associatedImageElement.fillAmount,
-                                    Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
+                                    Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue)
+                                        / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                                 ));
                             }
                             else
