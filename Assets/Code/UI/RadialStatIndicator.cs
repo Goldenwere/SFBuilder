@@ -73,24 +73,25 @@ namespace SFBuilder.UI
                 switch (associatedType)
                 {
                     case ScoreType.PotentialViability:
-                        if (val == 0)
-                            associatedImageElement.fillAmount = 0;
-
+                        if (associatedImageElement.fillAmount == 0)
+                        {
+                            StartCoroutine(TransitionFill(
+                                GameScoring.Instance.TotalViability,
+                                Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
+                            ));
+                        }
                         else
                         {
-                            if (associatedImageElement.fillAmount == 0)
-                            {
-                                StartCoroutine(TransitionFill(
-                                    GameScoring.Instance.TotalViability,
-                                    Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
-                                ));
-                            }
-                            else
+                            if (val != 0)
                             {
                                 StartCoroutine(TransitionFill(
                                     associatedImageElement.fillAmount,
                                     Mathf.Clamp(val + GameScoring.Instance.TotalViability - GoalSystem.Instance.PreviousGoalViability, 0, float.MaxValue) / (GoalSystem.Instance.CurrentGoalWorkingSet.goalViability - GoalSystem.Instance.PreviousGoalViability)
                                 ));
+                            }
+                            else
+                            {
+                                StartCoroutine(TransitionFill(associatedImageElement.fillAmount, 0));
                             }
                         }
                         break;
