@@ -274,7 +274,7 @@ Shader "AdultLink/HoloShield"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "AdultLink.HoloShieldEditor"
+	//CustomEditor "AdultLink.HoloShieldEditor"
 }
 /*ASEBEGIN
 Version=15800
