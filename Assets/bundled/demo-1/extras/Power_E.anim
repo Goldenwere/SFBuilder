@@ -65,7 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Cube
+    path: turbineJoint
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -117,7 +117,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -217,7 +217,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -272,7 +272,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -327,7 +327,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -355,7 +355,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -410,7 +410,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -438,7 +438,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -449,7 +449,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -459,7 +459,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -469,7 +469,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cube/Cone
+    path: turbineJoint/bladeJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -479,7 +479,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -489,7 +489,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -499,7 +499,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cube
+    path: turbineJoint
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
