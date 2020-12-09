@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2853962270057120634}
   m_Layer: 2
-  m_Name: Plants
+  m_Name: plants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +394,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7bbf7e9077f386428b7ce7fec7bd470, type: 2}
+  - {fileID: 2100000, guid: e0d2339660180fa42b5a3867cbcdf6ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -473,7 +473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7bbf7e9077f386428b7ce7fec7bd470, type: 2}
+  - {fileID: 2100000, guid: e89e3486c653b97489d7ebbd39bae7b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1076,7 +1076,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (7)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1151,7 +1151,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1226,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (3)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1301,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (2)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1376,7 +1376,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (1)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1451,7 +1451,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (6)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1526,7 +1526,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (5)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1601,7 +1601,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (9)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1676,7 +1676,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (4)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
@@ -1751,7 +1751,7 @@ PrefabInstance:
     - target: {fileID: 1765640926225668026, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}
       propertyPath: m_Name
-      value: Plant_1 (8)
+      value: plants
       objectReference: {fileID: 0}
     - target: {fileID: 2565522823244005436, guid: 467452cefbedcf04c87f20a3b06a8824,
         type: 3}

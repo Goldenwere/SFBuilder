@@ -7,15 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: palette_mat-placement
-  m_Shader: {fileID: 4800000, guid: 2f30869ecb94b9d4cb70db3169376e69, type: 3}
-  m_ShaderKeywords: _EMISSION _ENABLEDISTORTION_ON _ENABLENOISE_ON _INVERTSECONDARYTEXTURE_ON
-    _METALLICGLOSSMAP
+  m_Name: palette_mat-transp
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _METALLICGLOSSMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -44,10 +44,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: a93d560f1864cda42b41594df96ffbdd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Maintexture:
-        m_Texture: {fileID: 2800000, guid: a93d560f1864cda42b41594df96ffbdd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: ed2bd6ddeeae8a746af1757c8b23a01d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,64 +56,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Secondarytexture:
-        m_Texture: {fileID: 2800000, guid: 31b1a01fed5ffd644b6e3e7389ae02fa, type: 3}
-        m_Scale: {x: 100, y: 100}
-        m_Offset: {x: 0, y: 0}
-    - _texcoord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Bias: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distortionscale: 0.5
-    - _Distortionspeed: 0.25
-    - _DstBlend: 0
-    - _Enabledistortion: 1
-    - _Enablenoise: 1
-    - _Enablepulsation: 0
-    - _Extraroughness: 4
-    - _Globalopacity: 1
-    - _GlossMapScale: 0.1
+    - _DstBlend: 10
+    - _GlossMapScale: 0.8
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Innerfresnelintensity: 0
-    - _Invertmaintexture: 0
-    - _Invertsecondarytexture: 1
-    - _Maintextureintensity: 1
     - _Metallic: 0
-    - _Mode: 0
-    - _Noisescale: 200
+    - _Mode: 2
     - _OcclusionStrength: 1
-    - _Outerfresnelintensity: 1
     - _Parallax: 0.02
-    - _Power: 0.5
-    - _Pulseamplitude: 0
-    - _Pulsefrequency: 0
-    - _Pulseoffset: 0
-    - _Pulsephase: 0
-    - _Scale: 1
-    - _Secondarytextureintensity: -2
-    - _Sharpennoise: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _TessMax: 0
-    - _TessMin: 0
-    - _TessPhongStrength: 0
-    - _TessValue: 1
+    - _SrcBlend: 5
     - _UVSec: 0
-    - _ZWrite: 1
-    - __dirty: 1
+    - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Edgecolor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Maincolor: {r: 1, g: 1, b: 1, a: 1}
-    - _Mainpanningspeed: {r: 0, g: 0, b: 0, a: 0}
-    - _Noisespeed: {r: 10, g: -2, b: 10, a: 0}
-    - _Secondarycolor: {r: 1, g: 1, b: 1, a: 1}
-    - _Secondarypanningspeed: {r: 0.05, g: 0.05, b: 0, a: 0}
