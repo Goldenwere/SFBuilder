@@ -567,9 +567,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 938847258640034620}
+  - component: {fileID: 5525661038201025734}
   - component: {fileID: 938847258640034618}
   - component: {fileID: 938847258640034619}
-  - component: {fileID: 5525661038201025734}
   m_Layer: 2
   m_Name: pow-c
   m_TagString: Untagged
@@ -595,6 +595,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5525661038201025734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938847258640034616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4860904374612298528, guid: 8f16364f9daac204697fc90a518020a2, type: 3}
 --- !u!54 &938847258640034618
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -631,20 +645,6 @@ MonoBehaviour:
     type: 3}
   ranger: {fileID: 8107318249909476270}
   type: 34
---- !u!64 &5525661038201025734
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938847258640034616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4860904374612298528, guid: 8f16364f9daac204697fc90a518020a2, type: 3}
 --- !u!1 &938847260592564160
 GameObject:
   m_ObjectHideFlags: 0

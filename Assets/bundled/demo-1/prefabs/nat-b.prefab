@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 2618848813661031850}
   - component: {fileID: 547294222442165807}
   m_Layer: 0
-  m_Name: nat-b-placing
+  m_Name: nat-b-place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

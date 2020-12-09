@@ -205,8 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounder: {fileID: 6112506658991241799}
   isPlacedAtStart: 0
-  objectWhenPlacing: {fileID: 6882688877468195895}
-  objectWhenPlaced: {fileID: 6371420010862979957}
+  objectWhenPlacing: {fileID: 6371420010862979957}
+  objectWhenPlaced: {fileID: 6882688877468195895}
   placementParticlePrefab: {fileID: 7608784903369597220, guid: 1eecb7d618a02424b817542b24995053,
     type: 3}
   ranger: {fileID: 2978693609474442794}
