@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Generated Asset bundles
+Assets/AssetBundles/*
+Assets/AssetBundles.meta
+
