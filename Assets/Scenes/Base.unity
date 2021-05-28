@@ -9970,7 +9970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd7c11e1620d84eba8ac3c4f70cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  format: 1
+  format: 2
   type: 3
 --- !u!1 &447765513
 GameObject:
